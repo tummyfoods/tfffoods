@@ -88,7 +88,7 @@ const UserProvider = dynamic(
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "tummy food",
+  title: "tummy foods",
   description: "Food creativity and healthly care for mother and child",
 };
 
