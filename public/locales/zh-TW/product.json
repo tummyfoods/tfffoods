@@ -1,0 +1,123 @@
+{
+  "featured": "精選商品",
+  "viewAllProducts": "查看所有商品",
+  "price": "價格",
+  "brand": {
+    "label": "品牌"
+  },
+  "category": {
+    "label": "類別"
+  },
+  "manufactury_country": {
+    "label": "製造國"
+  },
+  "color": {
+    "label": "顏色"
+  },
+  "stock": {
+    "label": "庫存",
+    "inStock": "有庫存",
+    "outOfStock": "缺貨中",
+    "lowStock": "僅剩 {{count}} 件",
+    "preOrder": "預購",
+    "backOrder": "缺貨補貨"
+  },
+  "listedDate": "上架日期",
+  "details": {
+    "title": "產品詳情",
+    "description": "描述",
+    "specifications": "規格",
+    "reviews": "評論",
+    "relatedProducts": "相關產品",
+    "availability": "庫存狀態",
+    "inStock": "有庫存",
+    "outOfStock": "缺貨中",
+    "sku": "商品編號",
+    "dimensions": "尺寸",
+    "weight": "重量",
+    "materials": "材質",
+    "features": "特點",
+    "shipping": "運送資訊",
+    "warranty": "保固"
+  },
+  "admin": {
+    "title": "商品管理",
+    "description": "管理您的商店商品，包括建立新商品和編輯現有商品。",
+    "create": {
+      "title": "建立商品",
+      "success": "商品建立成功",
+      "error": "建立商品失敗"
+    },
+    "edit": {
+      "title": "編輯商品",
+      "success": "商品更新成功",
+      "error": "更新商品失敗"
+    },
+    "delete": {
+      "confirm": "確定要刪除此商品嗎？",
+      "success": "商品刪除成功",
+      "error": "刪除商品失敗"
+    },
+    "status": {
+      "active": "已上架商品",
+      "draft": "草稿商品"
+    },
+    "table": {
+      "title": "表格檢視",
+      "image": "圖片",
+      "name": "名稱",
+      "brand": "品牌",
+      "price": "價格",
+      "actions": "操作",
+      "noProducts": "找不到商品"
+    },
+    "grid": {
+      "title": "網格檢視"
+    },
+    "actions": {
+      "edit": "編輯商品",
+      "delete": "刪除商品"
+    }
+  },
+  "reviews": {
+    "title": "顧客評論",
+    "writeReview": "撰寫評論",
+    "rating": "評分",
+    "comment": "評論",
+    "submitReview": "提交評論",
+    "thankYou": "感謝您的評論！",
+    "verified": "已驗證購買",
+    "helpful": "這是否有幫助？",
+    "reportAbuse": "檢舉不當使用",
+    "noReviews": "尚無評論"
+  },
+  "filters": {
+    "title": "篩選",
+    "price": "價格範圍",
+    "categories": "類別",
+    "brands": "品牌",
+    "ratings": "評分",
+    "availability": "庫存狀態",
+    "clearAll": "清除全部",
+    "apply": "套用篩選"
+  },
+  "sorting": {
+    "title": "排序方式",
+    "featured": "精選",
+    "newest": "最新",
+    "priceHighToLow": "價格：高到低",
+    "priceLowToHigh": "價格：低到高",
+    "topRated": "評分最高",
+    "mostPopular": "最受歡迎"
+  },
+  "wishlist": {
+    "addToWishlist": "加入願望清單",
+    "removeFromWishlist": "從願望清單移除",
+    "moveToCart": "移至購物車"
+  },
+  "comparison": {
+    "addToCompare": "加入比較",
+    "removeFromCompare": "移除比較",
+    "compareProducts": "比較產品"
+  }
+}

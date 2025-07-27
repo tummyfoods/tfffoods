@@ -1,0 +1,114 @@
+{
+  "title": "Logistics Management",
+  "description": "View and manage all logistics vehicles: update status, assign orders, and track deliveries.",
+  "loading": "Loading vehicles...",
+  "loadingAuth": "Checking authorization...",
+  "loadingVehicle": "Loading vehicle details...",
+  "vehicleDetails": "Vehicle Details",
+  "driverInfo": "Driver Information",
+  "assignmentInfo": "Assignment Information",
+  "vehicleStatus": "Status",
+  "assignedLocation": "Location",
+  "viewDetails": "View Details",
+  "addVehicle": "Add Vehicle",
+  "viewInfo": "View and manage vehicle information",
+  "updateButton": "Update Vehicle",
+  "editVehicle": "Edit Vehicle",
+  "updateStatus": "Update Status",
+  "vehicleInfo": "Vehicle Information",
+  "deliveryDate": "Delivery Date",
+  "maintenanceRecords": {
+    "title": "Maintenance Records",
+    "none": "No maintenance records found",
+    "create": {
+      "title": "Add Maintenance Record",
+      "description": "Add a new maintenance record for this vehicle",
+      "date": "Maintenance Date",
+      "description": "Description",
+      "cost": "Cost",
+      "nextDate": "Next Maintenance Date",
+      "success": "Maintenance record created successfully",
+      "error": "Failed to create maintenance record"
+    }
+  },
+  "assignedOrders": {
+    "title": "Assigned Orders",
+    "none": "No orders assigned"
+  },
+  "createPage": {
+    "title": "Create New Vehicle",
+    "description": "Add a new vehicle to your logistics fleet"
+  },
+  "fields": {
+    "registrationNumber": "Registration Number",
+    "owner": "Owner",
+    "makeYear": "Make Year",
+    "make": "Make",
+    "model": "Model",
+    "chassisNo": "Chassis Number",
+    "weight": "Weight",
+    "cylinderCapacity": "Cylinder Capacity",
+    "bodyType": "Body Type",
+    "status": "Status",
+    "driverName": "Driver Name",
+    "licenseNo": "License Number",
+    "contactNo": "Contact Number",
+    "email": "Email Address",
+    "assignedLocation": "Assigned Location"
+  },
+  "placeholders": {
+    "registrationNumber": "e.g., AB123456",
+    "owner": "Vehicle owner",
+    "makeYear": "e.g., 2023",
+    "make": "e.g., Toyota",
+    "model": "e.g., Hiace",
+    "chassisNo": "Vehicle chassis number",
+    "weight": "Vehicle weight in kg",
+    "cylinderCapacity": "Engine capacity in cc",
+    "bodyType": "Select body type",
+    "driverName": "Driver's full name",
+    "licenseNo": "Driver's license number",
+    "contactNo": "Driver's contact number",
+    "email": "Driver's email address",
+    "location": "Select location",
+    "status": "Select status"
+  },
+  "statusTypes": {
+    "available": "Available",
+    "onDelivery": "On Delivery",
+    "maintenance": "Maintenance",
+    "outOfService": "Out of Service",
+    "pending": "Pending",
+    "inTransit": "In Transit",
+    "delivered": "Delivered",
+    "failed": "Failed"
+  },
+  "locations": {
+    "hongKong": "Hong Kong",
+    "kowloon": "Kowloon",
+    "newTerritories": "New Territories"
+  },
+  "bodyTypes": {
+    "van": "Van",
+    "truck": "Truck",
+    "lorry": "Lorry",
+    "motorcycle": "Motorcycle"
+  },
+  "actions": {
+    "edit": "Vehicle updated successfully",
+    "create": "Vehicle created successfully",
+    "delete": "Vehicle deleted successfully"
+  },
+  "errors": {
+    "updateFailed": "Failed to update vehicle",
+    "createFailed": "Failed to create vehicle",
+    "deleteFailed": "Failed to delete vehicle",
+    "loadFailed": "Failed to load vehicle details"
+  },
+  "confirmStatusUpdate": "Confirm Status Update",
+  "confirmStatusUpdateDesc": "Are you sure you want to update the status to",
+  "deliveredNote": "This will mark the delivery as completed.",
+  "failedNote": "This will mark the delivery as failed.",
+  "vehicleNotFound": "Vehicle not found",
+  "notes": "Notes"
+}

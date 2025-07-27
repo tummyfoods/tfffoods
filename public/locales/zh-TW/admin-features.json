@@ -1,0 +1,28 @@
+{
+  "managementTitle": "功能特色管理",
+  "title": "功能特色",
+  "addItem": "新增功能特色",
+  "icon": "圖示",
+  "description": "描述",
+  "item": {
+    "title": "標題",
+    "description": "描述"
+  },
+  "actions": {
+    "save": "儲存",
+    "delete": "刪除",
+    "add": "新增項目"
+  },
+  "messages": {
+    "saveSuccess": "功能特色儲存成功",
+    "deleteSuccess": "功能特色刪除成功",
+    "error": "發生錯誤"
+  },
+  "placeholders": {
+    "title": "請輸入功能標題",
+    "description": "請輸入功能描述",
+    "icon": "選擇圖示"
+  },
+  "addItem": "新增功能",
+  "deleteConfirm": "確定要刪除此功能特色嗎？"
+}

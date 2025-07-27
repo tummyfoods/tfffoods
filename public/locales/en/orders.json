@@ -1,0 +1,10 @@
+{
+  "details": {
+    "title": "Order Details",
+    "created": "Created",
+    "actions": {
+      "print": "Print",
+      "download": "Download"
+    }
+  }
+}

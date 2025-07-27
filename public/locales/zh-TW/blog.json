@@ -1,0 +1,86 @@
+{
+  "common": {
+    "featuredArticle": "精選文章",
+    "discoverStory": "探索我們的精選故事",
+    "readMore": "閱讀更多",
+    "allPosts": "所有文章",
+    "exploreArticles": "探索我們的文章"
+  },
+  "categories": {
+    "news": "新聞",
+    "reviews": "評論",
+    "guides": "指南",
+    "tutorials": "教學",
+    "updates": "更新",
+    "announcements": "公告"
+  },
+  "posts": {
+    "pageTitle": "部落格文章",
+    "description": "管理您的部落格文章和內容",
+    "create": "建立新文章",
+    "search": "搜尋文章...",
+    "noPosts": "找不到文章",
+    "title": "標題",
+    "author": "作者",
+    "status": "狀態",
+    "published": "發布日期",
+    "publishedAt": "發布於",
+    "statusTypes": {
+      "draft": "草稿",
+      "published": "已發布"
+    }
+  },
+  "settings": {
+    "title": "部落格設定",
+    "description": "設定您的部落格",
+    "general": "一般設定",
+    "seo": "SEO 設定",
+    "social": "社群媒體",
+    "comments": "留言",
+    "save": "儲存設定",
+    "saving": "儲存設定中...",
+    "success": "設定儲存成功",
+    "error": "儲存設定失敗"
+  },
+  "editor": {
+    "title": "編輯部落格文章",
+    "description": "更新您的部落格文章內容和設定",
+    "titleLabel": "文章標題",
+    "titlePlaceholder": "輸入文章標題",
+    "contentLabel": "文章內容",
+    "contentPlaceholder": "在此撰寫文章內容...",
+    "excerptLabel": "摘要",
+    "excerptPlaceholder": "輸入文章摘要",
+    "mainImageLabel": "主要圖片",
+    "mainImagePlaceholder": "上傳或選擇主要圖片",
+    "uploadMainImage": "上傳主要圖片",
+    "categoryLabel": "分類",
+    "categoryPlaceholder": "選擇分類",
+    "tagsLabel": "標籤",
+    "tagsPlaceholder": "新增標籤",
+    "seoTitle": "SEO 設定",
+    "seoTitleLabel": "SEO 標題",
+    "seoTitlePlaceholder": "輸入 SEO 標題",
+    "seoDescriptionLabel": "SEO 描述",
+    "seoDescriptionPlaceholder": "輸入 SEO 描述",
+    "seoKeywordsLabel": "SEO 關鍵字",
+    "seoKeywordsPlaceholder": "輸入 SEO 關鍵字",
+    "statusLabel": "文章狀態",
+    "featuredLabel": "精選文章"
+  },
+  "actions": {
+    "saving": "儲存中...",
+    "saved": "變更已儲存",
+    "error": "儲存變更失敗",
+    "deleteConfirm": "確定要刪除此文章嗎？",
+    "deleted": "文章已刪除",
+    "deleteError": "刪除文章失敗"
+  },
+  "media": {
+    "uploadImage": "上傳圖片",
+    "uploadImageDesc": "點擊或拖放以上傳",
+    "imageUploading": "上傳圖片中...",
+    "imageUploadSuccess": "圖片上傳成功",
+    "imageUploadError": "圖片上傳失敗"
+  }
+}

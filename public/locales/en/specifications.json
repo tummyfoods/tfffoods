@@ -1,0 +1,50 @@
+{
+  "common": {
+    "title": "Specifications",
+    "description": "Manage product specifications for each category"
+  },
+  "list": {
+    "empty": "No specifications found",
+    "items": "items",
+    "categoryHeader": "Category",
+    "specificationsCount": "Specifications",
+    "actionsHeader": "Actions",
+    "manageButton": "Manage",
+    "backButton": "Back",
+    "addButton": "Add Specification",
+    "saveButton": "Save Specifications",
+    "savingButton": "Saving...",
+    "updateTranslations": "Update All Translations"
+  },
+  "form": {
+    "label": "Label",
+    "type": "Type",
+    "typeOptions": {
+      "text": "Text",
+      "number": "Number",
+      "select": "Select"
+    },
+    "options": "Options",
+    "description": "Description",
+    "required": "Required",
+    "remove": "Remove",
+    "placeholder": {
+      "label": "Enter specification label",
+      "options": "Enter options separated by commas",
+      "description": "Enter specification description"
+    }
+  },
+  "validation": {
+    "categoryRequired": "Please select a category",
+    "labelRequired": "Specification labels are required in all languages"
+  },
+  "messages": {
+    "success": {
+      "save": "Specifications saved successfully"
+    },
+    "error": {
+      "load": "Failed to load specifications",
+      "save": "Failed to save specifications"
+    }
+  }
+}

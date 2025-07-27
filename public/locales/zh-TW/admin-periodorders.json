@@ -1,0 +1,103 @@
+{
+  "title": "期間訂單管理",
+  "description": "查看和管理所有期間訂單",
+  "type": {
+    "oneTime": "一般訂單",
+    "period": "期間訂單",
+    "label": "訂單類型"
+  },
+  "status": {
+    "label": "訂單狀態",
+    "pending": "待處理",
+    "processing": "處理中",
+    "shipped": "已出貨",
+    "delivered": "已送達",
+    "cancelled": "已取消"
+  },
+  "filter": {
+    "status": "按狀態篩選",
+    "type": "按類型篩選",
+    "all": "所有期間訂單",
+    "pending": "待處理訂單",
+    "processing": "處理中訂單",
+    "shipped": "已出貨訂單",
+    "delivered": "已送達訂單",
+    "cancelled": "已取消訂單"
+  },
+  "actions": {
+    "view": "查看期間訂單",
+    "markAsDelivered": "標記為已送達",
+    "markAsDeliveredSuccess": "訂單已成功標記為已送達",
+    "markAsDeliveredError": "標記訂單為已送達失敗",
+    "delete": {
+      "confirm": "刪除訂單",
+      "success": "訂單已成功刪除",
+      "error": "刪除訂單失敗"
+    },
+    "approve": "核准訂單",
+    "reject": "拒絕訂單",
+    "approveSuccess": "訂單已成功核准",
+    "approveError": "核准訂單失敗",
+    "rejectSuccess": "訂單已成功拒絕",
+    "rejectError": "拒絕訂單失敗"
+  },
+  "periodInvoice": {
+    "title": "期間發票: {{number}}",
+    "period": "期間: {{start}} - {{end}}",
+    "status": {
+      "pending": "待處理",
+      "paid": "已付款",
+      "overdue": "已逾期"
+    },
+    "amount": "總金額: ${{amount}}",
+    "orderCount": "{{count}} 筆訂單"
+  },
+  "details": {
+    "title": "期間訂單詳情",
+    "orderNumber": "訂單 #{{id}}",
+    "lastUpdated": "最後更新",
+    "createdAt": "建立時間",
+    "customerInfo": {
+      "title": "客戶資訊",
+      "name": "姓名",
+      "email": "電子郵件"
+    },
+    "address": {
+      "title": "地址資訊",
+      "shipping": "送貨地址",
+      "billing": "帳單地址"
+    },
+    "items": {
+      "title": "訂單項目",
+      "quantity": "數量",
+      "subtotal": "小計",
+      "deliveryCost": "運費",
+      "total": "總計",
+      "count": "{{count}} 項商品"
+    },
+    "payment": {
+      "title": "付款資訊",
+      "proof": "付款證明",
+      "reference": "付款參考號"
+    },
+    "linkedInvoice": "關聯期間發票",
+    "products": "商品"
+  },
+  "table": {
+    "title": "期間訂單列表",
+    "noOrders": "沒有找到期間訂單",
+    "columns": {
+      "orderNumber": "訂單編號",
+      "customer": "客戶",
+      "date": "訂單日期",
+      "status": "狀態",
+      "total": "總計",
+      "actions": "操作"
+    }
+  },
+  "errors": {
+    "fetchFailed": "獲取期間訂單失敗",
+    "notFound": "找不到期間訂單",
+    "updateFailed": "更新期間訂單失敗"
+  }
+}

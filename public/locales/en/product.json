@@ -1,0 +1,123 @@
+{
+  "featured": "Featured Products",
+  "viewAllProducts": "View All Products",
+  "price": "Price",
+  "brand": {
+    "label": "Brand"
+  },
+  "category": {
+    "label": "Category"
+  },
+  "manufactury_country": {
+    "label": "Manufacturing Country"
+  },
+  "color": {
+    "label": "Color"
+  },
+  "stock": {
+    "label": "Stock",
+    "inStock": "In Stock",
+    "outOfStock": "Out of Stock",
+    "lowStock": "Only {{count}} left",
+    "preOrder": "Pre-Order",
+    "backOrder": "Back Order"
+  },
+  "listedDate": "Listed Date",
+  "details": {
+    "title": "Product Details",
+    "description": "Description",
+    "specifications": "Specifications",
+    "reviews": "Reviews",
+    "relatedProducts": "Related Products",
+    "availability": "Availability",
+    "inStock": "In Stock",
+    "outOfStock": "Out of Stock",
+    "sku": "SKU",
+    "dimensions": "Dimensions",
+    "weight": "Weight",
+    "materials": "Materials",
+    "features": "Features",
+    "shipping": "Shipping Information",
+    "warranty": "Warranty"
+  },
+  "admin": {
+    "title": "Products Management",
+    "description": "Manage your store's products, including creating new products and editing existing ones.",
+    "create": {
+      "title": "Create Product",
+      "success": "Product created successfully",
+      "error": "Failed to create product"
+    },
+    "edit": {
+      "title": "Edit Product",
+      "success": "Product updated successfully",
+      "error": "Failed to update product"
+    },
+    "delete": {
+      "confirm": "Are you sure you want to delete this product?",
+      "success": "Product deleted successfully",
+      "error": "Failed to delete product"
+    },
+    "status": {
+      "active": "Active Products",
+      "draft": "Draft Products"
+    },
+    "table": {
+      "title": "Table View",
+      "image": "Image",
+      "name": "Name",
+      "brand": "Brand",
+      "price": "Price",
+      "actions": "Actions",
+      "noProducts": "No products found"
+    },
+    "grid": {
+      "title": "Grid View"
+    },
+    "actions": {
+      "edit": "Edit Product",
+      "delete": "Delete Product"
+    }
+  },
+  "reviews": {
+    "title": "Customer Reviews",
+    "writeReview": "Write a Review",
+    "rating": "Rating",
+    "comment": "Comment",
+    "submitReview": "Submit Review",
+    "thankYou": "Thank you for your review!",
+    "verified": "Verified Purchase",
+    "helpful": "Was this helpful?",
+    "reportAbuse": "Report Abuse",
+    "noReviews": "No reviews yet"
+  },
+  "filters": {
+    "title": "Filters",
+    "price": "Price Range",
+    "categories": "Categories",
+    "brands": "Brands",
+    "ratings": "Ratings",
+    "availability": "Availability",
+    "clearAll": "Clear All",
+    "apply": "Apply Filters"
+  },
+  "sorting": {
+    "title": "Sort By",
+    "featured": "Featured",
+    "newest": "Newest",
+    "priceHighToLow": "Price: High to Low",
+    "priceLowToHigh": "Price: Low to High",
+    "topRated": "Top Rated",
+    "mostPopular": "Most Popular"
+  },
+  "wishlist": {
+    "addToWishlist": "Add to Wishlist",
+    "removeFromWishlist": "Remove from Wishlist",
+    "moveToCart": "Move to Cart"
+  },
+  "comparison": {
+    "addToCompare": "Add to Compare",
+    "removeFromCompare": "Remove from Compare",
+    "compareProducts": "Compare Products"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "title": "Cart",
+  "empty": "Your cart is empty",
+  "addToCart": "Add to Cart",
+  "removeFromCart": "Remove from Cart",
+  "addedToCart": "Added to cart",
+  "removedFromCart": "Removed from cart",
+  "quantity": "Quantity",
+  "subtotal": "Subtotal",
+  "total": "Total",
+  "checkout": "Checkout",
+  "continueShopping": "Continue Shopping",
+  "updateQuantity": "Update Quantity",
+  "deliverySettings": "Delivery Options",
+  "summary": {
+    "title": "Cart Summary",
+    "items": "Items",
+    "subtotal": "Subtotal",
+    "shipping": "Shipping",
+    "total": "Total",
+    "checkout": "Proceed to Checkout"
+  },
+  "delivery": {
+    "types": {
+      "local": "Local Delivery",
+      "express": "Express Delivery",
+      "overseas": "Overseas Delivery"
+    },
+    "cost": "Cost",
+    "free": "Free",
+    "spendMore": "Spend ${{amount}} more for free delivery!",
+    "freeDeliveryReached": "Congratulations! You've qualified for free delivery!",
+    "types": {
+      "title": "Delivery Type"
+    }
+  },
+  "errors": {
+    "addFailed": "Failed to add item to cart",
+    "removeFailed": "Failed to remove item from cart",
+    "updateFailed": "Failed to update cart",
+    "invalidQuantity": "Invalid quantity"
+  },
+  "confirmations": {
+    "removeItem": "Are you sure you want to remove this item from your cart?",
+    "clearCart": "Are you sure you want to clear your cart?"
+  }
+}

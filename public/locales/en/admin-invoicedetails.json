@@ -1,0 +1,69 @@
+{
+  "page": {
+    "loading": "Loading invoice...",
+    "notFound": "Invoice not found",
+    "created": "Created"
+  },
+  "customerInfo": "Customer Information",
+  "invoiceDetails": "Invoice Details",
+  "paymentInfo": "Payment Information",
+  "summary": "Summary",
+  "totalOrders": "Total Orders",
+  "total": "Total Amount",
+  "items": "Items",
+  "status": {
+    "label": "Status",
+    "pending": "Pending",
+    "paid": "Paid",
+    "overdue": "Overdue",
+    "processing": "Processing",
+    "delivered": "Delivered",
+    "cancelled": "Cancelled"
+  },
+  "orderNumber": "Order Number",
+  "type": {
+    "label": "Type",
+    "period": "Period",
+    "oneTime": "One-time"
+  },
+  "periodInvoice": "Period Invoice",
+  "period": "Period",
+  "paymentMethod": "Payment Method",
+  "paymentMethods": {
+    "bank_transfer": "Bank Transfer",
+    "credit_card": "Credit Card",
+    "cash": "Cash",
+    "offline_payment": "Offline Payment",
+    "other": "Other"
+  },
+  "paymentReference": "Payment Reference",
+  "paymentDate": "Payment Date",
+  "paymentProof": "Payment Proof",
+  "quantity": "Quantity",
+  "pricePerUnit": "Price per unit",
+  "subtotal": "Subtotal",
+  "total": "Total",
+  "actions": {
+    "print": "Print",
+    "download": "Download",
+    "approve": "Approve",
+    "reject": "Reject",
+    "back": "Back"
+  },
+  "messages": {
+    "statusUpdateSuccess": "Invoice status updated successfully",
+    "statusUpdateError": "Failed to update invoice status"
+  },
+  "notSpecified": "Not Specified",
+  "orders": {
+    "title": "Orders",
+    "created": "Created",
+    "total": "Total Amount",
+    "totalOrders": "Total Orders",
+    "products": "Order Items",
+    "productNotFound": "Product not found",
+    "deliveryCost": "Delivery Cost",
+    "deliveryMethod": "Delivery Method",
+    "localDelivery": "Local Delivery"
+  }
+}

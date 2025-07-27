@@ -1,0 +1,51 @@
+{
+  "common": {
+    "title": "Categories",
+    "description": "Manage product categories",
+    "emptyCategory": "This category has no products yet",
+    "gridView": "Grid View",
+    "tableView": "Table View"
+  },
+  "create": {
+    "button": "Create New Category",
+    "title": "Create Category",
+    "description": "Add a new product category",
+    "success": "Category created successfully",
+    "error": "Failed to create category"
+  },
+  "update": {
+    "title": "Edit Category",
+    "success": "Category updated successfully",
+    "error": "Failed to update category"
+  },
+  "delete": {
+    "confirm": "Are you sure you want to delete this category?",
+    "success": "Category deleted successfully",
+    "error": "Failed to delete category"
+  },
+  "validation": {
+    "nameRequired": "Category name is required in all languages"
+  },
+  "list": {
+    "empty": "No categories found",
+    "nameHeader": "Name",
+    "descriptionHeader": "Description",
+    "actionsHeader": "Actions"
+  },
+  "form": {
+    "name": "Category Name",
+    "description": "Category Description",
+    "namePlaceholder": {
+      "en": "Enter category name in English",
+      "zh": "Enter category name in Chinese"
+    },
+    "descriptionPlaceholder": {
+      "en": "Enter category description in English",
+      "zh": "Enter category description in Chinese"
+    }
+  },
+  "edit": {
+    "title": "Edit Category",
+    "description": "Update category information"
+  }
+}

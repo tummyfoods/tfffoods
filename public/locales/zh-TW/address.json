@@ -1,0 +1,25 @@
+{
+  "fields": {
+    "address": "地址",
+    "roomFlat": "室/單位",
+    "floor": "樓層",
+    "blockNumber": "座數",
+    "blockName": "座名",
+    "buildingName": "物業/大廈名稱",
+    "streetNumber": "街號",
+    "streetName": "街道名稱",
+    "district": "地區",
+    "city": "城市",
+    "postalCode": "郵遞區號",
+    "streetAddress": "街道地址",
+    "country": "國家",
+    "location": "位置"
+  },
+  "placeholders": {
+    "selectDistrict": "選擇地區",
+    "selectLocation": "選擇位置"
+  },
+  "errors": {
+    "noAddress": "尚未提供地址"
+  }
+}

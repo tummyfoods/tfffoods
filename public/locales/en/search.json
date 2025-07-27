@@ -1,0 +1,46 @@
+{
+  "title": "Search",
+  "placeholder": "Search for products...",
+  "noResults": "No results found",
+  "searching": "Searching...",
+  "viewAllResults": "View all {count} results",
+  "filters": {
+    "title": "Filters",
+    "price": {
+      "title": "Price",
+      "min": "Min Price",
+      "max": "Max Price"
+    },
+    "category": {
+      "title": "Category",
+      "all": "All Categories"
+    },
+    "brand": {
+      "title": "Brand",
+      "all": "All Brands"
+    },
+    "sort": {
+      "title": "Sort By",
+      "options": {
+        "relevance": "Relevance",
+        "priceAsc": "Price: Low to High",
+        "priceDesc": "Price: High to Low",
+        "newest": "Newest First",
+        "oldest": "Oldest First"
+      }
+    },
+    "apply": "Apply Filters",
+    "clear": "Clear Filters"
+  },
+  "suggestions": {
+    "title": "Popular Searches",
+    "recent": "Recent Searches",
+    "trending": "Trending Searches",
+    "clearHistory": "Clear Search History"
+  },
+  "errors": {
+    "failed": "Search failed. Please try again.",
+    "tooManyResults": "Too many results. Please refine your search.",
+    "invalidQuery": "Invalid search query"
+  }
+}

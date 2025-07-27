@@ -1,0 +1,126 @@
+{
+  "dashboard": {
+    "title": "Dashboard",
+    "description": "Overview of your store's performance and quick access to important features"
+  },
+  "hero": {
+    "title": "Hero Sections",
+    "description": "Manage your homepage hero sections and banners"
+  },
+  "products": {
+    "title": "Products",
+    "addNew": "Add New Product",
+    "viewAll": "View All Products",
+    "description": "Manage your product catalog"
+  },
+  "categories": {
+    "title": "Categories",
+    "viewAll": "View All Categories",
+    "description": "Manage product categories"
+  },
+  "specifications": {
+    "title": "Specifications",
+    "viewAll": "View All Specifications",
+    "description": "Manage product specifications"
+  },
+  "order": {
+    "title": "Orders",
+    "viewAll": "View All Orders",
+    "description": "Manage and track all customer orders",
+    "details": "Order Details",
+    "customerInfo": "Customer Information",
+    "orderInfo": "Order Information",
+    "invoice": "Invoice",
+    "periodInvoice": "Period Invoice",
+    "shippingAddress": "Shipping Address",
+    "deliveryNotes": "Delivery Notes",
+    "products": "Products",
+    "paymentProof": "Payment Proof",
+    "paymentReference": "Payment Reference",
+    "actions": {
+      "title": "Actions",
+      "markAsDelivered": "Mark as Delivered",
+      "markAsDeliveredSuccess": "Order marked as delivered successfully",
+      "markAsDeliveredError": "Failed to mark order as delivered"
+    },
+    "status": {
+      "pending": "Pending",
+      "processing": "Processing",
+      "delivered": "Delivered",
+      "cancelled": "Cancelled"
+    },
+    "subtotal": "Subtotal",
+    "deliveryCost": "Delivery Cost",
+    "total": "Total",
+    "notFound": "Order not found"
+  },
+  "users": {
+    "title": "User Roles",
+    "manageRoles": "Manage User Roles",
+    "description": "Manage user roles and permissions"
+  },
+  "brands": {
+    "title": "Brands",
+    "viewAll": "View All Brands",
+    "description": "Manage product brands"
+  },
+  "newsletter": {
+    "title": "Newsletter",
+    "manage": "Manage Newsletter",
+    "description": "Manage newsletter subscriptions"
+  },
+  "logistics": {
+    "title": "Logistics",
+    "viewAll": "View All Vehicles",
+    "addNew": "Add New Vehicle",
+    "description": "Manage delivery and shipping"
+  },
+  "blog": {
+    "title": "Blog",
+    "manage": "Manage Blog",
+    "description": "Manage blog posts and content"
+  },
+  "guarantee": {
+    "title": "Guarantee Section",
+    "manage": "Manage Guarantee Section",
+    "description": "Manage guarantee information"
+  },
+  "features": {
+    "title": "Features Section",
+    "manage": "Manage Features Section",
+    "description": "Manage feature highlights"
+  },
+  "settings": {
+    "title": "Settings",
+    "manage": "Manage Settings",
+    "description": "Configure system settings"
+  },
+  "delivery": {
+    "title": "Delivery Settings",
+    "description": "Configure delivery options and costs"
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "manage": "Manage Privacy Policy",
+    "description": "Manage privacy policy content"
+  },
+  "periodUsers": {
+    "title": "Period Users",
+    "manage": "Manage Period Users",
+    "description": "Manage users with period payment plans"
+  },
+  "invoice": {
+    "title": "Invoices",
+    "viewAll": "View All Invoices",
+    "description": "Manage all invoices and payment records",
+    "period": "Period Invoice",
+    "oneTime": "One-time Invoice",
+    "approve": "Approve Payment",
+    "reject": "Reject Payment",
+    "status": {
+      "pending": "Pending",
+      "paid": "Paid",
+      "overdue": "Overdue"
+    }
+  }
+}

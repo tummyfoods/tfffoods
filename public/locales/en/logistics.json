@@ -1,0 +1,81 @@
+{
+  "common": {
+    "manageVehicles": "Manage Vehicles",
+    "addVehicle": "Add Vehicle",
+    "vehicleDetails": "Vehicle Details",
+    "driverInfo": "Driver Information",
+    "vehicleStatus": "Vehicle Status",
+    "assignedLocation": "Assigned Location",
+    "pageTitle": "Logistics Management",
+    "pageDescription": "View and manage all logistics vehicles: update status, assign orders, and track deliveries."
+  },
+  "fields": {
+    "registrationNumber": "Registration Number",
+    "owner": "Owner",
+    "makeYear": "Make Year",
+    "make": "Make",
+    "model": "Model",
+    "chassisNo": "Chassis Number",
+    "weight": "Weight",
+    "cylinderCapacity": "Cylinder Capacity",
+    "bodyType": "Body Type",
+    "status": "Status",
+    "driverName": "Driver Name",
+    "licenseNo": "License Number",
+    "contactNo": "Contact Number",
+    "email": "Email"
+  },
+  "actions": {
+    "creating": "Creating...",
+    "createVehicle": "Create Vehicle",
+    "viewDetails": "View Details",
+    "editVehicle": "Edit Vehicle"
+  },
+  "statusTypes": {
+    "available": "Available",
+    "onDelivery": "On Delivery",
+    "maintenance": "Maintenance",
+    "outOfService": "Out of Service"
+  },
+  "locations": {
+    "hongKong": "Hong Kong",
+    "kowloon": "Kowloon",
+    "newTerritories": "New Territories"
+  },
+  "bodyTypes": {
+    "van": "Van",
+    "truck": "Truck",
+    "lorry": "Lorry"
+  },
+  "placeholders": {
+    "registrationNumber": "e.g., AB123456",
+    "owner": "Vehicle owner",
+    "makeYear": "e.g., 2023",
+    "make": "e.g., Toyota",
+    "model": "e.g., Hiace",
+    "chassisNo": "Vehicle chassis number",
+    "weight": "Vehicle weight in kg",
+    "cylinderCapacity": "Engine capacity in cc",
+    "bodyType": "Select body type",
+    "driverName": "Driver's full name",
+    "licenseNo": "Driver's license number",
+    "contactNo": "Driver's contact number",
+    "email": "Driver's email address",
+    "location": "Select location",
+    "status": "Select status"
+  },
+  "messages": {
+    "createSuccess": "Vehicle added successfully",
+    "createError": "Failed to add vehicle"
+  },
+  "vehicleAssignment": {
+    "title": "Vehicle Assignment",
+    "selectVehicle": "Select Vehicle",
+    "assignVehicle": "Assign Vehicle",
+    "noVehicles": "No vehicles available",
+    "assignSuccess": "Vehicle assigned successfully",
+    "assignError": "Failed to assign vehicle",
+    "alreadyAssigned": "Vehicle already assigned to another order",
+    "pickDeliveryDate": "Pick Delivery Date"
+  }
+}

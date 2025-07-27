@@ -1,0 +1,32 @@
+{
+  "common": {
+    "slogan": "Your premium watch destination",
+    "quickLinks": "Quick Links",
+    "customerService": "Customer Service",
+    "stayUpdated": "Stay Updated",
+    "newsletterText": "Subscribe to our newsletter for the latest updates",
+    "emailPlaceholder": "Enter your email",
+    "allRightsReserved": "All rights reserved",
+    "brandName": "EcommWatch"
+  },
+  "links": {
+    "faq": "FAQ",
+    "shippingReturns": "Shipping & Returns",
+    "warranty": "Warranty",
+    "privacyPolicy": "Privacy Policy"
+  },
+  "social": {
+    "facebook": "https://facebook.com/yourwatchbrand",
+    "twitter": "https://twitter.com/yourwatchbrand",
+    "instagram": "https://instagram.com/yourwatchbrand",
+    "linkedin": "https://linkedin.com/company/yourwatchbrand"
+  },
+  "newsletter": {
+    "title": "Newsletter",
+    "subscribe": "Subscribe",
+    "subscribing": "Subscribing...",
+    "success": "Successfully subscribed to newsletter",
+    "error": "Failed to subscribe to newsletter",
+    "alreadySubscribed": "You are already subscribed to our newsletter"
+  }
+}

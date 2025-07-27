@@ -1,0 +1,28 @@
+{
+  "title": "Wishlist",
+  "empty": "Your wishlist is empty",
+  "addToWishlist": "Add to Wishlist",
+  "removeFromWishlist": "Remove from Wishlist",
+  "addedToWishlist": "Added to wishlist",
+  "removedFromWishlist": "Removed from wishlist",
+  "moveToCart": "Move to Cart",
+  "shareWishlist": "Share Wishlist",
+  "clearWishlist": "Clear Wishlist",
+  "yourWishlist": "Your Wishlist",
+  "remove": "Remove",
+  "errors": {
+    "addFailed": "Failed to add item to wishlist",
+    "removeFailed": "Failed to remove item from wishlist",
+    "moveToCartFailed": "Failed to move item to cart",
+    "updateFailed": "Failed to update wishlist"
+  },
+  "confirmations": {
+    "removeItem": "Are you sure you want to remove this item from your wishlist?",
+    "clearWishlist": "Are you sure you want to clear your wishlist?",
+    "moveToCart": "Move this item to your cart?"
+  },
+  "notifications": {
+    "itemInStock": "An item in your wishlist is now in stock!",
+    "priceDropped": "Price dropped for an item in your wishlist!"
+  }
+}

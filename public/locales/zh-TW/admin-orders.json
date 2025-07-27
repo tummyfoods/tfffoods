@@ -1,0 +1,100 @@
+{
+  "title": "訂單管理",
+  "description": "查看和管理商店的所有訂單",
+  "type": {
+    "oneTime": "一次性訂單",
+    "period": "定期訂單",
+    "label": "訂單類型"
+  },
+  "status": {
+    "label": "訂單狀態",
+    "pending": "待處理",
+    "processing": "處理中",
+    "shipped": "已出貨",
+    "delivered": "已送達",
+    "cancelled": "已取消"
+  },
+  "filter": {
+    "status": "按狀態篩選",
+    "type": "按類型篩選",
+    "all": "所有訂單",
+    "pending": "待處理訂單",
+    "processing": "處理中訂單",
+    "shipped": "已出貨訂單",
+    "delivered": "已送達訂單",
+    "cancelled": "已取消訂單"
+  },
+  "actions": {
+    "view": "查看訂單",
+    "markAsDelivered": "標記為已送達",
+    "markAsDeliveredSuccess": "訂單已成功標記為已送達",
+    "markAsDeliveredError": "標記訂單為已送達失敗",
+    "delete": {
+      "confirm": "刪除訂單",
+      "success": "訂單刪除成功",
+      "error": "刪除訂單失敗"
+    },
+    "approve": "核准付款",
+    "reject": "拒絕付款"
+  },
+  "payment": {
+    "rejectSuccess": "已成功拒絕付款",
+    "rejectError": "拒絕付款失敗",
+    "confirmSuccess": "已成功確認付款",
+    "confirmError": "確認付款失敗",
+    "rejectPrompt": "拒絕付款",
+    "proof": "付款證明",
+    "reference": "付款參考編號"
+  },
+  "details": {
+    "title": "訂單詳情",
+    "orderNumber": "訂單 #{{id}}",
+    "lastUpdated": "最後更新",
+    "createdAt": "建立時間",
+    "customerInfo": {
+      "title": "客戶資訊",
+      "name": "姓名",
+      "email": "電子郵件",
+      "phone": "電話號碼"
+    },
+    "address": {
+      "title": "地址資訊",
+      "shipping": "送貨地址",
+      "billing": "帳單地址"
+    },
+    "items": {
+      "title": "訂單項目",
+      "quantity": "數量",
+      "subtotal": "小計",
+      "deliveryCost": "運費",
+      "total": "總計",
+      "count": "{{count}} 件商品",
+      "deliveryMethod": "配送方式",
+      "deliveryNotFound": "找不到配送方式"
+    },
+    "payment": {
+      "title": "付款資訊",
+      "proof": "付款證明",
+      "reference": "付款參考編號"
+    },
+    "linkedInvoice": "關聯發票",
+    "products": "產品"
+  },
+  "table": {
+    "title": "訂單列表",
+    "noOrders": "找不到訂單",
+    "columns": {
+      "orderNumber": "訂單編號",
+      "customer": "客戶",
+      "date": "訂單日期",
+      "status": "狀態",
+      "total": "總計",
+      "actions": "操作"
+    }
+  },
+  "errors": {
+    "fetchFailed": "獲取訂單失敗",
+    "notFound": "找不到訂單",
+    "updateFailed": "更新訂單失敗"
+  }
+}

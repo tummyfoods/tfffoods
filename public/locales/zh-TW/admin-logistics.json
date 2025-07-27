@@ -1,0 +1,114 @@
+{
+  "title": "物流管理",
+  "description": "查看和管理所有物流車輛：更新狀態、分配訂單和追蹤配送",
+  "loading": "載入車輛中...",
+  "loadingAuth": "檢查授權中...",
+  "loadingVehicle": "載入車輛詳情中...",
+  "vehicleDetails": "車輛詳情",
+  "driverInfo": "司機資訊",
+  "assignmentInfo": "指派資訊",
+  "vehicleStatus": "狀態",
+  "assignedLocation": "所在地",
+  "viewDetails": "查看詳情",
+  "addVehicle": "新增車輛",
+  "viewInfo": "查看和管理車輛資訊",
+  "updateButton": "更新車輛",
+  "editVehicle": "編輯車輛",
+  "updateStatus": "更新狀態",
+  "vehicleInfo": "車輛資訊",
+  "deliveryDate": "送貨日期",
+  "maintenanceRecords": {
+    "title": "維修記錄",
+    "none": "沒有維修記錄",
+    "create": {
+      "title": "新增維修記錄",
+      "description": "為此車輛新增維修記錄",
+      "date": "維修日期",
+      "description": "描述",
+      "cost": "費用",
+      "nextDate": "下次維修日期",
+      "success": "維修記錄新增成功",
+      "error": "維修記錄新增失敗"
+    }
+  },
+  "assignedOrders": {
+    "title": "已分配訂單",
+    "none": "沒有分配訂單"
+  },
+  "createPage": {
+    "title": "新增車輛",
+    "description": "新增車輛到您的物流車隊"
+  },
+  "fields": {
+    "registrationNumber": "車牌號碼",
+    "owner": "車主",
+    "makeYear": "製造年份",
+    "make": "品牌",
+    "model": "型號",
+    "chassisNo": "底盤號碼",
+    "weight": "重量",
+    "cylinderCapacity": "汽缸容量",
+    "bodyType": "車身類型",
+    "status": "狀態",
+    "driverName": "司機姓名",
+    "licenseNo": "駕駛執照號碼",
+    "contactNo": "聯絡電話",
+    "email": "電子郵件",
+    "assignedLocation": "指派地區"
+  },
+  "placeholders": {
+    "registrationNumber": "例如：AB123456",
+    "owner": "車主姓名",
+    "makeYear": "例如：2023",
+    "make": "例如：豐田",
+    "model": "例如：Hiace",
+    "chassisNo": "車輛底盤號碼",
+    "weight": "車輛重量（公斤）",
+    "cylinderCapacity": "引擎容量（cc）",
+    "bodyType": "選擇車身類型",
+    "driverName": "司機全名",
+    "licenseNo": "駕駛執照號碼",
+    "contactNo": "聯絡電話號碼",
+    "email": "司機電子郵件",
+    "location": "選擇地區",
+    "status": "選擇狀態"
+  },
+  "statusTypes": {
+    "available": "可用",
+    "onDelivery": "配送中",
+    "maintenance": "維修中",
+    "outOfService": "停用",
+    "pending": "待處理",
+    "inTransit": "運送中",
+    "delivered": "已送達",
+    "failed": "失敗"
+  },
+  "locations": {
+    "hongKong": "香港",
+    "kowloon": "九龍",
+    "newTerritories": "新界"
+  },
+  "bodyTypes": {
+    "van": "廂型車",
+    "truck": "貨車",
+    "lorry": "貨櫃車",
+    "motorcycle": "機車"
+  },
+  "actions": {
+    "edit": "車輛更新成功",
+    "create": "車輛新增成功",
+    "delete": "車輛刪除成功"
+  },
+  "errors": {
+    "updateFailed": "更新車輛失敗",
+    "createFailed": "新增車輛失敗",
+    "deleteFailed": "刪除車輛失敗",
+    "loadFailed": "載入車輛詳情失敗"
+  },
+  "confirmStatusUpdate": "確認狀態更新",
+  "confirmStatusUpdateDesc": "您確定要將狀態更新為",
+  "deliveredNote": "這將標記配送為已完成。",
+  "failedNote": "這將標記配送為失敗。",
+  "vehicleNotFound": "找不到車輛",
+  "notes": "備註"
+}

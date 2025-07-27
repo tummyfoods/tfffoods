@@ -1,0 +1,25 @@
+{
+  "fields": {
+    "address": "Address",
+    "roomFlat": "Room/Flat",
+    "floor": "Floor",
+    "blockNumber": "Block Number",
+    "blockName": "Block Name",
+    "buildingName": "Property/Building Name",
+    "streetNumber": "Street Number",
+    "streetName": "Street Name",
+    "district": "District",
+    "city": "City",
+    "postalCode": "Postal Code",
+    "streetAddress": "Street Address",
+    "country": "Country",
+    "location": "Location"
+  },
+  "placeholders": {
+    "selectDistrict": "Select District",
+    "selectLocation": "Select Location"
+  },
+  "errors": {
+    "noAddress": "No address provided"
+  }
+}

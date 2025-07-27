@@ -1,0 +1,32 @@
+{
+  "common": {
+    "slogan": "您的優質手錶目的地",
+    "quickLinks": "快速連結",
+    "customerService": "客戶服務",
+    "stayUpdated": "保持更新",
+    "newsletterText": "訂閱我們的電子報以獲取最新資訊",
+    "emailPlaceholder": "輸入您的電子郵件",
+    "allRightsReserved": "版權所有",
+    "brandName": "EcommWatch"
+  },
+  "links": {
+    "faq": "常見問題",
+    "shippingReturns": "運送與退貨",
+    "warranty": "保固",
+    "privacyPolicy": "隱私權政策"
+  },
+  "social": {
+    "facebook": "https://facebook.com/yourwatchbrand",
+    "twitter": "https://twitter.com/yourwatchbrand",
+    "instagram": "https://instagram.com/yourwatchbrand",
+    "linkedin": "https://linkedin.com/company/yourwatchbrand"
+  },
+  "newsletter": {
+    "title": "電子報",
+    "subscribe": "訂閱",
+    "subscribing": "訂閱中...",
+    "success": "成功訂閱電子報",
+    "error": "訂閱電子報失敗",
+    "alreadySubscribed": "您已經訂閱了我們的電子報"
+  }
+}

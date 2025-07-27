@@ -1,0 +1,18 @@
+{
+  "common": {
+    "error": "發生錯誤",
+    "pageNotFound": "找不到頁面",
+    "pageNotFoundDesc": "您要尋找的頁面不存在。",
+    "productNotFound": "找不到商品",
+    "formNotSaved": "您有未儲存的變更。確定要離開嗎？",
+    "orderNotFound": "找不到訂單"
+  },
+  "api": {
+    "networkError": "網路錯誤",
+    "serverError": "伺服器錯誤",
+    "unauthorized": "未經授權的存取",
+    "forbidden": "存取被拒絕",
+    "notFound": "找不到資源",
+    "validation": "驗證錯誤"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "title": "配送設定",
+  "description": "管理配送選項和運費",
+  "deliveryTypes": {
+    "title": "配送類型",
+    "method": "配送方式 {{number}}",
+    "name": "方式名稱",
+    "cost": "費用 ($)"
+  },
+  "freeDelivery": {
+    "title": "免運費門檻",
+    "label": "訂單滿額免運費金額 ($)"
+  },
+  "bankAccount": {
+    "title": "銀行帳戶資料",
+    "label": "線下付款銀行帳戶資料",
+    "placeholder": "請輸入客戶線下付款的銀行帳戶資料"
+  },
+  "actions": {
+    "save": "儲存設定",
+    "saving": "儲存中...",
+    "addMethod": "新增方式",
+    "removeMethod": "移除"
+  },
+  "messages": {
+    "success": "設定儲存成功！",
+    "error": "儲存設定失敗。請再試一次。",
+    "minimumRequired": "至少需要一個配送方式。"
+  }
+}

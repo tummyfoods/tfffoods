@@ -1,0 +1,51 @@
+{
+  "common": {
+    "title": "類別",
+    "description": "管理商品類別",
+    "emptyCategory": "此類別尚無商品",
+    "gridView": "網格檢視",
+    "tableView": "表格檢視"
+  },
+  "create": {
+    "button": "建立新類別",
+    "title": "建立類別",
+    "description": "新增商品類別",
+    "success": "類別建立成功",
+    "error": "建立類別失敗"
+  },
+  "update": {
+    "title": "編輯類別",
+    "success": "類別更新成功",
+    "error": "更新類別失敗"
+  },
+  "delete": {
+    "confirm": "確定要刪除此類別嗎？",
+    "success": "類別刪除成功",
+    "error": "刪除類別失敗"
+  },
+  "validation": {
+    "nameRequired": "所有語言都需要類別名稱"
+  },
+  "list": {
+    "empty": "找不到類別",
+    "nameHeader": "名稱",
+    "descriptionHeader": "描述",
+    "actionsHeader": "操作"
+  },
+  "form": {
+    "name": "類別名稱",
+    "description": "類別描述",
+    "namePlaceholder": {
+      "en": "輸入英文類別名稱",
+      "zh": "輸入中文類別名稱"
+    },
+    "descriptionPlaceholder": {
+      "en": "輸入英文類別描述",
+      "zh": "輸入中文類別描述"
+    }
+  },
+  "edit": {
+    "title": "編輯類別",
+    "description": "更新類別資訊"
+  }
+}

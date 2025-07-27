@@ -1,0 +1,86 @@
+{
+  "common": {
+    "featuredArticle": "Featured Article",
+    "discoverStory": "Discover our featured story",
+    "readMore": "Read More",
+    "allPosts": "All Posts",
+    "exploreArticles": "Explore our articles"
+  },
+  "categories": {
+    "news": "News",
+    "reviews": "Reviews",
+    "guides": "Guides",
+    "tutorials": "Tutorials",
+    "updates": "Updates",
+    "announcements": "Announcements"
+  },
+  "posts": {
+    "pageTitle": "Blog Posts",
+    "description": "Manage your blog posts and content",
+    "create": "Create New Post",
+    "search": "Search posts...",
+    "noPosts": "No posts found",
+    "title": "Title",
+    "author": "Author",
+    "status": "Status",
+    "published": "Published Date",
+    "publishedAt": "Published At",
+    "statusTypes": {
+      "draft": "Draft",
+      "published": "Published"
+    }
+  },
+  "settings": {
+    "title": "Blog Settings",
+    "description": "Configure your blog settings",
+    "general": "General Settings",
+    "seo": "SEO Settings",
+    "social": "Social Media",
+    "comments": "Comments",
+    "save": "Save Settings",
+    "saving": "Saving Settings...",
+    "success": "Settings saved successfully",
+    "error": "Failed to save settings"
+  },
+  "editor": {
+    "title": "Edit Blog Post",
+    "description": "Update your blog post content and settings",
+    "titleLabel": "Post Title",
+    "titlePlaceholder": "Enter post title",
+    "contentLabel": "Post Content",
+    "contentPlaceholder": "Write your post content here...",
+    "excerptLabel": "Excerpt",
+    "excerptPlaceholder": "Enter a brief excerpt of your post",
+    "mainImageLabel": "Main Image",
+    "mainImagePlaceholder": "Upload or select a main image",
+    "uploadMainImage": "Upload Main Image",
+    "categoryLabel": "Category",
+    "categoryPlaceholder": "Select a category",
+    "tagsLabel": "Tags",
+    "tagsPlaceholder": "Add tags",
+    "seoTitle": "SEO Settings",
+    "seoTitleLabel": "SEO Title",
+    "seoTitlePlaceholder": "Enter SEO title",
+    "seoDescriptionLabel": "SEO Description",
+    "seoDescriptionPlaceholder": "Enter SEO description",
+    "seoKeywordsLabel": "SEO Keywords",
+    "seoKeywordsPlaceholder": "Enter SEO keywords",
+    "statusLabel": "Post Status",
+    "featuredLabel": "Featured Post"
+  },
+  "actions": {
+    "saving": "Saving...",
+    "saved": "Changes saved successfully",
+    "error": "Failed to save changes",
+    "deleteConfirm": "Are you sure you want to delete this post?",
+    "deleted": "Post deleted successfully",
+    "deleteError": "Failed to delete post"
+  },
+  "media": {
+    "uploadImage": "Upload Image",
+    "uploadImageDesc": "Click or drag and drop to upload",
+    "imageUploading": "Uploading image...",
+    "imageUploadSuccess": "Image uploaded successfully",
+    "imageUploadError": "Failed to upload image"
+  }
+}

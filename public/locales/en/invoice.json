@@ -1,0 +1,125 @@
+{
+  "title": "Invoices",
+  "viewAll": "View All Invoices",
+  "description": "Manage all invoices and payment records",
+  "subtitle": "Manage your invoices",
+  "searchPlaceholder": "Search invoices by number...",
+  "list": {
+    "title": "Invoices",
+    "empty": "No invoices found",
+    "search": "Search invoices",
+    "filter": "Filter invoices",
+    "download": "Download Invoice",
+    "print": "Print Invoice",
+    "allTypes": "All Types",
+    "allStatuses": "All Statuses",
+    "loadMore": "Load More",
+    "noInvoicesDescription": "You don't have any invoices yet."
+  },
+  "details": {
+    "title": "Invoice Details",
+    "actions": {
+      "back": "Back to Invoices",
+      "print": "Print Invoice",
+      "download": "Download Invoice"
+    },
+    "customerInfo": {
+      "title": "Customer Information",
+      "name": "Name",
+      "email": "Email"
+    },
+    "invoice": {
+      "title": "Invoice",
+      "number": "Invoice Number",
+      "orderNumber": "Order Number",
+      "type": {
+        "title": "Invoice Type",
+        "oneTime": "One-time Invoice",
+        "period": "Period Invoice"
+      },
+      "created": "Created Date"
+    },
+    "order": {
+      "title": "Order Summary",
+      "quantity": "Quantity",
+      "subtotal": "Subtotal",
+      "delivery": "Delivery",
+      "total": "Total"
+    },
+    "payment": {
+      "title": "Payment Information",
+      "method": "Payment Method",
+      "bank_transfer": "Bank Transfer",
+      "date": "Payment Date",
+      "proof": "Payment Proof",
+      "reference": "Payment Reference",
+      "upload": "Upload Payment Proof",
+      "uploadSuccess": "Payment proof uploaded successfully",
+      "uploadError": "Failed to upload payment proof"
+    },
+    "addresses": {
+      "title": "Addresses",
+      "billing": {
+        "title": "Billing Address"
+      },
+      "shipping": {
+        "title": "Shipping Address"
+      }
+    },
+    "status": {
+      "title": "Status",
+      "paid": "Paid",
+      "unpaid": "Unpaid",
+      "overdue": "Overdue",
+      "cancelled": "Cancelled",
+      "pending": "Pending"
+    }
+  },
+  "actions": {
+    "create": "Create Invoice",
+    "edit": "Edit Invoice",
+    "delete": "Delete Invoice",
+    "send": "Send Invoice",
+    "mark_paid": "Mark as Paid",
+    "mark_unpaid": "Mark as Unpaid",
+    "cancel": "Cancel Invoice",
+    "view": "View Invoice"
+  },
+  "messages": {
+    "create_success": "Invoice created successfully",
+    "update_success": "Invoice updated successfully",
+    "delete_success": "Invoice deleted successfully",
+    "send_success": "Invoice sent successfully",
+    "error": {
+      "not_found": "Invoice not found",
+      "create_failed": "Failed to create invoice",
+      "update_failed": "Failed to update invoice",
+      "delete_failed": "Failed to delete invoice",
+      "send_failed": "Failed to send invoice"
+    }
+  },
+  "filters": {
+    "date_range": "Date Range",
+    "status": "Status",
+    "amount": "Amount",
+    "customer": "Customer",
+    "type": "Type"
+  },
+  "status": {
+    "paid": "Paid",
+    "unpaid": "Unpaid",
+    "pending": "Pending",
+    "overdue": "Overdue",
+    "cancelled": "Cancelled"
+  },
+  "type": {
+    "oneTime": "One-time Invoice",
+    "periodInvoice": "Period Invoice"
+  },
+  "labels": {
+    "amount": "Amount",
+    "type": "Type",
+    "created": "Created",
+    "period": "Period"
+  }
+}

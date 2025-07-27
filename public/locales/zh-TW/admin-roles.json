@@ -1,0 +1,40 @@
+{
+  "title": "用戶角色管理",
+  "description": "管理用戶角色和權限",
+  "availableRoles": "可用角色",
+  "roles": {
+    "admin": "管理員",
+    "accounting": "會計",
+    "logistics": "物流",
+    "user": "用戶"
+  },
+  "roleDescriptions": {
+    "admin": "完整的系統訪問和管理功能",
+    "accounting": "財務和發票管理訪問權限",
+    "logistics": "配送和運輸管理訪問權限",
+    "user": "標準用戶訪問權限"
+  },
+  "table": {
+    "name": "姓名",
+    "email": "電子郵件",
+    "currentRole": "當前角色",
+    "assignNewRole": "分配新角色",
+    "roleStatus": "角色狀態",
+    "actions": "操作"
+  },
+  "actions": {
+    "save": "保存",
+    "cancel": "取消",
+    "edit": "編輯",
+    "delete": "刪除",
+    "createUser": "創建用戶",
+    "makeAdmin": "設為管理員",
+    "removeAdmin": "移除管理員"
+  },
+  "messages": {
+    "updateSuccess": "角色更新成功",
+    "updateError": "角色更新失敗",
+    "deleteSuccess": "角色刪除成功",
+    "deleteError": "角色刪除失敗"
+  }
+}

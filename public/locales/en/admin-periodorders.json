@@ -1,0 +1,103 @@
+{
+  "title": "Period Orders Management",
+  "description": "View and manage all period orders in your store",
+  "type": {
+    "oneTime": "One-time Orders",
+    "period": "Period Orders",
+    "label": "Order Type"
+  },
+  "status": {
+    "label": "Order Status",
+    "pending": "Pending",
+    "processing": "Processing",
+    "shipped": "Shipped",
+    "delivered": "Delivered",
+    "cancelled": "Cancelled"
+  },
+  "filter": {
+    "status": "Filter by Status",
+    "type": "Filter by Type",
+    "all": "All Period Orders",
+    "pending": "Pending Orders",
+    "processing": "Processing Orders",
+    "shipped": "Shipped Orders",
+    "delivered": "Delivered Orders",
+    "cancelled": "Cancelled Orders"
+  },
+  "actions": {
+    "view": "View Period Order",
+    "markAsDelivered": "Mark as Delivered",
+    "markAsDeliveredSuccess": "Order marked as delivered successfully",
+    "markAsDeliveredError": "Failed to mark order as delivered",
+    "delete": {
+      "confirm": "Delete Order",
+      "success": "Order deleted successfully",
+      "error": "Failed to delete order"
+    },
+    "approve": "Approve Order",
+    "reject": "Reject Order",
+    "approveSuccess": "Order approved successfully",
+    "approveError": "Failed to approve order",
+    "rejectSuccess": "Order rejected successfully",
+    "rejectError": "Failed to reject order"
+  },
+  "periodInvoice": {
+    "title": "Period Invoice: {{number}}",
+    "period": "Period: {{start}} - {{end}}",
+    "status": {
+      "pending": "Pending",
+      "paid": "Paid",
+      "overdue": "Overdue"
+    },
+    "amount": "Total Amount: ${{amount}}",
+    "orderCount": "{{count}} Orders"
+  },
+  "details": {
+    "title": "Period Order Details",
+    "orderNumber": "Order #{{id}}",
+    "lastUpdated": "Last Updated",
+    "createdAt": "Created At",
+    "customerInfo": {
+      "title": "Customer Information",
+      "name": "Name",
+      "email": "Email"
+    },
+    "address": {
+      "title": "Address Information",
+      "shipping": "Shipping Address",
+      "billing": "Billing Address"
+    },
+    "items": {
+      "title": "Order Items",
+      "quantity": "Quantity",
+      "subtotal": "Subtotal",
+      "deliveryCost": "Delivery Cost",
+      "total": "Total",
+      "count": "{{count}} items"
+    },
+    "payment": {
+      "title": "Payment Information",
+      "proof": "Payment Proof",
+      "reference": "Payment Reference"
+    },
+    "linkedInvoice": "Linked Period Invoice",
+    "products": "Products"
+  },
+  "table": {
+    "title": "Period Orders List",
+    "noOrders": "No period orders found",
+    "columns": {
+      "orderNumber": "Order #",
+      "customer": "Customer",
+      "date": "Order Date",
+      "status": "Status",
+      "total": "Total",
+      "actions": "Actions"
+    }
+  },
+  "errors": {
+    "fetchFailed": "Failed to fetch period orders",
+    "notFound": "Period order not found",
+    "updateFailed": "Failed to update period order"
+  }
+}

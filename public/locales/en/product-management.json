@@ -1,0 +1,68 @@
+{
+  "productOfTheMonth": {
+    "title": "Product of the Month",
+    "viewProduct": "View Product",
+    "managementTitle": "Product of the Month Management",
+    "management": {
+      "selectProduct": "Select Product",
+      "description": "Description",
+      "features": "Features",
+      "addFeature": "Add Feature",
+      "removeFeature": "Remove",
+      "feature": "Feature",
+      "icon": "Icon (emoji or url)",
+      "iconPlaceholder": "Enter icon (emoji or url)",
+      "title": "Title",
+      "titlePlaceholder": "Enter title",
+      "descriptionPlaceholder": "Enter description",
+      "save": "Save",
+      "saving": "Saving...",
+      "success": "Product of the month updated successfully",
+      "error": "Failed to update product of the month"
+    }
+  },
+  "admin": {
+    "title": "Products Management",
+    "description": "Manage your product inventory and listings",
+    "create": {
+      "title": "Add New Product"
+    },
+    "status": {
+      "active": "Active Products",
+      "draft": "Draft Products"
+    },
+    "table": {
+      "title": "Table View",
+      "image": "Image",
+      "name": "Name",
+      "brand": "Brand",
+      "price": "Price",
+      "actions": "Actions",
+      "noProducts": "No products found"
+    },
+    "grid": {
+      "title": "Grid View"
+    },
+    "actions": {
+      "edit": "Edit Product",
+      "delete": "Delete Product"
+    },
+    "delete": {
+      "confirm": "Are you sure you want to delete this product?",
+      "success": "Product deleted successfully",
+      "error": "Failed to delete product"
+    },
+    "error": "Failed to fetch products",
+    "deliverySettings": "Delivery Settings"
+  },
+  "featured": {
+    "title": "Featured Product",
+    "setAsFeatured": "Product set as featured",
+    "removedFromFeatured": "Product removed from featured",
+    "featureUpdateFailed": "Failed to update featured status",
+    "toggleFeatured": {
+      "add": "Set as featured product",
+      "remove": "Remove from featured products"
+    }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "title": "Privacy Policy",
+  "description": "Manage your website's privacy policy content and settings",
+  "sections": {
+    "main": {
+      "title": "Privacy Policy Title",
+      "titlePlaceholder": "Enter privacy policy title",
+      "subtitle": "Privacy Policy Subtitle",
+      "subtitlePlaceholder": "Enter privacy policy subtitle"
+    },
+    "content": {
+      "sectionTitle": "Section Title",
+      "sectionTitlePlaceholder": "Enter section title",
+      "sectionContent": "Section Content",
+      "sectionContentPlaceholder": "Enter section content",
+      "addSection": "Add New Section",
+      "removeSection": "Remove Section"
+    },
+    "contact": {
+      "title": "Contact Information",
+      "email": "Email Address",
+      "emailPlaceholder": "Enter contact email",
+      "phone": "Phone Number",
+      "phonePlaceholder": "Enter contact phone number",
+      "address": "Address",
+      "addressPlaceholder": "Enter contact address"
+    }
+  },
+  "actions": {
+    "save": "Save Changes",
+    "saving": "Saving...",
+    "cancel": "Cancel"
+  },
+  "messages": {
+    "saved": "Privacy policy saved successfully",
+    "saveError": "Failed to save privacy policy",
+    "fetchError": "Failed to load privacy policy"
+  },
+  "lastUpdated": "Last Updated"
+}

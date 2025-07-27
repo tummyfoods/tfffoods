@@ -1,0 +1,46 @@
+{
+  "title": "定期付款用戶",
+  "description": "管理定期付款訂閱用戶",
+  "admin": {
+    "title": "定期付款用戶管理"
+  },
+  "table": {
+    "name": "姓名",
+    "email": "電子郵件",
+    "status": {
+      "title": "狀態",
+      "active": "使用中",
+      "inactive": "未使用",
+      "pending": "待處理",
+      "paid": "已付款",
+      "overdue": "已逾期"
+    },
+    "paymentPeriod": "付款週期",
+    "currentPeriod": "目前週期",
+    "noPeriod": "無週期",
+    "noRecord": "無付款紀錄",
+    "periodEnd": "週期結束",
+    "actions": "操作"
+  },
+  "periodOptions": {
+    "none": "無",
+    "week1": "1 週",
+    "month1": "1 個月",
+    "selectPeriod": "選擇週期"
+  },
+  "actions": {
+    "search": "搜尋用戶...",
+    "filter": "篩選用戶",
+    "edit": "編輯用戶",
+    "delete": "刪除用戶",
+    "create": "建立用戶",
+    "removeFromPeriod": "移除定期付款",
+    "addToPeriod": "加入定期付款"
+  },
+  "messages": {
+    "updateSuccess": "用戶定期付款更新成功",
+    "updateError": "用戶定期付款更新失敗",
+    "deleteSuccess": "用戶定期付款刪除成功",
+    "deleteError": "用戶定期付款刪除失敗"
+  }
+}

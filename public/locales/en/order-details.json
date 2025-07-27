@@ -1,0 +1,65 @@
+{
+  "navigation": {
+    "back": "Back",
+    "print": "Print",
+    "download": "Download"
+  },
+  "page": {
+    "title": "Invoice {{number}}"
+  },
+  "sections": {
+    "invoiceDetails": "Invoice Details",
+    "orderSummary": "Order Summary",
+    "paymentInfo": "Payment Info",
+    "addresses": "Addresses"
+  },
+  "customerInfo": {
+    "title": "Customer Info",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone"
+  },
+  "orderInfo": {
+    "title": "Order Information",
+    "orderNumber": "Order Number",
+    "invoiceNumber": "Invoice Number",
+    "status": "Status",
+    "type": "Type",
+    "created": "Created",
+    "oneTime": "One-time",
+    "period": "Period"
+  },
+  "orderSummary": {
+    "title": "Order Summary",
+    "quantity": "Quantity",
+    "subtotal": "Subtotal",
+    "delivery": "Delivery Cost",
+    "total": "Total",
+    "items": {
+      "title": "Order Items",
+      "quantity": "Quantity",
+      "price": "Price",
+      "total": "Total"
+    }
+  },
+  "payment": {
+    "title": "Payment Info",
+    "method": "Payment Method",
+    "date": "Payment Date",
+    "proof": "Payment Proof",
+    "bankTransfer": "Bank Transfer",
+    "status": "Status"
+  },
+  "addresses": {
+    "title": "Addresses",
+    "billing": "Billing Address",
+    "shipping": "Shipping Address"
+  },
+  "status": {
+    "paid": "Paid",
+    "pending": "Pending",
+    "processing": "Processing",
+    "delivered": "Delivered",
+    "cancelled": "Cancelled"
+  }
+}

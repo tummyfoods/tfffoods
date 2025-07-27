@@ -1,0 +1,46 @@
+{
+  "title": "搜尋",
+  "placeholder": "搜尋商品...",
+  "noResults": "找不到結果",
+  "searching": "搜尋中...",
+  "viewAllResults": "查看所有 {count} 個結果",
+  "filters": {
+    "title": "篩選",
+    "price": {
+      "title": "價格",
+      "min": "最低價格",
+      "max": "最高價格"
+    },
+    "category": {
+      "title": "類別",
+      "all": "所有類別"
+    },
+    "brand": {
+      "title": "品牌",
+      "all": "所有品牌"
+    },
+    "sort": {
+      "title": "排序方式",
+      "options": {
+        "relevance": "相關性",
+        "priceAsc": "價格：低到高",
+        "priceDesc": "價格：高到低",
+        "newest": "最新優先",
+        "oldest": "最舊優先"
+      }
+    },
+    "apply": "套用篩選",
+    "clear": "清除篩選"
+  },
+  "suggestions": {
+    "title": "熱門搜尋",
+    "recent": "最近搜尋",
+    "trending": "熱門趨勢",
+    "clearHistory": "清除搜尋紀錄"
+  },
+  "errors": {
+    "failed": "搜尋失敗，請重試。",
+    "tooManyResults": "結果太多，請縮小搜尋範圍。",
+    "invalidQuery": "無效的搜尋查詢"
+  }
+}

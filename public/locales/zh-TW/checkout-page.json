@@ -1,0 +1,96 @@
+{
+  "title": "結帳",
+  "emptyCart": "購物車是空的",
+  "periodUser": {
+    "title": "定期付費用戶通知",
+    "message": "您是定期付費用戶。您的付款期將會被考慮在此訂單中。"
+  },
+  "orderSummary": {
+    "title": "訂單摘要",
+    "subtotal": "小計",
+    "delivery": "運費",
+    "total": "總計"
+  },
+  "shipping": {
+    "title": "配送資訊",
+    "useProfile": "使用個人資料地址",
+    "useDifferent": "使用其他地址",
+    "address": {
+      "fullName": "全名",
+      "email": "電子郵件",
+      "roomFlat": "房間/單位",
+      "floor": "樓層",
+      "blockNumber": "座數",
+      "blockName": "座名",
+      "buildingName": "物業/大廈名稱",
+      "streetNumber": "街道號碼",
+      "streetName": "街道名稱",
+      "district": "地區",
+      "location": "位置",
+      "selectLocation": "選擇位置"
+    }
+  },
+  "payment": {
+    "method": {
+      "title": "付款方式",
+      "online": "線上付款",
+      "offline": "離線付款",
+      "period": "加入定期發票"
+    },
+    "periodInvoice": {
+      "description": "將此訂單加入您的定期發票。稍後將根據您的定期付款協議向您收取費用。",
+      "button": "加入定期發票"
+    },
+    "proof": {
+      "title": "付款證明",
+      "upload": "上傳付款證明",
+      "uploading": "上傳中...",
+      "reupload": "重新上傳付款證明",
+      "preview": "付款證明預覽",
+      "reference": "付款參考編號",
+      "date": "付款日期",
+      "bankDetails": "銀行帳戶資料",
+      "success": "付款證明上傳成功",
+      "error": {
+        "upload": "上傳付款證明失敗",
+        "invalid": "無效的上傳結果"
+      }
+    },
+    "buttons": {
+      "submit": "提交付款",
+      "cancel": "取消",
+      "processing": "處理中...",
+      "payOnline": "線上付款",
+      "submitting": "提交中..."
+    }
+  },
+  "confirmation": {
+    "orderConfirmed": "訂單已確認",
+    "paymentReceived": "已收到付款",
+    "paymentVerifying": "付款正在驗證中",
+    "orderDetails": {
+      "orderId": "訂單編號",
+      "name": "姓名",
+      "email": "電子郵件",
+      "status": "狀態",
+      "total": "總計",
+      "paymentReference": "付款參考編號"
+    },
+    "redirectMessage": "您將被重新導向到您的訂單",
+    "redirectInSeconds": "幾秒鐘後",
+    "redirectAfterVerification": "付款驗證後"
+  },
+  "errors": {
+    "loginRequired": "請登入以繼續結帳",
+    "fillRequiredFields": "請填寫所有必填欄位",
+    "stripeInitError": "初始化付款系統失敗",
+    "checkoutError": "結帳過程中發生錯誤",
+    "noCheckoutUrl": "未提供結帳網址",
+    "fetchDeliverySettings": "獲取配送設置失敗"
+  },
+  "success": {
+    "paymentVerifying": "付款證明提交成功。我們的團隊將驗證您的付款。",
+    "thankYou": "感謝您的訂購！",
+    "orderConfirmation": "您的訂單已確認。您將很快收到確認電子郵件。"
+  }
+}

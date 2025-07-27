@@ -1,0 +1,69 @@
+{
+  "page": {
+    "title": "發票管理",
+    "description": "管理和追蹤所有發票"
+  },
+  "filters": {
+    "type": {
+      "label": "發票類型",
+      "all": "所有類型",
+      "oneTime": "一次性發票",
+      "period": "定期發票"
+    },
+    "status": {
+      "label": "狀態",
+      "all": "所有狀態",
+      "pending": "待處理",
+      "paid": "已付款",
+      "overdue": "已逾期"
+    },
+    "search": {
+      "placeholder": "搜尋發票號碼或客戶..."
+    }
+  },
+  "table": {
+    "headers": {
+      "invoiceNumber": "發票號碼",
+      "customer": "客戶",
+      "type": "類型",
+      "amount": "金額",
+      "status": "狀態",
+      "date": "日期",
+      "actions": "操作"
+    }
+  },
+  "actions": {
+    "print": "列印發票",
+    "download": "下載發票",
+    "viewDetails": "查看詳情",
+    "approve": "核准付款",
+    "reject": "拒絕付款",
+    "cleanup": "清理無效發票"
+  },
+  "details": {
+    "customerInfo": "客戶資料",
+    "customerName": "姓名",
+    "phone": "電話",
+    "address": "地址",
+    "invoiceInfo": "發票資料",
+    "status": "狀態",
+    "orderNumber": "訂單編號",
+    "type": "類型",
+    "periodInvoice": "定期發票",
+    "period": "期間",
+    "paymentMethod": "付款方式"
+  },
+  "messages": {
+    "loading": "載入發票中...",
+    "noInvoices": "未找到發票",
+    "error": {
+      "fetch": "無法獲取發票",
+      "update": "無法更新發票",
+      "print": "無法列印發票",
+      "download": "無法下載發票"
+    },
+    "success": {
+      "statusUpdate": "發票狀態更新成功"
+    }
+  }
+}

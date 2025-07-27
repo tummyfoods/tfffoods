@@ -1,0 +1,25 @@
+{
+  "managementTitle": "Guarantee Management",
+  "title": "Guarantee",
+  "addItem": "Add Guarantee Item",
+  "icon": "Icon",
+  "description": "Description",
+  "item": {
+    "title": "Title",
+    "description": "Description"
+  },
+  "actions": {
+    "save": "Save",
+    "delete": "Delete",
+    "add": "Add New Item"
+  },
+  "messages": {
+    "saveSuccess": "Guarantee item saved successfully",
+    "deleteSuccess": "Guarantee item deleted successfully",
+    "error": "An error occurred"
+  },
+  "placeholders": {
+    "title": "Enter title",
+    "description": "Enter description"
+  }
+}

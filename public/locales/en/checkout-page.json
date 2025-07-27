@@ -1,0 +1,96 @@
+{
+  "title": "Checkout",
+  "emptyCart": "Your cart is empty",
+  "periodUser": {
+    "title": "Period-paid User Notice",
+    "message": "You are a period-paid user. Your payment period will be considered for this order."
+  },
+  "orderSummary": {
+    "title": "Order Summary",
+    "subtotal": "Subtotal",
+    "delivery": "Delivery",
+    "total": "Total"
+  },
+  "shipping": {
+    "title": "Shipping Information",
+    "useProfile": "Use Profile Address",
+    "useDifferent": "Use Different Address",
+    "address": {
+      "fullName": "Full Name",
+      "email": "Email",
+      "roomFlat": "Room/Flat",
+      "floor": "Floor",
+      "blockNumber": "Block Number",
+      "blockName": "Block Name",
+      "buildingName": "Property/Building Name",
+      "streetNumber": "Street Number",
+      "streetName": "Street Name",
+      "district": "District",
+      "location": "Location",
+      "selectLocation": "Select Location"
+    }
+  },
+  "payment": {
+    "method": {
+      "title": "Payment Method",
+      "online": "Online Payment",
+      "offline": "Offline Payment",
+      "period": "Add to Period Invoice"
+    },
+    "periodInvoice": {
+      "description": "Add this order to your period invoice. You will be billed later according to your period payment agreement.",
+      "button": "Add to Period Invoice"
+    },
+    "proof": {
+      "title": "Payment Proof",
+      "upload": "Upload Payment Proof",
+      "uploading": "Uploading...",
+      "reupload": "Re-upload Payment Proof",
+      "preview": "Payment Proof Preview",
+      "reference": "Payment Reference",
+      "date": "Payment Date",
+      "bankDetails": "Bank Account Details",
+      "success": "Payment proof uploaded successfully",
+      "error": {
+        "upload": "Failed to upload payment proof",
+        "invalid": "Invalid upload result"
+      }
+    },
+    "buttons": {
+      "submit": "Submit Payment",
+      "cancel": "Cancel",
+      "processing": "Processing...",
+      "payOnline": "Pay Online",
+      "submitting": "Submitting..."
+    }
+  },
+  "confirmation": {
+    "orderConfirmed": "Order Confirmed",
+    "paymentReceived": "Payment has been received",
+    "paymentVerifying": "Payment is being verified",
+    "orderDetails": {
+      "orderId": "Order ID",
+      "name": "Name",
+      "email": "Email",
+      "status": "Status",
+      "total": "Total",
+      "paymentReference": "Payment Reference"
+    },
+    "redirectMessage": "You will be redirected to your orders",
+    "redirectInSeconds": "in a few seconds",
+    "redirectAfterVerification": "after payment verification"
+  },
+  "errors": {
+    "loginRequired": "Please login to proceed with checkout",
+    "fillRequiredFields": "Please fill in all required fields",
+    "stripeInitError": "Failed to initialize payment system",
+    "checkoutError": "An error occurred during checkout",
+    "noCheckoutUrl": "Checkout URL not provided",
+    "fetchDeliverySettings": "Failed to fetch delivery settings"
+  },
+  "success": {
+    "paymentVerifying": "Payment proof submitted successfully. Our team will verify your payment.",
+    "thankYou": "Thank you for your order!",
+    "orderConfirmation": "Your order has been confirmed. You will receive an email confirmation shortly."
+  }
+}

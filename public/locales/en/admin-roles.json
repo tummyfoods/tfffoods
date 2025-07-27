@@ -1,0 +1,40 @@
+{
+  "title": "User Roles Management",
+  "description": "Manage user roles and permissions",
+  "availableRoles": "Available Roles",
+  "roles": {
+    "admin": "Administrator",
+    "accounting": "Accounting",
+    "logistics": "Logistics",
+    "user": "User"
+  },
+  "roleDescriptions": {
+    "admin": "Full system access and management capabilities",
+    "accounting": "Access to financial and invoice management",
+    "logistics": "Access to delivery and shipping management",
+    "user": "Standard user access"
+  },
+  "table": {
+    "name": "Name",
+    "email": "Email",
+    "currentRole": "Current Role",
+    "assignNewRole": "Assign New Role",
+    "roleStatus": "Role Status",
+    "actions": "Actions"
+  },
+  "actions": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "edit": "Edit",
+    "delete": "Delete",
+    "createUser": "Create User",
+    "makeAdmin": "Make Admin",
+    "removeAdmin": "Remove Admin"
+  },
+  "messages": {
+    "updateSuccess": "Role updated successfully",
+    "updateError": "Failed to update role",
+    "deleteSuccess": "Role deleted successfully",
+    "deleteError": "Failed to delete role"
+  }
+}

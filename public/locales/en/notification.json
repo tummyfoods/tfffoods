@@ -1,0 +1,25 @@
+{
+  "success": {
+    "default": "Success!",
+    "saved": "Successfully saved",
+    "created": "Successfully created",
+    "updated": "Successfully updated",
+    "deleted": "Successfully deleted",
+    "addedToCart": "Added to cart",
+    "removedFromWishlist": "Removed from wishlist",
+    "addedToWishlist": "Added to wishlist"
+  },
+  "error": {
+    "default": "An error occurred",
+    "saveFailed": "Failed to save",
+    "createFailed": "Failed to create",
+    "updateFailed": "Failed to update",
+    "deleteFailed": "Failed to delete"
+  },
+  "info": {
+    "loading": "Loading...",
+    "loadingProducts": "Loading products...",
+    "noResults": "No results found",
+    "clickToUpdate": "Click to update"
+  }
+}

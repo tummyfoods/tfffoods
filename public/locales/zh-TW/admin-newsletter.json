@@ -1,0 +1,24 @@
+{
+  "title": "電子報管理",
+  "description": "管理電子報訂閱者和電子郵件活動",
+  "loading": "載入訂閱者中...",
+  "searchPlaceholder": "搜尋訂閱者...",
+  "table": {
+    "email": "電子郵件",
+    "source": "來源",
+    "status": "狀態",
+    "subscribedAt": "訂閱時間",
+    "lastEmail": "最後發送時間",
+    "actions": "操作"
+  },
+  "actions": {
+    "delete": "刪除",
+    "confirmDelete": "確定要刪除此訂閱者嗎？"
+  },
+  "messages": {
+    "deleteSuccess": "訂閱者刪除成功",
+    "deleteError": "刪除訂閱者失敗",
+    "updateSuccess": "訂閱者狀態更新成功",
+    "updateError": "更新訂閱者狀態失敗"
+  }
+}
