@@ -321,7 +321,10 @@ const ContactPage = () => {
             <div className="flex flex-col md:flex-row items-center gap-8">
               <div className="md:w-1/2">
                 <Image
-                  src={contactSettings.supportChannels.image}
+                  src={
+                    contactSettings.supportChannels.image ||
+                    "/images/support-default.svg"
+                  }
                   alt="Support Channels"
                   width={600}
                   height={600}

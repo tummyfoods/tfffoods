@@ -248,13 +248,21 @@ export default function ProfilePage() {
   const handleSave = async () => {
     if (!isEditing) return;
 
+    // Validate phone number if provided
+    if (profile.phone && !/^\d{8,}$/.test(profile.phone)) {
+      toast.error(t("profile.invalidPhoneNumber"));
+      return;
+    }
+
     setIsEditing(false);
     try {
-      // Ensure we're sending the correct address structure
+      // Prepare address data, omitting coordinates if not present
       const addressData = {
         en: profile.address.en,
         "zh-TW": profile.address["zh-TW"],
-        coordinates: profile.address.coordinates || null,
+        ...(profile.address.coordinates && {
+          coordinates: profile.address.coordinates,
+        }),
       };
 
       console.log("Saving address data:", addressData);
@@ -262,8 +270,7 @@ export default function ProfilePage() {
       const res = await axios.put("/api/updateUser", {
         email: profile.email,
         name: profile.name,
-        newEmail: profile.email,
-        phone: profile.phone,
+        phone: profile.phone || "",
         address: addressData,
       });
 
@@ -288,9 +295,11 @@ export default function ProfilePage() {
       } else {
         toast.error(t("common.error"));
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error("Save error:", error);
-      toast.error(t("common.error"));
+      // Show more specific error message if available
+      const errorMessage = error.response?.data?.message || t("common.error");
+      toast.error(errorMessage);
     }
   };
 

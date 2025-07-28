@@ -1207,12 +1207,21 @@ export default function AdminSettingsPage() {
                       </label>
                       <div className="flex items-center space-x-4">
                         <div className="relative w-20 h-20 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700">
-                          <Image
-                            src={settings.logo}
-                            alt={t("admin-settings.sections.store.logo")}
-                            fill
-                            className="object-contain"
-                          />
+                          {settings.logo ? (
+                            <Image
+                              src={settings.logo}
+                              alt={t("admin-settings.sections.store.logo")}
+                              fill
+                              className="object-contain"
+                            />
+                          ) : (
+                            <Image
+                              src="/images/placeholder-logo.png"
+                              alt={t("admin-settings.sections.store.logo")}
+                              fill
+                              className="object-contain"
+                            />
+                          )}
                         </div>
                         <CldUploadButton
                           className="h-10 px-4 py-2 text-sm font-medium rounded-md shadow-sm text-white bg-[#535C91] hover:bg-[#424874] dark:bg-[#6B74A9] dark:hover:bg-[#535C91] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#535C91] dark:focus:ring-[#6B74A9]"
@@ -1825,13 +1834,23 @@ export default function AdminSettingsPage() {
                         )}
                       </label>
                       <div className="flex items-center space-x-4">
+                        {/* About Page Banner */}
                         <div className="relative w-40 h-24 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700">
-                          <Image
-                            src={settings.aboutPage.bannerImage}
-                            alt="About Banner"
-                            fill
-                            className="object-cover"
-                          />
+                          {settings.aboutPage.bannerImage ? (
+                            <Image
+                              src={settings.aboutPage.bannerImage}
+                              alt="About Banner"
+                              fill
+                              className="object-cover"
+                            />
+                          ) : (
+                            <Image
+                              src="/images/banner-default.svg"
+                              alt="About Banner"
+                              fill
+                              className="object-cover"
+                            />
+                          )}
                         </div>
                         <CldUploadButton
                           className="h-10 px-4 py-2 text-sm font-medium rounded-md shadow-sm text-white bg-[#535C91] hover:bg-[#424874] dark:bg-[#6B74A9] dark:hover:bg-[#535C91]"
@@ -1918,13 +1937,23 @@ export default function AdminSettingsPage() {
                         )}
                       </label>
                       <div className="flex items-center space-x-4">
+                        {/* Story Image */}
                         <div className="relative w-40 h-24 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700">
-                          <Image
-                            src={settings.aboutPage.story.image}
-                            alt="Story Image"
-                            fill
-                            className="object-cover"
-                          />
+                          {settings.aboutPage.story.image ? (
+                            <Image
+                              src={settings.aboutPage.story.image}
+                              alt="Story Image"
+                              fill
+                              className="object-cover"
+                            />
+                          ) : (
+                            <Image
+                              src="/images/banner-default.svg"
+                              alt="Story Image"
+                              fill
+                              className="object-cover"
+                            />
+                          )}
                         </div>
                         <CldUploadButton
                           className="h-10 px-4 py-2 text-sm font-medium rounded-md shadow-sm text-white bg-[#535C91] hover:bg-[#424874] dark:bg-[#6B74A9] dark:hover:bg-[#535C91]"
@@ -2299,17 +2328,22 @@ export default function AdminSettingsPage() {
                               />
                             </div>
                             <div className="flex items-center gap-4">
-                              <div className="relative w-24 h-24 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700">
-                                <Image
-                                  src={member.image}
-                                  alt={
-                                    typeof member.name === "string"
-                                      ? member.name
-                                      : member.name.en
-                                  }
-                                  fill
-                                  className="object-cover"
-                                />
+                              <div className="relative w-20 h-20 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700">
+                                {member.image ? (
+                                  <Image
+                                    src={member.image}
+                                    alt={`${member.name[language]} - ${member.role[language]}`}
+                                    fill
+                                    className="object-cover"
+                                  />
+                                ) : (
+                                  <Image
+                                    src="/images/placeholder-logo.png"
+                                    alt={`${member.name[language]} - ${member.role[language]}`}
+                                    fill
+                                    className="object-cover"
+                                  />
+                                )}
                               </div>
                               <div className="flex gap-2">
                                 <CldUploadButton
@@ -2435,12 +2469,21 @@ export default function AdminSettingsPage() {
                       </label>
                       <div className="flex items-center space-x-4">
                         <div className="relative w-40 h-24 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700">
-                          <Image
-                            src={settings.contactPage.bannerImage}
-                            alt="Contact Banner"
-                            fill
-                            className="object-cover"
-                          />
+                          {settings.contactPage.bannerImage ? (
+                            <Image
+                              src={settings.contactPage.bannerImage}
+                              alt="Contact Banner"
+                              fill
+                              className="object-cover"
+                            />
+                          ) : (
+                            <Image
+                              src="/images/banner-default.svg"
+                              alt="Contact Banner"
+                              fill
+                              className="object-cover"
+                            />
+                          )}
                         </div>
                         <CldUploadButton
                           className="h-10 px-4 py-2 text-sm font-medium rounded-md shadow-sm text-white bg-[#535C91] hover:bg-[#424874] dark:bg-[#6B74A9] dark:hover:bg-[#535C91]"
@@ -2788,13 +2831,23 @@ export default function AdminSettingsPage() {
                         )}
                       </label>
                       <div className="flex items-center space-x-4">
+                        {/* Support Channels Image */}
                         <div className="relative w-40 h-24 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700">
-                          <Image
-                            src={settings.contactPage.supportChannels.image}
-                            alt="Support Channels"
-                            fill
-                            className="object-cover"
-                          />
+                          {settings.contactPage.supportChannels.image ? (
+                            <Image
+                              src={settings.contactPage.supportChannels.image}
+                              alt="Support Channels"
+                              fill
+                              className="object-cover"
+                            />
+                          ) : (
+                            <Image
+                              src="/images/support-default.svg"
+                              alt="Support Channels"
+                              fill
+                              className="object-cover"
+                            />
+                          )}
                         </div>
                         <CldUploadButton
                           className="h-10 px-4 py-2 text-sm font-medium rounded-md shadow-sm text-white bg-[#535C91] hover:bg-[#424874] dark:bg-[#6B74A9] dark:hover:bg-[#535C91]"

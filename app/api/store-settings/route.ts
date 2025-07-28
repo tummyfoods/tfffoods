@@ -25,7 +25,12 @@ export async function GET() {
 
       // If no settings exist, create default settings
       if (!settings) {
-        settings = await StoreSettings.create({});
+        settings = await StoreSettings.create({
+          contactInfo: {
+            email: "contact@example.com",
+            phone: "+1234567890",
+          },
+        });
       }
 
       return NextResponse.json(settings);

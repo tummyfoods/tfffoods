@@ -91,12 +91,16 @@ const ProductImageGallery = ({ product }: Props) => {
     <div className="md:w-1/2 p-6">
       <div className="relative sm:h-[35rem] h-[25rem] mb-6" {...handlers}>
         <Image
-          src={images[currentImageIndex]}
+          src={images[currentImageIndex] || "/placeholder-watch.jpg"}
           alt={`${product.name} - Image ${currentImageIndex + 1}`}
           layout="fill"
           objectFit="cover"
           className="rounded-lg"
           priority={currentImageIndex === 0}
+          onError={(e) => {
+            const target = e.target as HTMLImageElement;
+            target.src = "/placeholder-watch.jpg";
+          }}
         />
         {images.length > 1 && (
           <>
@@ -128,7 +132,7 @@ const ProductImageGallery = ({ product }: Props) => {
             {images.map((image, index) => (
               <Image
                 key={index}
-                src={image}
+                src={image || "/placeholder-watch.jpg"}
                 alt={`${product.name} - Image ${index + 1}`}
                 width={80}
                 height={80}
@@ -139,6 +143,10 @@ const ProductImageGallery = ({ product }: Props) => {
                     : "opacity-70 hover:opacity-100"
                 }`}
                 onClick={() => setCurrentImageIndex(index)}
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.src = "/placeholder-watch.jpg";
+                }}
               />
             ))}
           </div>

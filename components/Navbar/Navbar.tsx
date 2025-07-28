@@ -87,8 +87,8 @@ const Navbar = () => {
                       }
                       onClick={() => router.push("/")}
                       src={settings.logo}
-                      width={75}
-                      height={45}
+                      width={160}
+                      height={96}
                       className="navbar-logo cursor-pointer"
                       priority
                     />

@@ -161,7 +161,7 @@ const NewsletterComponent = ({
           className="flex items-center justify-center mb-6"
         >
           <Image
-            src={settings.logo}
+            src={settings.logo || "/images/placeholder-logo.png"}
             alt={
               typeof settings.storeName === "string"
                 ? settings.storeName
@@ -181,7 +181,9 @@ const NewsletterComponent = ({
             className="mb-8"
           >
             <Image
-              src={newsletterSettings.bannerImage}
+              src={
+                newsletterSettings.bannerImage || "/images/banner-default.svg"
+              }
               alt={t("newsletter.bannerAlt")}
               width={800}
               height={400}

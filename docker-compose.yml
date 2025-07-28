@@ -63,9 +63,9 @@ services:
 
 volumes:
   mongodb_data:
-    name: cpffonline_mongodb_data
+    name: tfffoods_mongodb_data
 
 networks:
   app-network:
     driver: bridge
-    name: cpffonline_network
+    name: tfffoods_network

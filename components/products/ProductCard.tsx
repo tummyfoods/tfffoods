@@ -133,7 +133,7 @@ export default function ProductCard({
       <Link href={`/product/${currentProduct._id}`}>
         <div className="relative h-[30vh] sm:h-64 w-full">
           <Image
-            src={currentProduct.images[0]}
+            src={currentProduct.images[0] || "/placeholder-product.jpg"}
             alt={currentProduct.name}
             fill
             className="object-cover"

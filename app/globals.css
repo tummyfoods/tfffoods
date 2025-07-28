@@ -501,7 +501,7 @@
 
 .navbar-content {
   @apply flex items-center justify-between w-full min-w-0;
-  min-height: 80px;
+  min-height: 100px;
   width: 100%;
 }
 
@@ -517,14 +517,15 @@
 
 .navbar-logo {
   @apply cursor-pointer object-contain hover:scale-105 transition-transform duration-200;
-  width: 90px;
-  height: 54px;
+  width: 160px;
+  height: 96px;
   padding: 0;
   margin: 0;
 }
 
 .navbar-title {
-  @apply hidden lg:block text-lg font-semibold cursor-pointer text-gray-900 dark:text-white hover:text-[#535C91] dark:hover:text-[#6B74A9] transition-all duration-300 my-auto pl-4 whitespace-nowrap;
+  @apply hidden lg:block font-semibold cursor-pointer text-gray-900 dark:text-white hover:text-[#535C91] dark:hover:text-[#6B74A9] transition-all duration-300 my-auto pl-4 whitespace-nowrap;
+  font-size: 1.25rem; /* 20px - increased from default text-lg (18px) */
   max-width: 500px;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -542,7 +543,7 @@
     min-width: 0;
   }
   .navbar-title {
-    font-size: 0.95rem;
+    font-size: 1.15rem; /* Slightly smaller at this breakpoint but still 20% bigger than original */
     max-width: 300px;
     padding-left: 0.5rem;
   }
