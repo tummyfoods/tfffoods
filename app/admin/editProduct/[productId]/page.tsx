@@ -41,7 +41,22 @@ interface Category {
     "zh-TW": string;
   };
   description?: string;
-  specifications?: Specification[];
+  specifications?: Array<{
+    label: string;
+    key: string;
+    type: "text" | "number" | "select";
+    options?: {
+      en: string[];
+      "zh-TW": string[];
+      prices?: number[];
+    };
+    required: boolean;
+    displayNames: {
+      en: string;
+      "zh-TW": string;
+    };
+    description?: string;
+  }>;
 }
 
 interface ProductData {
@@ -75,8 +90,13 @@ interface ProductData {
       "zh-TW": string;
     };
     description?: string;
-    options?: string[];
+    options?: {
+      en: string[];
+      "zh-TW": string[];
+      prices?: number[];
+    };
     required?: boolean;
+    selectedOptionPrice?: number;
   }>;
   draft: boolean;
   isBestSelling: boolean;
@@ -304,14 +324,25 @@ const EditProduct = () => {
         category?.specifications?.map((spec) => ({
           key: spec.key || spec.label.toLowerCase().replace(/\s+/g, "_"),
           value: {
-            en: spec.type === "number" ? "0" : "",
-            "zh-TW": spec.type === "number" ? "0" : "",
+            en: "",
+            "zh-TW": "",
           },
           type: spec.type,
-          displayNames: spec.displayNames,
-          description: spec.description,
-          options: spec.options,
-          required: spec.required,
+          displayNames: {
+            en: spec.displayNames?.en || spec.label,
+            "zh-TW": spec.displayNames?.["zh-TW"] || spec.label,
+          },
+          options:
+            spec.type === "select"
+              ? {
+                  en: spec.options?.en || [],
+                  "zh-TW": spec.options?.["zh-TW"] || [],
+                  prices:
+                    spec.options?.prices ||
+                    Array(spec.options?.en?.length || 0).fill(0),
+                }
+              : undefined,
+          required: spec.required || false,
         })) || [];
 
       setProduct((prev) => {
@@ -340,7 +371,13 @@ const EditProduct = () => {
 
   const handleSpecificationChange = (
     key: string,
-    value: string | number | { en: string; "zh-TW": string }
+    value: string | number | { en: string; "zh-TW": string },
+    optionPrice?: number,
+    newOptions?: {
+      en: string[];
+      "zh-TW": string[];
+      prices?: number[];
+    }
   ) => {
     if (!key) return;
 
@@ -361,8 +398,15 @@ const EditProduct = () => {
             en: numValue,
             "zh-TW": numValue,
           };
+        } else if (spec.type === "select") {
+          // For select, use the selected option for both languages
+          const strValue = String(value);
+          processedValue = {
+            en: strValue,
+            "zh-TW": strValue,
+          };
         } else {
-          // For text and select, keep existing values and update only the changed one
+          // For text and other types, keep existing values and update only the changed one
           const currentValue = spec.value as { en: string; "zh-TW": string };
           processedValue = {
             ...currentValue,
@@ -374,6 +418,8 @@ const EditProduct = () => {
         return {
           ...spec,
           value: processedValue,
+          selectedOptionPrice: optionPrice,
+          options: newOptions || spec.options,
         };
       }),
     }));
@@ -485,6 +531,8 @@ const EditProduct = () => {
             en: spec.key,
             "zh-TW": spec.key,
           },
+          options: spec.type === "select" ? spec.options : undefined,
+          required: spec.required || false,
         };
       });
 
@@ -710,38 +758,72 @@ const EditProduct = () => {
                         )}
                       </label>
                       {spec.type === "select" ? (
-                        <select
-                          value={String(
-                            product.specifications.find(
-                              (s) =>
-                                s.key ===
-                                (spec.key ||
-                                  spec.label.toLowerCase().replace(/\s+/g, "_"))
-                            )?.value || ""
+                        <div className="space-y-4">
+                          <select
+                            value={String(
+                              product.specifications.find(
+                                (s) =>
+                                  s.key ===
+                                  (spec.key ||
+                                    spec.label
+                                      .toLowerCase()
+                                      .replace(/\s+/g, "_"))
+                              )?.value?.[language as "en" | "zh-TW"] || ""
+                            )}
+                            onChange={(e) => {
+                              const optionIndex = (
+                                spec.options?.en || []
+                              ).indexOf(e.target.value);
+                              handleSpecificationChange(
+                                spec.key ||
+                                  spec.label.toLowerCase().replace(/\s+/g, "_"),
+                                {
+                                  en: e.target.value,
+                                  "zh-TW":
+                                    spec.options?.["zh-TW"]?.[optionIndex] ||
+                                    e.target.value,
+                                }
+                              );
+                            }}
+                            className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                            required={spec.required}
+                          >
+                            <option value="">--</option>
+                            {(
+                              spec.options?.[language as "en" | "zh-TW"] || []
+                            ).map((option: string, optionIndex: number) => (
+                              <option key={option} value={option}>
+                                {option}
+                              </option>
+                            ))}
+                          </select>
+                          {spec.options?.en && spec.options.en.length > 0 && (
+                            <div className="space-y-2">
+                              <label className="text-sm font-medium">
+                                Option Prices
+                              </label>
+                              <div className="grid gap-2">
+                                {spec.options.en.map(
+                                  (option: string, optionIndex: number) => (
+                                    <div
+                                      key={optionIndex}
+                                      className="flex items-center gap-2"
+                                    >
+                                      <span className="flex-1">{option}</span>
+                                      <span className="text-sm text-muted-foreground">
+                                        $
+                                        {(
+                                          spec.options?.prices?.[optionIndex] ||
+                                          0
+                                        ).toFixed(2)}
+                                      </span>
+                                    </div>
+                                  )
+                                )}
+                              </div>
+                            </div>
                           )}
-                          onChange={(e) =>
-                            handleSpecificationChange(
-                              spec.key ||
-                                spec.label.toLowerCase().replace(/\s+/g, "_"),
-                              e.target.value
-                            )
-                          }
-                          className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
-                          required={spec.required}
-                        >
-                          <option value="">
-                            {language === "en"
-                              ? `Select ${spec.displayNames?.en || spec.label}`
-                              : `選擇${
-                                  spec.displayNames?.["zh-TW"] || spec.label
-                                }`}
-                          </option>
-                          {spec.options?.map((option) => (
-                            <option key={option} value={option}>
-                              {option}
-                            </option>
-                          ))}
-                        </select>
+                        </div>
                       ) : spec.type === "number" ? (
                         <Input
                           type="number"
@@ -751,7 +833,7 @@ const EditProduct = () => {
                                 s.key ===
                                 (spec.key ||
                                   spec.label.toLowerCase().replace(/\s+/g, "_"))
-                            )?.value || ""
+                            )?.value?.en || ""
                           )}
                           onChange={(e) =>
                             handleSpecificationChange(

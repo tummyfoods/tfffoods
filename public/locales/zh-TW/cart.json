@@ -1,6 +1,6 @@
 {
   "title": "購物車",
-  "empty": "您的購物車是空的",
+  "empty": "購物車是空的",
   "addToCart": "加入購物車",
   "removeFromCart": "從購物車移除",
   "addedToCart": "已加入購物車",
@@ -12,6 +12,15 @@
   "continueShopping": "繼續購物",
   "updateQuantity": "更新數量",
   "deliverySettings": "配送選項",
+  "specifications": {
+    "filling": "餡料",
+    "filling_price": "餡料價格",
+    "size": "尺寸",
+    "weight": "重量",
+    "color": "顏色"
+  },
+  "basePrice": "基本價格",
+  "options": "選項加價",
   "summary": {
     "title": "購物車摘要",
     "items": "商品",
@@ -23,25 +32,25 @@
   "delivery": {
     "types": {
       "local": "本地配送",
-      "express": "快速配送",
+      "express": "快遞配送",
       "overseas": "海外配送"
     },
     "cost": "費用",
     "free": "免費",
-    "spendMore": "再消費 ${{amount}} 即可享有免運費！",
-    "freeDeliveryReached": "恭喜！您已符合免運費資格！",
+    "spendMore": "再消費 ${{amount}} 即可享免運！",
+    "freeDeliveryReached": "恭喜！您已符合免運資格！",
     "types": {
       "title": "配送方式"
     }
   },
   "errors": {
     "addFailed": "加入購物車失敗",
-    "removeFailed": "從購物車移除失敗",
+    "removeFailed": "移除商品失敗",
     "updateFailed": "更新購物車失敗",
     "invalidQuantity": "無效的數量"
   },
   "confirmations": {
-    "removeItem": "您確定要從購物車中移除此商品嗎？",
-    "clearCart": "您確定要清空購物車嗎？"
+    "removeItem": "確定要從購物車移除此商品嗎？",
+    "clearCart": "確定要清空購物車嗎？"
   }
 }

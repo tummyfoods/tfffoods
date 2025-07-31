@@ -18,10 +18,12 @@ import { useUser } from "@/providers/user/UserContext";
 
 type CartContextType = {
   items: CartItem[];
-  addItem: (item: Product) => void;
-  removeItem: (itemId: string) => void;
+  addItem: (item: AddToCartItem) => void;
+  removeItem: (itemId: string, selectedSpecs?: Record<string, any>) => void;
   updateQuantity: (itemId: string, quantity: number) => void;
   clearCart: () => void;
+  selectedDeliveryType: number;
+  setSelectedDeliveryType: (type: number) => void;
 };
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -36,6 +38,12 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   );
   const clearStoreCart = useCartStore((state) => state.clearCart);
   const loadStoreServerCart = useCartStore((state) => state.loadServerCart);
+  const selectedDeliveryType = useCartStore(
+    (state) => state.selectedDeliveryType
+  );
+  const setStoreSelectedDeliveryType = useCartStore(
+    (state) => state.setSelectedDeliveryType
+  );
 
   const { data: session, status } = useSession();
   const { userData, loading: userLoading } = useUser();
@@ -137,33 +145,28 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     };
   }, [items, session, status, userLoading, userData, loadStoreServerCart]);
 
-  const addItem = (item: Product) => {
-    if (!session) {
-      setPendingItem(item);
-      setShowAuthDialog(true);
-      return;
-    }
-
-    // Optimistically update the UI
-    const cartItem: CartItem = {
-      _id: item._id,
-      name: item.name,
-      displayNames: item.displayNames,
-      images: item.images,
-      price: item.price,
-      brand: item.brand,
-      quantity: 1,
-    };
+  const addItem = (item: AddToCartItem) => {
+    console.log("Adding item to cart (provider):", item);
 
     // Update store immediately
-    addStoreItem(cartItem);
+    addStoreItem(item);
 
     // Show success message
     toast.success("Item added to cart");
+
+    // If user is logged in, sync with server
+    if (
+      session?.user &&
+      status === "authenticated" &&
+      !userLoading &&
+      userData
+    ) {
+      // Sync will happen automatically through the useEffect
+    }
   };
 
-  const removeItem = (itemId: string) => {
-    removeStoreItem(itemId);
+  const removeItem = (itemId: string, selectedSpecs?: Record<string, any>) => {
+    removeStoreItem(itemId, selectedSpecs);
     toast.success("Item removed from cart");
   };
 
@@ -189,6 +192,8 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
         removeItem,
         updateQuantity,
         clearCart,
+        selectedDeliveryType,
+        setSelectedDeliveryType: setStoreSelectedDeliveryType,
       }}
     >
       {children}

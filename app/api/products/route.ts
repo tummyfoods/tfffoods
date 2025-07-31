@@ -54,6 +54,13 @@ interface ProductSpecification {
     en: string;
     "zh-TW": string;
   };
+  options?: {
+    en: string[];
+    "zh-TW": string[];
+    prices?: number[];
+  };
+  required?: boolean;
+  selectedOptionPrice?: number;
 }
 
 interface ProductData {
@@ -225,9 +232,8 @@ export async function POST(request: Request) {
       }
 
       // Clone the request before reading the body
-      const clonedRequest = request.clone();
-      const data: ProductData = await clonedRequest.json();
-      console.log("Received product data:", data);
+      const data: ProductData = await request.json();
+      console.log("Received product data:", JSON.stringify(data, null, 2));
 
       // Validate required fields
       if (!data.name || !data.description || !data.brand || !data.category) {
@@ -262,18 +268,40 @@ export async function POST(request: Request) {
 
         // Validate and format specifications
         const specifications = Array.isArray(data.specifications)
-          ? data.specifications.map((spec) => ({
-              key: spec.key,
-              value: {
-                en: spec.value.en || "",
-                "zh-TW": spec.value["zh-TW"] || "",
-              },
-              type: spec.type,
-              displayNames: {
-                en: spec.displayNames?.en || spec.key,
-                "zh-TW": spec.displayNames?.["zh-TW"] || spec.key,
-              },
-            }))
+          ? data.specifications.map((spec) => {
+              console.log(
+                "Processing specification:",
+                JSON.stringify(spec, null, 2)
+              );
+              return {
+                key: spec.key,
+                value: {
+                  en: spec.value.en || "",
+                  "zh-TW": spec.value["zh-TW"] || "",
+                },
+                type: spec.type,
+                displayNames: {
+                  en: spec.displayNames?.en || spec.key,
+                  "zh-TW": spec.displayNames?.["zh-TW"] || spec.key,
+                },
+                options:
+                  spec.type === "select"
+                    ? {
+                        en: Array.isArray(spec.options?.en)
+                          ? spec.options.en
+                          : [],
+                        "zh-TW": Array.isArray(spec.options?.["zh-TW"])
+                          ? spec.options["zh-TW"]
+                          : [],
+                        prices: Array.isArray(spec.options?.prices)
+                          ? spec.options.prices
+                          : [],
+                      }
+                    : undefined,
+                selectedOptionPrice: spec.selectedOptionPrice || 0,
+                required: spec.required || false,
+              };
+            })
           : [];
 
         // Log the specifications for debugging
@@ -283,7 +311,7 @@ export async function POST(request: Request) {
         );
 
         // Create product with specifications
-        const product = await Product.create({
+        const productDoc = {
           ...data,
           user: session.user.id,
           order,
@@ -301,25 +329,52 @@ export async function POST(request: Request) {
           isBestSelling: data.isBestSelling || false,
           isProductOfTheMonth: data.isProductOfTheMonth || false,
           productOfTheMonthDetails: data.productOfTheMonthDetails || {},
-        });
+        };
+
+        console.log(
+          "Creating product with data:",
+          JSON.stringify(productDoc, null, 2)
+        );
+
+        const product = await Product.create(productDoc);
 
         // Clear all product caches after creating a new product
         clearAllProductCaches();
 
-        console.log("Created product:", product);
+        console.log("Created product:", JSON.stringify(product, null, 2));
         return { success: true, product };
       } catch (error) {
-        console.error("Error creating product in database:", error);
+        console.error("Error creating product in database:", {
+          error,
+          message: error instanceof Error ? error.message : "Unknown error",
+          stack: error instanceof Error ? error.stack : undefined,
+          validationErrors:
+            error instanceof Error && "errors" in error
+              ? error.errors
+              : undefined,
+          data: JSON.stringify(data, null, 2),
+        });
         if (error instanceof Error) {
           if (error.message.includes("duplicate key error")) {
             throw new Error("A product with this name already exists");
+          }
+          if ("errors" in error) {
+            // This is a Mongoose validation error
+            const validationErrors = Object.values(error.errors || {})
+              .map((err) => err.message)
+              .join(", ");
+            throw new Error(`Validation failed: ${validationErrors}`);
           }
           throw new Error(error.message);
         }
         throw new Error("Failed to create product");
       }
     } catch (error) {
-      console.error("Error in POST /api/products:", error);
+      console.error("Error in POST /api/products:", {
+        error,
+        message: error instanceof Error ? error.message : "Unknown error",
+        stack: error instanceof Error ? error.stack : undefined,
+      });
       throw error;
     }
   });

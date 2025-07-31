@@ -12,27 +12,61 @@ import { useTranslation } from "@/providers/language/LanguageContext";
 import { MultiLangDisplay } from "@/components/MultiLangInput/MultiLangInput";
 import type { Product, Review } from "@/types";
 import { mutate } from "swr";
+import toast from "react-hot-toast";
+import { useCart } from "@/providers/cart/CartContext";
+import { useCartUI } from "@/components/ui/CartUIContext";
 
 interface Props {
   product: Product;
   averageRating: number;
   allReviews: Review[];
-  handleAddToCart: (e: React.MouseEvent<HTMLButtonElement>) => void;
   setAllReviews: (reviews: Review[]) => void;
   setAverageRating: (avg: number) => void;
+}
+
+interface SpecOptions {
+  en: string[];
+  "zh-TW": string[];
 }
 
 const ProductDetailsSinglePage = ({
   product,
   averageRating,
   allReviews,
-  handleAddToCart,
   setAllReviews,
   setAverageRating,
 }: Props) => {
   const { settings } = useStore();
-  const { language } = useTranslation();
+  const { language, t } = useTranslation();
+  const { addItem } = useCart();
+  const { openCart } = useCartUI();
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
+
+  // Initialize selectedSpecs with default values from product
+  const [selectedSpecs, setSelectedSpecs] = useState<
+    Record<string, string | number>
+  >(() => {
+    const initialSpecs: Record<string, string | number> = {};
+    product.specifications?.forEach((spec) => {
+      if (spec.value?.[language]) {
+        // Use current language
+        initialSpecs[spec.key] = spec.value[language];
+      }
+    });
+    return initialSpecs;
+  });
+
+  // Update selectedSpecs when product changes
+  useEffect(() => {
+    const initialSpecs: Record<string, string | number> = {};
+    product.specifications?.forEach((spec) => {
+      if (spec.value?.[language]) {
+        // Use current language
+        initialSpecs[spec.key] = spec.value[language];
+      }
+    });
+    setSelectedSpecs(initialSpecs);
+  }, [product, language]); // Add language as dependency
 
   // Listen for product updates - client side only
   useEffect(() => {
@@ -61,8 +95,136 @@ const ProductDetailsSinglePage = ({
     };
   }, [product._id, language]);
 
+  useEffect(() => {
+    console.log(
+      "🔄 ProductDetailsSinglePage - selectedSpecs updated:",
+      selectedSpecs
+    );
+  }, [selectedSpecs]);
+
   const toggleFaq = (index: number) => {
     setOpenFaqIndex(openFaqIndex === index ? null : index);
+  };
+
+  // Handle add to cart with specifications
+  const handleAddToCartWithSpecs = (
+    e: React.MouseEvent<HTMLButtonElement>,
+    specs?: Record<string, string>
+  ) => {
+    e.preventDefault();
+
+    // Use passed specs or fallback to state
+    const specsToUse = specs || selectedSpecs;
+    console.log("ProductDetailsSinglePage - Using specs for cart:", specsToUse);
+
+    // Check if all required specifications are selected
+    const hasAllRequiredSpecs =
+      product.specifications?.every(
+        (spec) => !spec.required || specsToUse[spec.key]
+      ) ?? true;
+
+    console.log("ProductDetailsSinglePage - Validation:", {
+      specs: specsToUse,
+      productSpecs: product.specifications,
+      hasAllRequired: hasAllRequiredSpecs,
+    });
+
+    if (!hasAllRequiredSpecs) {
+      toast.error(t("product.specifications.selectRequired"));
+      return;
+    }
+
+    // Get the display values for specifications with translations
+    const specDisplayValues: Record<string, { en: string; "zh-TW": string }> =
+      {};
+
+    console.log("All specifications:", product.specifications);
+    console.log("Selected specs:", specsToUse);
+
+    product.specifications?.forEach((spec) => {
+      const selectedValue = specsToUse[spec.key];
+
+      console.log("Processing spec:", {
+        key: spec.key,
+        type: spec.type,
+        selectedValue,
+        options: spec.options,
+      });
+
+      if (selectedValue) {
+        if (spec.type === "select" && spec.options) {
+          // Handle select-type specifications
+          const langOptions = spec.options as unknown as SpecOptions;
+          const enOptions = langOptions.en || [];
+          const zhOptions = langOptions["zh-TW"] || [];
+
+          console.log("Language options:", {
+            en: enOptions,
+            "zh-TW": zhOptions,
+            selectedValue,
+          });
+
+          // Find the index in the current language's options
+          const currentLangOptions = langOptions[language] || [];
+          const selectedIndex = currentLangOptions.indexOf(selectedValue);
+
+          if (selectedIndex !== -1) {
+            // Store both language values
+            specDisplayValues[spec.key] = {
+              en: enOptions[selectedIndex],
+              "zh-TW": zhOptions[selectedIndex],
+            };
+          }
+        } else {
+          // Handle text and number type specifications
+          specDisplayValues[spec.key] = {
+            en: selectedValue,
+            "zh-TW": selectedValue,
+          };
+        }
+      }
+    });
+
+    console.log("Final spec values:", specDisplayValues);
+
+    // Calculate total price including options
+    let totalPrice = product.price;
+    Object.entries(specsToUse).forEach(([key, value]) => {
+      if (key.endsWith("_price")) {
+        totalPrice += Number(value) || 0;
+      }
+    });
+
+    console.log("Adding to cart with prices:", {
+      basePrice: product.price,
+      totalPrice,
+      selectedSpecs: specsToUse,
+    });
+
+    // Create cart item with specifications
+    const cartItem = {
+      _id: product._id,
+      name: product.name,
+      displayNames: product.displayNames,
+      images: product.images,
+      price: totalPrice, // Use total price including options
+      basePrice: product.price, // Store original price
+      brand: product.brand || "No Brand",
+      category: product.category,
+      material: product.material || "Not Specified",
+      condition: product.condition || "Not Specified",
+      quantity: 1,
+      selectedSpecifications: {
+        ...specDisplayValues,
+        ...Object.entries(specsToUse)
+          .filter(([key]) => key.endsWith("_price"))
+          .reduce((acc, [key, value]) => ({ ...acc, [key]: value }), {}),
+      },
+    };
+
+    addItem(cartItem);
+    mutate(`/api/product/${product._id}?language=${language}&skipCache=true`);
+    openCart();
   };
 
   return (
@@ -71,14 +233,40 @@ const ProductDetailsSinglePage = ({
         <div className="app-global-container mx-auto px-4 lg:px-8 max-w-screen-2xl w-full">
           <div className="flex flex-col md:flex-row bg-card rounded-t-xl overflow-hidden">
             <ProductImageGallery product={product} />
-            <div className="flex flex-col md:flex-row flex-1 -mt-4 md:mt-0">
-              <ProdDetailsPrice
-                product={product}
-                handleAddToCart={handleAddToCart}
-                className="order-1 md:order-2 -mt-2 md:mt-0"
-              />
-              <div className="sm:w-full md:w-1/2 p-2 md:p-6 order-2 md:order-1">
-                <ProdDetailsList product={product} />
+            <div className="flex flex-col flex-1">
+              <div className="sm:w-full p-4 md:p-6">
+                <ProdDetailsList
+                  product={product}
+                  onSpecificationsChange={setSelectedSpecs}
+                />
+                <div className="mt-4">
+                  <ProdDetailsPrice
+                    product={{
+                      ...product,
+                      price: (() => {
+                        let totalPrice = product.price;
+                        product.specifications?.forEach((spec) => {
+                          if (
+                            spec.type === "select" &&
+                            spec.options &&
+                            selectedSpecs[spec.key]
+                          ) {
+                            const selectedValue = selectedSpecs[spec.key];
+                            const optionIndex =
+                              spec.options[language].indexOf(selectedValue);
+                            if (optionIndex !== -1 && spec.options.prices) {
+                              totalPrice +=
+                                spec.options.prices[optionIndex] || 0;
+                            }
+                          }
+                        });
+                        return totalPrice;
+                      })(),
+                    }}
+                    selectedSpecs={selectedSpecs}
+                    handleAddToCart={handleAddToCartWithSpecs}
+                  />
+                </div>
               </div>
             </div>
           </div>

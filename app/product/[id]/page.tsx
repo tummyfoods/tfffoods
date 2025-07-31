@@ -45,11 +45,6 @@ export default function ProductPage() {
     }
   }, [reviewsData]);
 
-  const handleAddToCart = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-    // Add to cart logic here
-  };
-
   const isLoading = !productData && !productError;
   const isError = productError;
 
@@ -118,7 +113,6 @@ export default function ProductPage() {
         product={product}
         averageRating={averageRating}
         allReviews={allReviews}
-        handleAddToCart={handleAddToCart}
         setAllReviews={setAllReviews}
         setAverageRating={setAverageRating}
       />

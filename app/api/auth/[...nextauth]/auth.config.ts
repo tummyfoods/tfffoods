@@ -223,6 +223,12 @@ export const authOptions: NextAuthOptions = {
       return session;
     },
   },
-  secret: process.env.NEXTAUTH_SECRET,
+  secret:
+    process.env.NEXTAUTH_SECRET ||
+    (() => {
+      throw new Error(
+        "Please set NEXTAUTH_SECRET environment variable. Generate one with: node -e \"console.log(require('crypto').randomBytes(32).toString('base64'))\""
+      );
+    })(),
   debug: process.env.NODE_ENV === "development",
 };

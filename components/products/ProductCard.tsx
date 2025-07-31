@@ -12,7 +12,8 @@ import { useCartUI } from "@/components/ui/CartUIContext";
 import { StarRating } from "@/components/ui/StarRating";
 import useSWR from "swr";
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { SpecificationsModal } from "../ui/SpecificationsModal";
 
 interface ProductCardProps {
   product: Product;
@@ -27,6 +28,8 @@ export default function ProductCard({
   const { language, t } = useTranslation();
   const { addItem } = useCart();
   const { openCart } = useCartUI();
+
+  const [isSpecModalOpen, setIsSpecModalOpen] = useState(false);
 
   // Use SWR to keep product data fresh
   const { data, mutate } = useSWR(
@@ -67,6 +70,14 @@ export default function ProductCard({
 
   const handleAddToCart = () => {
     if (currentStock === 0) return;
+
+    // If product has specifications, show modal
+    if (currentProduct.category?.specifications?.length > 0) {
+      setIsSpecModalOpen(true);
+      return;
+    }
+
+    // If no specifications, add directly to cart
     addItem(currentProduct);
     openCart();
   };
@@ -196,6 +207,12 @@ export default function ProductCard({
           />
         </div>
       </div>
+      {/* Specifications Modal */}
+      <SpecificationsModal
+        product={currentProduct}
+        isOpen={isSpecModalOpen}
+        onClose={() => setIsSpecModalOpen(false)}
+      />
     </div>
   );
 }

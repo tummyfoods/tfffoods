@@ -12,7 +12,11 @@ import axios from "axios";
 
 interface Props {
   product: Product;
-  handleAddToCart: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  selectedSpecs: Record<string, string>;
+  handleAddToCart: (
+    e: React.MouseEvent<HTMLButtonElement>,
+    specs?: Record<string, string>
+  ) => void;
   className?: string;
 }
 
@@ -20,6 +24,7 @@ const fetcher = (url: string) => axios.get(url).then((res) => res.data);
 
 const ProdDetailsPrice = ({
   product: initialProduct,
+  selectedSpecs,
   handleAddToCart,
   className,
 }: Props) => {
@@ -97,16 +102,15 @@ const ProdDetailsPrice = ({
     currentProduct.displayNames?.[language] || currentProduct.name;
 
   const onAddToCart = (e: React.MouseEvent<HTMLButtonElement>) => {
-    handleAddToCart(e);
+    e.preventDefault();
+    console.log("ProdDetailsPrice - Adding to cart with specs:", selectedSpecs);
+    handleAddToCart(e, selectedSpecs);
     openCart();
   };
 
   return (
-    <div className={cn("bg-card rounded-lg p-6", className)}>
-      <div className="flex flex-col space-y-4">
-        {/* Title */}
-        <h1 className="text-2xl font-bold text-foreground">{productName}</h1>
-
+    <div className={cn("", className)}>
+      <div className="flex flex-col space-y-2">
         {/* Price */}
         <div className="flex items-baseline">
           <span className="text-3xl font-bold text-foreground">
@@ -136,15 +140,16 @@ const ProdDetailsPrice = ({
         </div>
 
         {/* Add to Cart and Wishlist Buttons - Use explicit comparison */}
-        <div className="flex justify-between items-center gap-4">
+        <div className="flex items-center gap-4 mt-2">
           <button
             onClick={onAddToCart}
             disabled={currentStock === 0}
-            className={`flex items-center justify-center px-4 py-2 border border-transparent rounded-md text-base font-medium ${
+            className={`flex items-center justify-center px-6 py-2.5 border border-transparent rounded-md text-base font-medium ${
               currentStock === 0
                 ? "bg-muted text-muted-foreground cursor-not-allowed"
                 : "bg-primary text-primary-foreground hover:bg-primary/90"
             } transition-colors duration-200 flex-grow`}
+            type="button"
           >
             <ShoppingCart className="w-5 h-5 mr-2" />
             <span className="whitespace-nowrap text-sm">
@@ -158,7 +163,7 @@ const ProdDetailsPrice = ({
           <WishlistButton
             productId={currentProduct._id}
             variant="icon"
-            className="p-3 scale-125"
+            className="p-2.5 scale-125"
           />
         </div>
       </div>
@@ -167,5 +172,9 @@ const ProdDetailsPrice = ({
 };
 
 export default React.memo(ProdDetailsPrice, (prevProps, nextProps) => {
-  return prevProps.product._id === nextProps.product._id;
+  return (
+    prevProps.product._id === nextProps.product._id &&
+    JSON.stringify(prevProps.selectedSpecs) ===
+      JSON.stringify(nextProps.selectedSpecs)
+  );
 });

@@ -750,7 +750,11 @@ export default function CheckoutPage() {
                 {items.map((item: CartItem) => (
                   <div
                     className="flex items-center space-x-4 p-4 border-b border-gray-200 dark:border-gray-700 last:border-0"
-                    key={item._id}
+                    key={`${item._id}-${Object.entries(
+                      item.selectedSpecifications || {}
+                    )
+                      .map(([key, value]) => `${key}:${value}`)
+                      .join(";")}`}
                   >
                     <Image
                       src={item?.images[0]}
@@ -764,6 +768,41 @@ export default function CheckoutPage() {
                       <h3 className="font-semibold text-gray-800 dark:text-gray-100">
                         {item.displayNames?.[language] || item.name}
                       </h3>
+                      <p className="text-sm text-gray-500 dark:text-gray-400">
+                        {t("cart.basePrice")}: ${item.basePrice?.toFixed(2)}
+                      </p>
+                      {/* Show specifications */}
+                      {Object.entries(item.selectedSpecifications || {}).map(
+                        ([key, value]) => {
+                          if (key.endsWith("_price")) return null;
+                          return (
+                            <p
+                              key={key}
+                              className="text-sm text-gray-500 dark:text-gray-400"
+                            >
+                              {t(`cart.specifications.${key}`)}:{" "}
+                              {typeof value === "object"
+                                ? value[language]
+                                : value}
+                              {item.selectedSpecifications?.[
+                                `${key}_price`
+                              ] && (
+                                <span className="ml-2">
+                                  {Number(
+                                    item.selectedSpecifications[`${key}_price`]
+                                  ) === 0
+                                    ? t("common.free")
+                                    : `+$${Number(
+                                        item.selectedSpecifications[
+                                          `${key}_price`
+                                        ]
+                                      ).toFixed(2)}`}
+                                </span>
+                              )}
+                            </p>
+                          );
+                        }
+                      )}
                       <p className="text-sm text-gray-500 dark:text-gray-400">
                         {t("product.brand.label")}:{" "}
                         {typeof item.brand === "string"

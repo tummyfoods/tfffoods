@@ -54,10 +54,51 @@ const specificationSchema = new mongoose.Schema(
       enum: ["text", "number", "select"],
       default: "text",
     },
+    selectedOptionPrice: {
+      type: Number,
+      default: 0,
+      validate: {
+        validator: function (this: any, price: number) {
+          return this.type !== "select" || price >= 0;
+        },
+        message: "Selected option price must be non-negative",
+      },
+    },
     displayNames: {
       en: { type: String, required: true },
       "zh-TW": { type: String, required: true },
     },
+    options: {
+      en: {
+        type: [String],
+        default: undefined,
+        validate: {
+          validator: function (this: any, options: string[] | undefined) {
+            return (
+              this.type !== "select" ||
+              (Array.isArray(options) && options.length > 0)
+            );
+          },
+          message:
+            "English options are required for select-type specifications",
+        },
+      },
+      "zh-TW": {
+        type: [String],
+        default: undefined,
+        validate: {
+          validator: function (this: any, options: string[] | undefined) {
+            return (
+              this.type !== "select" ||
+              (Array.isArray(options) && options.length > 0)
+            );
+          },
+          message:
+            "Chinese options are required for select-type specifications",
+        },
+      },
+    },
+    required: { type: Boolean, default: false },
   },
   { _id: false }
 );
@@ -113,7 +154,7 @@ const productSchema = new mongoose.Schema<ProductDocument>(
       validate: {
         validator: function (specs: any[]) {
           return specs.every((spec) => {
-            return (
+            const isValid =
               spec.key &&
               spec.value &&
               typeof spec.value === "object" &&
@@ -122,12 +163,25 @@ const productSchema = new mongoose.Schema<ProductDocument>(
               spec.displayNames &&
               typeof spec.displayNames === "object" &&
               "en" in spec.displayNames &&
-              "zh-TW" in spec.displayNames
-            );
+              "zh-TW" in spec.displayNames;
+
+            // Additional validation for option price
+            if (
+              spec.type === "select" &&
+              spec.selectedOptionPrice !== undefined
+            ) {
+              return (
+                isValid &&
+                typeof spec.selectedOptionPrice === "number" &&
+                spec.selectedOptionPrice >= 0
+              );
+            }
+
+            return isValid;
           });
         },
         message:
-          "Invalid specifications format. Each specification must have key, value (with en and zh-TW), and displayNames (with en and zh-TW)",
+          "Invalid specifications format. Each specification must have key, value (with en and zh-TW), displayNames (with en and zh-TW), and valid selectedOptionPrice for select type",
       },
     },
     featured: { type: Boolean, default: false },

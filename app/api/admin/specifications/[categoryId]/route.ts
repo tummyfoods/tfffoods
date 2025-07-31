@@ -9,7 +9,11 @@ interface Specification {
   label: string;
   key: string;
   type: "text" | "number" | "select";
-  options?: string[];
+  options?: {
+    en: string[];
+    "zh-TW": string[];
+    prices?: number[];
+  };
   required: boolean;
   displayNames: {
     en: string;
@@ -126,7 +130,20 @@ export async function POST(
           key,
           type: spec.type,
           options:
-            spec.type === "select" ? spec.options?.filter(Boolean) : undefined,
+            spec.type === "select"
+              ? {
+                  en: spec.options?.en?.filter(Boolean) || [],
+                  "zh-TW": spec.options?.["zh-TW"]?.filter(Boolean) || [],
+                  prices:
+                    spec.options?.prices?.map((p) => {
+                      const num = typeof p === "string" ? parseFloat(p) : p;
+                      return isNaN(num) ? 0 : Math.round(num * 100) / 100;
+                    }) ||
+                    Array(spec.options?.en?.filter(Boolean).length || 0).fill(
+                      0
+                    ),
+                }
+              : undefined,
           required: !!spec.required,
           displayNames: {
             en: spec.displayNames.en.trim(),

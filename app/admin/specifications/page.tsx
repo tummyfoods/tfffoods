@@ -14,7 +14,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
-import { Plus, Settings2, LayoutDashboard, Sliders } from "lucide-react";
+import { Plus, Settings2, LayoutDashboard, Sliders, X } from "lucide-react";
 import {
   Table,
   TableBody,
@@ -41,7 +41,11 @@ interface Specification {
   label: string;
   key?: string;
   type: "text" | "number" | "select";
-  options?: string[];
+  options?: {
+    en: string[];
+    "zh-TW": string[];
+    prices?: number[];
+  };
   required: boolean;
   displayNames: {
     en: string;
@@ -53,7 +57,11 @@ interface Specification {
   };
 }
 
-type SpecificationField = keyof Specification | "displayNames" | "descriptions";
+type SpecificationField =
+  | keyof Specification
+  | "displayNames"
+  | "descriptions"
+  | "options";
 type SpecificationValue =
   | string
   | boolean
@@ -61,6 +69,10 @@ type SpecificationValue =
   | {
       en: string;
       "zh-TW": string;
+    }
+  | {
+      en: string | string[];
+      "zh-TW": string | string[];
     };
 
 export default function SpecificationsPage() {
@@ -179,8 +191,13 @@ export default function SpecificationsPage() {
           spec.displayNames.en.toLowerCase().replace(/[^a-z0-9]+/g, "_"),
         options:
           spec.type === "select" && spec.options
-            ? spec.options.filter(Boolean)
+            ? {
+                en: spec.options.en || [],
+                "zh-TW": spec.options["zh-TW"] || [],
+                prices: spec.options.prices || [],
+              }
             : undefined,
+        required: !!spec.required,
       }));
 
       // Always send the request, even with empty specifications
@@ -224,6 +241,11 @@ export default function SpecificationsPage() {
         en: "",
         "zh-TW": "",
       },
+      options: {
+        en: [],
+        "zh-TW": [],
+        prices: [],
+      },
     };
     setSpecifications((prevSpecs) => [...prevSpecs, newSpec]);
   };
@@ -247,9 +269,15 @@ export default function SpecificationsPage() {
         if (value !== "select") {
           spec.options = undefined;
         }
+      } else if (field === "options") {
+        // Just store the raw input strings directly
+        spec.options = value as { en: string[]; "zh-TW": string[] };
       } else {
         spec[
-          field as keyof Omit<Specification, "displayNames" | "descriptions">
+          field as keyof Omit<
+            Specification,
+            "displayNames" | "descriptions" | "options"
+          >
         ] = value as never;
       }
 
@@ -485,25 +513,175 @@ export default function SpecificationsPage() {
                             </div>
 
                             {spec.type === "select" && (
-                              <div>
-                                <Label>
-                                  {t("specifications.form.options")}
-                                </Label>
-                                <Input
-                                  value={spec.options?.join(", ") || ""}
-                                  onChange={(e) =>
-                                    updateSpecification(
-                                      index,
-                                      "options",
-                                      e.target.value
-                                        .split(",")
-                                        .map((s) => s.trim())
+                              <div className="space-y-4">
+                                <div className="space-y-2">
+                                  <Label>
+                                    {t("specifications.form.options")}
+                                  </Label>
+                                  {(spec.options?.en || []).map(
+                                    (_, optionIndex) => (
+                                      <div
+                                        key={optionIndex}
+                                        className="flex gap-2 items-start"
+                                      >
+                                        <div className="flex-1">
+                                          <Input
+                                            type="text"
+                                            value={
+                                              spec.options?.en[optionIndex] ||
+                                              ""
+                                            }
+                                            onChange={(e) => {
+                                              const newOptions = {
+                                                en: [
+                                                  ...(spec.options?.en || []),
+                                                ],
+                                                "zh-TW": [
+                                                  ...(spec.options?.["zh-TW"] ||
+                                                    []),
+                                                ],
+                                                prices: [
+                                                  ...(spec.options?.prices ||
+                                                    []),
+                                                ],
+                                              };
+                                              newOptions.en[optionIndex] =
+                                                e.target.value;
+                                              updateSpecification(
+                                                index,
+                                                "options",
+                                                newOptions
+                                              );
+                                            }}
+                                            placeholder="English option"
+                                          />
+                                        </div>
+                                        <div className="flex-1">
+                                          <Input
+                                            type="text"
+                                            value={
+                                              spec.options?.["zh-TW"][
+                                                optionIndex
+                                              ] || ""
+                                            }
+                                            onChange={(e) => {
+                                              const newOptions = {
+                                                en: [
+                                                  ...(spec.options?.en || []),
+                                                ],
+                                                "zh-TW": [
+                                                  ...(spec.options?.["zh-TW"] ||
+                                                    []),
+                                                ],
+                                                prices: [
+                                                  ...(spec.options?.prices ||
+                                                    []),
+                                                ],
+                                              };
+                                              newOptions["zh-TW"][optionIndex] =
+                                                e.target.value;
+                                              updateSpecification(
+                                                index,
+                                                "options",
+                                                newOptions
+                                              );
+                                            }}
+                                            placeholder="中文選項"
+                                          />
+                                        </div>
+                                        <div className="w-32">
+                                          <Input
+                                            type="number"
+                                            min="0"
+                                            step="0.01"
+                                            value={
+                                              spec.options?.prices?.[
+                                                optionIndex
+                                              ] || 0
+                                            }
+                                            onChange={(e) => {
+                                              const newOptions = {
+                                                en: [
+                                                  ...(spec.options?.en || []),
+                                                ],
+                                                "zh-TW": [
+                                                  ...(spec.options?.["zh-TW"] ||
+                                                    []),
+                                                ],
+                                                prices: [
+                                                  ...(spec.options?.prices ||
+                                                    []),
+                                                ],
+                                              };
+                                              newOptions.prices[optionIndex] =
+                                                Number(e.target.value) || 0;
+                                              updateSpecification(
+                                                index,
+                                                "options",
+                                                newOptions
+                                              );
+                                            }}
+                                            placeholder="0"
+                                          />
+                                        </div>
+                                        <Button
+                                          variant="destructive"
+                                          size="icon"
+                                          onClick={() => {
+                                            const newOptions = {
+                                              en:
+                                                spec.options?.en.filter(
+                                                  (_, i) => i !== optionIndex
+                                                ) || [],
+                                              "zh-TW":
+                                                spec.options?.["zh-TW"].filter(
+                                                  (_, i) => i !== optionIndex
+                                                ) || [],
+                                              prices:
+                                                spec.options?.prices?.filter(
+                                                  (_, i) => i !== optionIndex
+                                                ) || [],
+                                            };
+                                            updateSpecification(
+                                              index,
+                                              "options",
+                                              newOptions
+                                            );
+                                          }}
+                                        >
+                                          <X className="h-4 w-4" />
+                                        </Button>
+                                      </div>
                                     )
-                                  }
-                                  placeholder={t(
-                                    "specifications.form.placeholder.options"
                                   )}
-                                />
+                                  <Button
+                                    type="button"
+                                    variant="outline"
+                                    size="sm"
+                                    className="mt-2"
+                                    onClick={() => {
+                                      const newOptions = {
+                                        en: [...(spec.options?.en || []), ""],
+                                        "zh-TW": [
+                                          ...(spec.options?.["zh-TW"] || []),
+                                          "",
+                                        ],
+                                        prices: [
+                                          ...(spec.options?.prices || []),
+                                          0,
+                                        ],
+                                      };
+                                      updateSpecification(
+                                        index,
+                                        "options",
+                                        newOptions
+                                      );
+                                    }}
+                                  >
+                                    <Plus className="h-4 w-4 mr-2" />
+                                    {t("specifications.form.addOption")}
+                                  </Button>
+                                </div>
                               </div>
                             )}
 

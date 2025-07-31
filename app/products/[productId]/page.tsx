@@ -5,8 +5,8 @@ import { useParams } from "next/navigation";
 import axios from "axios";
 import toast from "react-hot-toast";
 import type { Product } from "@/types";
-import useCartStore from "@/store/cartStore";
 import ProductDetailsSinglePage from "@/components/ui/ProductDetailsSinglePage";
+import { useTranslation } from "@/providers/language/LanguageContext";
 
 export default function ProductPage() {
   const params = useParams();
@@ -16,7 +16,7 @@ export default function ProductPage() {
         ? params.productId[0]
         : params.productId
       : "";
-  const addToCart = useCartStore((state) => state.addItem);
+  const { t } = useTranslation();
 
   // Core states
   const [product, setProduct] = useState<Product | null>(null);
@@ -73,25 +73,6 @@ export default function ProductPage() {
     fetchReviews();
   }, [productId]);
 
-  // Cart functionality
-  const handleAddToCart = () => {
-    if (!product) return;
-
-    addToCart({
-      _id: product._id,
-      name: product.name,
-      displayNames: product.displayNames,
-      images: product.images,
-      price: product.price,
-      brand: product.brand || "No Brand",
-      material: product.material || "Not Specified",
-      condition: product.condition || "Not Specified",
-      quantity: 1,
-    });
-
-    toast.success("Added to cart!");
-  };
-
   if (isLoading) {
     return (
       <div className="flex justify-center items-center min-h-screen">
@@ -111,7 +92,6 @@ export default function ProductPage() {
   return (
     <ProductDetailsSinglePage
       product={product}
-      handleAddToCart={handleAddToCart}
       averageRating={averageRating}
       allReviews={allReviews}
       setAllReviews={setAllReviews}

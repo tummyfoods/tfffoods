@@ -27,36 +27,73 @@ export async function GET(
 
     // Check cache first if not skipping
     if (!skipCache) {
-      const cachedProduct = productCache.get(productId);
-      if (cachedProduct) {
-        // Return cached data with the requested language
-        const response = {
-          ...cachedProduct,
-          name: cachedProduct.displayNames?.[language] || cachedProduct.name,
-          description:
-            cachedProduct.descriptions?.[language] || cachedProduct.description,
-          brand: {
-            ...cachedProduct.brand,
-            name:
-              cachedProduct.brand.displayNames?.[language] ||
-              cachedProduct.brand.name,
-          },
-          category: {
-            ...cachedProduct.category,
-            name:
-              cachedProduct.category?.displayNames?.[language] ||
-              cachedProduct.category?.name,
-          },
-          specifications: cachedProduct.specifications.map((spec: any) => ({
-            ...spec,
-            label: spec.displayNames?.[language] || spec.key,
-          })),
-        };
-        return NextResponse.json({ product: response });
+      try {
+        const cachedProduct = productCache.get(productId);
+        if (cachedProduct) {
+          // Return cached data with the requested language
+          const response = {
+            ...cachedProduct,
+            name: cachedProduct.displayNames?.[language] || cachedProduct.name,
+            description:
+              cachedProduct.descriptions?.[language] ||
+              cachedProduct.description,
+            brand: {
+              ...cachedProduct.brand,
+              name:
+                cachedProduct.brand?.displayNames?.[language] ||
+                cachedProduct.brand?.name,
+            },
+            category: {
+              ...cachedProduct.category,
+              name:
+                cachedProduct.category?.displayNames?.[language] ||
+                cachedProduct.category?.name,
+              specifications: cachedProduct.category?.specifications?.map(
+                (spec: any) => ({
+                  ...spec,
+                  key: spec.key,
+                  type: spec.type,
+                  options:
+                    spec.type === "select" && spec.options
+                      ? {
+                          en: spec.options?.en || [],
+                          "zh-TW": spec.options?.["zh-TW"] || [],
+                          prices: spec.options?.prices || [],
+                        }
+                      : undefined,
+                  required: spec.required,
+                  displayNames: spec.displayNames,
+                  value: spec.value,
+                  label: spec.displayNames?.[language] || spec.key,
+                })
+              ),
+            },
+            specifications: cachedProduct.specifications?.map((spec: any) => ({
+              ...spec,
+              key: spec.key,
+              type: spec.type,
+              options:
+                spec.type === "select" && spec.options
+                  ? {
+                      en: spec.options?.en || [],
+                      "zh-TW": spec.options?.["zh-TW"] || [],
+                    }
+                  : undefined,
+              required: spec.required,
+              displayNames: spec.displayNames,
+              value: spec.value,
+              label: spec.displayNames?.[language] || spec.key,
+            })),
+          };
+          return NextResponse.json({ product: response });
+        }
+      } catch (error) {
+        console.error("Error processing cached product:", error);
+        // Don't return error, continue to fetch from DB
       }
     }
 
-    // If not in cache, fetch from database
+    // If not in cache or cache error, fetch from database
     const doc = await Product.findById(productId)
       .populate({
         path: "brand",
@@ -77,30 +114,68 @@ export async function GET(
       );
     }
 
-    // Store in cache
-    productCache.set(productId, doc);
+    try {
+      // Store in cache
+      productCache.set(productId, doc);
 
-    // Format response with language
-    const response = {
-      ...doc,
-      name: doc.displayNames?.[language] || doc.name,
-      description: doc.descriptions?.[language] || doc.description,
-      brand: {
-        ...doc.brand,
-        name: doc.brand.displayNames?.[language] || doc.brand.name,
-      },
-      category: {
-        ...doc.category,
-        name: doc.category?.displayNames?.[language] || doc.category?.name,
-      },
-      specifications: doc.specifications?.map((spec: any) => ({
-        ...spec,
-        label: spec.displayNames?.[language] || spec.key,
-      })),
-      timestamp: Date.now(), // Add timestamp for cache busting
-    };
+      // Format response with language
+      const response = {
+        ...doc,
+        name: doc.displayNames?.[language] || doc.name,
+        description: doc.descriptions?.[language] || doc.description,
+        brand: {
+          ...doc.brand,
+          name: doc.brand?.displayNames?.[language] || doc.brand?.name,
+        },
+        category: {
+          ...doc.category,
+          name: doc.category?.displayNames?.[language] || doc.category?.name,
+          specifications: doc.category?.specifications?.map((spec: any) => ({
+            ...spec,
+            key: spec.key,
+            type: spec.type,
+            options:
+              spec.type === "select" && spec.options
+                ? {
+                    en: spec.options?.en || [],
+                    "zh-TW": spec.options?.["zh-TW"] || [],
+                    prices: spec.options?.prices || [],
+                  }
+                : undefined,
+            required: spec.required,
+            displayNames: spec.displayNames,
+            value: spec.value,
+            label: spec.displayNames?.[language] || spec.key,
+          })),
+        },
+        specifications: doc.specifications?.map((spec: any) => ({
+          ...spec,
+          key: spec.key,
+          type: spec.type,
+          options:
+            spec.type === "select" && spec.options
+              ? {
+                  en: spec.options?.en || [],
+                  "zh-TW": spec.options?.["zh-TW"] || [],
+                  prices: spec.options?.prices || [],
+                }
+              : undefined,
+          required: spec.required,
+          displayNames: spec.displayNames,
+          value: spec.value,
+          label: spec.displayNames?.[language] || spec.key,
+        })),
+        timestamp: Date.now(),
+      };
 
-    return NextResponse.json({ product: response });
+      return NextResponse.json({ product: response });
+    } catch (error) {
+      console.error("Error formatting product response:", error);
+      return NextResponse.json(
+        { error: "Failed to format product data" },
+        { status: 500 }
+      );
+    }
   } catch (error) {
     console.error("Error fetching product:", error);
     return NextResponse.json(

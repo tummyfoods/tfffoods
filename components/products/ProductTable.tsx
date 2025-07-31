@@ -13,7 +13,8 @@ import LoadingSkeleton from "@/components/ui/LoadingSkeleton";
 import { Button } from "@/components/ui/button";
 import useSWR from "swr";
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { SpecificationsModal } from "../ui/SpecificationsModal";
 
 interface ProductTableProps {
   products: Product[];
@@ -26,6 +27,7 @@ interface ProductTableProps {
 const fetcher = (url: string) => axios.get(url).then((res) => res.data);
 
 const ProductRow = ({ product: initialProduct }: { product: Product }) => {
+  const [isSpecModalOpen, setIsSpecModalOpen] = useState(false);
   const { language, t } = useTranslation();
   const { addItem } = useCart();
   const { openCart } = useCartUI();
@@ -70,83 +72,119 @@ const ProductRow = ({ product: initialProduct }: { product: Product }) => {
 
   const handleAddToCart = () => {
     if (currentStock === 0) return;
-    addItem(currentProduct);
+
+    // If product has specifications, show modal
+    if (currentProduct.category?.specifications?.length > 0) {
+      setIsSpecModalOpen(true);
+      return;
+    }
+
+    // If no specifications, add directly to cart
+    addItem({
+      ...currentProduct,
+      basePrice: currentProduct.price,
+      price: currentProduct.price,
+    });
     openCart();
   };
 
   return (
-    <tr
-      className="border-b border-border hover:bg-accent/5"
-      data-product-id={currentProduct._id}
-    >
-      <td className="p-4">
-        <div className="relative h-16 w-16">
-          <Image
-            src={currentProduct.images[0]}
-            alt={currentProduct.name}
-            fill
-            className="object-cover rounded"
-          />
-        </div>
-      </td>
-      <td className="p-4">
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between sm:gap-4">
-          <Link href={`/product/${currentProduct._id}`}>
-            <span className="font-medium hover:text-primary block mb-2 sm:mb-0">
-              {currentProduct.displayNames?.[language] || currentProduct.name}
-            </span>
-          </Link>
-          <div className="flex items-center gap-2 whitespace-nowrap">
-            <span className="font-medium">
-              ${currentProduct.price.toFixed(2)}
-            </span>
-            {currentProduct.originalPrice &&
-              currentProduct.originalPrice > currentProduct.price && (
-                <span className="text-sm text-muted-foreground line-through">
-                  ${currentProduct.originalPrice.toFixed(2)}
-                </span>
-              )}
+    <>
+      <tr
+        className="border-b border-border hover:bg-accent/5"
+        data-product-id={currentProduct._id}
+      >
+        <td className="p-4">
+          <div className="relative h-16 w-16">
+            <Image
+              src={currentProduct.images[0]}
+              alt={currentProduct.name}
+              fill
+              className="object-cover rounded"
+            />
           </div>
-        </div>
-      </td>
-      <td className="hidden sm:table-cell p-4">
-        <div className="flex items-center">
-          {currentProduct.averageRating && currentProduct.averageRating > 0 ? (
-            <>
-              <Star className="w-4 h-4 text-primary fill-primary" />
-              <span className="ml-1">
-                {currentProduct.averageRating.toFixed(1)} (
-                {currentProduct.numReviews})
+        </td>
+        <td className="p-4">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between sm:gap-4">
+            <Link href={`/product/${currentProduct._id}`}>
+              <span className="font-medium hover:text-primary block mb-2 sm:mb-0">
+                {currentProduct.displayNames?.[language] || currentProduct.name}
               </span>
-            </>
-          ) : (
-            <span className="text-sm text-muted-foreground">
-              {t("common.noRatingsYet")}
-            </span>
-          )}
-        </div>
-      </td>
-      <td className="p-4">
-        <div className="flex items-center gap-4">
-          <Button
-            variant="default"
-            size="sm"
-            onClick={handleAddToCart}
-            disabled={currentStock === 0}
-          >
-            {currentStock === 0
-              ? t("product.stock.outOfStock")
-              : t("common.addToCart")}
-          </Button>
-          <WishlistButton productId={currentProduct._id} variant="icon" />
-          {session?.user?.admin && (
-            <Link href={`/admin/editProduct/${currentProduct._id}`}>
-              <Edit className="w-5 h-5 text-muted-foreground hover:text-primary" />
             </Link>
-          )}
-        </div>
-      </td>
-    </tr>
+            <div className="flex items-center gap-2 whitespace-nowrap">
+              <span className="font-medium">
+                ${currentProduct.price.toFixed(2)}
+              </span>
+              {currentProduct.originalPrice &&
+                currentProduct.originalPrice > currentProduct.price && (
+                  <span className="text-sm text-muted-foreground line-through">
+                    ${currentProduct.originalPrice.toFixed(2)}
+                  </span>
+                )}
+            </div>
+          </div>
+        </td>
+        <td className="hidden sm:table-cell p-4">
+          <div className="flex items-center">
+            {currentProduct.averageRating &&
+            currentProduct.averageRating > 0 ? (
+              <>
+                <Star className="w-4 h-4 text-primary fill-primary" />
+                <span className="ml-1">
+                  {currentProduct.averageRating.toFixed(1)} (
+                  {currentProduct.numReviews})
+                </span>
+              </>
+            ) : (
+              <span className="text-sm text-muted-foreground">
+                {t("common.noRatingsYet")}
+              </span>
+            )}
+          </div>
+        </td>
+        <td className="p-4">
+          <div className="flex items-center gap-4">
+            <Button
+              variant="default"
+              size="sm"
+              onClick={handleAddToCart}
+              disabled={currentStock === 0}
+              className="hidden sm:inline-flex"
+            >
+              {currentStock === 0
+                ? t("product.stock.outOfStock")
+                : t("common.addToCart")}
+            </Button>
+            <Button
+              variant="default"
+              size="icon"
+              onClick={handleAddToCart}
+              disabled={currentStock === 0}
+              className="sm:hidden h-10 w-10 bg-[#535C91] hover:bg-[#424874] text-white"
+              title={
+                currentStock === 0
+                  ? t("product.stock.outOfStock")
+                  : t("common.addToCart")
+              }
+            >
+              <ShoppingCart className="h-6 w-6" />
+            </Button>
+            <WishlistButton productId={currentProduct._id} variant="icon" />
+            {session?.user?.admin && (
+              <Link href={`/admin/editProduct/${currentProduct._id}`}>
+                <Edit className="w-5 h-5 text-muted-foreground hover:text-primary" />
+              </Link>
+            )}
+          </div>
+        </td>
+      </tr>
+      {/* Specifications Modal */}
+      <SpecificationsModal
+        product={currentProduct}
+        isOpen={isSpecModalOpen}
+        onClose={() => setIsSpecModalOpen(false)}
+      />
+    </>
   );
 };
 

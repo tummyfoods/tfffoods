@@ -74,7 +74,7 @@ const ProductImageGallery = ({ product }: Props) => {
   if (!images.length) {
     return (
       <div className="md:w-1/2 p-6">
-        <div className="relative sm:h-[35rem] h-[25rem] mb-6">
+        <div className="relative sm:h-[28rem] h-[20rem] mb-6">
           <Image
             src="/placeholder-watch.jpg"
             alt={product.name}
@@ -89,7 +89,7 @@ const ProductImageGallery = ({ product }: Props) => {
 
   return (
     <div className="md:w-1/2 p-6">
-      <div className="relative sm:h-[35rem] h-[25rem] mb-6" {...handlers}>
+      <div className="relative sm:h-[28rem] h-[20rem] mb-6" {...handlers}>
         <Image
           src={images[currentImageIndex] || "/placeholder-watch.jpg"}
           alt={`${product.name} - Image ${currentImageIndex + 1}`}

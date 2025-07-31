@@ -119,3 +119,22 @@ export interface Specification {
   options?: string[];
   required?: boolean;
 }
+
+export interface ProductSpecification {
+  key: string;
+  value: {
+    en: string;
+    "zh-TW": string;
+  };
+  type: "text" | "number" | "select";
+  displayNames?: {
+    en: string;
+    "zh-TW": string;
+  };
+  description?: string;
+  options?: {
+    en: string[];
+    "zh-TW": string[];
+  };
+  required?: boolean;
+}

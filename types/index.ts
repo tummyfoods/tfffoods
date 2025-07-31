@@ -150,13 +150,9 @@ export interface Product {
       en: string;
       "zh-TW": string;
     };
-    specifications?: {
-      [key: string]: string | number | boolean;
-    };
+    specifications?: Specification[];
   };
-  specifications?: {
-    [key: string]: string | number | boolean;
-  };
+  specifications?: Specification[];
   material?: string;
   condition?: string;
   averageRating?: number;
@@ -178,6 +174,7 @@ export interface CartItem {
   };
   images: string[];
   price: number;
+  basePrice?: number;
   brand?:
     | {
         _id: string;
@@ -188,9 +185,18 @@ export interface CartItem {
         };
       }
     | string;
+  category?: {
+    _id: string;
+    name: string;
+    displayNames?: {
+      en: string;
+      "zh-TW": string;
+    };
+  };
   material?: string;
   condition?: string;
   quantity: number;
+  selectedSpecifications?: Record<string, string>;
 }
 
 // Type for adding items to cart
@@ -203,6 +209,7 @@ export type AddToCartItem = {
   };
   images: string[];
   price: number;
+  basePrice?: number;
   brand?:
     | {
         _id: string;
@@ -213,16 +220,25 @@ export type AddToCartItem = {
         };
       }
     | string;
+  category?: {
+    _id: string;
+    name: string;
+    displayNames?: {
+      en: string;
+      "zh-TW": string;
+    };
+  };
   material?: string;
   condition?: string;
   quantity?: number;
+  selectedSpecifications?: Record<string, string>;
 };
 
 export interface CartStore {
   items: CartItem[];
   selectedDeliveryType: number;
   addItem: (item: AddToCartItem) => void;
-  removeItem: (id: string) => void;
+  removeItem: (id: string, selectedSpecs?: Record<string, any>) => void;
   clearCart: () => void;
   getTotalPrice: () => number;
   getTotalItems: () => number;
@@ -310,8 +326,11 @@ export interface Specification {
   required?: boolean;
   options?: string[];
   description?: string;
-  value?: string | number;
-  displayNames?: {
+  value: {
+    en: string;
+    "zh-TW": string;
+  };
+  displayNames: {
     en: string;
     "zh-TW": string;
   };

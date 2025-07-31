@@ -12,6 +12,15 @@
   "continueShopping": "Continue Shopping",
   "updateQuantity": "Update Quantity",
   "deliverySettings": "Delivery Options",
+  "specifications": {
+    "filling": "Filling",
+    "filling_price": "Filling Price",
+    "size": "Size",
+    "weight": "Weight",
+    "color": "Color"
+  },
+  "basePrice": "Base Price",
+  "options": "Options",
   "summary": {
     "title": "Cart Summary",
     "items": "Items",

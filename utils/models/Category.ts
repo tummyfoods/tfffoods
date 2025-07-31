@@ -4,7 +4,10 @@ interface Specification {
   label: string;
   key: string;
   type: "text" | "number" | "select";
-  options?: string[];
+  options?: {
+    en: string[];
+    "zh-TW": string[];
+  };
   required: boolean;
   displayNames: {
     en: string;
@@ -73,7 +76,47 @@ const categorySchema = new mongoose.Schema(
           enum: ["text", "number", "select"],
           required: true,
         },
-        options: [String],
+        options: {
+          en: {
+            type: [String],
+            default: undefined,
+            validate: {
+              validator: function (this: any, options: string[] | undefined) {
+                return (
+                  this.type !== "select" ||
+                  (Array.isArray(options) && options.length > 0)
+                );
+              },
+              message:
+                "English options are required for select-type specifications",
+            },
+          },
+          "zh-TW": {
+            type: [String],
+            default: undefined,
+            validate: {
+              validator: function (this: any, options: string[] | undefined) {
+                return (
+                  this.type !== "select" ||
+                  (Array.isArray(options) && options.length > 0)
+                );
+              },
+              message:
+                "Chinese options are required for select-type specifications",
+            },
+          },
+          prices: {
+            type: [Number],
+            default: undefined,
+            validate: {
+              validator: function (this: any, prices: number[] | undefined) {
+                if (this.type !== "select") return true;
+                return !prices || prices.every((price) => price >= 0);
+              },
+              message: "Option prices must be non-negative numbers",
+            },
+          },
+        },
         required: { type: Boolean, default: false },
         displayNames: {
           en: { type: String, required: true },
