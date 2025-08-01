@@ -1,12 +1,12 @@
 import { NextResponse } from "next/server";
-import connectDB from "@/utils/mongodb";
+import { connectToDatabase } from "@/utils/database";
 import Invoice from "@/utils/models/Invoice";
 import User from "@/utils/models/User";
 
 export async function GET() {
   try {
     console.log("Testing database connection...");
-    await connectDB();
+    await connectToDatabase();
     console.log("Database connected successfully");
 
     console.log("Testing Invoice model...");

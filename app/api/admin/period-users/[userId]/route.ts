@@ -3,7 +3,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/auth.config";
 import User from "@/utils/models/User";
 import Invoice from "@/utils/models/Invoice";
-import connectDB from "@/utils/mongodb";
+import { connectToDatabase } from "@/utils/database";
 import { addMonths, startOfDay, endOfDay } from "date-fns";
 
 export async function PUT(
@@ -17,7 +17,7 @@ export async function PUT(
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    await connectDB();
+    await connectToDatabase();
 
     const params = await context.params;
     const { isPeriodPaidUser, paymentPeriod } = await request.json();

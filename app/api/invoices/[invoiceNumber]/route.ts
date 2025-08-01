@@ -5,7 +5,7 @@ import Invoice from "@/utils/models/Invoice";
 import User from "@/utils/models/User";
 import { Order } from "@/utils/models/Order";
 import Product from "@/utils/models/Product";
-import connectDB from "@/utils/mongodb";
+import { connectToDatabase } from "@/utils/database";
 
 interface CartProduct {
   product: {
@@ -45,7 +45,7 @@ export async function GET(
     }
 
     console.log("Connecting to database...");
-    await connectDB();
+    await connectToDatabase();
 
     const { invoiceNumber } = await props.params;
     console.log("Fetching invoice number:", invoiceNumber);
@@ -233,7 +233,7 @@ export async function PATCH(
       return NextResponse.json({ error: "Not authenticated" }, { status: 401 });
     }
 
-    await connectDB();
+    await connectToDatabase();
 
     const { invoiceNumber } = await props.params;
     const { paymentProofUrl, paymentDate } = await request.json();

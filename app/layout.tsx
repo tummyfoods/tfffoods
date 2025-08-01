@@ -4,6 +4,7 @@ import { Suspense } from "react";
 import dynamic from "next/dynamic";
 import GoogleMapsScript from "@/components/GoogleMapsScript";
 import { ThemeProvider } from "@/components/theme/theme-provider";
+
 import AuthProvider from "@/components/AuthProvider";
 import { Toaster } from "react-hot-toast";
 import { CloudinaryProvider } from "@/components/providers/CloudinaryProvider";
@@ -100,7 +101,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head />
-      <body className={inter.className}>
+      <body className={`${inter.className} app-background min-h-screen`}>
         <GoogleMapsScript />
         <ThemeProvider
           attribute="class"

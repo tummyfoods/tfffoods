@@ -5,7 +5,7 @@ import Invoice from "@/utils/models/Invoice";
 import User from "@/utils/models/User";
 import { Order } from "@/utils/models/Order";
 import Product from "@/utils/models/Product";
-import connectDB from "@/utils/mongodb";
+import { connectToDatabase } from "@/utils/database";
 import { logger } from "@/utils/logger";
 
 export const dynamic = "force-dynamic";
@@ -20,7 +20,7 @@ export async function GET(request: Request) {
 
     // Connect to database
     logger.info("Connecting to database...");
-    await connectDB();
+    await connectToDatabase();
     logger.info("Connected to database");
 
     // Build query based on filters

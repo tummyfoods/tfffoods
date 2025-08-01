@@ -75,7 +75,7 @@ export default function BlogPage() {
 
   if (error) {
     return (
-      <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+      <div className="min-h-screen app-background">
         <div className="container mx-auto px-4 py-8">
           <div className="text-center text-red-500 dark:text-red-400 bg-white/50 dark:bg-gray-800/50 p-8 rounded-lg shadow-sm">
             {t("blog.error")}

@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import dbConnect from "@/utils/mongodb";
+import { connectToDatabase } from "@/utils/database";
 import Product from "@/utils/models/Product";
 import Brand from "@/utils/models/Brand";
 import Category from "@/utils/models/Category";
@@ -11,7 +11,7 @@ export async function GET(
   { params }: { params: { productId: string } }
 ) {
   try {
-    await dbConnect();
+    await connectToDatabase();
     const resolvedParams = await params;
     const { productId } = resolvedParams;
     const { searchParams } = new URL(request.url);
@@ -191,7 +191,7 @@ export async function PUT(
   { params }: { params: { productId: string } }
 ) {
   try {
-    await dbConnect();
+    await connectToDatabase();
     const { productId } = await params;
     const body = await req.json();
 
@@ -254,7 +254,7 @@ export async function DELETE(
   { params }: { params: { productId: string } }
 ) {
   try {
-    await dbConnect();
+    await connectToDatabase();
     const { productId } = await params;
 
     const doc = await Product.findByIdAndDelete(productId)

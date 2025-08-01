@@ -21,6 +21,7 @@ import {
   Shield,
   Receipt,
   ImageIcon,
+  Palette,
 } from "lucide-react";
 import { shouldShowBrandAdmin } from "@/utils/config/featureFlags";
 
@@ -105,6 +106,11 @@ export default function AdminLayout({
       icon: Settings,
     },
     {
+      href: "/admin/settings/theme",
+      label: t("admin.settings.theme"),
+      icon: Palette,
+    },
+    {
       href: "/admin/settings/hero",
       label: t("admin-hero.title"),
       icon: ImageIcon,
@@ -146,7 +152,7 @@ export default function AdminLayout({
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="min-h-screen app-background">
       <div className="flex">
         {/* Sidebar */}
         <aside className="w-64 bg-white dark:bg-gray-800 min-h-screen shadow-md hidden md:block">

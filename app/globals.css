@@ -4,6 +4,10 @@
 
 /* CSS Custom Properties - Theme */
 :root {
+  /* Custom Background Colors */
+  --light-background: #ffffff;
+  --dark-background: #1a1a1a;
+
   /* Colors */
   --primary-color: #007bff;
   --secondary-color: #6c757d;
@@ -1049,8 +1053,34 @@
   * {
     @apply border-border;
   }
+  /* Theme colors */
   body {
-    @apply bg-background text-foreground;
+    background-color: #ffffff;
+    transition: background-color 0.3s ease;
+  }
+
+  body.dark {
+    background-color: #1a1a1a;
+  }
+
+  /* Remove any hardcoded background colors */
+  .bg-gray-50,
+  .bg-gray-900,
+  .bg-white,
+  .bg-black,
+  .bg-background,
+  [class*="bg-gray-"],
+  [class*="bg-white"],
+  [class*="bg-black"] {
+    background-color: transparent !important;
+  }
+
+  /* Ensure containers are transparent */
+  .container,
+  .app-global-container,
+  main,
+  .min-h-screen {
+    background-color: transparent;
   }
 }
 

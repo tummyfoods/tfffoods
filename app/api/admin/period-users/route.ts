@@ -3,7 +3,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/auth.config";
 import User from "@/utils/models/User";
 import Invoice from "@/utils/models/Invoice";
-import connectDB from "@/utils/mongodb";
+import { connectToDatabase } from "@/utils/database";
 
 export async function GET() {
   try {
@@ -13,7 +13,7 @@ export async function GET() {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    await connectDB();
+    await connectToDatabase();
 
     // Fetch all users
     const users = await User.find({}).select(

@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/auth.config";
 import Invoice from "@/utils/models/Invoice";
-import dbConnect from "@/utils/mongodb";
+import { connectToDatabase } from "@/utils/database";
 
 export async function PUT(
   request: Request,
@@ -14,7 +14,7 @@ export async function PUT(
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    await dbConnect();
+    await connectToDatabase();
 
     const { invoiceNumber } = params;
     const { status } = await request.json();
