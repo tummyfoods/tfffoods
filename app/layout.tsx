@@ -2,7 +2,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Suspense } from "react";
 import dynamic from "next/dynamic";
-import Script from "next/script";
+import GoogleMapsScript from "@/components/GoogleMapsScript";
 import { ThemeProvider } from "@/components/theme/theme-provider";
 import AuthProvider from "@/components/AuthProvider";
 import { Toaster } from "react-hot-toast";
@@ -99,16 +99,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        {process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY && (
-          <Script
-            src={`https://maps.googleapis.com/maps/api/js?key=${process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}&libraries=places&callback=Function.prototype`}
-            strategy="lazyOnload"
-            id="google-maps"
-          />
-        )}
-      </head>
+      <head />
       <body className={inter.className}>
+        <GoogleMapsScript />
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

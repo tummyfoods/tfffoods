@@ -54,11 +54,14 @@ const Cart = ({ onClose, isMobile = false }: CartProps) => {
     });
   }, [items]);
 
-  // Calculate subtotal directly from items to ensure immediate updates
-  const subtotal = useMemo(() => {
+  // Calculate subtotal and total items
+  const { subtotal, totalItems } = useMemo(() => {
     return items.reduce(
-      (total, item) => total + item.price * (item.quantity || 1),
-      0
+      (acc, item) => ({
+        subtotal: acc.subtotal + item.price * (item.quantity || 1),
+        totalItems: acc.totalItems + (item.quantity || 1),
+      }),
+      { subtotal: 0, totalItems: 0 }
     );
   }, [items]);
 
@@ -184,7 +187,7 @@ const Cart = ({ onClose, isMobile = false }: CartProps) => {
         className={`fixed top-0 right-0 h-full bg-white/15 dark:bg-gray-800/15 backdrop-blur-lg shadow-lg z-50 w-[85%] max-w-[400px]`}
         onClick={(e) => e.stopPropagation()}
       >
-        <div className="p-4 h-full flex flex-col">
+        <div className="p-4 h-full flex flex-col max-h-screen">
           <div className="flex justify-between items-center mb-4">
             <h2 className="text-lg font-semibold text-gray-800 dark:text-gray-100">
               {t("cart.title")}
@@ -223,7 +226,7 @@ const Cart = ({ onClose, isMobile = false }: CartProps) => {
             </motion.div>
           ) : (
             <>
-              <div className="flex-1 overflow-y-auto space-y-4 mb-6">
+              <div className="flex-1 overflow-y-auto space-y-4 mb-6 pr-2 scrollbar-thin scrollbar-thumb-gray-300 dark:scrollbar-thumb-gray-600 scrollbar-track-transparent">
                 <AnimatePresence mode="popLayout">
                   {items.map((item) => {
                     // Create a stable key from the specifications
@@ -516,7 +519,7 @@ const Cart = ({ onClose, isMobile = false }: CartProps) => {
               <div className="border-t border-gray-200/30 dark:border-gray-700/30 pt-4 mt-auto">
                 <div className="flex justify-between mb-2">
                   <span className="text-gray-600 dark:text-gray-400">
-                    {t("cart.summary.subtotal")}
+                    {t("cart.summary.items")} ({totalItems})
                   </span>
                   <span className="font-semibold">${subtotal.toFixed(2)}</span>
                 </div>

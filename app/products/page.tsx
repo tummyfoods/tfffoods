@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useIsMobile } from "@/hooks/use-mobile";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
@@ -41,9 +42,12 @@ interface Brand {
 
 // Add this component before the Products component
 const ProductGridSkeleton = () => {
+  const isMobile = useIsMobile();
+  const skeletonCount = isMobile ? 6 : 12;
+
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-      {[...Array(12)].map((_, index) => (
+      {[...Array(skeletonCount)].map((_, index) => (
         <div key={index} className="space-y-3">
           <LoadingSkeleton height="h-48" rounded />
           <LoadingSkeleton width="w-3/4" />
@@ -62,10 +66,13 @@ export default function Products() {
   const [products, setProducts] = useState<Product[]>([]);
   const { wishlistItems, toggleWishlist } = useWishlist();
 
+  // Import mobile hook
+  const isMobile = useIsMobile();
+
   // Pagination states
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
-  const itemsPerPage = 12;
+  const itemsPerPage = isMobile ? 6 : 12;
 
   // Get URL params
   const searchParams = new URLSearchParams(
@@ -187,7 +194,19 @@ export default function Products() {
       setProducts(data.products);
       setTotalPages(Math.ceil(data.total / itemsPerPage));
     }
-  }, [data]);
+  }, [data, itemsPerPage]);
+
+  // Handle page recalculation when switching between mobile and desktop
+  useEffect(() => {
+    if (data) {
+      const newTotalPages = Math.ceil(data.total / itemsPerPage);
+      setTotalPages(newTotalPages);
+      // Adjust current page if it exceeds the new total pages
+      if (currentPage > newTotalPages) {
+        setCurrentPage(newTotalPages);
+      }
+    }
+  }, [isMobile, data?.total]);
 
   // Cart functionality
   useEffect(() => {
