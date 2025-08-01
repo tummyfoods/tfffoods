@@ -9,7 +9,7 @@ export default function LoadingErrorComponent({
 }: LoadingErrorComponentProps) {
   if (loading) {
     return (
-      <div className="flex justify-center items-center h-screen bg-gray-100">
+      <div className="flex justify-center items-center h-screen bg-[#1a1a1a] text-white">
         <div className="animate-spin rounded-full h-32 w-32 border-t-4 border-b-4 border-blue-400"></div>
       </div>
     );

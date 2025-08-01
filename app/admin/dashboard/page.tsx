@@ -24,6 +24,7 @@ import {
   ClipboardList,
   Tag,
   Receipt,
+  Palette,
 } from "lucide-react";
 
 export default function AdminDashboard() {
@@ -118,6 +119,12 @@ export default function AdminDashboard() {
       href: "/admin/settings",
       icon: Settings,
       description: t("admin-settings.sections.store.description"),
+    },
+    {
+      title: t("admin-settings.sections.theme.title"),
+      href: "/admin/settings/theme",
+      icon: Palette,
+      description: t("admin-settings.sections.theme.description"),
     },
     {
       title: t("admin-hero.title"),

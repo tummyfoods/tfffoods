@@ -398,13 +398,16 @@ export default function ProfilePage() {
   );
 
   const renderProfileContent = () => (
-    <Card className="w-full bg-white dark:bg-gray-900 shadow-lg rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl">
+    <Card className="w-full shadow-lg rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl">
       <CardHeader className="bg-[#535C91] dark:bg-[#6B74A9] p-6">
         <h2 className="text-3xl font-bold text-white">
           {t("common.personalInfo")}
         </h2>
       </CardHeader>
-      <CardContent className="p-6 space-y-4 bg-gray-50 dark:bg-gray-900/50">
+      <CardContent
+        className="p-6 space-y-4"
+        style={{ backgroundColor: "hsla(var(--card), var(--card-opacity, 1))" }}
+      >
         <div className="space-y-2">
           <h3 className="text-lg font-semibold text-gray-800 dark:text-gray-200">
             {t("navigation.account")}
@@ -415,7 +418,12 @@ export default function ProfilePage() {
         </div>
         <Separator className="my-4" />
         <div className="space-y-4">
-          <div className="flex items-center space-x-4 p-4 bg-white/50 dark:bg-gray-800/50 rounded-lg shadow-sm transition-all duration-200 hover:shadow-md">
+          <div
+            className="flex items-center space-x-4 p-4 rounded-lg shadow-sm transition-all duration-200 hover:shadow-md"
+            style={{
+              backgroundColor: "hsla(var(--card), var(--card-opacity, 0.5))",
+            }}
+          >
             <UserIcon className="text-[#535C91] dark:text-[#6B74A9] w-6 h-6" />
             {isEditing ? (
               <Input
@@ -431,7 +439,12 @@ export default function ProfilePage() {
               </span>
             )}
           </div>
-          <div className="flex items-center space-x-4 p-4 bg-white/50 dark:bg-gray-800/50 rounded-lg shadow-sm transition-all duration-200 hover:shadow-md">
+          <div
+            className="flex items-center space-x-4 p-4 rounded-lg shadow-sm transition-all duration-200 hover:shadow-md"
+            style={{
+              backgroundColor: "hsla(var(--card), var(--card-opacity, 0.5))",
+            }}
+          >
             <Mail className="text-[#535C91] dark:text-[#6B74A9] w-6 h-6" />
             {isEditing ? (
               <Input
@@ -447,7 +460,12 @@ export default function ProfilePage() {
               </span>
             )}
           </div>
-          <div className="flex items-center space-x-4 p-4 bg-white/50 dark:bg-gray-800/50 rounded-lg shadow-sm transition-all duration-200 hover:shadow-md">
+          <div
+            className="flex items-center space-x-4 p-4 rounded-lg shadow-sm transition-all duration-200 hover:shadow-md"
+            style={{
+              backgroundColor: "hsla(var(--card), var(--card-opacity, 0.5))",
+            }}
+          >
             <Phone className="text-[#535C91] dark:text-[#6B74A9] w-6 h-6" />
             {isEditing ? (
               <Input
@@ -463,7 +481,12 @@ export default function ProfilePage() {
               </span>
             )}
           </div>
-          <div className="flex items-center space-x-4 p-4 bg-white/50 dark:bg-gray-800/50 rounded-lg shadow-sm transition-all duration-200 hover:shadow-md">
+          <div
+            className="flex items-center space-x-4 p-4 rounded-lg shadow-sm transition-all duration-200 hover:shadow-md"
+            style={{
+              backgroundColor: "hsla(var(--card), var(--card-opacity, 0.5))",
+            }}
+          >
             <ShieldCheck className="text-[#535C91] dark:text-[#6B74A9] w-6 h-6" />
             <span className="flex-grow text-lg font-medium text-gray-700 dark:text-gray-200">
               {t("common.role")}:{" "}
@@ -482,7 +505,10 @@ export default function ProfilePage() {
           {renderAddressSection()}
         </div>
       </CardContent>
-      <CardFooter className="bg-gray-50 dark:bg-gray-700/50 p-6 flex justify-end">
+      <CardFooter
+        className="p-6 flex justify-end"
+        style={{ backgroundColor: "hsla(var(--card), var(--card-opacity, 1))" }}
+      >
         {isEditing ? (
           <Button
             onClick={handleSave}
@@ -511,7 +537,10 @@ export default function ProfilePage() {
   return (
     <SidebarProvider defaultOpen={true}>
       <AppSidebar variant="inset" />
-      <SidebarInset className="!ml-0 app-background">
+      <SidebarInset
+        className="!ml-0"
+        style={{ backgroundColor: "hsla(var(--background), 0.5)" }}
+      >
         <SiteHeader />
         <div className="flex flex-1 flex-col">
           <div className="flex flex-1 flex-col">

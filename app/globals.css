@@ -206,6 +206,10 @@
     @apply rounded-lg border bg-card text-card-foreground shadow-sm;
   }
 
+  .card-item {
+    @apply rounded-lg border border-[color:var(--card-item-border-color)] bg-card/80 text-card-foreground;
+  }
+
   .button-base {
     @apply inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors
     focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2
@@ -469,21 +473,7 @@
   bottom: 10px;
   right: 10px;
   z-index: 20;
-  padding: 0.5rem;
-  border-radius: 10px;
-  background-color: rgba(255, 255, 255, 0.5); /* 50% transparent white */
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
   transition: all 0.2s ease-in-out;
-}
-
-.dark .right-iconAssignBottom {
-  background-color: rgba(
-    30,
-    41,
-    59,
-    0.5
-  ); /* 50% transparent slate-800 for dark mode */
-  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
 }
 
 .add-to-cart-button {
@@ -1063,24 +1053,12 @@
     background-color: #1a1a1a;
   }
 
-  /* Remove any hardcoded background colors */
-  .bg-gray-50,
-  .bg-gray-900,
-  .bg-white,
-  .bg-black,
-  .bg-background,
-  [class*="bg-gray-"],
-  [class*="bg-white"],
-  [class*="bg-black"] {
-    background-color: transparent !important;
-  }
-
-  /* Ensure containers are transparent */
+  /* Container styles */
   .container,
   .app-global-container,
   main,
   .min-h-screen {
-    background-color: transparent;
+    background-color: inherit;
   }
 }
 

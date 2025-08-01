@@ -54,10 +54,10 @@ export default function CategoriesMenu({
             href={`/categories/${category.slug}`}
             onClick={() => onCategorySelect?.(category._id)}
             className={cn(
-              "block px-4 py-2 text-sm rounded-md transition-colors",
+              "card-item block px-4 py-2 text-sm transition-colors",
               isSelected
                 ? "bg-primary text-primary-foreground"
-                : "text-muted-foreground hover:text-foreground hover:bg-accent/50"
+                : "text-muted-foreground hover:text-foreground hover:bg-accent"
             )}
           >
             {category.displayNames?.[language] || category.name}

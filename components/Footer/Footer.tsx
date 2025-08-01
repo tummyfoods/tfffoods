@@ -71,7 +71,7 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-gradient-to-r from-gray-900 to-gray-800 text-white">
+    <footer className="text-foreground dark:text-white text-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand and description */}
@@ -89,7 +89,7 @@ const Footer = () => {
                     currentLang={language}
                   />
                 </h2>
-                <p className="text-gray-300">
+                <p className="text-black dark:text-gray-300">
                   <MultiLangDisplay
                     value={settings?.slogan}
                     currentLang={language}
@@ -112,7 +112,7 @@ const Footer = () => {
               </>
             ) : (
               <>
-                <h3 className="text-lg font-semibold mb-4 border-b border-gray-700 pb-2">
+                <h3 className="text-lg font-semibold mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">
                   {t("footer.common.quickLinks")}
                 </h3>
                 <ul className="space-y-2">
@@ -125,7 +125,7 @@ const Footer = () => {
                     <li key={item.key}>
                       <Link
                         href={item.key === "home" ? "/" : `/${item.key}`}
-                        className="text-gray-300 hover:text-blue-300 transition duration-300"
+                        className="text-black dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-300 transition duration-300"
                       >
                         {item.label}
                       </Link>
@@ -149,7 +149,7 @@ const Footer = () => {
               </>
             ) : (
               <>
-                <h3 className="text-lg font-semibold mb-4 border-b border-gray-700 pb-2">
+                <h3 className="text-lg font-semibold mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">
                   {t("footer.common.customerService")}
                 </h3>
                 <ul className="space-y-2">
@@ -164,7 +164,7 @@ const Footer = () => {
                       label: t("footer.links.shippingReturns"),
                       href: "/contact#shipping-returns-section",
                     },
-                    
+
                     {
                       key: "privacy-policy",
                       label: t("footer.links.privacyPolicy"),
@@ -173,7 +173,7 @@ const Footer = () => {
                     <li key={item.key}>
                       <Link
                         href={item.href || `/${item.key}`}
-                        className="text-gray-300 hover:text-blue-300 transition duration-300"
+                        className="text-black dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-300 transition duration-300"
                       >
                         {item.label}
                       </Link>
@@ -205,7 +205,7 @@ const Footer = () => {
               </>
             ) : (
               <>
-                <h3 className="text-lg font-semibold mb-4 border-b border-gray-700 pb-2">
+                <h3 className="text-lg font-semibold mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">
                   <MultiLangDisplay
                     value={newsletterTitle}
                     currentLang={language}
@@ -245,7 +245,7 @@ const Footer = () => {
                       : error || t("newsletter.errorMessage")}
                   </p>
                 )}
-                <p className="text-gray-400 text-xs mt-2">
+                <p className="text-black dark:text-gray-400 text-xs mt-2">
                   <MultiLangDisplay
                     value={newsletterDisclaimer}
                     currentLang={language}
@@ -287,7 +287,7 @@ const Footer = () => {
                   </a>
                 ))}
               </div>
-              <p className="text-gray-400 text-sm">
+              <p className="text-black dark:text-gray-400 text-sm">
                 <MultiLangDisplay
                   value={settings?.copyright}
                   currentLang={language}

@@ -383,10 +383,8 @@ const ProdDetailsList = ({ product, onSpecificationsChange }: Props) => {
                             onClick={() =>
                               handleSpecChange(spec.key, option, spec)
                             }
-                            className={`flex items-center justify-between px-4 py-2 border rounded-md hover:bg-accent ${
-                              isSelected
-                                ? "border-primary bg-accent"
-                                : "border-input"
+                            className={`card-item flex items-center justify-between px-4 py-2 rounded-md hover:bg-accent ${
+                              isSelected ? "bg-accent" : ""
                             }`}
                           >
                             <div className="flex items-center gap-2">
@@ -394,7 +392,7 @@ const ProdDetailsList = ({ product, onSpecificationsChange }: Props) => {
                                 className={`w-4 h-4 rounded-full border ${
                                   isSelected
                                     ? "bg-primary border-primary"
-                                    : "border-input"
+                                    : "border-[color:var(--card-item-border-color)]"
                                 }`}
                               >
                                 {isSelected && (

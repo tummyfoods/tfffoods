@@ -20,6 +20,7 @@ import {
   Receipt,
   LayoutDashboard,
   ImageIcon,
+  Palette,
 } from "lucide-react";
 import { useTranslation } from "@/providers/language/LanguageContext";
 
@@ -342,6 +343,16 @@ const AdminDrawer = ({
                   >
                     <SettingsIcon className="h-4 w-4 mr-2" />
                     {t("admin.settings.manage")}
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    href="/admin/settings/theme"
+                    onClick={handleClose}
+                    className="flex items-center rounded-lg px-3 py-2 text-muted-foreground transition-all hover:text-foreground"
+                  >
+                    <Palette className="h-4 w-4 mr-2" />
+                    {t("admin-settings.sections.theme.title")}
                   </Link>
                 </li>
                 <li>

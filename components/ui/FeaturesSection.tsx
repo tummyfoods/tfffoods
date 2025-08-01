@@ -70,7 +70,10 @@ const FeaturesSection = () => {
   }
 
   return (
-    <section className="bg-gradient-to-r from-gray-50 via-gray-100 to-gray-50 dark:from-gray-800 dark:via-gray-900 dark:to-gray-800 py-16 mt-8 rounded-lg overflow-hidden relative shadow-lg dark:shadow-gray-900/30 transition-all duration-300">
+    <section
+      className="py-16 mt-8 rounded-lg overflow-hidden relative transition-all duration-300"
+      style={{ backgroundColor: "hsla(var(--card), var(--card-opacity, 1))" }}
+    >
       <div className="container mx-auto px-4">
         <h2 className="text-4xl font-bold text-center mb-16 text-slate-800 dark:text-white transition-colors">
           {title[language] || title.en || t("common.whyChooseUs")}
@@ -79,7 +82,10 @@ const FeaturesSection = () => {
           {items.map((item, index) => (
             <div
               key={index}
-              className="flex flex-col items-center justify-center text-center bg-white dark:bg-gray-800 rounded-lg shadow-lg dark:shadow-gray-900/20 transform transition-all duration-500 hover:scale-105 hover:shadow-xl dark:hover:shadow-gray-900/40 sm:p-4 md:p-6 md:min-w-[220px] xl:min-w-[340px]"
+              className="flex flex-col items-center justify-center text-center rounded-lg transform transition-all duration-500 hover:scale-105 sm:p-4 md:p-6 md:min-w-[220px] xl:min-w-[340px]"
+              style={{
+                backgroundColor: "hsla(var(--card), var(--card-opacity, 0.8))",
+              }}
             >
               <div className="mb-4 flex items-center justify-center bg-blue-50 dark:bg-blue-900/20 rounded-full transition-colors p-4">
                 {getIcon(item.icon)}

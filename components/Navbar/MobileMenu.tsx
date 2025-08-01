@@ -260,25 +260,25 @@ const MobileMenu = ({
         onClick={handleMenuClose}
       >
         <div
-          className={`fixed top-0 left-0 h-full w-3/4 bg-white/70 dark:bg-popover/70 backdrop-blur-[2px] shadow-lg transform transition-transform duration-500 ${
+          className={`fixed top-0 left-0 h-full w-3/4 bg-white/60 dark:bg-black/60 shadow-lg transform transition-transform duration-500 ${
             isOpen ? "translate-x-0" : "-translate-x-full"
           }`}
           onClick={(e) => e.stopPropagation()}
         >
-          <div className="flex flex-col h-full bg-transparent">
-            <div className="flex items-center justify-end pt-20 border-b border-border/50"></div>
+          <div className="flex flex-col h-full bg-white/60 dark:bg-black/60">
+            <div className="flex items-center justify-end pt-20 border-b border-black dark:border-white"></div>
 
-            <div className="p-3 border-b border-border/50">
+            <div className="p-3 border-b border-black dark:border-white">
               <div className="relative">
                 <Input
                   type="text"
                   placeholder={t("search.placeholder")}
-                  className="w-full pl-9 h-9 bg-accent text-foreground placeholder:text-muted-foreground"
+                  className="w-full pl-9 h-9 bg-white dark:bg-black border-2 border-black dark:border-white text-black dark:text-white placeholder:text-black/70 dark:placeholder:text-white/70"
                   value={searchTerm || ""}
                   onChange={handleChange}
                   name="search"
                 />
-                <IoSearchOutline className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground text-base" />
+                <IoSearchOutline className="absolute left-3 top-1/2 -translate-y-1/2 text-black dark:text-white text-base" />
               </div>
               {searchTerm && firstTwelveItems.length > 0 && (
                 <div className="mt-2 max-h-[300px] overflow-y-auto">
@@ -330,7 +330,7 @@ const MobileMenu = ({
 
               {/* User Section */}
               <div className="p-2 mt-2">
-                <div className="flex items-center justify-between border-b border-border/50 pb-4">
+                <div className="flex items-center justify-between border-b border-black dark:border-white pb-4">
                   <div className="flex items-center gap-4">
                     <Link
                       href="/"

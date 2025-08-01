@@ -13,6 +13,22 @@ import { Moon, Sun } from "lucide-react";
 export default function ThemeSettings() {
   const lightPickerRef = useRef<HTMLDivElement>(null);
   const darkPickerRef = useRef<HTMLDivElement>(null);
+  const lightCardPickerRef = useRef<HTMLDivElement>(null);
+  const darkCardPickerRef = useRef<HTMLDivElement>(null);
+  const lightNavbarPickerRef = useRef<HTMLDivElement>(null);
+  const darkNavbarPickerRef = useRef<HTMLDivElement>(null);
+  const lightTextPickerRef = useRef<HTMLDivElement>(null);
+  const darkTextPickerRef = useRef<HTMLDivElement>(null);
+  const lightMutedTextPickerRef = useRef<HTMLDivElement>(null);
+  const darkMutedTextPickerRef = useRef<HTMLDivElement>(null);
+  const lightBorderPickerRef = useRef<HTMLDivElement>(null);
+  const darkBorderPickerRef = useRef<HTMLDivElement>(null);
+  const lightFooterPickerRef = useRef<HTMLDivElement>(null);
+  const darkFooterPickerRef = useRef<HTMLDivElement>(null);
+  const lightCardBorderPickerRef = useRef<HTMLDivElement>(null);
+  const darkCardBorderPickerRef = useRef<HTMLDivElement>(null);
+  const lightCardItemBorderPickerRef = useRef<HTMLDivElement>(null);
+  const darkCardItemBorderPickerRef = useRef<HTMLDivElement>(null);
 
   // Handle click outside to close color pickers
   useEffect(() => {
@@ -29,6 +45,102 @@ export default function ThemeSettings() {
       ) {
         setShowDarkPicker(false);
       }
+      if (
+        lightCardPickerRef.current &&
+        !lightCardPickerRef.current.contains(event.target as Node)
+      ) {
+        setShowLightCardPicker(false);
+      }
+      if (
+        darkCardPickerRef.current &&
+        !darkCardPickerRef.current.contains(event.target as Node)
+      ) {
+        setShowDarkCardPicker(false);
+      }
+      if (
+        lightNavbarPickerRef.current &&
+        !lightNavbarPickerRef.current.contains(event.target as Node)
+      ) {
+        setShowLightNavbarPicker(false);
+      }
+      if (
+        darkNavbarPickerRef.current &&
+        !darkNavbarPickerRef.current.contains(event.target as Node)
+      ) {
+        setShowDarkNavbarPicker(false);
+      }
+      if (
+        lightTextPickerRef.current &&
+        !lightTextPickerRef.current.contains(event.target as Node)
+      ) {
+        setShowLightTextPicker(false);
+      }
+      if (
+        darkTextPickerRef.current &&
+        !darkTextPickerRef.current.contains(event.target as Node)
+      ) {
+        setShowDarkTextPicker(false);
+      }
+      if (
+        lightMutedTextPickerRef.current &&
+        !lightMutedTextPickerRef.current.contains(event.target as Node)
+      ) {
+        setShowLightMutedTextPicker(false);
+      }
+      if (
+        darkMutedTextPickerRef.current &&
+        !darkMutedTextPickerRef.current.contains(event.target as Node)
+      ) {
+        setShowDarkMutedTextPicker(false);
+      }
+      if (
+        lightBorderPickerRef.current &&
+        !lightBorderPickerRef.current.contains(event.target as Node)
+      ) {
+        setShowLightBorderPicker(false);
+      }
+      if (
+        darkBorderPickerRef.current &&
+        !darkBorderPickerRef.current.contains(event.target as Node)
+      ) {
+        setShowDarkBorderPicker(false);
+      }
+      if (
+        lightFooterPickerRef.current &&
+        !lightFooterPickerRef.current.contains(event.target as Node)
+      ) {
+        setShowLightFooterPicker(false);
+      }
+      if (
+        darkFooterPickerRef.current &&
+        !darkFooterPickerRef.current.contains(event.target as Node)
+      ) {
+        setShowDarkFooterPicker(false);
+      }
+      if (
+        lightCardBorderPickerRef.current &&
+        !lightCardBorderPickerRef.current.contains(event.target as Node)
+      ) {
+        setShowLightCardBorderPicker(false);
+      }
+      if (
+        darkCardBorderPickerRef.current &&
+        !darkCardBorderPickerRef.current.contains(event.target as Node)
+      ) {
+        setShowDarkCardBorderPicker(false);
+      }
+      if (
+        lightCardItemBorderPickerRef.current &&
+        !lightCardItemBorderPickerRef.current.contains(event.target as Node)
+      ) {
+        setShowLightCardItemBorderPicker(false);
+      }
+      if (
+        darkCardItemBorderPickerRef.current &&
+        !darkCardItemBorderPickerRef.current.contains(event.target as Node)
+      ) {
+        setShowDarkCardItemBorderPicker(false);
+      }
     }
 
     document.addEventListener("mousedown", handleClickOutside);
@@ -39,27 +151,157 @@ export default function ThemeSettings() {
   const { theme, setTheme } = useTheme();
   const [lightBgColor, setLightBgColor] = useState("#ffffff");
   const [darkBgColor, setDarkBgColor] = useState("#1a1a1a");
+  const [lightCardColor, setLightCardColor] = useState("#ffffff");
+  const [darkCardColor, setDarkCardColor] = useState("#1e1e1e");
+  const [lightNavbarColor, setLightNavbarColor] = useState("#ffffff");
+  const [darkNavbarColor, setDarkNavbarColor] = useState("#1e1e1e");
+  const [lightTextColor, setLightTextColor] = useState("#000000");
+  const [darkTextColor, setDarkTextColor] = useState("#ffffff");
+  const [lightMutedTextColor, setLightMutedTextColor] = useState("#666666");
+  const [darkMutedTextColor, setDarkMutedTextColor] = useState("#a1a1a1");
+  const [lightBorderColor, setLightBorderColor] = useState("#e5e7eb");
+  const [darkBorderColor, setDarkBorderColor] = useState("#374151");
+  const [lightFooterColor, setLightFooterColor] = useState("#f9fafb");
+  const [darkFooterColor, setDarkFooterColor] = useState("#111827");
+  const [lightCardBorderColor, setLightCardBorderColor] = useState("#e5e7eb");
+  const [darkCardBorderColor, setDarkCardBorderColor] = useState("#374151");
+  const [lightCardItemBorderColor, setLightCardItemBorderColor] =
+    useState("#e5e7eb");
+  const [darkCardItemBorderColor, setDarkCardItemBorderColor] =
+    useState("#374151");
   const [showLightPicker, setShowLightPicker] = useState(false);
   const [showDarkPicker, setShowDarkPicker] = useState(false);
+  const [showLightCardPicker, setShowLightCardPicker] = useState(false);
+  const [showDarkCardPicker, setShowDarkCardPicker] = useState(false);
+  const [showLightNavbarPicker, setShowLightNavbarPicker] = useState(false);
+  const [showDarkNavbarPicker, setShowDarkNavbarPicker] = useState(false);
+  const [showLightTextPicker, setShowLightTextPicker] = useState(false);
+  const [showDarkTextPicker, setShowDarkTextPicker] = useState(false);
+  const [showLightMutedTextPicker, setShowLightMutedTextPicker] =
+    useState(false);
+  const [showDarkMutedTextPicker, setShowDarkMutedTextPicker] = useState(false);
+  const [showLightBorderPicker, setShowLightBorderPicker] = useState(false);
+  const [showDarkBorderPicker, setShowDarkBorderPicker] = useState(false);
+  const [showLightFooterPicker, setShowLightFooterPicker] = useState(false);
+  const [showDarkFooterPicker, setShowDarkFooterPicker] = useState(false);
+  const [showLightCardBorderPicker, setShowLightCardBorderPicker] =
+    useState(false);
+  const [showDarkCardBorderPicker, setShowDarkCardBorderPicker] =
+    useState(false);
+  const [showLightCardItemBorderPicker, setShowLightCardItemBorderPicker] =
+    useState(false);
+  const [showDarkCardItemBorderPicker, setShowDarkCardItemBorderPicker] =
+    useState(false);
+  const [lightBgOpacity, setLightBgOpacity] = useState(100);
+  const [darkBgOpacity, setDarkBgOpacity] = useState(100);
+  const [lightCardOpacity, setLightCardOpacity] = useState(100);
+  const [darkCardOpacity, setDarkCardOpacity] = useState(100);
+  const [lightNavbarOpacity, setLightNavbarOpacity] = useState(100);
+  const [darkNavbarOpacity, setDarkNavbarOpacity] = useState(100);
 
   // Load saved colors on mount
   useEffect(() => {
     const savedLightBg =
       localStorage.getItem("lightModeBackground") || "#ffffff";
     const savedDarkBg = localStorage.getItem("darkModeBackground") || "#1a1a1a";
+    const savedLightCard = localStorage.getItem("lightModeCard") || "#ffffff";
+    const savedDarkCard = localStorage.getItem("darkModeCard") || "#1e1e1e";
+    const savedLightNavbar =
+      localStorage.getItem("lightModeNavbar") || "#ffffff";
+    const savedDarkNavbar = localStorage.getItem("darkModeNavbar") || "#1e1e1e";
+    const savedLightText = localStorage.getItem("lightModeText") || "#000000";
+    const savedDarkText = localStorage.getItem("darkModeText") || "#ffffff";
+    const savedLightMutedText =
+      localStorage.getItem("lightModeMutedText") || "#666666";
+    const savedDarkMutedText =
+      localStorage.getItem("darkModeMutedText") || "#a1a1a1";
+    const savedLightBorder =
+      localStorage.getItem("lightModeBorder") || "#e5e7eb";
+    const savedDarkBorder = localStorage.getItem("darkModeBorder") || "#374151";
+    const savedLightFooter =
+      localStorage.getItem("lightModeFooter") || "#f9fafb";
+    const savedDarkFooter = localStorage.getItem("darkModeFooter") || "#111827";
+    const savedLightCardBorder =
+      localStorage.getItem("lightModeCardBorder") || "#e5e7eb";
+    const savedDarkCardBorder =
+      localStorage.getItem("darkModeCardBorder") || "#374151";
+    const savedLightCardItemBorder =
+      localStorage.getItem("lightModeCardItemBorder") || "#e5e7eb";
+    const savedDarkCardItemBorder =
+      localStorage.getItem("darkModeCardItemBorder") || "#374151";
+
+    const savedLightBgOpacity =
+      Number(localStorage.getItem("lightModeBgOpacity")) || 100;
+    const savedDarkBgOpacity =
+      Number(localStorage.getItem("darkModeBgOpacity")) || 100;
+    const savedLightCardOpacity =
+      Number(localStorage.getItem("lightModeCardOpacity")) || 100;
+    const savedDarkCardOpacity =
+      Number(localStorage.getItem("darkModeCardOpacity")) || 100;
+    const savedLightNavbarOpacity =
+      Number(localStorage.getItem("lightModeNavbarOpacity")) || 100;
+    const savedDarkNavbarOpacity =
+      Number(localStorage.getItem("darkModeNavbarOpacity")) || 100;
+
     setLightBgColor(savedLightBg);
     setDarkBgColor(savedDarkBg);
+    setLightCardColor(savedLightCard);
+    setDarkCardColor(savedDarkCard);
+    setLightNavbarColor(savedLightNavbar);
+    setDarkNavbarColor(savedDarkNavbar);
+    setLightTextColor(savedLightText);
+    setDarkTextColor(savedDarkText);
+    setLightMutedTextColor(savedLightMutedText);
+    setDarkMutedTextColor(savedDarkMutedText);
+    setLightBorderColor(savedLightBorder);
+    setDarkBorderColor(savedDarkBorder);
+    setLightFooterColor(savedLightFooter);
+    setDarkFooterColor(savedDarkFooter);
+    setLightCardBorderColor(savedLightCardBorder);
+    setDarkCardBorderColor(savedDarkCardBorder);
+    setLightCardItemBorderColor(savedLightCardItemBorder);
+    setDarkCardItemBorderColor(savedDarkCardItemBorder);
+
+    setLightBgOpacity(savedLightBgOpacity);
+    setDarkBgOpacity(savedDarkBgOpacity);
+    setLightCardOpacity(savedLightCardOpacity);
+    setDarkCardOpacity(savedDarkCardOpacity);
+    setLightNavbarOpacity(savedLightNavbarOpacity);
+    setDarkNavbarOpacity(savedDarkNavbarOpacity);
   }, []);
 
   const handleSave = () => {
     // Save to localStorage
     localStorage.setItem("lightModeBackground", lightBgColor);
     localStorage.setItem("darkModeBackground", darkBgColor);
+    localStorage.setItem("lightModeCard", lightCardColor);
+    localStorage.setItem("darkModeCard", darkCardColor);
+    localStorage.setItem("lightModeNavbar", lightNavbarColor);
+    localStorage.setItem("darkModeNavbar", darkNavbarColor);
+    localStorage.setItem("lightModeText", lightTextColor);
+    localStorage.setItem("darkModeText", darkTextColor);
+    localStorage.setItem("lightModeMutedText", lightMutedTextColor);
+    localStorage.setItem("darkModeMutedText", darkMutedTextColor);
+    localStorage.setItem("lightModeBorder", lightBorderColor);
+    localStorage.setItem("darkModeBorder", darkBorderColor);
+    localStorage.setItem("lightModeFooter", lightFooterColor);
+    localStorage.setItem("darkModeFooter", darkFooterColor);
+    localStorage.setItem("lightModeCardBorder", lightCardBorderColor);
+    localStorage.setItem("darkModeCardBorder", darkCardBorderColor);
+    localStorage.setItem("lightModeCardItemBorder", lightCardItemBorderColor);
+    localStorage.setItem("darkModeCardItemBorder", darkCardItemBorderColor);
+
+    localStorage.setItem("lightModeBgOpacity", String(lightBgOpacity));
+    localStorage.setItem("darkModeBgOpacity", String(darkBgOpacity));
+    localStorage.setItem("lightModeCardOpacity", String(lightCardOpacity));
+    localStorage.setItem("darkModeCardOpacity", String(darkCardOpacity));
+    localStorage.setItem("lightModeNavbarOpacity", String(lightNavbarOpacity));
+    localStorage.setItem("darkModeNavbarOpacity", String(darkNavbarOpacity));
 
     // Trigger a storage event to update colors
     window.dispatchEvent(
       new StorageEvent("storage", {
-        key: "lightModeBackground",
+        key: "themeColors",
       })
     );
 
@@ -102,6 +344,280 @@ export default function ThemeSettings() {
                   />
                 </div>
               )}
+              <div className="mt-2">
+                <Label htmlFor="lightBgOpacity">Background Transparency</Label>
+                <div className="flex items-center gap-2">
+                  <input
+                    type="range"
+                    id="lightBgOpacity"
+                    min="0"
+                    max="100"
+                    value={lightBgOpacity}
+                    onChange={(e) => setLightBgOpacity(Number(e.target.value))}
+                    className="flex-1"
+                  />
+                  <span className="w-12 text-right">{lightBgOpacity}%</span>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <Label htmlFor="lightCardColor">Card Color</Label>
+              <div className="flex gap-2 mt-1">
+                <div
+                  className="w-10 h-10 rounded border cursor-pointer"
+                  style={{ backgroundColor: lightCardColor }}
+                  onClick={() => setShowLightCardPicker(!showLightCardPicker)}
+                />
+                <Input
+                  id="lightCardColor"
+                  value={lightCardColor}
+                  onChange={(e) => setLightCardColor(e.target.value)}
+                  className="font-mono"
+                />
+              </div>
+              {showLightCardPicker && (
+                <div className="absolute mt-2 z-10" ref={lightCardPickerRef}>
+                  <HexColorPicker
+                    color={lightCardColor}
+                    onChange={setLightCardColor}
+                  />
+                </div>
+              )}
+              <div className="mt-2">
+                <Label htmlFor="lightCardOpacity">Card Transparency</Label>
+                <div className="flex items-center gap-2">
+                  <input
+                    type="range"
+                    id="lightCardOpacity"
+                    min="0"
+                    max="100"
+                    value={lightCardOpacity}
+                    onChange={(e) =>
+                      setLightCardOpacity(Number(e.target.value))
+                    }
+                    className="flex-1"
+                  />
+                  <span className="w-12 text-right">{lightCardOpacity}%</span>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <Label htmlFor="lightNavbarColor">Navbar Color</Label>
+              <div className="flex gap-2 mt-1">
+                <div
+                  className="w-10 h-10 rounded border cursor-pointer"
+                  style={{ backgroundColor: lightNavbarColor }}
+                  onClick={() =>
+                    setShowLightNavbarPicker(!showLightNavbarPicker)
+                  }
+                />
+                <Input
+                  id="lightNavbarColor"
+                  value={lightNavbarColor}
+                  onChange={(e) => setLightNavbarColor(e.target.value)}
+                  className="font-mono"
+                />
+              </div>
+              {showLightNavbarPicker && (
+                <div className="absolute mt-2 z-10" ref={lightNavbarPickerRef}>
+                  <HexColorPicker
+                    color={lightNavbarColor}
+                    onChange={setLightNavbarColor}
+                  />
+                </div>
+              )}
+              <div className="mt-2">
+                <Label htmlFor="lightNavbarOpacity">Navbar Transparency</Label>
+                <div className="flex items-center gap-2">
+                  <input
+                    type="range"
+                    id="lightNavbarOpacity"
+                    min="0"
+                    max="100"
+                    value={lightNavbarOpacity}
+                    onChange={(e) =>
+                      setLightNavbarOpacity(Number(e.target.value))
+                    }
+                    className="flex-1"
+                  />
+                  <span className="w-12 text-right">{lightNavbarOpacity}%</span>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <Label htmlFor="lightTextColor">Text Color</Label>
+              <div className="flex gap-2 mt-1">
+                <div
+                  className="w-10 h-10 rounded border cursor-pointer"
+                  style={{ backgroundColor: lightTextColor }}
+                  onClick={() => setShowLightTextPicker(!showLightTextPicker)}
+                />
+                <Input
+                  id="lightTextColor"
+                  value={lightTextColor}
+                  onChange={(e) => setLightTextColor(e.target.value)}
+                  className="font-mono"
+                />
+              </div>
+              {showLightTextPicker && (
+                <div className="absolute mt-2 z-10" ref={lightTextPickerRef}>
+                  <HexColorPicker
+                    color={lightTextColor}
+                    onChange={setLightTextColor}
+                  />
+                </div>
+              )}
+            </div>
+
+            <div>
+              <Label htmlFor="lightMutedTextColor">Muted Text Color</Label>
+              <div className="flex gap-2 mt-1">
+                <div
+                  className="w-10 h-10 rounded border cursor-pointer"
+                  style={{ backgroundColor: lightMutedTextColor }}
+                  onClick={() =>
+                    setShowLightMutedTextPicker(!showLightMutedTextPicker)
+                  }
+                />
+                <Input
+                  id="lightMutedTextColor"
+                  value={lightMutedTextColor}
+                  onChange={(e) => setLightMutedTextColor(e.target.value)}
+                  className="font-mono"
+                />
+              </div>
+              {showLightMutedTextPicker && (
+                <div
+                  className="absolute mt-2 z-10"
+                  ref={lightMutedTextPickerRef}
+                >
+                  <HexColorPicker
+                    color={lightMutedTextColor}
+                    onChange={setLightMutedTextColor}
+                  />
+                </div>
+              )}
+            </div>
+
+            <div>
+              <Label htmlFor="lightBorderColor">Border Color</Label>
+              <div className="flex gap-2 mt-1">
+                <div
+                  className="w-10 h-10 rounded border cursor-pointer"
+                  style={{ backgroundColor: lightBorderColor }}
+                  onClick={() =>
+                    setShowLightBorderPicker(!showLightBorderPicker)
+                  }
+                />
+                <Input
+                  id="lightBorderColor"
+                  value={lightBorderColor}
+                  onChange={(e) => setLightBorderColor(e.target.value)}
+                  className="font-mono"
+                />
+              </div>
+              {showLightBorderPicker && (
+                <div className="absolute mt-2 z-10" ref={lightBorderPickerRef}>
+                  <HexColorPicker
+                    color={lightBorderColor}
+                    onChange={setLightBorderColor}
+                  />
+                </div>
+              )}
+            </div>
+
+            <div>
+              <Label htmlFor="lightFooterColor">Footer Color</Label>
+              <div className="flex gap-2 mt-1">
+                <div
+                  className="w-10 h-10 rounded border cursor-pointer"
+                  style={{ backgroundColor: lightFooterColor }}
+                  onClick={() =>
+                    setShowLightFooterPicker(!showLightFooterPicker)
+                  }
+                />
+                <Input
+                  id="lightFooterColor"
+                  value={lightFooterColor}
+                  onChange={(e) => setLightFooterColor(e.target.value)}
+                  className="font-mono"
+                />
+              </div>
+              {showLightFooterPicker && (
+                <div className="absolute mt-2 z-10" ref={lightFooterPickerRef}>
+                  <HexColorPicker
+                    color={lightFooterColor}
+                    onChange={setLightFooterColor}
+                  />
+                </div>
+              )}
+            </div>
+
+            <div>
+              <Label htmlFor="lightCardBorderColor">Card Border Color</Label>
+              <div className="flex gap-2 mt-1">
+                <div
+                  className="w-10 h-10 rounded border cursor-pointer"
+                  style={{ backgroundColor: lightCardBorderColor }}
+                  onClick={() =>
+                    setShowLightCardBorderPicker(!showLightCardBorderPicker)
+                  }
+                />
+                <Input
+                  id="lightCardBorderColor"
+                  value={lightCardBorderColor}
+                  onChange={(e) => setLightCardBorderColor(e.target.value)}
+                  className="font-mono"
+                />
+              </div>
+              {showLightCardBorderPicker && (
+                <div
+                  className="absolute mt-2 z-10"
+                  ref={lightCardBorderPickerRef}
+                >
+                  <HexColorPicker
+                    color={lightCardBorderColor}
+                    onChange={setLightCardBorderColor}
+                  />
+                </div>
+              )}
+            </div>
+
+            <div>
+              <Label htmlFor="lightCardItemBorderColor">
+                Card Item Border Color
+              </Label>
+              <div className="flex gap-2 mt-1">
+                <div
+                  className="w-10 h-10 rounded border cursor-pointer"
+                  style={{ backgroundColor: lightCardItemBorderColor }}
+                  onClick={() =>
+                    setShowLightCardItemBorderPicker(
+                      !showLightCardItemBorderPicker
+                    )
+                  }
+                />
+                <Input
+                  id="lightCardItemBorderColor"
+                  value={lightCardItemBorderColor}
+                  onChange={(e) => setLightCardItemBorderColor(e.target.value)}
+                  className="font-mono"
+                />
+              </div>
+              {showLightCardItemBorderPicker && (
+                <div
+                  className="absolute mt-2 z-10"
+                  ref={lightCardItemBorderPickerRef}
+                >
+                  <HexColorPicker
+                    color={lightCardItemBorderColor}
+                    onChange={setLightCardItemBorderColor}
+                  />
+                </div>
+              )}
             </div>
           </div>
         </Card>
@@ -134,6 +650,272 @@ export default function ThemeSettings() {
                   <HexColorPicker
                     color={darkBgColor}
                     onChange={setDarkBgColor}
+                  />
+                </div>
+              )}
+              <div className="mt-2">
+                <Label htmlFor="darkBgOpacity">Background Transparency</Label>
+                <div className="flex items-center gap-2">
+                  <input
+                    type="range"
+                    id="darkBgOpacity"
+                    min="0"
+                    max="100"
+                    value={darkBgOpacity}
+                    onChange={(e) => setDarkBgOpacity(Number(e.target.value))}
+                    className="flex-1"
+                  />
+                  <span className="w-12 text-right">{darkBgOpacity}%</span>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <Label htmlFor="darkCardColor">Card Color</Label>
+              <div className="flex gap-2 mt-1">
+                <div
+                  className="w-10 h-10 rounded border cursor-pointer"
+                  style={{ backgroundColor: darkCardColor }}
+                  onClick={() => setShowDarkCardPicker(!showDarkCardPicker)}
+                />
+                <Input
+                  id="darkCardColor"
+                  value={darkCardColor}
+                  onChange={(e) => setDarkCardColor(e.target.value)}
+                  className="font-mono"
+                />
+              </div>
+              {showDarkCardPicker && (
+                <div className="absolute mt-2 z-10" ref={darkCardPickerRef}>
+                  <HexColorPicker
+                    color={darkCardColor}
+                    onChange={setDarkCardColor}
+                  />
+                </div>
+              )}
+              <div className="mt-2">
+                <Label htmlFor="darkCardOpacity">Card Transparency</Label>
+                <div className="flex items-center gap-2">
+                  <input
+                    type="range"
+                    id="darkCardOpacity"
+                    min="0"
+                    max="100"
+                    value={darkCardOpacity}
+                    onChange={(e) => setDarkCardOpacity(Number(e.target.value))}
+                    className="flex-1"
+                  />
+                  <span className="w-12 text-right">{darkCardOpacity}%</span>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <Label htmlFor="darkNavbarColor">Navbar Color</Label>
+              <div className="flex gap-2 mt-1">
+                <div
+                  className="w-10 h-10 rounded border cursor-pointer"
+                  style={{ backgroundColor: darkNavbarColor }}
+                  onClick={() => setShowDarkNavbarPicker(!showDarkNavbarPicker)}
+                />
+                <Input
+                  id="darkNavbarColor"
+                  value={darkNavbarColor}
+                  onChange={(e) => setDarkNavbarColor(e.target.value)}
+                  className="font-mono"
+                />
+              </div>
+              {showDarkNavbarPicker && (
+                <div className="absolute mt-2 z-10" ref={darkNavbarPickerRef}>
+                  <HexColorPicker
+                    color={darkNavbarColor}
+                    onChange={setDarkNavbarColor}
+                  />
+                </div>
+              )}
+              <div className="mt-2">
+                <Label htmlFor="darkNavbarOpacity">Navbar Transparency</Label>
+                <div className="flex items-center gap-2">
+                  <input
+                    type="range"
+                    id="darkNavbarOpacity"
+                    min="0"
+                    max="100"
+                    value={darkNavbarOpacity}
+                    onChange={(e) =>
+                      setDarkNavbarOpacity(Number(e.target.value))
+                    }
+                    className="flex-1"
+                  />
+                  <span className="w-12 text-right">{darkNavbarOpacity}%</span>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <Label htmlFor="darkTextColor">Text Color</Label>
+              <div className="flex gap-2 mt-1">
+                <div
+                  className="w-10 h-10 rounded border cursor-pointer"
+                  style={{ backgroundColor: darkTextColor }}
+                  onClick={() => setShowDarkTextPicker(!showDarkTextPicker)}
+                />
+                <Input
+                  id="darkTextColor"
+                  value={darkTextColor}
+                  onChange={(e) => setDarkTextColor(e.target.value)}
+                  className="font-mono"
+                />
+              </div>
+              {showDarkTextPicker && (
+                <div className="absolute mt-2 z-10" ref={darkTextPickerRef}>
+                  <HexColorPicker
+                    color={darkTextColor}
+                    onChange={setDarkTextColor}
+                  />
+                </div>
+              )}
+            </div>
+
+            <div>
+              <Label htmlFor="darkMutedTextColor">Muted Text Color</Label>
+              <div className="flex gap-2 mt-1">
+                <div
+                  className="w-10 h-10 rounded border cursor-pointer"
+                  style={{ backgroundColor: darkMutedTextColor }}
+                  onClick={() =>
+                    setShowDarkMutedTextPicker(!showDarkMutedTextPicker)
+                  }
+                />
+                <Input
+                  id="darkMutedTextColor"
+                  value={darkMutedTextColor}
+                  onChange={(e) => setDarkMutedTextColor(e.target.value)}
+                  className="font-mono"
+                />
+              </div>
+              {showDarkMutedTextPicker && (
+                <div
+                  className="absolute mt-2 z-10"
+                  ref={darkMutedTextPickerRef}
+                >
+                  <HexColorPicker
+                    color={darkMutedTextColor}
+                    onChange={setDarkMutedTextColor}
+                  />
+                </div>
+              )}
+            </div>
+
+            <div>
+              <Label htmlFor="darkBorderColor">Border Color</Label>
+              <div className="flex gap-2 mt-1">
+                <div
+                  className="w-10 h-10 rounded border cursor-pointer"
+                  style={{ backgroundColor: darkBorderColor }}
+                  onClick={() => setShowDarkBorderPicker(!showDarkBorderPicker)}
+                />
+                <Input
+                  id="darkBorderColor"
+                  value={darkBorderColor}
+                  onChange={(e) => setDarkBorderColor(e.target.value)}
+                  className="font-mono"
+                />
+              </div>
+              {showDarkBorderPicker && (
+                <div className="absolute mt-2 z-10" ref={darkBorderPickerRef}>
+                  <HexColorPicker
+                    color={darkBorderColor}
+                    onChange={setDarkBorderColor}
+                  />
+                </div>
+              )}
+            </div>
+
+            <div>
+              <Label htmlFor="darkFooterColor">Footer Color</Label>
+              <div className="flex gap-2 mt-1">
+                <div
+                  className="w-10 h-10 rounded border cursor-pointer"
+                  style={{ backgroundColor: darkFooterColor }}
+                  onClick={() => setShowDarkFooterPicker(!showDarkFooterPicker)}
+                />
+                <Input
+                  id="darkFooterColor"
+                  value={darkFooterColor}
+                  onChange={(e) => setDarkFooterColor(e.target.value)}
+                  className="font-mono"
+                />
+              </div>
+              {showDarkFooterPicker && (
+                <div className="absolute mt-2 z-10" ref={darkFooterPickerRef}>
+                  <HexColorPicker
+                    color={darkFooterColor}
+                    onChange={setDarkFooterColor}
+                  />
+                </div>
+              )}
+            </div>
+
+            <div>
+              <Label htmlFor="darkCardBorderColor">Card Border Color</Label>
+              <div className="flex gap-2 mt-1">
+                <div
+                  className="w-10 h-10 rounded border cursor-pointer"
+                  style={{ backgroundColor: darkCardBorderColor }}
+                  onClick={() =>
+                    setShowDarkCardBorderPicker(!showDarkCardBorderPicker)
+                  }
+                />
+                <Input
+                  id="darkCardBorderColor"
+                  value={darkCardBorderColor}
+                  onChange={(e) => setDarkCardBorderColor(e.target.value)}
+                  className="font-mono"
+                />
+              </div>
+              {showDarkCardBorderPicker && (
+                <div
+                  className="absolute mt-2 z-10"
+                  ref={darkCardBorderPickerRef}
+                >
+                  <HexColorPicker
+                    color={darkCardBorderColor}
+                    onChange={setDarkCardBorderColor}
+                  />
+                </div>
+              )}
+            </div>
+
+            <div>
+              <Label htmlFor="darkCardItemBorderColor">
+                Card Item Border Color
+              </Label>
+              <div className="flex gap-2 mt-1">
+                <div
+                  className="w-10 h-10 rounded border cursor-pointer"
+                  style={{ backgroundColor: darkCardItemBorderColor }}
+                  onClick={() =>
+                    setShowDarkCardItemBorderPicker(
+                      !showDarkCardItemBorderPicker
+                    )
+                  }
+                />
+                <Input
+                  id="darkCardItemBorderColor"
+                  value={darkCardItemBorderColor}
+                  onChange={(e) => setDarkCardItemBorderColor(e.target.value)}
+                  className="font-mono"
+                />
+              </div>
+              {showDarkCardItemBorderPicker && (
+                <div
+                  className="absolute mt-2 z-10"
+                  ref={darkCardItemBorderPickerRef}
+                >
+                  <HexColorPicker
+                    color={darkCardItemBorderColor}
+                    onChange={setDarkCardItemBorderColor}
                   />
                 </div>
               )}

@@ -109,7 +109,10 @@ const ReviewSection = ({
   const reviewsWithUI = allReviews as unknown as ReviewWithUI[];
 
   return (
-    <section className="bg-gradient-to-r from-gray-50 via-gray-100 to-gray-50 dark:from-gray-800 dark:via-gray-900 dark:to-gray-800 py-4 mt-2 rounded-lg overflow-hidden relative shadow-lg hover:shadow-xl transition-shadow duration-300">
+    <section
+      className="py-4 mt-2 rounded-lg overflow-hidden relative transition-all duration-300 dark:shadow-[0_10px_15px_-3px_rgba(255,255,255,0.1),0_4px_6px_-2px_rgba(255,255,255,0.05)] shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-2px_rgba(0,0,0,0.05)] hover:dark:shadow-[0_20px_25px_-5px_rgba(255,255,255,0.1),0_10px_10px_-5px_rgba(255,255,255,0.04)] hover:shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1),0_10px_10px_-5px_rgba(0,0,0,0.04)]"
+      style={{ backgroundColor: "hsla(var(--card), var(--card-opacity, 1))" }}
+    >
       <div className="container mx-auto px-4">
         <h2 className="text-xl font-bold text-center mb-4 text-slate-800 dark:text-slate-100 hover:text-slate-900 dark:hover:text-white transition-colors">
           {t("review.common.reviews")}
@@ -129,7 +132,12 @@ const ReviewSection = ({
             onSubmit={handleSubmitReview}
             className="max-w-m mx-auto mb-12 transition-transform duration-300 hover:scale-[1.01]"
           >
-            <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300">
+            <div
+              className="p-4 rounded-lg transition-all duration-300 dark:shadow-[0_10px_15px_-3px_rgba(255,255,255,0.1),0_4px_6px_-2px_rgba(255,255,255,0.05)] shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-2px_rgba(0,0,0,0.05)] hover:dark:shadow-[0_20px_25px_-5px_rgba(255,255,255,0.1),0_10px_10px_-5px_rgba(255,255,255,0.04)] hover:shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1),0_10px_10px_-5px_rgba(0,0,0,0.04)]"
+              style={{
+                backgroundColor: "hsla(var(--card), var(--card-opacity, 0.8))",
+              }}
+            >
               <div className="mb-4">
                 <label className="block text-gray-700 dark:text-gray-200 text-sm font-bold mb-2 hover:text-gray-800 dark:hover:text-white transition-colors">
                   {t("review.form.rating")}
@@ -187,7 +195,13 @@ const ReviewSection = ({
                     multiple: false,
                   }}
                 >
-                  <div className="w-28 h-10 flex items-center justify-center rounded-lg border border-dashed bg-gray-200 bg-opacity-40 dark:bg-gray-700 dark:bg-opacity-40 hover:bg-opacity-60 dark:hover:bg-opacity-60 transition cursor-pointer">
+                  <div
+                    className="w-28 h-10 flex items-center justify-center rounded-lg border border-dashed transition cursor-pointer"
+                    style={{
+                      backgroundColor:
+                        "hsla(var(--card), var(--card-opacity, 0.4))",
+                    }}
+                  >
                     <span className="text-gray-500 dark:text-gray-300 text-xs">
                       {t("review.form.photos")}
                     </span>
@@ -232,7 +246,11 @@ const ReviewSection = ({
             .map((review) => (
               <div
                 key={review._id}
-                className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                className="p-6 rounded-lg transition-all duration-300 hover:-translate-y-1 dark:shadow-[0_10px_15px_-3px_rgba(255,255,255,0.1),0_4px_6px_-2px_rgba(255,255,255,0.05)] shadow-[0_10px_15px_-3px_rgba(0,0,0,0.1),0_4px_6px_-2px_rgba(0,0,0,0.05)] hover:dark:shadow-[0_20px_25px_-5px_rgba(255,255,255,0.1),0_10px_10px_-5px_rgba(255,255,255,0.04)] hover:shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1),0_10px_10px_-5px_rgba(0,0,0,0.04)]"
+                style={{
+                  backgroundColor:
+                    "hsla(var(--card), var(--card-opacity, 0.8))",
+                }}
               >
                 <div className="flex items-center mb-4 gap-3">
                   <div className="flex-shrink-0 transform hover:scale-105 transition-transform duration-200">

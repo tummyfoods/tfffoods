@@ -19,7 +19,10 @@ const OrdersSkeleton = () => {
       {[1, 2, 3].map((i) => (
         <div
           key={i}
-          className="bg-white dark:bg-gray-900 shadow-lg rounded-2xl p-6 animate-pulse"
+          className="shadow-lg rounded-2xl p-6 animate-pulse"
+          style={{
+            backgroundColor: "hsla(var(--card), var(--card-opacity, 1))",
+          }}
         >
           <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded w-1/3 mb-4"></div>
           <div className="space-y-3">
@@ -130,13 +133,16 @@ const OrdersList = ({ initialOrders = [] }: OrdersListProps) => {
   }
 
   return (
-    <Card className="w-full bg-white dark:bg-gray-900 shadow-lg rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl">
+    <Card className="w-full shadow-lg rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl">
       <CardHeader className="bg-[#535C91] dark:bg-[#6B74A9] p-6">
         <h2 className="text-3xl font-bold text-white">
           {t("order.common.yourOrders")}
         </h2>
       </CardHeader>
-      <CardContent className="p-6 space-y-4 bg-gray-50 dark:bg-gray-900/50">
+      <CardContent
+        className="p-6 space-y-4"
+        style={{ backgroundColor: "hsla(var(--card), var(--card-opacity, 1))" }}
+      >
         {error ? (
           <div className="text-center text-red-500 dark:text-red-400 bg-white/50 dark:bg-gray-800/50 p-4 rounded-lg shadow-sm">
             <p>{error}</p>
@@ -163,7 +169,11 @@ const OrdersList = ({ initialOrders = [] }: OrdersListProps) => {
               <div
                 key={order._id}
                 ref={index === orders.length - 1 ? lastOrderElementRef : null}
-                className="bg-white/50 dark:bg-gray-800/50 rounded-lg shadow-sm transition-all duration-200 hover:shadow-md"
+                className="rounded-lg shadow-sm transition-all duration-200 hover:shadow-md"
+                style={{
+                  backgroundColor:
+                    "hsla(var(--card), var(--card-opacity, 0.5))",
+                }}
               >
                 <OrderItem order={order} />
               </div>

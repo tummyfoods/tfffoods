@@ -89,7 +89,10 @@ const GuaranteeSection = () => {
 
   if (isLoading) {
     return (
-      <section className="bg-muted/30 mt-8 rounded-lg pb-12 pt-10 overflow-hidden relative shadow-lg">
+      <section
+        className="mt-8 rounded-lg pb-12 pt-10 overflow-hidden relative transition-all duration-300"
+        style={{ backgroundColor: "hsla(var(--card), var(--card-opacity, 1))" }}
+      >
         <div className="container mx-auto px-4 relative z-10">
           <div className="animate-pulse">
             <div className="h-10 bg-gray-200 rounded w-1/3 mx-auto mb-16"></div>
@@ -113,7 +116,10 @@ const GuaranteeSection = () => {
   }
 
   return (
-    <section className="bg-muted/30 mt-8 rounded-lg pb-12 pt-10 overflow-hidden relative shadow-lg">
+    <section
+      className="mt-8 rounded-lg pb-12 pt-10 overflow-hidden relative transition-all duration-300"
+      style={{ backgroundColor: "hsla(var(--card), var(--card-opacity, 1))" }}
+    >
       <div
         className={`container mx-auto px-4 relative z-10 ${containerMaxWidth}`}
       >
@@ -124,7 +130,10 @@ const GuaranteeSection = () => {
           {items.map((item: GuaranteeItem, index: number) => (
             <div
               key={index}
-              className="group flex flex-col items-start p-8 bg-card bg-opacity-80 backdrop-blur-lg rounded-lg transition-all duration-300 hover:bg-opacity-100 hover:shadow-2xl"
+              className="group flex flex-col items-start p-8 backdrop-blur-lg rounded-lg transition-all duration-300"
+              style={{
+                backgroundColor: "hsla(var(--card), var(--card-opacity, 0.8))",
+              }}
             >
               <div className="mb-4 text-yellow-500 group-hover:text-yellow-400 transition-all duration-300">
                 {renderIcon(item.icon)}

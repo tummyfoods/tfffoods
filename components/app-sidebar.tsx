@@ -33,7 +33,8 @@ export function AppSidebar({ variant = "sidebar" }: AppSidebarProps) {
   return (
     <Sidebar
       variant={variant}
-      className=" mt-[100px] h-[calc(100vh-100px)] text-md rounded-none"
+      className="mt-[100px] h-[calc(100vh-100px)] text-md rounded-none"
+      style={{ backgroundColor: "hsla(var(--background), 0.5)" }}
     >
       <div className="flex-1 overflow-auto">
         <nav className="space-y-1 px-2 pt-10">

@@ -160,7 +160,7 @@ const Settings = () => {
   }
 
   return (
-    <Card className="w-full bg-white dark:bg-gray-900 shadow-lg rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl">
+    <Card className="w-full shadow-lg rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl">
       <CardHeader className="bg-[#535C91] dark:bg-[#6B74A9] px-6 py-4">
         <h2 className="text-3xl font-bold text-white ml-0">
           {t("profile.settings.title")}
@@ -199,7 +199,12 @@ const Settings = () => {
             </TabsTrigger>
           </TabsList>
 
-          <div className="p-6 bg-gray-50 dark:bg-gray-900/50">
+          <div
+            className="p-6"
+            style={{
+              backgroundColor: "hsla(var(--card), var(--card-opacity, 1))",
+            }}
+          >
             <TabsContent value="personal">
               <div className="space-y-4">
                 <div>
@@ -211,7 +216,13 @@ const Settings = () => {
                   </p>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="bg-white/50 dark:bg-gray-800/50 p-4 rounded-lg shadow-sm transition-all duration-200 hover:shadow-md">
+                  <div
+                    className="p-4 rounded-lg shadow-sm transition-all duration-200 hover:shadow-md"
+                    style={{
+                      backgroundColor:
+                        "hsla(var(--card), var(--card-opacity, 0.5))",
+                    }}
+                  >
                     <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                       {t("profile.settings.form.fullName")}
                     </label>
@@ -221,7 +232,13 @@ const Settings = () => {
                       className="bg-gray-50 dark:bg-gray-700/50"
                     />
                   </div>
-                  <div className="bg-white/50 dark:bg-gray-800/50 p-4 rounded-lg shadow-sm transition-all duration-200 hover:shadow-md">
+                  <div
+                    className="p-4 rounded-lg shadow-sm transition-all duration-200 hover:shadow-md"
+                    style={{
+                      backgroundColor:
+                        "hsla(var(--card), var(--card-opacity, 0.5))",
+                    }}
+                  >
                     <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                       {t("profile.settings.form.email")}
                     </label>
@@ -249,7 +266,11 @@ const Settings = () => {
                   <div className="relative">
                     {!showPasswordForm ? (
                       <div
-                        className="border border-gray-300 dark:border-gray-600 rounded-lg p-4 text-center cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-700/50 transition-colors duration-200 text-gray-700 dark:text-gray-300"
+                        className="border border-gray-300 dark:border-gray-600 rounded-lg p-4 text-center cursor-pointer transition-colors duration-200 text-gray-700 dark:text-gray-300"
+                        style={{
+                          backgroundColor:
+                            "hsla(var(--card), var(--card-opacity, 0.5))",
+                        }}
                         onClick={() => setShowPasswordForm(true)}
                       >
                         {t("common.clickToUpdate")}

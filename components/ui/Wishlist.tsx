@@ -42,8 +42,8 @@ export function Wishlist() {
 
   if (loading) {
     return (
-      <Card>
-        <CardHeader>
+      <Card className="shadow-lg rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl">
+        <CardHeader className="bg-[#535C91] dark:bg-[#6B74A9] p-6">
           <CardTitle className="flex items-center gap-2">
             <Heart className="w-5 h-5" />
             {t("wishlist.title")}
@@ -58,14 +58,19 @@ export function Wishlist() {
 
   if (error) {
     return (
-      <Card>
-        <CardHeader>
+      <Card className="shadow-lg rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl">
+        <CardHeader className="bg-[#535C91] dark:bg-[#6B74A9] p-6">
           <CardTitle className="flex items-center gap-2">
             <Heart className="w-5 h-5" />
             {t("wishlist.title")}
           </CardTitle>
         </CardHeader>
-        <CardContent className="p-4 sm:p-6">
+        <CardContent
+          className="p-4 sm:p-6"
+          style={{
+            backgroundColor: "hsla(var(--card), var(--card-opacity, 1))",
+          }}
+        >
           <div className="bg-red-50 dark:bg-red-900/20 p-4 rounded-lg text-red-600 dark:text-red-400">
             {error}
           </div>
@@ -75,8 +80,8 @@ export function Wishlist() {
   }
 
   return (
-    <Card>
-      <CardHeader>
+    <Card className="shadow-lg rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl">
+      <CardHeader className="bg-[#535C91] dark:bg-[#6B74A9] p-6">
         <CardTitle className="flex items-center gap-2">
           <Heart className="w-5 h-5" />
           {t("wishlist.title")}
@@ -84,7 +89,12 @@ export function Wishlist() {
       </CardHeader>
       <CardContent className="p-4 sm:p-6">
         {!wishlist || wishlist.length === 0 ? (
-          <div className="bg-white/50 dark:bg-gray-800/50 p-8 rounded-lg shadow-sm text-center">
+          <div
+            className="p-8 rounded-lg shadow-sm text-center"
+            style={{
+              backgroundColor: "hsla(var(--card), var(--card-opacity, 0.5))",
+            }}
+          >
             <p className="text-gray-500 dark:text-gray-400">
               {t("wishlist.empty")}
             </p>

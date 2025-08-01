@@ -7,8 +7,10 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/auth.config";
 export async function GET() {
   try {
     await connectToDatabase();
-    const features = await FeaturesSection.find().sort({ order: 1 });
-    return NextResponse.json(features);
+    const features = await FeaturesSection.findOne();
+    return NextResponse.json(
+      features || { title: { en: "", "zh-TW": "" }, items: [] }
+    );
   } catch (error) {
     console.error("Error fetching features:", error);
     return NextResponse.json(
@@ -27,7 +29,23 @@ export async function POST(req: Request) {
 
     await connectToDatabase();
     const data = await req.json();
-    const feature = await FeaturesSection.create(data);
+
+    // Find the first document (since we only have one features section)
+    const existingFeature = await FeaturesSection.findOne();
+
+    let feature;
+    if (existingFeature) {
+      // Update existing document
+      feature = await FeaturesSection.findByIdAndUpdate(
+        existingFeature._id,
+        data,
+        { new: true }
+      );
+    } else {
+      // Create new document if none exists
+      feature = await FeaturesSection.create(data);
+    }
+
     return NextResponse.json(feature);
   } catch (error) {
     console.error("Error creating feature:", error);

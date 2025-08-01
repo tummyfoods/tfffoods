@@ -1,6 +1,30 @@
 {
   "title": "Settings",
+  "sidebarMenu": {
+    "theme": "Theme"
+  },
   "sections": {
+    "theme": {
+      "title": "Theme Settings",
+      "description": "Customize your site's appearance with light and dark mode colors",
+      "lightMode": "Light Mode",
+      "darkMode": "Dark Mode",
+      "backgroundColor": "Background Color",
+      "cardColor": "Card Color",
+      "navbarColor": "Navbar Color",
+      "textColor": "Text Color",
+      "mutedTextColor": "Muted Text Color",
+      "borderColor": "Border Color",
+      "footerColor": "Footer Color",
+      "cardBorderColor": "Card Border Color",
+      "cardItemBorderColor": "Card Item Border Color",
+      "fillingOptionBorderColor": "Filling Option Border Color",
+      "transparency": {
+        "title": "Transparency",
+        "card": "Card Transparency",
+        "navbar": "Navbar Transparency"
+      }
+    },
     "store": {
       "title": "Store Settings",
       "description": "Manage your store's basic information, branding, and contact details",

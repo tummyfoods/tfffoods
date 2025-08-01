@@ -70,7 +70,7 @@ const Navbar = () => {
     <>
       {/* Desktop Navbar - Hidden on Mobile */}
       <nav className="hidden md:block">
-        <div className="bg-background app-global-container">
+        <div className="navbar app-global-container">
           <div className="navbar-content flex items-center justify-between">
             {/* Brand Container */}
             <div className="flex items-center">

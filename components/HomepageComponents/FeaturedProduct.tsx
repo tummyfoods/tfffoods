@@ -101,7 +101,10 @@ const FeaturedProduct = () => {
 
   if (isLoading) {
     return (
-      <header className="relative bg-muted/50 text-foreground sm:h-[58rem] flex items-center overflow-hidden">
+      <header
+        className="relative text-foreground sm:h-[58rem] flex items-center overflow-hidden"
+        style={{ backgroundColor: "hsla(var(--background), 0.5)" }}
+      >
         <div className="container mx-auto px-4 py-8 relative z-10">
           <div className="bg-card rounded-lg shadow-2xl overflow-hidden text-foreground animate-pulse">
             <div className="md:flex">
@@ -121,7 +124,10 @@ const FeaturedProduct = () => {
 
   if (!isLoading && products.length === 0) {
     return (
-      <header className="relative bg-muted/50 text-foreground sm:h-[58rem] flex items-center overflow-hidden">
+      <header
+        className="relative text-foreground sm:h-[58rem] flex items-center overflow-hidden"
+        style={{ backgroundColor: "hsla(var(--background), 0.5)" }}
+      >
         <div className="container mx-auto px-4 py-8 relative z-10">
           <div className="text-center text-muted-foreground">
             {t("common.noResults")}
@@ -134,7 +140,10 @@ const FeaturedProduct = () => {
   const currentProduct = products[currentIndex];
 
   return (
-    <header className="relative bg-muted/50 text-foreground sm:h-[58rem] flex items-center overflow-hidden">
+    <header
+      className="relative text-foreground sm:h-[58rem] flex items-center overflow-hidden"
+      style={{ backgroundColor: "hsla(var(--background), 0.5)" }}
+    >
       <div className="container mx-auto px-4 py-8 relative z-10">
         <motion.h1
           initial={{ opacity: 0, y: -50 }}

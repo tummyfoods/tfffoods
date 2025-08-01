@@ -192,7 +192,7 @@ export default function ProductCard({
           <button
             onClick={handleAddToCart}
             disabled={currentStock === 0}
-            className={`add-to-cart-button text-sm sm:text-base right-iconAssignBottom ${
+            className={`bg-blue-600 text-white hover:bg-blue-700 px-4 py-2 rounded text-sm sm:text-base right-iconAssignBottom ${
               currentStock === 0 ? "opacity-50 cursor-not-allowed" : ""
             }`}
           >

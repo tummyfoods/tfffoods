@@ -93,7 +93,8 @@
   "settings": {
     "title": "Settings",
     "manage": "Manage Settings",
-    "description": "Configure system settings"
+    "description": "Configure system settings",
+    "theme": "Theme"
   },
   "delivery": {
     "title": "Delivery Settings",

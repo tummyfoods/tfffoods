@@ -74,8 +74,8 @@ const DynamicHeroVideo = () => {
         )}
       </div>
 
-      {/* Content Overlay */}
-      <div className="absolute inset-0 bg-black bg-opacity-50 z-10">
+      {/* Content */}
+      <div className="absolute inset-0 z-10">
         <div className="container mx-auto h-full flex flex-col items-center justify-center text-white px-4">
           <motion.h1
             className="text-2xl sm:text-4xl md:text-6xl font-bold mb-3 sm:mb-4 text-center"
@@ -116,7 +116,21 @@ const DynamicHeroVideo = () => {
               href={activeSection.buttons.primary.link}
               className="w-full sm:w-auto"
             >
-              <button className="w-full sm:w-auto bg-white text-black px-6 py-2.5 sm:py-3 rounded-full font-semibold hover:bg-gray-200 transition duration-300">
+              <button
+                className="w-full sm:w-auto px-6 py-2.5 sm:py-3 rounded-full font-semibold transition-all duration-300"
+                style={{
+                  backgroundColor: "#ffffff",
+                  color: "#000000",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.backgroundColor = "#000000";
+                  e.currentTarget.style.color = "#ffffff";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.backgroundColor = "#ffffff";
+                  e.currentTarget.style.color = "#000000";
+                }}
+              >
                 {activeSection.buttons.primary.text[language]}
               </button>
             </Link>
@@ -124,7 +138,24 @@ const DynamicHeroVideo = () => {
               href={activeSection.buttons.secondary.link}
               className="w-full sm:w-auto"
             >
-              <button className="w-full sm:w-auto bg-transparent border-2 border-white px-6 py-2.5 sm:py-3 rounded-full font-semibold hover:bg-white hover:text-black transition duration-300">
+              <button
+                className="w-full sm:w-auto px-6 py-2.5 sm:py-3 rounded-full font-semibold transition-all duration-300"
+                style={{
+                  background: "none",
+                  color: "#ffffff",
+                  border: "2px solid #ffffff",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = "none";
+                  e.currentTarget.style.color = "#000000";
+                  e.currentTarget.style.border = "2px solid #000000";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = "none";
+                  e.currentTarget.style.color = "#ffffff";
+                  e.currentTarget.style.border = "2px solid #ffffff";
+                }}
+              >
                 {activeSection.buttons.secondary.text[language]}
               </button>
             </Link>

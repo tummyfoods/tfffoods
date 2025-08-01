@@ -108,9 +108,9 @@ const CategoryMenu: React.FC<CategoryMenuProps> = ({
 
   return (
     <div
-      className={`relative w-full ${
-        isMobile ? "bg-transparent" : "bg-gray-900/20 dark:bg-gray-800/20"
-      } py-4 ${isMobile ? "block" : "hidden md:block"}`}
+      className={`relative w-full ${isMobile ? "" : ""} py-4 ${
+        isMobile ? "block" : "hidden md:block"
+      }`}
     >
       {!isMobile && showArrows && (
         <button
@@ -151,7 +151,7 @@ const CategoryMenu: React.FC<CategoryMenuProps> = ({
               <>
                 <button
                   onClick={() => handleCategoryClick("All Categories")}
-                  className="flex-shrink-0 flex items-center justify-center w-28 h-14 bg-white dark:bg-gray-800 shadow-md hover:shadow-lg rounded-lg transition-all duration-300 p-2 group"
+                  className="flex-shrink-0 flex items-center justify-center w-28 h-14 transition-all duration-300 p-2 group rounded-lg bg-card"
                 >
                   <span
                     className={`text-sm ${
@@ -170,11 +170,9 @@ const CategoryMenu: React.FC<CategoryMenuProps> = ({
                     <button
                       key={category._id}
                       onClick={() => handleCategoryClick(category._id)}
-                      className={`flex-shrink-0 flex items-center justify-center w-28 h-14 ${
-                        selectedCategory === category._id
-                          ? "bg-blue-50 dark:bg-blue-900/20"
-                          : "bg-white dark:bg-gray-800"
-                      } shadow-md hover:shadow-lg rounded-lg transition-all duration-300 p-2 group`}
+                      className={`flex-shrink-0 flex items-center justify-center w-28 h-14 rounded-lg bg-card ${
+                        selectedCategory === category._id ? "bg-accent" : ""
+                      } transition-all duration-300 p-2 group`}
                     >
                       <span
                         className={`text-sm font-medium ${

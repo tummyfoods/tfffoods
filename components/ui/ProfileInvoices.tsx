@@ -162,6 +162,9 @@ export default function ProfileInvoices() {
           <Card
             key={invoice._id}
             className="cursor-pointer hover:shadow-md transition-shadow p-4"
+            style={{
+              backgroundColor: "hsla(var(--card), var(--card-opacity, 1))",
+            }}
             onClick={() => handleInvoiceClick(invoice.invoiceNumber)}
           >
             <div className="flex justify-between items-start">

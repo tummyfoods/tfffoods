@@ -1,6 +1,30 @@
 {
   "title": "設定",
+  "sidebarMenu": {
+    "theme": "主題"
+  },
   "sections": {
+    "theme": {
+      "title": "主題設定",
+      "description": "自訂網站的明暗模式顏色",
+      "lightMode": "明亮模式",
+      "darkMode": "暗黑模式",
+      "backgroundColor": "背景顏色",
+      "cardColor": "卡片顏色",
+      "navbarColor": "導航欄顏色",
+      "textColor": "文字顏色",
+      "mutedTextColor": "次要文字顏色",
+      "borderColor": "邊框顏色",
+      "footerColor": "頁尾顏色",
+      "cardBorderColor": "卡片邊框顏色",
+      "cardItemBorderColor": "卡片項目邊框顏色",
+      "fillingOptionBorderColor": "填充選項邊框顏色",
+      "transparency": {
+        "title": "透明度",
+        "card": "卡片透明度",
+        "navbar": "導航欄透明度"
+      }
+    },
     "store": {
       "title": "商店設定",
       "description": "管理您的商店基本資訊、品牌形象和聯絡資料",
