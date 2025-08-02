@@ -112,7 +112,7 @@ const Footer = () => {
               </>
             ) : (
               <>
-                <h3 className="text-lg font-semibold mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">
+                <h3 className="text-lg font-semibold mb-4 border-b-[0.5px] border-foreground pb-2">
                   {t("footer.common.quickLinks")}
                 </h3>
                 <ul className="space-y-2">
@@ -149,7 +149,7 @@ const Footer = () => {
               </>
             ) : (
               <>
-                <h3 className="text-lg font-semibold mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">
+                <h3 className="text-lg font-semibold mb-4 border-b-[0.5px] border-foreground pb-2">
                   {t("footer.common.customerService")}
                 </h3>
                 <ul className="space-y-2">
@@ -205,13 +205,13 @@ const Footer = () => {
               </>
             ) : (
               <>
-                <h3 className="text-lg font-semibold mb-4 border-b border-gray-200 dark:border-gray-700 pb-2">
+                <h3 className="text-lg font-semibold mb-4 border-b-[0.5px] border-foreground pb-2">
                   <MultiLangDisplay
                     value={newsletterTitle}
                     currentLang={language}
                   />
                 </h3>
-                <p className="text-gray-300 mb-4">
+                <p className="text-muted-foreground mb-4">
                   <MultiLangDisplay
                     value={newsletterSubtitle}
                     currentLang={language}
@@ -223,7 +223,7 @@ const Footer = () => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder={t("footer.common.emailPlaceholder")}
-                    className="flex-1 min-w-0 px-4 py-2 bg-gray-700 text-white rounded-l-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    className="flex-1 min-w-0 px-4 py-2 bg-white dark:bg-background text-foreground rounded-l-md focus:outline-none focus:ring-2 ring-foreground"
                     required
                   />
                   <button
@@ -257,7 +257,7 @@ const Footer = () => {
         </div>
 
         {/* Social Media and Copyright */}
-        <div className="mt-12 pt-8 border-t border-gray-700 flex flex-col sm:flex-row justify-between items-center">
+        <div className="mt-12 pt-8 border-t-[0.5px] border-foreground flex flex-col sm:flex-row justify-between items-center">
           {isLoading ? (
             <>
               <div className="flex space-x-6 mb-4 sm:mb-0">
@@ -267,10 +267,15 @@ const Footer = () => {
                     width="w-6"
                     height="h-6"
                     rounded={true}
+                    className="bg-background"
                   />
                 ))}
               </div>
-              <LoadingSkeleton width="w-64" height="h-4" />
+              <LoadingSkeleton
+                width="w-64"
+                height="h-4"
+                className="bg-background"
+              />
             </>
           ) : (
             <>
@@ -281,7 +286,7 @@ const Footer = () => {
                     href={href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`text-gray-400 hover:text-${color}-400 transition duration-300 transform hover:scale-110`}
+                    className="text-muted-foreground hover:text-foreground transition duration-300 transform hover:scale-110"
                   >
                     <Icon className="w-6 h-6" />
                   </a>

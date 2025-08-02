@@ -82,7 +82,7 @@ const AboutPage = () => {
         <Breadcrumb items={breadcrumbItems} />
       </div>
       {/* Hero Section */}
-      <header className="bg-primary text-primary-foreground">
+      <header className="bg-background text-foreground">
         <div className="container mx-auto px-4 py-16 text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-4">
             {aboutSettings.title[language]}

@@ -91,6 +91,8 @@ interface StoreSettings {
       en: string;
       "zh-TW": string;
     };
+    backgroundColor?: string;
+    textColor?: string;
   };
   aboutPage: {
     title: {
@@ -320,6 +322,8 @@ const defaultSettings: StoreSettings = {
       en: "Loading...",
       "zh-TW": "載入中...",
     },
+    backgroundColor: "#f8f9fa",
+    textColor: "#1a1a1a",
   },
   aboutPage: {
     title: {

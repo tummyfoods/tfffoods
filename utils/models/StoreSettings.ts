@@ -123,6 +123,14 @@ const storeSettingsSchema = new mongoose.Schema(
       },
       buttonText: multiLangSchema,
       disclaimer: multiLangSchema,
+      backgroundColor: {
+        type: String,
+        default: "#f8f9fa",
+      },
+      textColor: {
+        type: String,
+        default: "#1a1a1a",
+      },
     },
     aboutPage: {
       title: multiLangSchema,

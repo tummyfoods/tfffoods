@@ -120,7 +120,7 @@ const NewsletterComponent = ({
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder={t("newsletter.emailPlaceholder")}
-            className="flex-grow px-4 py-2 bg-background text-foreground rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+            className="flex-grow px-4 py-2 bg-white dark:bg-background text-foreground placeholder:text-muted-foreground rounded-md focus:outline-none focus:ring-2 ring-foreground"
             required
           />
           <button
@@ -151,7 +151,7 @@ const NewsletterComponent = ({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className="w-full bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8"
+      className="w-full rounded-lg shadow-lg p-8 bg-background"
     >
       <div className="max-w-4xl mx-auto">
         <motion.div
@@ -198,13 +198,13 @@ const NewsletterComponent = ({
           transition={{ delay: 0.3 }}
           className="text-center mb-8"
         >
-          <h2 className="text-3xl font-extrabold text-foreground mb-2">
+          <h2 className="text-3xl font-extrabold mb-2 text-foreground">
             <MultiLangDisplay
               value={newsletterSettings.title}
               currentLang={language}
             />
           </h2>
-          <p className="text-muted-foreground text-lg">
+          <p className="text-lg text-muted-foreground">
             <MultiLangDisplay
               value={newsletterSettings.subtitle}
               currentLang={language}
@@ -279,7 +279,7 @@ const NewsletterComponent = ({
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
-          className="text-xs text-muted-foreground mt-4 text-center"
+          className="text-xs mt-4 text-center text-muted-foreground opacity-60"
         >
           <MultiLangDisplay
             value={newsletterSettings.disclaimer}
