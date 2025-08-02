@@ -82,7 +82,7 @@ export default function Products() {
   const urlCategory = searchParams.get("category") || "All Categories";
   const urlMinPrice = parseFloat(searchParams.get("minPrice") || "0");
   const urlMaxPrice = parseFloat(searchParams.get("maxPrice") || "1000000");
-  const urlPage = parseInt(searchParams.get("page") || "1");
+  const urlPage = Math.max(1, parseInt(searchParams.get("page") || "1"));
 
   // Filter states with URL persistence
   const [brands, setBrands] = useState<Brand[]>([]);
@@ -100,6 +100,11 @@ export default function Products() {
       setSortOption(urlSort);
     }
   }, [urlSort]);
+
+  // Reset page when category changes
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [selectedCategory]);
 
   // Update URL when filters change
   useEffect(() => {
@@ -277,6 +282,7 @@ export default function Products() {
   const handleProductsClick = (e: React.MouseEvent) => {
     e.preventDefault();
     setSelectedCategory("All Categories");
+    setCurrentPage(1); // Reset page when changing category
     router.push("/products");
   };
 
@@ -334,9 +340,14 @@ export default function Products() {
     fetchBrands();
   }, [t]);
 
+  useEffect(() => {
+    if (error) {
+      toast.error(t("product.fetchError"));
+    }
+  }, [error, t]);
+
   if (isLoading && !data) return <ProductGridSkeleton />;
   if (error) {
-    toast.error(t("product.fetchError"));
     return <div>Error loading products</div>;
   }
 

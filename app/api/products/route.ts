@@ -108,8 +108,9 @@ export async function GET(request: NextRequest) {
   console.log("🔍 API Request received:", request.url);
   return handleProducts(async () => {
     const { searchParams } = new URL(request.url);
-    const page = parseInt(searchParams.get("page") || "1");
-    const limit = parseInt(searchParams.get("limit") || "10");
+    // Ensure page is at least 1, even if 0 is passed
+    const page = Math.max(1, parseInt(searchParams.get("page") || "1"));
+    const limit = Math.max(1, parseInt(searchParams.get("limit") || "10"));
     const minPrice = parseFloat(searchParams.get("minPrice") || "0");
     const maxPrice = parseFloat(searchParams.get("maxPrice") || "999999");
     const brandId = searchParams.get("brand") || undefined;

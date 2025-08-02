@@ -61,7 +61,7 @@ const ProductView: React.FC<ProductViewProps> = ({
   if (!isLoading && products.length === 0) {
     return (
       <div className="flex justify-center items-center min-h-[200px] text-muted-foreground">
-        {t("categories.emptyCategory")}
+        {t("categories.common.emptyCategory")}
       </div>
     );
   }
