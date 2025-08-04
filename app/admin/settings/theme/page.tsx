@@ -201,47 +201,49 @@ export default function ThemeSettings() {
 
   // Load saved colors on mount
   useEffect(() => {
-    const savedLightBg =
-      localStorage.getItem("lightModeBackground") || "#ffffff";
-    const savedDarkBg = localStorage.getItem("darkModeBackground") || "#1a1a1a";
-    const savedLightCard = localStorage.getItem("lightModeCard") || "#ffffff";
-    const savedDarkCard = localStorage.getItem("darkModeCard") || "#1e1e1e";
-    const savedLightNavbar =
-      localStorage.getItem("lightModeNavbar") || "#ffffff";
-    const savedDarkNavbar = localStorage.getItem("darkModeNavbar") || "#1e1e1e";
-    const savedLightText = localStorage.getItem("lightModeText") || "#000000";
-    const savedDarkText = localStorage.getItem("darkModeText") || "#ffffff";
-    const savedLightMutedText =
-      localStorage.getItem("lightModeMutedText") || "#666666";
-    const savedDarkMutedText =
-      localStorage.getItem("darkModeMutedText") || "#a1a1a1";
-    const savedLightBorder =
-      localStorage.getItem("lightModeBorder") || "#e5e7eb";
-    const savedDarkBorder = localStorage.getItem("darkModeBorder") || "#374151";
-    const savedLightFooter =
-      localStorage.getItem("lightModeFooter") || "#f9fafb";
-    const savedDarkFooter = localStorage.getItem("darkModeFooter") || "#111827";
-    const savedLightCardBorder =
-      localStorage.getItem("lightModeCardBorder") || "#e5e7eb";
-    const savedDarkCardBorder =
-      localStorage.getItem("darkModeCardBorder") || "#374151";
-    const savedLightCardItemBorder =
-      localStorage.getItem("lightModeCardItemBorder") || "#e5e7eb";
-    const savedDarkCardItemBorder =
-      localStorage.getItem("darkModeCardItemBorder") || "#374151";
+    async function loadThemeSettings() {
+      try {
+        const response = await fetch("/api/theme-settings");
+        const data = await response.json();
 
-    const savedLightBgOpacity =
-      Number(localStorage.getItem("lightModeBgOpacity")) || 100;
-    const savedDarkBgOpacity =
-      Number(localStorage.getItem("darkModeBgOpacity")) || 100;
-    const savedLightCardOpacity =
-      Number(localStorage.getItem("lightModeCardOpacity")) || 100;
-    const savedDarkCardOpacity =
-      Number(localStorage.getItem("darkModeCardOpacity")) || 100;
-    const savedLightNavbarOpacity =
-      Number(localStorage.getItem("lightModeNavbarOpacity")) || 100;
-    const savedDarkNavbarOpacity =
-      Number(localStorage.getItem("darkModeNavbarOpacity")) || 100;
+        if (data.themeSettings) {
+          const { light, dark } = data.themeSettings;
+
+          // Set light mode colors
+          setLightBgColor(light.background);
+          setLightCardColor(light.card);
+          setLightNavbarColor(light.navbar);
+          setLightTextColor(light.text);
+          setLightMutedTextColor(light.mutedText);
+          setLightBorderColor(light.border);
+          setLightFooterColor(light.footer);
+          setLightCardBorderColor(light.cardBorder);
+          setLightCardItemBorderColor(light.cardItemBorder);
+          setLightBgOpacity(light.backgroundOpacity);
+          setLightCardOpacity(light.cardOpacity);
+          setLightNavbarOpacity(light.navbarOpacity);
+
+          // Set dark mode colors
+          setDarkBgColor(dark.background);
+          setDarkCardColor(dark.card);
+          setDarkNavbarColor(dark.navbar);
+          setDarkTextColor(dark.text);
+          setDarkMutedTextColor(dark.mutedText);
+          setDarkBorderColor(dark.border);
+          setDarkFooterColor(dark.footer);
+          setDarkCardBorderColor(dark.cardBorder);
+          setDarkCardItemBorderColor(dark.cardItemBorder);
+          setDarkBgOpacity(dark.backgroundOpacity);
+          setDarkCardOpacity(dark.cardOpacity);
+          setDarkNavbarOpacity(dark.navbarOpacity);
+        }
+      } catch (error) {
+        console.error("Failed to load theme settings:", error);
+        toast.error("Failed to load theme settings");
+      }
+    }
+
+    loadThemeSettings();
 
     setLightBgColor(savedLightBg);
     setDarkBgColor(savedDarkBg);
@@ -270,42 +272,63 @@ export default function ThemeSettings() {
     setDarkNavbarOpacity(savedDarkNavbarOpacity);
   }, []);
 
-  const handleSave = () => {
-    // Save to localStorage
-    localStorage.setItem("lightModeBackground", lightBgColor);
-    localStorage.setItem("darkModeBackground", darkBgColor);
-    localStorage.setItem("lightModeCard", lightCardColor);
-    localStorage.setItem("darkModeCard", darkCardColor);
-    localStorage.setItem("lightModeNavbar", lightNavbarColor);
-    localStorage.setItem("darkModeNavbar", darkNavbarColor);
-    localStorage.setItem("lightModeText", lightTextColor);
-    localStorage.setItem("darkModeText", darkTextColor);
-    localStorage.setItem("lightModeMutedText", lightMutedTextColor);
-    localStorage.setItem("darkModeMutedText", darkMutedTextColor);
-    localStorage.setItem("lightModeBorder", lightBorderColor);
-    localStorage.setItem("darkModeBorder", darkBorderColor);
-    localStorage.setItem("lightModeFooter", lightFooterColor);
-    localStorage.setItem("darkModeFooter", darkFooterColor);
-    localStorage.setItem("lightModeCardBorder", lightCardBorderColor);
-    localStorage.setItem("darkModeCardBorder", darkCardBorderColor);
-    localStorage.setItem("lightModeCardItemBorder", lightCardItemBorderColor);
-    localStorage.setItem("darkModeCardItemBorder", darkCardItemBorderColor);
+  const handleSave = async () => {
+    try {
+      const themeSettings = {
+        light: {
+          background: lightBgColor,
+          card: lightCardColor,
+          navbar: lightNavbarColor,
+          text: lightTextColor,
+          mutedText: lightMutedTextColor,
+          border: lightBorderColor,
+          footer: lightFooterColor,
+          cardBorder: lightCardBorderColor,
+          cardItemBorder: lightCardItemBorderColor,
+          backgroundOpacity: lightBgOpacity,
+          cardOpacity: lightCardOpacity,
+          navbarOpacity: lightNavbarOpacity,
+        },
+        dark: {
+          background: darkBgColor,
+          card: darkCardColor,
+          navbar: darkNavbarColor,
+          text: darkTextColor,
+          mutedText: darkMutedTextColor,
+          border: darkBorderColor,
+          footer: darkFooterColor,
+          cardBorder: darkCardBorderColor,
+          cardItemBorder: darkCardItemBorderColor,
+          backgroundOpacity: darkBgOpacity,
+          cardOpacity: darkCardOpacity,
+          navbarOpacity: darkNavbarOpacity,
+        },
+      };
 
-    localStorage.setItem("lightModeBgOpacity", String(lightBgOpacity));
-    localStorage.setItem("darkModeBgOpacity", String(darkBgOpacity));
-    localStorage.setItem("lightModeCardOpacity", String(lightCardOpacity));
-    localStorage.setItem("darkModeCardOpacity", String(darkCardOpacity));
-    localStorage.setItem("lightModeNavbarOpacity", String(lightNavbarOpacity));
-    localStorage.setItem("darkModeNavbarOpacity", String(darkNavbarOpacity));
+      const response = await fetch("/api/theme-settings", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ themeSettings }),
+      });
 
-    // Trigger a storage event to update colors
-    window.dispatchEvent(
-      new StorageEvent("storage", {
-        key: "themeColors",
-      })
-    );
+      if (!response.ok) {
+        throw new Error("Failed to save theme settings");
+      }
 
-    toast.success("Theme settings saved");
+      toast.success("Theme settings saved");
+
+      // Trigger a storage event to update colors
+      window.dispatchEvent(
+        new StorageEvent("storage", {
+          key: "themeColors",
+        })
+      );
+    } catch (error) {
+      console.error("Failed to save theme settings:", error);
+      toast.error("Failed to save theme settings");
+    }
   };
 
   return (
