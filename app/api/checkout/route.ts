@@ -7,6 +7,8 @@ import User from "@/utils/models/User";
 import DeliverySettings from "@/utils/models/DeliverySettings";
 import Invoice from "@/utils/models/Invoice";
 import invoiceNumberService from "@/utils/services/invoiceNumberService";
+import { sendEmail } from "@/lib/emailService";
+import { generateOrderConfirmationEmail } from "@/lib/emailTemplates";
 import type { Document } from "mongoose";
 
 interface SavedOrder extends Document {
@@ -446,6 +448,28 @@ export async function POST(req: Request) {
 
       order.invoiceNumber = invoice.invoiceNumber;
       await order.save();
+    }
+
+    // Send order confirmation email
+    try {
+      const populatedOrder = await Order.findById(order._id).populate(
+        "items.id"
+      );
+      if (populatedOrder) {
+        const { subject, text, html } = generateOrderConfirmationEmail(
+          populatedOrder,
+          user.language || "en"
+        );
+        await sendEmail({
+          to: email,
+          subject,
+          text,
+          html,
+        });
+      }
+    } catch (emailError) {
+      console.error("Failed to send order confirmation email:", emailError);
+      // Don't fail the order if email fails
     }
 
     return NextResponse.json({

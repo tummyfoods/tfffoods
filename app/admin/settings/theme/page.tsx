@@ -244,32 +244,6 @@ export default function ThemeSettings() {
     }
 
     loadThemeSettings();
-
-    setLightBgColor(savedLightBg);
-    setDarkBgColor(savedDarkBg);
-    setLightCardColor(savedLightCard);
-    setDarkCardColor(savedDarkCard);
-    setLightNavbarColor(savedLightNavbar);
-    setDarkNavbarColor(savedDarkNavbar);
-    setLightTextColor(savedLightText);
-    setDarkTextColor(savedDarkText);
-    setLightMutedTextColor(savedLightMutedText);
-    setDarkMutedTextColor(savedDarkMutedText);
-    setLightBorderColor(savedLightBorder);
-    setDarkBorderColor(savedDarkBorder);
-    setLightFooterColor(savedLightFooter);
-    setDarkFooterColor(savedDarkFooter);
-    setLightCardBorderColor(savedLightCardBorder);
-    setDarkCardBorderColor(savedDarkCardBorder);
-    setLightCardItemBorderColor(savedLightCardItemBorder);
-    setDarkCardItemBorderColor(savedDarkCardItemBorder);
-
-    setLightBgOpacity(savedLightBgOpacity);
-    setDarkBgOpacity(savedDarkBgOpacity);
-    setLightCardOpacity(savedLightCardOpacity);
-    setDarkCardOpacity(savedDarkCardOpacity);
-    setLightNavbarOpacity(savedLightNavbarOpacity);
-    setDarkNavbarOpacity(savedDarkNavbarOpacity);
   }, []);
 
   const handleSave = async () => {
