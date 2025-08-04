@@ -14,6 +14,7 @@
     "test:app": "ts-node -P tsconfig.test.json scripts/test-app.ts"
   },
   "dependencies": {
+    "@aws-sdk/client-ses": "^3.859.0",
     "@googlemaps/react-wrapper": "^1.1.42",
     "@heroicons/react": "^2.2.0",
     "@radix-ui/react-alert-dialog": "^1.1.4",
