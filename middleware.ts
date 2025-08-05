@@ -119,8 +119,8 @@ export default withAuth(
           return true;
         }
 
-        // Allow auth routes without authentication
-        if (path.startsWith("/api/auth")) {
+        // Only allow login and logout without auth
+        if (path.startsWith("/api/auth/login") || path.startsWith("/api/auth/logout")) {
           return true;
         }
 

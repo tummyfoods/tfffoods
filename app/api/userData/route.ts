@@ -21,12 +21,12 @@ export async function GET() {
   return handleUserData(async () => {
     const session = await getServerSession(authOptions);
 
-    // Return empty data if not authenticated instead of throwing error
-    if (!session?.user?.email) {
-      return {
+    // Require a valid session with complete user data
+    if (!session?.user?.email || !session?.user?.id) {
+      return new Response(JSON.stringify({
         authenticated: false,
-        message: "Not authenticated",
-      };
+        message: "Invalid session"
+      }), { status: 401 });
     }
 
     console.log("userData - Fetching user data for email:", session.user.email);

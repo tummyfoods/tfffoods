@@ -52,13 +52,14 @@ export function UserProvider({ children }: { children: React.ReactNode }) {
   };
 
   useEffect(() => {
-    if (status === "authenticated") {
+    if (status === "authenticated" && session?.user) {
       fetchUserData();
-    } else if (status === "unauthenticated") {
+    } else {
+      // Clear user data for any non-authenticated state
       setUserData(null);
       setLoading(false);
     }
-  }, [status]);
+  }, [status, session]);
 
   return (
     <UserContext.Provider value={{ userData, loading, error, refreshUserData }}>
