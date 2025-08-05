@@ -630,7 +630,13 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({
   };
 
   useEffect(() => {
-    fetchSettings();
+    // Only fetch settings for public pages or when authenticated
+    const isPublicPage = window.location.pathname === "/" || 
+                        window.location.pathname === "/login" || 
+                        window.location.pathname === "/signup";
+    if (isPublicPage) {
+      fetchSettings();
+    }
   }, []);
 
   // Provide a wrapped version of settings that always ensures logo is valid
