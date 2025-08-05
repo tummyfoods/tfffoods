@@ -22,67 +22,51 @@ const UserSection = ({ session }: UserSectionProps) => {
 
   const handleSignOut = async () => {
     try {
-      console.log("LOGOUT DEBUG - Starting logout");
-      console.log("LOGOUT DEBUG - Initial cookies:", document.cookie);
+      // 1. Set logout flag FIRST before any async operations
+      sessionStorage.setItem("justLoggedOut", "true");
 
-      // First clear the cart
+      // 2. Clear cart as it might depend on the session
       await clearCart();
 
-      // First clear the session through NextAuth
-      await signOut({
-        redirect: false,
-      });
+      // 3. Clear all client-side storage (except justLoggedOut flag)
+      const justLoggedOut = sessionStorage.getItem("justLoggedOut");
+      localStorage.clear();
+      sessionStorage.clear();
+      sessionStorage.setItem("justLoggedOut", justLoggedOut || "true");
 
-      // Then call our cleanup route to ensure all cookies are cleared
+      // 4. Call our server logout endpoint to clear cookies
       const response = await fetch("/api/auth/logout", {
         method: "POST",
         credentials: "include",
-        cache: "no-store",
-      });
-
-      if (!response.ok) {
-        throw new Error("Logout API failed");
-      }
-
-      // Clear any remaining auth data from localStorage and sessionStorage
-      const storageKeys = [
-        "next-auth.session-token",
-        "next-auth.callback-url",
-        "next-auth.csrf-token",
-        "__Secure-next-auth.session-token",
-        "__Secure-next-auth.callback-url",
-        "__Host-next-auth.csrf-token",
-      ];
-
-      storageKeys.forEach((key) => {
-        try {
-          localStorage.removeItem(key);
-          sessionStorage.removeItem(key);
-        } catch (e) {
-          console.debug(`Failed to remove ${key}:`, e);
+        headers: {
+          "Cache-Control": "no-cache, no-store, must-revalidate",
+          Pragma: "no-cache",
+          Expires: "0"
         }
       });
 
-      console.log("LOGOUT DEBUG - Before redirect cookies:", document.cookie);
+      if (!response.ok) {
+        throw new Error("Server logout failed");
+      }
 
-      // Set logout flag and clear storage
-      sessionStorage.setItem("justLoggedOut", "true");
-      localStorage.clear();
-
-      // Force clear any remaining cookies
-      document.cookie.split(";").forEach(function (c) {
-        document.cookie = c
-          .replace(/^ +/, "")
-          .replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+      // 5. Call NextAuth signOut with immediate redirect
+      await signOut({
+        callbackUrl: "/login",
+        redirect: true
       });
 
-      console.log("LOGOUT DEBUG - After cookie clear:", document.cookie);
+      // 6. Force redirect if signOut's redirect fails
+      setTimeout(() => {
+        window.location.replace("/login");
+      }, 100);
 
-      // Finally, redirect to login using replace to prevent back navigation
-      window.location.replace("/login");
     } catch (error) {
       console.error("Logout failed:", error);
-      // Force a clean redirect to login page
+      // On error, force clear everything (except justLoggedOut) and redirect
+      const justLoggedOut = sessionStorage.getItem("justLoggedOut");
+      localStorage.clear();
+      sessionStorage.clear();
+      sessionStorage.setItem("justLoggedOut", justLoggedOut || "true");
       window.location.replace("/login");
     }
   };
