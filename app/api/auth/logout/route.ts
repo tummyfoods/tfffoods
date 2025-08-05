@@ -47,28 +47,41 @@ export async function POST() {
     "next-auth.pkce.code_verifier",
   ];
 
-  // Instead of deleting cookies, set them to invalid values to force session termination
-  cookieNames.forEach((name) => {
-    const invalidValue = "LOGGED_OUT_" + Date.now();
-    
-    // Set invalid values with all possible combinations
-    response.cookies.set(name, invalidValue, {
-      ...cookieOptions,
-      maxAge: 0,
-      expires: new Date(0)
-    });
+  // Get all cookies from request
+  const cookieHeader = headers().get("cookie") || "";
+  const existingCookies = cookieHeader.split("; ").reduce((acc, cookie) => {
+    const [name, value] = cookie.split("=");
+    acc[name] = value;
+    return acc;
+  }, {} as Record<string, string>);
 
-    response.cookies.set(name, invalidValue, {
-      ...rootCookieOptions,
-      maxAge: 0,
-      expires: new Date(0)
-    });
+  // Find and clear ALL session-related cookies
+  Object.keys(existingCookies).forEach((name) => {
+    if (name.includes("next-auth") || cookieNames.includes(name)) {
+      // Clear with all possible domain combinations
+      response.cookies.set(name, "LOGGED_OUT", {
+        ...cookieOptions,
+        maxAge: 0,
+        expires: new Date(0)
+      });
 
-    // Also set without domain for __Host- cookies
-    if (name.startsWith("__Host-")) {
-      response.cookies.set(name, invalidValue, {
+      response.cookies.set(name, "LOGGED_OUT", {
+        ...rootCookieOptions,
+        maxAge: 0,
+        expires: new Date(0)
+      });
+
+      response.cookies.set(name, "LOGGED_OUT", {
         ...cookieOptions,
         domain: undefined,
+        maxAge: 0,
+        expires: new Date(0)
+      });
+
+      // Also try root path
+      response.cookies.set(name, "LOGGED_OUT", {
+        ...cookieOptions,
+        path: "/",
         maxAge: 0,
         expires: new Date(0)
       });
