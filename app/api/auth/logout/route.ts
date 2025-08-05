@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { headers } from "next/headers";
 
 export async function POST() {
   const isProd = process.env.NODE_ENV === "production";
