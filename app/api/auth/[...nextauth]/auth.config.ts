@@ -159,13 +159,26 @@ export const authOptions: NextAuthOptions = {
   },
   session: {
     strategy: "jwt",
-    maxAge: process.env.NODE_ENV === "production" ? 8 * 60 * 60 : 30 * 24 * 60 * 60, // 8 hours in prod, 30 days in dev
+    maxAge: process.env.NODE_ENV === "production" ? 2 * 60 * 60 : 30 * 24 * 60 * 60, // 2 hours in prod, 30 days in dev
     updateAge: 60 * 60, // 1 hour
   },
   events: {
-    signOut: async () => {
-      // Clear any server-side session data here
-      console.log("NextAuth signOut event triggered");
+    signOut: async ({ session, token }) => {
+      try {
+        console.log("NextAuth signOut event triggered", { session, token });
+        
+        // Force expire the token
+        if (token) {
+          token.exp = 0;
+        }
+
+        // Clear any server-side session data
+        if (session) {
+          session.expires = new Date(0).toISOString();
+        }
+      } catch (error) {
+        console.error("Error in signOut event:", error);
+      }
     },
   },
   cookies: {
@@ -196,7 +209,8 @@ export const authOptions: NextAuthOptions = {
         sameSite: "lax",
         path: "/",
         secure: true,
-        domain: process.env.NODE_ENV === "production" ? ".tfffoods.com" : undefined,
+        // __Host- prefixed cookies MUST NOT have a domain set
+        domain: undefined,
       },
     },
   },
