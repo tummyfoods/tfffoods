@@ -120,21 +120,41 @@ const Login = () => {
   };
 
   useEffect(() => {
-    // Debug logging
-    console.log("LOGIN DEBUG - Auth State:", { status, session });
+    // Detailed debug logging
+    console.log("LOGIN PAGE DEBUG ==================");
+    console.log("Current Status:", status);
+    console.log("Session Data:", session);
+    console.log("JustLoggedOut Flag:", sessionStorage.getItem("justLoggedOut"));
+    console.log("All SessionStorage Keys:", Object.keys(sessionStorage));
+    console.log("All LocalStorage Keys:", Object.keys(localStorage));
+    console.log("Current URL:", window.location.href);
+    console.log("================================");
 
     // Check if we just logged out
     const justLoggedOut = sessionStorage.getItem("justLoggedOut");
 
     if (status === "authenticated" && session?.user) {
+      console.log("LOGIN DEBUG - Session is authenticated with user:", session.user);
+      
       if (justLoggedOut) {
-        console.log("LOGIN DEBUG - Preventing auto-login after logout");
+        console.log("LOGIN DEBUG - Found justLoggedOut flag, preventing auto-login");
         // Clear the session if we just logged out
-        signOut({ redirect: false });
-        sessionStorage.removeItem("justLoggedOut");
+        signOut({ 
+          redirect: false,
+          callbackUrl: "/login" 
+        }).then(() => {
+          console.log("LOGIN DEBUG - SignOut completed successfully");
+          sessionStorage.removeItem("justLoggedOut");
+          console.log("LOGIN DEBUG - Removed justLoggedOut flag");
+        }).catch(error => {
+          console.error("LOGIN DEBUG - SignOut failed:", error);
+        });
       } else {
+        console.log("LOGIN DEBUG - No justLoggedOut flag, redirecting to home");
         router.push("/");
       }
+    } else {
+      console.log("LOGIN DEBUG - Session is not authenticated or has no user");
     }
   }, [status, session, router]);
 

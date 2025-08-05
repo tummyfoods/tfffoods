@@ -22,19 +22,31 @@ const UserSection = ({ session }: UserSectionProps) => {
 
   const handleSignOut = async () => {
     try {
+      console.log("LOGOUT DEBUG ==================");
+      console.log("Starting logout process");
+
       // 1. Set logout flag FIRST before any async operations
       sessionStorage.setItem("justLoggedOut", "true");
+      console.log("Set justLoggedOut flag:", sessionStorage.getItem("justLoggedOut"));
 
       // 2. Clear cart as it might depend on the session
       await clearCart();
+      console.log("Cart cleared");
 
       // 3. Clear all client-side storage (except justLoggedOut flag)
       const justLoggedOut = sessionStorage.getItem("justLoggedOut");
+      console.log("Preserving justLoggedOut flag:", justLoggedOut);
+      
       localStorage.clear();
       sessionStorage.clear();
       sessionStorage.setItem("justLoggedOut", justLoggedOut || "true");
+      
+      console.log("Storage cleared. Current state:");
+      console.log("SessionStorage:", Object.keys(sessionStorage));
+      console.log("LocalStorage:", Object.keys(localStorage));
 
       // 4. Call our server logout endpoint to clear cookies
+      console.log("Calling server logout endpoint...");
       const response = await fetch("/api/auth/logout", {
         method: "POST",
         credentials: "include",
@@ -48,20 +60,35 @@ const UserSection = ({ session }: UserSectionProps) => {
       if (!response.ok) {
         throw new Error("Server logout failed");
       }
+      console.log("Server logout successful");
 
       // 5. Call NextAuth signOut with immediate redirect
+      console.log("Calling NextAuth signOut...");
       await signOut({
         callbackUrl: "/login",
-        redirect: true
+        redirect: false
       });
+      console.log("NextAuth signOut completed");
 
-      // 6. Force redirect if signOut's redirect fails
-      setTimeout(() => {
-        window.location.replace("/login");
-      }, 100);
+      // 6. Final check of storage state
+      console.log("Final storage state:");
+      console.log("JustLoggedOut flag:", sessionStorage.getItem("justLoggedOut"));
+      console.log("SessionStorage keys:", Object.keys(sessionStorage));
+      console.log("LocalStorage keys:", Object.keys(localStorage));
+
+      // 7. Force redirect
+      console.log("Redirecting to login page...");
+      window.location.replace("/login");
+      console.log("================================");
 
     } catch (error) {
+      console.error("LOGOUT ERROR ==================");
       console.error("Logout failed:", error);
+      console.error("Current storage state:");
+      console.error("SessionStorage:", Object.keys(sessionStorage));
+      console.error("LocalStorage:", Object.keys(localStorage));
+      console.error("================================");
+
       // On error, force clear everything (except justLoggedOut) and redirect
       const justLoggedOut = sessionStorage.getItem("justLoggedOut");
       localStorage.clear();
