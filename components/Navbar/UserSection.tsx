@@ -22,6 +22,9 @@ const UserSection = ({ session }: UserSectionProps) => {
 
   const handleSignOut = async () => {
     try {
+      console.log("LOGOUT DEBUG - Starting logout");
+      console.log("LOGOUT DEBUG - Initial cookies:", document.cookie);
+
       // First clear the cart
       await clearCart();
 
@@ -59,6 +62,21 @@ const UserSection = ({ session }: UserSectionProps) => {
           console.debug(`Failed to remove ${key}:`, e);
         }
       });
+
+      console.log("LOGOUT DEBUG - Before redirect cookies:", document.cookie);
+
+      // Set logout flag and clear storage
+      sessionStorage.setItem("justLoggedOut", "true");
+      localStorage.clear();
+
+      // Force clear any remaining cookies
+      document.cookie.split(";").forEach(function (c) {
+        document.cookie = c
+          .replace(/^ +/, "")
+          .replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+      });
+
+      console.log("LOGOUT DEBUG - After cookie clear:", document.cookie);
 
       // Finally, redirect to login using replace to prevent back navigation
       window.location.replace("/login");

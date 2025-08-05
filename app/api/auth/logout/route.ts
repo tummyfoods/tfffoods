@@ -4,6 +4,24 @@ export async function POST() {
   const isProd = process.env.NODE_ENV === "production";
   const domain = isProd ? ".tfffoods.com" : undefined;
 
+  // Debug logging
+  console.log("LOGOUT DEBUG - Environment:", {
+    isProd,
+    domain,
+    cookies: Object.fromEntries(
+      Object.entries(
+        Object.fromEntries(
+          new Map(
+            decodeURIComponent(document?.cookie || "")
+              .split("; ")
+              .map((c) => c.split("="))
+          )
+        )
+      )
+    ),
+    headers: Object.fromEntries(Array.from(headers?.entries() || [])),
+  });
+
   const cookieOptions = {
     path: "/",
     domain: domain,

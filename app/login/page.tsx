@@ -120,8 +120,21 @@ const Login = () => {
   };
 
   useEffect(() => {
+    // Debug logging
+    console.log("LOGIN DEBUG - Auth State:", { status, session });
+
+    // Check if we just logged out
+    const justLoggedOut = sessionStorage.getItem("justLoggedOut");
+
     if (status === "authenticated" && session?.user) {
-      router.push("/");
+      if (justLoggedOut) {
+        console.log("LOGIN DEBUG - Preventing auto-login after logout");
+        // Clear the session if we just logged out
+        signOut({ redirect: false });
+        sessionStorage.removeItem("justLoggedOut");
+      } else {
+        router.push("/");
+      }
     }
   }, [status, session, router]);
 
