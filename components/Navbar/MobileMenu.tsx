@@ -415,13 +415,13 @@ const MobileMenu = ({
 
                           // Then sign out with specific configuration
                           await signOut({
-                            callbackUrl: "/",
+                            callbackUrl: "/login",
                             redirect: true,
                           });
 
                           // Force redirect if signOut doesn't do it
                           setTimeout(() => {
-                            window.location.href = "/";
+                            window.location.href = "/login";
                           }, 500);
                         } catch (error) {
                           console.error("Logout failed:", error);
