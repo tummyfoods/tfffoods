@@ -161,6 +161,39 @@ export const authOptions: NextAuthOptions = {
     strategy: "jwt",
     maxAge: 30 * 24 * 60 * 60, // 30 days
   },
+  cookies: {
+    sessionToken: {
+      name: `__Secure-next-auth.session-token`,
+      options: {
+        httpOnly: true,
+        sameSite: "lax",
+        path: "/",
+        secure: true,
+        domain:
+          process.env.NODE_ENV === "production" ? ".tfffoods.com" : "localhost",
+      },
+    },
+    callbackUrl: {
+      name: `__Secure-next-auth.callback-url`,
+      options: {
+        httpOnly: true,
+        sameSite: "lax",
+        path: "/",
+        secure: true,
+        domain:
+          process.env.NODE_ENV === "production" ? ".tfffoods.com" : "localhost",
+      },
+    },
+    csrfToken: {
+      name: `__Host-next-auth.csrf-token`,
+      options: {
+        httpOnly: true,
+        sameSite: "lax",
+        path: "/",
+        secure: true,
+      },
+    },
+  },
   callbacks: {
     async signIn({ user, account }) {
       try {
@@ -223,12 +256,6 @@ export const authOptions: NextAuthOptions = {
       return session;
     },
   },
-  secret:
-    process.env.NEXTAUTH_SECRET ||
-    (() => {
-      throw new Error(
-        "Please set NEXTAUTH_SECRET environment variable. Generate one with: node -e \"console.log(require('crypto').randomBytes(32).toString('base64'))\""
-      );
-    })(),
+  secret: process.env.NEXTAUTH_SECRET,
   debug: process.env.NODE_ENV === "development",
 };

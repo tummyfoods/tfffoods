@@ -39,21 +39,32 @@ export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
     },
   });
 
-  // Load theme settings from API
-  React.useEffect(() => {
-    async function loadThemeSettings() {
-      try {
-        const response = await fetch("/api/theme-settings");
-        const data = await response.json();
-        if (data.themeSettings) {
-          setThemeSettings(data.themeSettings);
-        }
-      } catch (error) {
-        console.error("Failed to load theme settings:", error);
+  // Load and update theme settings
+  const updateThemeSettings = React.useCallback(async (newSettings?: any) => {
+    try {
+      if (newSettings) {
+        setThemeSettings(newSettings);
+        // Dispatch theme update event
+        window.dispatchEvent(new CustomEvent("themeUpdate"));
+        return;
       }
+
+      const response = await fetch("/api/theme-settings");
+      const data = await response.json();
+      if (data.themeSettings) {
+        setThemeSettings(data.themeSettings);
+        // Dispatch theme update event
+        window.dispatchEvent(new CustomEvent("themeUpdate"));
+      }
+    } catch (error) {
+      console.error("Failed to load/update theme settings:", error);
     }
-    loadThemeSettings();
   }, []);
+
+  // Load theme settings on mount
+  React.useEffect(() => {
+    updateThemeSettings();
+  }, [updateThemeSettings]);
 
   // Convert hex to HSL values
   const hexToHSL = React.useCallback((hex: string) => {
@@ -220,7 +231,20 @@ export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
     const isDark = document.documentElement.classList.contains("dark");
     applyThemeColors(isDark ? "dark" : "light");
 
-    return () => observer.disconnect();
+    // Listen for theme updates
+    const handleThemeUpdate = () => {
+      const isDark = document.documentElement.classList.contains("dark");
+      applyThemeColors(isDark ? "dark" : "light");
+    };
+
+    window.addEventListener("storage", handleThemeUpdate);
+    window.addEventListener("themeUpdate", handleThemeUpdate);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("storage", handleThemeUpdate);
+      window.removeEventListener("themeUpdate", handleThemeUpdate);
+    };
   }, [applyThemeColors]);
 
   // Handle storage changes (when colors are updated in theme settings)
