@@ -79,36 +79,38 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     loadCart();
   }, [session, status, userLoading, userData, loadStoreServerCart]);
 
-  // Sync cart with server when it changes
+  // Sync cart with server when it changes, but only if we're definitely logged in
   useEffect(() => {
-    // Skip if not logged in, loading, or if currently syncing
+    // Skip sync if:
+    // 1. No session/user
+    // 2. Not fully authenticated
+    // 3. Still loading user data
+    // 4. Already syncing
+    // 5. No items to sync
     if (
-      !session?.user ||
+      !session?.user?.id || // Require complete user data
       status !== "authenticated" ||
       userLoading ||
-      !userData ||
-      isSyncing.current
+      !userData?.id || // Require complete user data
+      isSyncing.current ||
+      !Array.isArray(items) ||
+      items.length === 0
     ) {
       return;
     }
 
-    // Clear existing timeout
+    // Clear any pending sync
     if (syncTimeoutRef.current) {
       clearTimeout(syncTimeoutRef.current);
     }
 
-    // Set new timeout for sync
+    // Set up new sync with longer delay
     syncTimeoutRef.current = setTimeout(async () => {
       try {
         isSyncing.current = true;
-        // Ensure items is a valid array
-        if (!Array.isArray(items)) {
-          console.warn("Cart items is not an array:", items);
-          return;
-        }
 
-        // Only sync if user is authenticated
-        if (status === "authenticated" && userData) {
+        // Double-check auth status before sync
+        if (status === "authenticated" && userData?.id) {
           await axios.patch(
             "/api/userData",
             { cart: items },
@@ -120,24 +122,20 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
           );
         }
       } catch (error) {
-        console.error("Failed to sync cart with server:", error);
-        // Only handle errors if still authenticated
-        if (status === "authenticated" && userData) {
-          if (error.response?.status === 409) {
-            // Handle conflict by reloading server state
-            try {
-              await loadStoreServerCart();
-            } catch (reloadError) {
-              console.error("Failed to reload cart:", reloadError);
-            }
+        console.error("Cart sync failed:", error);
+        // Only try to recover if still authenticated
+        if (error.response?.status === 409 && status === "authenticated" && userData?.id) {
+          try {
+            await loadStoreServerCart();
+          } catch (reloadError) {
+            console.error("Cart reload failed:", reloadError);
           }
         }
       } finally {
         isSyncing.current = false;
       }
-    }, 300);
+    }, 1000); // Increased delay to reduce API calls
 
-    // Cleanup timeout on unmount
     return () => {
       if (syncTimeoutRef.current) {
         clearTimeout(syncTimeoutRef.current);
