@@ -25,15 +25,23 @@ const UserSection = ({ session }: UserSectionProps) => {
       // First clear the cart and wait for it to complete
       await clearCart();
 
-      // Then sign out with redirect
+      // Call our cleanup route first
+      await fetch("/api/auth/logout", { method: "POST" });
+
+      // Then sign out with specific configuration
       await signOut({
-        redirect: true,
         callbackUrl: "/",
+        redirect: true,
       });
+
+      // Force redirect if signOut doesn't do it
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 500);
     } catch (error) {
       console.error("Logout failed:", error);
       // If error occurs, force a hard redirect to ensure logout
-      window.location.href = "/";
+      window.location.href = "/login";
     }
   };
 

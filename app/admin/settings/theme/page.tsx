@@ -293,7 +293,10 @@ export default function ThemeSettings() {
 
       toast.success("Theme settings saved");
 
-      // Trigger a storage event to update colors
+      // Trigger theme update event
+      window.dispatchEvent(new CustomEvent("themeUpdate"));
+
+      // Also dispatch storage event for backward compatibility
       window.dispatchEvent(
         new StorageEvent("storage", {
           key: "themeColors",

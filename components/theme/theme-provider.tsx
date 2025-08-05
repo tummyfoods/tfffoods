@@ -247,17 +247,38 @@ export function ThemeProvider({ children, ...props }: ThemeProviderProps) {
     };
   }, [applyThemeColors]);
 
-  // Handle storage changes (when colors are updated in theme settings)
+  // Handle theme updates
   React.useEffect(() => {
-    const handleStorageChange = (e: StorageEvent) => {
-      if (e.key === "themeColors") {
-        const isDark = document.documentElement.classList.contains("dark");
-        applyThemeColors(isDark ? "dark" : "light");
+    const handleThemeUpdate = async () => {
+      try {
+        const response = await fetch("/api/theme-settings");
+        const data = await response.json();
+        if (data.themeSettings) {
+          setThemeSettings(data.themeSettings);
+          const isDark = document.documentElement.classList.contains("dark");
+          applyThemeColors(isDark ? "dark" : "light");
+        }
+      } catch (error) {
+        console.error("Failed to update theme:", error);
       }
     };
 
-    window.addEventListener("storage", handleStorageChange);
-    return () => window.removeEventListener("storage", handleStorageChange);
+    // Listen for both storage and custom theme update events
+    window.addEventListener("storage", (e: StorageEvent) => {
+      if (e.key === "themeColors") {
+        handleThemeUpdate();
+      }
+    });
+    window.addEventListener("themeUpdate", handleThemeUpdate);
+
+    return () => {
+      window.removeEventListener("storage", (e: StorageEvent) => {
+        if (e.key === "themeColors") {
+          handleThemeUpdate();
+        }
+      });
+      window.removeEventListener("themeUpdate", handleThemeUpdate);
+    };
   }, [applyThemeColors]);
 
   if (!mounted) {
