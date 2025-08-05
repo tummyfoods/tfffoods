@@ -189,7 +189,7 @@ export const authOptions: NextAuthOptions = {
         sameSite: "lax",
         path: "/",
         secure: true,
-        domain: process.env.NODE_ENV === "production" ? ".tfffoods.com" : undefined,
+        domain: undefined, // Don't set domain to prevent cookie sharing across subdomains
       },
     },
     callbackUrl: {
@@ -199,7 +199,7 @@ export const authOptions: NextAuthOptions = {
         sameSite: "lax",
         path: "/",
         secure: true,
-        domain: process.env.NODE_ENV === "production" ? ".tfffoods.com" : undefined,
+        domain: undefined, // Don't set domain to prevent cookie sharing across subdomains
       },
     },
     csrfToken: {
