@@ -8,18 +8,6 @@ export async function POST() {
   console.log("LOGOUT DEBUG - Environment:", {
     isProd,
     domain,
-    cookies: Object.fromEntries(
-      Object.entries(
-        Object.fromEntries(
-          new Map(
-            decodeURIComponent(document?.cookie || "")
-              .split("; ")
-              .map((c) => c.split("="))
-          )
-        )
-      )
-    ),
-    headers: Object.fromEntries(Array.from(headers?.entries() || [])),
   });
 
   const cookieOptions = {
