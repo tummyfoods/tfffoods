@@ -54,9 +54,16 @@ export default withAuth(
         isAuthRoute,
       });
 
-      // Skip middleware for auth routes
+      // Handle auth routes with proper cache control
       if (isAuthRoute) {
-        return NextResponse.next();
+        const response = NextResponse.next();
+        response.headers.set(
+          "Cache-Control",
+          "no-store, no-cache, must-revalidate, proxy-revalidate"
+        );
+        response.headers.set("Pragma", "no-cache");
+        response.headers.set("Expires", "0");
+        return response;
       }
 
       // Skip authentication for public routes

@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 
 export async function POST() {
-  const response = NextResponse.json({ success: true });
   const isProd = process.env.NODE_ENV === "production";
   const domain = isProd ? ".tfffoods.com" : undefined;
 
@@ -11,26 +10,63 @@ export async function POST() {
     secure: true,
     httpOnly: true,
     sameSite: "lax" as const,
-    maxAge: 0, // Immediately expire the cookie
+    maxAge: 0,
   };
 
-  // Clear all auth-related cookies with proper security settings
-  response.cookies.delete("__Secure-next-auth.session-token", cookieOptions);
-  response.cookies.delete("__Secure-next-auth.callback-url", cookieOptions);
-  response.cookies.delete("__Host-next-auth.csrf-token", {
+  // Additional options for root domain cookies
+  const rootCookieOptions = {
     ...cookieOptions,
-    domain: undefined, // This cookie doesn't accept domain setting
+    domain: isProd ? "tfffoods.com" : undefined,
+  };
+
+  const response = new NextResponse(JSON.stringify({ success: true }), {
+    status: 200,
+    headers: {
+      "Content-Type": "application/json",
+      "Cache-Control": "no-store, no-cache, must-revalidate, proxy-revalidate",
+      Pragma: "no-cache",
+      Expires: "0",
+    },
   });
 
-  // Also try clearing without Secure- prefix for local development
-  if (!isProd) {
-    response.cookies.delete("next-auth.session-token", cookieOptions);
-    response.cookies.delete("next-auth.callback-url", cookieOptions);
-    response.cookies.delete("next-auth.csrf-token", {
+  // Clear all possible variations of auth cookies
+  const cookieNames = [
+    "__Secure-next-auth.session-token",
+    "__Secure-next-auth.callback-url",
+    "__Host-next-auth.csrf-token",
+    "next-auth.session-token",
+    "next-auth.callback-url",
+    "next-auth.csrf-token",
+    "__Secure-next-auth.pkce.code_verifier",
+    "next-auth.pkce.code_verifier",
+  ];
+
+  cookieNames.forEach((name) => {
+    // Try all domain variations to ensure complete cleanup
+    response.cookies.delete(name, cookieOptions);
+    response.cookies.delete(name, rootCookieOptions);
+
+    // Try without domain (especially for __Host- prefixed cookies)
+    response.cookies.delete(name, {
       ...cookieOptions,
       domain: undefined,
     });
-  }
+
+    // Try with root path and different domain combinations
+    response.cookies.delete(name, {
+      ...cookieOptions,
+      path: "/",
+    });
+    response.cookies.delete(name, {
+      ...rootCookieOptions,
+      path: "/",
+    });
+    response.cookies.delete(name, {
+      ...cookieOptions,
+      domain: undefined,
+      path: "/",
+    });
+  });
 
   return response;
 }
