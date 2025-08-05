@@ -1,18 +1,22 @@
 import { getServerSession } from "next-auth";
 import { authOptions } from "../auth/[...nextauth]/auth.config";
 import { NextResponse } from "next/server";
+import { headers } from "next/headers";
 
 export async function GET() {
   try {
     // Get current session
     const session = await getServerSession(authOptions);
 
-    // Get all cookies
+    // Get request headers
+    const headersList = headers();
+
+    // Get all cookies from headers
+    const cookieHeader = headersList.get("cookie") || "";
     const cookies = Object.fromEntries(
-      Object.entries(
-        // @ts-ignore - headers exists on Request
-        Object.fromEntries(new Headers(headers()).entries())
-      ).filter(([key]) => key.toLowerCase().includes("cookie"))
+      cookieHeader.split("; ")
+        .filter(Boolean)
+        .map(cookie => cookie.split("="))
     );
 
     // Return detailed debug info
@@ -24,8 +28,7 @@ export async function GET() {
       },
       cookies,
       headers: {
-        // @ts-ignore - headers exists on Request
-        all: Object.fromEntries(new Headers(headers()).entries()),
+        all: Object.fromEntries(headersList.entries()),
       },
       timestamp: new Date().toISOString(),
     }, {
