@@ -125,36 +125,31 @@ const Login = () => {
     console.log("Current Status:", status);
     console.log("Session Data:", session);
     console.log("JustLoggedOut Flag:", sessionStorage.getItem("justLoggedOut"));
-    console.log("All SessionStorage Keys:", Object.keys(sessionStorage));
-    console.log("All LocalStorage Keys:", Object.keys(localStorage));
     console.log("Current URL:", window.location.href);
     console.log("================================");
 
-    // If we're not authenticated, clear the logout flag
+    const justLoggedOut = sessionStorage.getItem("justLoggedOut");
+
+    // If we just logged out and still have a session, force logout
+    if (justLoggedOut && status === "authenticated") {
+      console.log("LOGIN DEBUG - Detected authenticated session after logout, forcing logout");
+      signOut({ 
+        redirect: true,
+        callbackUrl: "/login"
+      });
+      return;
+    }
+
+    // Clear logout flag only when truly logged out
     if (status === "unauthenticated") {
       console.log("LOGIN DEBUG - Session is unauthenticated, clearing logout flag");
       sessionStorage.removeItem("justLoggedOut");
       return;
     }
 
-    // Only proceed if we have a session
-    if (status !== "authenticated" || !session?.user) {
-      console.log("LOGIN DEBUG - Session is not ready yet");
-      return;
-    }
-
-    // Check if we just logged out
-    const justLoggedOut = sessionStorage.getItem("justLoggedOut");
-    
-    if (justLoggedOut) {
-      console.log("LOGIN DEBUG - Found justLoggedOut flag, signing out");
-      sessionStorage.removeItem("justLoggedOut"); // Remove flag first to prevent loops
-      signOut({ 
-        redirect: true,
-        callbackUrl: "/login"
-      });
-    } else {
-      console.log("LOGIN DEBUG - No justLoggedOut flag, redirecting to home");
+    // If authenticated without logout flag, go to home
+    if (status === "authenticated" && !justLoggedOut) {
+      console.log("LOGIN DEBUG - Authenticated without logout flag, redirecting to home");
       router.push("/");
     }
   }, [status, session, router]);
