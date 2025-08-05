@@ -47,31 +47,32 @@ export async function POST() {
     "next-auth.pkce.code_verifier",
   ];
 
+  // Instead of deleting cookies, set them to invalid values to force session termination
   cookieNames.forEach((name) => {
-    // Try all domain variations to ensure complete cleanup
-    response.cookies.delete(name, cookieOptions);
-    response.cookies.delete(name, rootCookieOptions);
-
-    // Try without domain (especially for __Host- prefixed cookies)
-    response.cookies.delete(name, {
+    const invalidValue = "LOGGED_OUT_" + Date.now();
+    
+    // Set invalid values with all possible combinations
+    response.cookies.set(name, invalidValue, {
       ...cookieOptions,
-      domain: undefined,
+      maxAge: 0,
+      expires: new Date(0)
     });
 
-    // Try with root path and different domain combinations
-    response.cookies.delete(name, {
-      ...cookieOptions,
-      path: "/",
-    });
-    response.cookies.delete(name, {
+    response.cookies.set(name, invalidValue, {
       ...rootCookieOptions,
-      path: "/",
+      maxAge: 0,
+      expires: new Date(0)
     });
-    response.cookies.delete(name, {
-      ...cookieOptions,
-      domain: undefined,
-      path: "/",
-    });
+
+    // Also set without domain for __Host- cookies
+    if (name.startsWith("__Host-")) {
+      response.cookies.set(name, invalidValue, {
+        ...cookieOptions,
+        domain: undefined,
+        maxAge: 0,
+        expires: new Date(0)
+      });
+    }
   });
 
   return response;

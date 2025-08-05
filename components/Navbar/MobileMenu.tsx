@@ -410,16 +410,33 @@ const MobileMenu = ({
                     <button
                       onClick={async () => {
                         try {
-                          // Clear cart first as it's client-side
+                          // 1. Clear client-side cart
                           await clearCart();
 
-                          // Let NextAuth handle everything
-                          await signOut({
-                            callbackUrl: "/login",
-                            redirect: true
+                          // 2. Force invalidate session cookies
+                          const response = await fetch("/api/auth/logout", {
+                            method: "POST",
+                            credentials: "include",
+                            headers: {
+                              "Cache-Control": "no-store, no-cache, must-revalidate",
+                              Pragma: "no-cache",
+                              Expires: "0"
+                            }
                           });
+
+                          if (!response.ok) {
+                            throw new Error("Failed to invalidate session");
+                          }
+
+                          // 3. Clear all client storage
+                          localStorage.clear();
+                          sessionStorage.clear();
+
+                          // 4. Force a hard redirect to login
+                          window.location.href = "/login";
                         } catch (error) {
                           console.error("Logout failed:", error);
+                          // Even on error, try to redirect
                           window.location.href = "/login";
                         }
                       }}
