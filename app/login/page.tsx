@@ -140,14 +140,15 @@ const Login = () => {
         console.log("LOGIN DEBUG - Found justLoggedOut flag, preventing auto-login");
         // Clear the session if we just logged out
         signOut({ 
-          redirect: false,
+          redirect: true,
           callbackUrl: "/login" 
         }).then(() => {
           console.log("LOGIN DEBUG - SignOut completed successfully");
-          sessionStorage.removeItem("justLoggedOut");
-          console.log("LOGIN DEBUG - Removed justLoggedOut flag");
+          // Don't remove the flag here - let it persist until page reload
+          window.location.replace("/login");
         }).catch(error => {
           console.error("LOGIN DEBUG - SignOut failed:", error);
+          window.location.replace("/login");
         });
       } else {
         console.log("LOGIN DEBUG - No justLoggedOut flag, redirecting to home");
