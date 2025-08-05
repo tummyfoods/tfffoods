@@ -130,32 +130,32 @@ const Login = () => {
     console.log("Current URL:", window.location.href);
     console.log("================================");
 
+    // If we're not authenticated, clear the logout flag
+    if (status === "unauthenticated") {
+      console.log("LOGIN DEBUG - Session is unauthenticated, clearing logout flag");
+      sessionStorage.removeItem("justLoggedOut");
+      return;
+    }
+
+    // Only proceed if we have a session
+    if (status !== "authenticated" || !session?.user) {
+      console.log("LOGIN DEBUG - Session is not ready yet");
+      return;
+    }
+
     // Check if we just logged out
     const justLoggedOut = sessionStorage.getItem("justLoggedOut");
-
-    if (status === "authenticated" && session?.user) {
-      console.log("LOGIN DEBUG - Session is authenticated with user:", session.user);
-      
-      if (justLoggedOut) {
-        console.log("LOGIN DEBUG - Found justLoggedOut flag, preventing auto-login");
-        // Clear the session if we just logged out
-        signOut({ 
-          redirect: true,
-          callbackUrl: "/login" 
-        }).then(() => {
-          console.log("LOGIN DEBUG - SignOut completed successfully");
-          // Don't remove the flag here - let it persist until page reload
-          window.location.replace("/login");
-        }).catch(error => {
-          console.error("LOGIN DEBUG - SignOut failed:", error);
-          window.location.replace("/login");
-        });
-      } else {
-        console.log("LOGIN DEBUG - No justLoggedOut flag, redirecting to home");
-        router.push("/");
-      }
+    
+    if (justLoggedOut) {
+      console.log("LOGIN DEBUG - Found justLoggedOut flag, signing out");
+      sessionStorage.removeItem("justLoggedOut"); // Remove flag first to prevent loops
+      signOut({ 
+        redirect: true,
+        callbackUrl: "/login"
+      });
     } else {
-      console.log("LOGIN DEBUG - Session is not authenticated or has no user");
+      console.log("LOGIN DEBUG - No justLoggedOut flag, redirecting to home");
+      router.push("/");
     }
   }, [status, session, router]);
 
