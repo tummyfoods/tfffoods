@@ -176,8 +176,7 @@ export const authOptions: NextAuthOptions = {
         sameSite: "lax",
         path: "/",
         secure: true,
-        domain:
-          process.env.NODE_ENV === "production" ? ".tfffoods.com" : "localhost",
+        domain: process.env.NODE_ENV === "production" ? ".tfffoods.com" : undefined,
       },
     },
     callbackUrl: {
@@ -187,8 +186,7 @@ export const authOptions: NextAuthOptions = {
         sameSite: "lax",
         path: "/",
         secure: true,
-        domain:
-          process.env.NODE_ENV === "production" ? ".tfffoods.com" : "localhost",
+        domain: process.env.NODE_ENV === "production" ? ".tfffoods.com" : undefined,
       },
     },
     csrfToken: {
@@ -198,6 +196,7 @@ export const authOptions: NextAuthOptions = {
         sameSite: "lax",
         path: "/",
         secure: true,
+        domain: process.env.NODE_ENV === "production" ? ".tfffoods.com" : undefined,
       },
     },
   },
