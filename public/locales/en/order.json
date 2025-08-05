@@ -1,0 +1,145 @@
+{
+  "common": {
+    "viewAllOrders": "View All Orders",
+    "yourOrders": "Your Orders",
+    "placedOn": "Placed on",
+    "status": "Status",
+    "total": "Total",
+    "viewDetails": "View Details",
+    "noOrders": "You have no orders yet.",
+    "orderNumber": "Order #{{id}}",
+    "orderReference": "Order Reference: {{ref}}",
+    "periodInvoice": "Period Invoice: {{number}}",
+    "periodDates": "Period: {{start}} - {{end}}",
+    "quantity": "Quantity",
+    "price": "Price",
+    "productNotAvailable": "Product not available",
+    "back": "Back",
+    "billingAddress": "Billing Address",
+    "createdAt": "Created At",
+    "loading": "Loading...",
+    "noPhone": "No phone number provided",
+    "method": "Delivery Method",
+    "information": "Additional Information"
+  },
+  "admin": {
+    "dashboard": {
+      "title": "Dashboard"
+    },
+    "order": {
+      "title": "Orders",
+      "description": "View and manage all orders in your store",
+      "details": "Order Details",
+      "customerInfo": "Customer Information",
+      "deliveryNotes": "Delivery Notes",
+      "error": "Failed to fetch orders",
+      "notFound": "Order not found",
+      "invoice": "View Invoice",
+      "type": {
+        "oneTime": "One-time Orders",
+        "period": "Period Orders"
+      },
+      "filter": {
+        "status": "Filter by Status"
+      },
+      "status": {
+        "pending": "Pending",
+        "processing": "Processing",
+        "shipped": "Shipped",
+        "delivered": "Delivered",
+        "cancelled": "Cancelled"
+      },
+      "actions": {
+        "view": "View Order",
+        "markAsDelivered": "Mark as Delivered",
+        "markAsDeliveredSuccess": "Order marked as delivered successfully",
+        "markAsDeliveredError": "Failed to mark order as delivered",
+        "delete": {
+          "confirm": "Are you sure you want to delete this order?",
+          "success": "Order deleted successfully",
+          "error": "Failed to delete order"
+        }
+      },
+      "table": {
+        "title": "Orders List",
+        "noOrders": "No orders found",
+        "filter": {
+          "all": "All Orders",
+          "pending": "Pending Orders",
+          "processing": "Processing Orders",
+          "shipped": "Shipped Orders",
+          "delivered": "Delivered Orders",
+          "cancelled": "Cancelled Orders"
+        }
+      }
+    }
+  },
+  "status": {
+    "loading": "Loading orders, please wait...",
+    "failedToFetch": "Failed to fetch orders",
+    "tryAgain": "Try Again",
+    "types": {
+      "pending": "Pending",
+      "processing": "Processing",
+      "shipped": "Shipped",
+      "delivered": "Delivered",
+      "cancelled": "Cancelled"
+    }
+  },
+  "details": {
+    "title": "Order Details",
+    "orderNumber": "Order #{{id}}",
+    "customerInfo": {
+      "title": "Customer Information",
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone Number"
+    },
+    "address": {
+      "title": "Address Information",
+      "shipping": "Shipping Address",
+      "billing": "Billing Address"
+    },
+    "items": {
+      "title": "Order Items",
+      "quantity": "Quantity",
+      "subtotal": "Subtotal",
+      "deliveryCost": "Delivery Cost",
+      "total": "Total"
+    },
+    "payment": {
+      "title": "Payment Information",
+      "proof": "Payment Proof",
+      "reference": "Payment Reference",
+      "upload": {
+        "title": "Re-Upload Payment Proof",
+        "button": "Upload Proof",
+        "reupload": "Re-Upload Payment Proof",
+        "uploading": "Uploading...",
+        "instructions": "Please upload your payment proof (jpg, jpeg, png, webp - max 10MB)"
+      }
+    },
+    "status": {
+      "title": "Order Status",
+      "lastUpdated": "Last Updated"
+    }
+  },
+  "errors": {
+    "load": "Failed to load order",
+    "upload": "Failed to upload payment proof",
+    "update": "Failed to update order",
+    "notFound": "Order not found",
+    "checkId": "Please check the order ID and try again"
+  },
+  "success": {
+    "proofUpdated": "Payment proof updated successfully"
+  },
+  "placedOn": "Order Date",
+  "statusTypes": {
+    "pending": "Pending",
+    "processing": "Processing",
+    "shipped": "Shipped",
+    "delivered": "Delivered",
+    "cancelled": "Cancelled"
+  }
+}

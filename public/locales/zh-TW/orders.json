@@ -1,0 +1,10 @@
+{
+  "details": {
+    "title": "訂單詳情",
+    "created": "建立時間",
+    "actions": {
+      "print": "列印",
+      "download": "下載"
+    }
+  }
+}

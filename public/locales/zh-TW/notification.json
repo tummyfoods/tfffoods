@@ -1,0 +1,25 @@
+{
+  "success": {
+    "default": "成功！",
+    "saved": "儲存成功",
+    "created": "建立成功",
+    "updated": "更新成功",
+    "deleted": "刪除成功",
+    "addedToCart": "已加入購物車",
+    "removedFromWishlist": "已從願望清單移除",
+    "addedToWishlist": "已加入願望清單"
+  },
+  "error": {
+    "default": "發生錯誤",
+    "saveFailed": "儲存失敗",
+    "createFailed": "建立失敗",
+    "updateFailed": "更新失敗",
+    "deleteFailed": "刪除失敗"
+  },
+  "info": {
+    "loading": "載入中...",
+    "loadingProducts": "載入商品中...",
+    "noResults": "找不到結果",
+    "clickToUpdate": "點擊更新"
+  }
+}

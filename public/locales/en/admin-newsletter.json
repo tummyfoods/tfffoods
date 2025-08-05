@@ -1,0 +1,24 @@
+{
+  "title": "Newsletter Management",
+  "description": "Manage newsletter subscribers and email campaigns",
+  "loading": "Loading subscribers...",
+  "searchPlaceholder": "Search subscribers...",
+  "table": {
+    "email": "Email",
+    "source": "Source",
+    "status": "Status",
+    "subscribedAt": "Subscribed At",
+    "lastEmail": "Last Email Sent",
+    "actions": "Actions"
+  },
+  "actions": {
+    "delete": "Delete",
+    "confirmDelete": "Are you sure you want to delete this subscriber?"
+  },
+  "messages": {
+    "deleteSuccess": "Subscriber deleted successfully",
+    "deleteError": "Failed to delete subscriber",
+    "updateSuccess": "Subscriber status updated successfully",
+    "updateError": "Failed to update subscriber status"
+  }
+}

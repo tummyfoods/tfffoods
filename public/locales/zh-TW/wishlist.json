@@ -1,0 +1,28 @@
+{
+  "title": "願望清單",
+  "empty": "您的願望清單是空的",
+  "addToWishlist": "加入願望清單",
+  "removeFromWishlist": "從願望清單移除",
+  "addedToWishlist": "已加入願望清單",
+  "removedFromWishlist": "已從願望清單移除",
+  "moveToCart": "移至購物車",
+  "shareWishlist": "分享願望清單",
+  "clearWishlist": "清空願望清單",
+  "yourWishlist": "您的願望清單",
+  "remove": "移除",
+  "errors": {
+    "addFailed": "加入願望清單失敗",
+    "removeFailed": "從願望清單移除失敗",
+    "moveToCartFailed": "移至購物車失敗",
+    "updateFailed": "更新願望清單失敗"
+  },
+  "confirmations": {
+    "removeItem": "您確定要從願望清單移除此商品嗎？",
+    "clearWishlist": "您確定要清空願望清單嗎？",
+    "moveToCart": "將此商品移至購物車？"
+  },
+  "notifications": {
+    "itemInStock": "您願望清單中的商品現在有庫存了！",
+    "priceDropped": "您願望清單中的商品價格已下降！"
+  }
+}

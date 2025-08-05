@@ -1,0 +1,181 @@
+{
+  "title": "Settings",
+  "sidebarMenu": {
+    "theme": "Theme"
+  },
+  "sections": {
+    "theme": {
+      "title": "Theme Settings",
+      "description": "Customize your site's appearance with light and dark mode colors",
+      "lightMode": "Light Mode",
+      "darkMode": "Dark Mode",
+      "backgroundColor": "Background Color"
+    },
+    "store": {
+      "title": "Store Settings",
+      "description": "Manage your store's basic information, branding, and contact details",
+      "storeName": "Store Name",
+      "slogan": "Store Slogan",
+      "logo": "Store Logo",
+      "changeLogo": "Change Logo",
+      "copyright": "Copyright"
+    },
+    "contact": {
+      "title": "Contact Information",
+      "email": "Email",
+      "phone": "Phone",
+      "address": {
+        "title": "Address",
+        "street": "Street",
+        "city": "City",
+        "postalCode": "Postal Code",
+        "country": "Country"
+      },
+      "contactInfo": {
+        "title": "Contact Information",
+        "officeLocations": "Office Locations",
+        "addOfficeLocation": "Add Office Location",
+        "locationName": "Location Name",
+        "address": "Address",
+        "phoneNumber": "Phone Number",
+        "emailAddress": "Email Address",
+        "latitude": "Latitude",
+        "longitude": "Longitude",
+        "getCoordinates": "Get Coordinates",
+        "delete": "Delete Location"
+      },
+      "supportChannels": {
+        "title": "Support Channels",
+        "supportChannelsImage": "Support Channels Image",
+        "changeImage": "Change Image",
+        "channels": "Support Channels List",
+        "addChannel": "Add Support Channel"
+      },
+      "faqSection": {
+        "title": "FAQ Section",
+        "questions": "FAQ Questions",
+        "addFAQ": "Add FAQ"
+      }
+    },
+    "business": {
+      "title": "Business Hours",
+      "weekdays": "Weekdays",
+      "weekends": "Weekends"
+    },
+    "social": {
+      "title": "Social Media",
+      "facebook": "Facebook",
+      "instagram": "Instagram",
+      "twitter": "Twitter"
+    },
+    "shipping": {
+      "title": "Shipping Information",
+      "sectionTitle": "Shipping Settings",
+      "standardDays": "Standard Shipping Days",
+      "expressDays": "Express Shipping Days",
+      "international": "International Shipping",
+      "show": "Show Shipping Info",
+      "standardShipping": "Standard Shipping",
+      "expressShipping": "Express Shipping",
+      "standardShippingTitle": "Standard Shipping Details",
+      "expressShippingTitle": "Express Shipping Details",
+      "delivery": "Delivery Settings"
+    },
+    "return": {
+      "title": "Return Policy",
+      "sectionTitle": "Return Policy Settings",
+      "daysToReturn": "Days to Return",
+      "conditions": "Return Conditions",
+      "show": "Show Return Policy"
+    },
+    "newsletter": {
+      "title": "Newsletter Settings",
+      "subtitle": "Subtitle",
+      "banner": "Banner Image",
+      "bannerImage": "Newsletter Banner Image",
+      "changeBanner": "Change Banner Image",
+      "discount": "Discount Percentage",
+      "discountPercentage": "Newsletter Signup Discount",
+      "button": "Button Text",
+      "buttonText": "Newsletter Signup Button Text",
+      "disclaimer": "Disclaimer"
+    },
+    "about": {
+      "title": "About Page",
+      "subtitle": "Subtitle",
+      "aboutPageSection": {
+        "title": "About Page Title",
+        "subtitle": "About Page Subtitle",
+        "bannerImage": "Banner Image",
+        "changeBanner": "Change Banner"
+      },
+      "storySection": {
+        "title": "Our Story",
+        "content": "Story Content",
+        "storyImage": "Story Image",
+        "changeImage": "Change Story Image"
+      },
+      "valuesSection": {
+        "title": "Our Values",
+        "values": "Value Items",
+        "addValue": "Add Value"
+      },
+      "teamSection": {
+        "title": "Our Team",
+        "teamMembers": "Team Members",
+        "addTeamMember": "Add Team Member"
+      }
+    },
+    "contact_page": {
+      "title": "Contact Page",
+      "pageTitle": "Contact Page Title",
+      "subtitle": "Contact Page Subtitle",
+      "bannerImage": "Banner Image",
+      "changeBanner": "Change Banner",
+      "contactInfo": {
+        "title": "Contact Information",
+        "officeLocations": "Office Locations",
+        "locationName": "Location Name",
+        "address": "Address",
+        "phoneNumber": "Phone Number",
+        "emailAddress": "Email Address",
+        "latitude": "Latitude",
+        "longitude": "Longitude",
+        "getCoordinates": "Get Coordinates",
+        "delete": "Delete Location"
+      }
+    }
+  },
+  "actions": {
+    "save": "Save Changes",
+    "saving": "Saving...",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "upload": "Upload",
+    "change": "Change",
+    "add": "Add"
+  },
+  "messages": {
+    "success": {
+      "save": "Settings saved successfully",
+      "update": "Settings updated successfully",
+      "delete": "Item deleted successfully"
+    },
+    "error": {
+      "save": "Failed to save settings",
+      "update": "Failed to update settings",
+      "delete": "Failed to delete item",
+      "load": "Failed to load settings"
+    }
+  },
+  "placeholders": {
+    "name": "Enter name",
+    "email": "Enter email",
+    "phone": "Enter phone number",
+    "address": "Enter address",
+    "title": "Enter title",
+    "description": "Enter description",
+    "question": "Enter question",
+    "answer": "Enter answer"
+  }
+}

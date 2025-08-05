@@ -1,0 +1,19 @@
+{
+  "title": "Why Choose Us",
+  "default": {
+    "items": {
+      "0": {
+        "title": "SATISFIED OR REFUNDED",
+        "description": "Free Returns in the next 30 days"
+      },
+      "1": {
+        "title": "BASED IN SWITZERLAND",
+        "description": "From an old workshop in Luzern, Switzerland"
+      },
+      "2": {
+        "title": "PREMIUM QUALITY",
+        "description": "904L Stainless steel | Sapphire crystal"
+      }
+    }
+  }
+}

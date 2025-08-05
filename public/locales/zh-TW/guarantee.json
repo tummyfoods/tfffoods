@@ -1,0 +1,25 @@
+{
+  "managementTitle": "保固管理",
+  "title": "保固",
+  "addItem": "新增保固項目",
+  "icon": "圖示",
+  "description": "描述",
+  "item": {
+    "title": "標題",
+    "description": "描述"
+  },
+  "actions": {
+    "save": "儲存",
+    "delete": "刪除",
+    "add": "新增項目"
+  },
+  "messages": {
+    "saveSuccess": "保固項目儲存成功",
+    "deleteSuccess": "保固項目刪除成功",
+    "error": "發生錯誤"
+  },
+  "placeholders": {
+    "title": "請輸入標題",
+    "description": "請輸入描述"
+  }
+}

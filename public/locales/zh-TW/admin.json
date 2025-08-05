@@ -1,0 +1,127 @@
+{
+  "dashboard": {
+    "title": "儀表板",
+    "description": "查看商店績效概況並快速存取重要功能"
+  },
+  "hero": {
+    "title": "首頁橫幅",
+    "description": "管理首頁橫幅區塊和橫幅圖片"
+  },
+  "products": {
+    "title": "產品",
+    "addNew": "新增產品",
+    "viewAll": "查看所有產品",
+    "description": "管理您的產品目錄"
+  },
+  "categories": {
+    "title": "類別",
+    "viewAll": "查看所有類別",
+    "description": "管理產品類別"
+  },
+  "specifications": {
+    "title": "規格",
+    "viewAll": "查看所有規格",
+    "description": "管理產品規格"
+  },
+  "order": {
+    "title": "訂單",
+    "viewAll": "查看所有訂單",
+    "description": "管理和追蹤所有客戶訂單",
+    "details": "訂單詳細資訊",
+    "customerInfo": "客戶資訊",
+    "orderInfo": "訂單資訊",
+    "invoice": "發票",
+    "periodInvoice": "定期發票",
+    "shippingAddress": "送貨地址",
+    "deliveryNotes": "送貨備註",
+    "products": "產品",
+    "paymentProof": "付款證明",
+    "paymentReference": "付款參考",
+    "actions": {
+      "title": "操作",
+      "markAsDelivered": "標記為已送達",
+      "markAsDeliveredSuccess": "訂單已成功標記為已送達",
+      "markAsDeliveredError": "標記訂單為已送達失敗"
+    },
+    "status": {
+      "pending": "待處理",
+      "processing": "處理中",
+      "delivered": "已送達",
+      "cancelled": "已取消"
+    },
+    "subtotal": "小計",
+    "deliveryCost": "運費",
+    "total": "總計",
+    "notFound": "找不到訂單"
+  },
+  "users": {
+    "title": "用戶角色",
+    "manageRoles": "管理用戶角色",
+    "description": "管理用戶角色和權限"
+  },
+  "brands": {
+    "title": "品牌",
+    "viewAll": "查看所有品牌",
+    "description": "管理產品品牌"
+  },
+  "newsletter": {
+    "title": "電子報",
+    "manage": "管理電子報",
+    "description": "管理電子報訂閱"
+  },
+  "logistics": {
+    "title": "物流",
+    "viewAll": "查看所有車輛",
+    "addNew": "新增車輛",
+    "description": "管理送貨和運輸"
+  },
+  "blog": {
+    "title": "部落格",
+    "manage": "管理部落格",
+    "description": "管理部落格文章和內容"
+  },
+  "guarantee": {
+    "title": "保證區段",
+    "manage": "管理保證區段",
+    "description": "管理保證資訊"
+  },
+  "features": {
+    "title": "功能區段",
+    "manage": "管理功能區段",
+    "description": "管理功能亮點"
+  },
+  "settings": {
+    "title": "設定",
+    "manage": "管理設定",
+    "description": "配置系統設定",
+    "theme": "主題"
+  },
+  "delivery": {
+    "title": "配送設定",
+    "description": "配置配送選項和費用"
+  },
+  "privacy": {
+    "title": "隱私政策",
+    "manage": "管理隱私政策",
+    "description": "管理隱私政策內容"
+  },
+  "periodUsers": {
+    "title": "定期用戶",
+    "manage": "管理定期用戶",
+    "description": "管理定期付款計劃的用戶"
+  },
+  "invoice": {
+    "title": "發票管理",
+    "viewAll": "查看所有發票",
+    "description": "管理所有發票和付款記錄",
+    "period": "定期發票",
+    "oneTime": "一次性發票",
+    "approve": "核准付款",
+    "reject": "拒絕付款",
+    "status": {
+      "pending": "待處理",
+      "paid": "已付款",
+      "overdue": "逾期"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "title": "Subscribe to Our Newsletter",
+  "description": "Stay updated with our latest products and exclusive offers!",
+  "emailPlaceholder": "Enter your email address",
+  "buttonText": "Subscribe Now",
+  "disclaimer": "By subscribing, you agree to receive marketing emails. You can unsubscribe at any time.",
+  "bannerAlt": "Newsletter subscription banner",
+  "successMessage": "Thank you for subscribing!",
+  "errorMessage": "Failed to subscribe. Please try again.",
+  "alreadySubscribed": "You are already subscribed to our newsletter."
+}

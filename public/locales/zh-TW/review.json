@@ -1,0 +1,72 @@
+{
+  "common": {
+    "reviews": "顧客評論",
+    "rating": "評分",
+    "averageRating": "平均評分",
+    "totalReviews": "評論總數",
+    "writeReview": "撰寫評論",
+    "editReview": "編輯評論",
+    "deleteReview": "刪除評論",
+    "noReviews": "尚無評論。成為第一個評論此商品的顧客！",
+    "noRatingsYet": "尚無評分",
+    "verified": "已驗證購買",
+    "basedOn": "基於 {{count}} 則評論"
+  },
+  "form": {
+    "rating": "評分",
+    "title": "評論標題",
+    "comment": "您的評論",
+    "photos": "上傳圖片",
+    "submit": "提交評論",
+    "update": "更新評論",
+    "cancel": "取消"
+  },
+  "placeholders": {
+    "title": "輸入評論標題",
+    "comment": "分享您對此商品的體驗",
+    "rating": "選擇評分"
+  },
+  "validation": {
+    "ratingRequired": "請選擇評分",
+    "titleRequired": "請輸入標題",
+    "commentRequired": "請輸入評論內容",
+    "titleLength": "標題長度必須在3到100個字元之間",
+    "commentLength": "評論長度必須在10到1000個字元之間"
+  },
+  "filters": {
+    "all": "所有評論",
+    "verified": "已驗證購買",
+    "withPhotos": "含圖片",
+    "sortBy": {
+      "newest": "最新優先",
+      "oldest": "最舊優先",
+      "highestRated": "最高評分",
+      "lowestRated": "最低評分"
+    }
+  },
+  "status": {
+    "submitting": "提交評論中...",
+    "updating": "更新評論中...",
+    "deleting": "刪除評論中..."
+  },
+  "messages": {
+    "submitSuccess": "評論提交成功！",
+    "updateSuccess": "評論更新成功",
+    "deleteSuccess": "評論刪除成功",
+    "submitError": "提交評論失敗",
+    "updateError": "更新評論失敗",
+    "deleteError": "刪除評論失敗",
+    "alreadyReviewed": "您已經評論過此商品",
+    "purchaseRequired": "您需要購買此商品才能評論",
+    "loginRequired": "請登入後再提交評論"
+  },
+  "media": {
+    "uploadImage": "上傳圖片",
+    "uploadImageDesc": "點擊或拖放以上傳",
+    "imageUploading": "上傳圖片中...",
+    "imageUploadSuccess": "圖片上傳成功！",
+    "imageUploadError": "圖片上傳失敗",
+    "imagePreview": "評論圖片預覽",
+    "reviewImage": "評論圖片"
+  }
+}

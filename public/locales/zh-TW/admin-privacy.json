@@ -1,0 +1,40 @@
+{
+  "title": "隱私政策",
+  "description": "管理您網站的隱私政策內容和設定",
+  "sections": {
+    "main": {
+      "title": "隱私政策標題",
+      "titlePlaceholder": "請輸入隱私政策標題",
+      "subtitle": "隱私政策副標題",
+      "subtitlePlaceholder": "請輸入隱私政策副標題"
+    },
+    "content": {
+      "sectionTitle": "章節標題",
+      "sectionTitlePlaceholder": "請輸入章節標題",
+      "sectionContent": "章節內容",
+      "sectionContentPlaceholder": "請輸入章節內容",
+      "addSection": "新增章節",
+      "removeSection": "移除章節"
+    },
+    "contact": {
+      "title": "聯絡資訊",
+      "email": "電子郵件地址",
+      "emailPlaceholder": "請輸入聯絡電子郵件",
+      "phone": "電話號碼",
+      "phonePlaceholder": "請輸入聯絡電話",
+      "address": "地址",
+      "addressPlaceholder": "請輸入聯絡地址"
+    }
+  },
+  "actions": {
+    "save": "儲存變更",
+    "saving": "儲存中...",
+    "cancel": "取消"
+  },
+  "messages": {
+    "saved": "隱私政策儲存成功",
+    "saveError": "儲存隱私政策失敗",
+    "fetchError": "載入隱私政策失敗"
+  },
+  "lastUpdated": "最後更新"
+}

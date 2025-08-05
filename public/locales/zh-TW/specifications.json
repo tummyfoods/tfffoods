@@ -1,0 +1,50 @@
+{
+  "common": {
+    "title": "規格",
+    "description": "管理每個類別的商品規格"
+  },
+  "list": {
+    "empty": "找不到規格",
+    "items": "項目",
+    "categoryHeader": "類別",
+    "specificationsCount": "規格數量",
+    "actionsHeader": "操作",
+    "manageButton": "管理",
+    "backButton": "返回",
+    "addButton": "新增規格",
+    "saveButton": "儲存規格",
+    "savingButton": "儲存中...",
+    "updateTranslations": "更新所有翻譯"
+  },
+  "form": {
+    "label": "標籤",
+    "type": "類型",
+    "typeOptions": {
+      "text": "文字",
+      "number": "數字",
+      "select": "選擇"
+    },
+    "options": "選項",
+    "description": "描述",
+    "required": "必填",
+    "remove": "移除",
+    "placeholder": {
+      "label": "輸入規格標籤",
+      "options": "輸入選項，以逗號分隔",
+      "description": "輸入規格描述"
+    }
+  },
+  "validation": {
+    "categoryRequired": "請選擇類別",
+    "labelRequired": "所有語言都需要規格標籤"
+  },
+  "messages": {
+    "success": {
+      "save": "規格儲存成功"
+    },
+    "error": {
+      "load": "載入規格失敗",
+      "save": "儲存規格失敗"
+    }
+  }
+}

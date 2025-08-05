@@ -1,0 +1,52 @@
+{
+  "settings": {
+    "title": "設定",
+    "personalInfo": "個人資料",
+    "securitySettings": "安全設定",
+    "notificationSettings": "通知設定",
+    "deleteAccount": "刪除帳號",
+    "personalInfoDescription": "更新您的基本個人資料",
+    "securityDescription": "管理您的帳號安全和密碼設定",
+    "notificationSettingsDescription": "控制您接收通知和更新的方式",
+    "form": {
+      "fullName": "姓名",
+      "email": "電子郵件",
+      "phone": "電話號碼",
+      "address": "地址",
+      "save": "儲存變更"
+    },
+    "security": {
+      "title": "安全",
+      "changePassword": "變更密碼",
+      "currentPassword": "目前密碼",
+      "newPassword": "新密碼",
+      "confirmPassword": "確認新密碼",
+      "twoFactor": "兩步驟驗證",
+      "enable2FA": "啟用兩步驟驗證",
+      "disable2FA": "停用兩步驟驗證"
+    },
+    "notifications": {
+      "title": "通知",
+      "emailNotifications": "電子郵件通知",
+      "emailNotificationsDescription": "透過電子郵件接收訂單更新和重要資訊",
+      "pushNotifications": "推播通知",
+      "pushNotificationsDescription": "即時接收訂單和帳號活動的更新",
+      "orderUpdates": "訂單更新",
+      "promotions": "促銷和優惠",
+      "newsletter": "電子報",
+      "productUpdates": "商品更新",
+      "orderUpdatesEnabled": "已啟用訂單更新通知",
+      "orderUpdatesDisabled": "已停用訂單更新通知",
+      "promotionsEnabled": "已啟用促銷通知",
+      "promotionsDisabled": "已停用促銷通知"
+    },
+    "deleteAcc": {
+      "title": "刪除帳號",
+      "warning": "警告：此操作無法復原",
+      "description": "一旦刪除帳號，所有資料將永久移除",
+      "confirmDelete": "刪除我的帳號",
+      "enterPassword": "請輸入密碼以確認",
+      "deleteAccountWarning": "刪除帳號將永久移除所有資料，包括訂單紀錄、儲存的偏好設定和個人資料。此操作無法復原。"
+    }
+  }
+}

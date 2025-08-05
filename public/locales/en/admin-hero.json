@@ -1,0 +1,63 @@
+{
+  "title": "Hero Sections Management",
+  "description": "Manage your homepage hero sections, including content, media, and display order",
+  "addNewSection": "Add New Section",
+  "section": {
+    "title": "Section {{number}}",
+    "fields": {
+      "title": "Title",
+      "description": "Description",
+      "creditText": "Credit Text",
+      "buttons": {
+        "primary": {
+          "text": "Primary Button Text",
+          "link": "Primary Button Link"
+        },
+        "secondary": {
+          "text": "Secondary Button Text",
+          "link": "Secondary Button Link"
+        }
+      },
+      "media": {
+        "title": "Media Settings",
+        "displayVideo": "Display Video",
+        "displayPoster": "Display Poster",
+        "video": {
+          "title": "Video Upload",
+          "description": "Upload your hero video (MP4 format recommended)",
+          "upload": "Upload Video",
+          "change": "Change Video"
+        },
+        "image": {
+          "title": "Image Upload",
+          "description": "Upload your hero image",
+          "upload": "Upload Image",
+          "change": "Change Image"
+        }
+      },
+      "activeStatus": {
+        "title": "Active Status",
+        "description": "Enable this section to display on homepage"
+      }
+    },
+    "actions": {
+      "moveUp": "Move Up",
+      "moveDown": "Move Down",
+      "delete": "Delete Section",
+      "save": "Save Changes"
+    },
+    "messages": {
+      "videoUploadSuccess": "Video uploaded successfully",
+      "imageUploadSuccess": "Image uploaded successfully",
+      "saveSuccess": "Changes saved successfully",
+      "saveFailed": "Failed to save changes",
+      "deleteSuccess": "Section deleted successfully",
+      "deleteFailed": "Failed to delete section"
+    }
+  },
+  "breadcrumb": {
+    "admin": "Admin",
+    "settings": "Settings",
+    "heroSections": "Hero Sections"
+  }
+}

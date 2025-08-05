@@ -1,0 +1,100 @@
+{
+  "title": "Orders Management",
+  "description": "View and manage all orders in your store",
+  "type": {
+    "oneTime": "One-time Orders",
+    "period": "Period Orders",
+    "label": "Order Type"
+  },
+  "status": {
+    "label": "Order Status",
+    "pending": "Pending",
+    "processing": "Processing",
+    "shipped": "Shipped",
+    "delivered": "Delivered",
+    "cancelled": "Cancelled"
+  },
+  "filter": {
+    "status": "Filter by Status",
+    "type": "Filter by Type",
+    "all": "All Orders",
+    "pending": "Pending Orders",
+    "processing": "Processing Orders",
+    "shipped": "Shipped Orders",
+    "delivered": "Delivered Orders",
+    "cancelled": "Cancelled Orders"
+  },
+  "actions": {
+    "view": "View Order",
+    "markAsDelivered": "Mark as Delivered",
+    "markAsDeliveredSuccess": "Order marked as delivered successfully",
+    "markAsDeliveredError": "Failed to mark order as delivered",
+    "delete": {
+      "confirm": "Delete Order",
+      "success": "Order deleted successfully",
+      "error": "Failed to delete order"
+    },
+    "approve": "Approve Payment",
+    "reject": "Reject Payment"
+  },
+  "payment": {
+    "rejectSuccess": "Payment rejected successfully",
+    "rejectError": "Failed to reject payment",
+    "confirmSuccess": "Payment confirmed successfully",
+    "confirmError": "Failed to confirm payment",
+    "rejectPrompt": "Reject Payment",
+    "proof": "Payment Proof",
+    "reference": "Payment Reference"
+  },
+  "details": {
+    "title": "Order Details",
+    "orderNumber": "Order #{{id}}",
+    "lastUpdated": "Last Updated",
+    "createdAt": "Created At",
+    "customerInfo": {
+      "title": "Customer Information",
+      "name": "Name",
+      "email": "Email",
+      "phone": "Phone Number"
+    },
+    "address": {
+      "title": "Address Information",
+      "shipping": "Shipping Address",
+      "billing": "Billing Address"
+    },
+    "items": {
+      "title": "Order Items",
+      "quantity": "Quantity",
+      "subtotal": "Subtotal",
+      "deliveryCost": "Delivery Cost",
+      "total": "Total",
+      "count": "{{count}} items",
+      "deliveryMethod": "Delivery Method",
+      "deliveryNotFound": "Delivery method not found"
+    },
+    "payment": {
+      "title": "Payment Information",
+      "proof": "Payment Proof",
+      "reference": "Payment Reference"
+    },
+    "linkedInvoice": "Linked Invoice",
+    "products": "Products"
+  },
+  "table": {
+    "title": "Orders List",
+    "noOrders": "No orders found",
+    "columns": {
+      "orderNumber": "Order #",
+      "customer": "Customer",
+      "date": "Order Date",
+      "status": "Status",
+      "total": "Total",
+      "actions": "Actions"
+    }
+  },
+  "errors": {
+    "fetchFailed": "Failed to fetch orders",
+    "notFound": "Order not found",
+    "updateFailed": "Failed to update order"
+  }
+}

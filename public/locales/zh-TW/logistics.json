@@ -1,0 +1,81 @@
+{
+  "common": {
+    "manageVehicles": "管理車輛",
+    "addVehicle": "新增車輛",
+    "vehicleDetails": "車輛詳情",
+    "driverInfo": "司機資訊",
+    "vehicleStatus": "車輛狀態",
+    "assignedLocation": "指派位置",
+    "pageTitle": "物流管理",
+    "pageDescription": "查看和管理所有物流車輛：更新狀態、指派訂單和追蹤配送。"
+  },
+  "fields": {
+    "registrationNumber": "車牌號碼",
+    "owner": "車主",
+    "makeYear": "製造年份",
+    "make": "廠牌",
+    "model": "型號",
+    "chassisNo": "底盤號碼",
+    "weight": "重量",
+    "cylinderCapacity": "汽缸容量",
+    "bodyType": "車身類型",
+    "status": "狀態",
+    "driverName": "司機姓名",
+    "licenseNo": "駕照號碼",
+    "contactNo": "聯絡電話",
+    "email": "電子郵件"
+  },
+  "actions": {
+    "creating": "建立中...",
+    "createVehicle": "建立車輛",
+    "viewDetails": "查看詳情",
+    "editVehicle": "編輯車輛"
+  },
+  "statusTypes": {
+    "available": "可用",
+    "onDelivery": "配送中",
+    "maintenance": "維修中",
+    "outOfService": "停用"
+  },
+  "locations": {
+    "hongKong": "香港",
+    "kowloon": "九龍",
+    "newTerritories": "新界"
+  },
+  "bodyTypes": {
+    "van": "廂型車",
+    "truck": "貨車",
+    "lorry": "大貨車"
+  },
+  "placeholders": {
+    "registrationNumber": "例如：AB123456",
+    "owner": "車主姓名",
+    "makeYear": "例如：2023",
+    "make": "例如：豐田",
+    "model": "例如：Hiace",
+    "chassisNo": "車輛底盤號碼",
+    "weight": "車輛重量（公斤）",
+    "cylinderCapacity": "引擎容量（cc）",
+    "bodyType": "選擇車身類型",
+    "driverName": "司機全名",
+    "licenseNo": "駕照號碼",
+    "contactNo": "司機聯絡電話",
+    "email": "司機電子郵件",
+    "location": "選擇位置",
+    "status": "選擇狀態"
+  },
+  "messages": {
+    "createSuccess": "車輛新增成功",
+    "createError": "新增車輛失敗"
+  },
+  "vehicleAssignment": {
+    "title": "車輛指派",
+    "selectVehicle": "選擇車輛",
+    "assignVehicle": "指派車輛",
+    "noVehicles": "沒有可用車輛",
+    "assignSuccess": "車輛指派成功",
+    "assignError": "車輛指派失敗",
+    "alreadyAssigned": "車輛已被指派給其他訂單",
+    "pickDeliveryDate": "選擇配送日期"
+  }
+}

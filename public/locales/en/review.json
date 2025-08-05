@@ -1,0 +1,72 @@
+{
+  "common": {
+    "reviews": "Customer Reviews",
+    "rating": "Rating",
+    "averageRating": "Average Rating",
+    "totalReviews": "Total Reviews",
+    "writeReview": "Write a Review",
+    "editReview": "Edit Review",
+    "deleteReview": "Delete Review",
+    "noReviews": "No reviews yet. Be the first to review this product!",
+    "noRatingsYet": "No ratings yet",
+    "verified": "Verified Purchase",
+    "basedOn": "Based on {{count}} reviews"
+  },
+  "form": {
+    "rating": "Rating",
+    "title": "Review Title",
+    "comment": "Your Review",
+    "photos": "Upload Image",
+    "submit": "Submit Review",
+    "update": "Update Review",
+    "cancel": "Cancel"
+  },
+  "placeholders": {
+    "title": "Enter a title for your review",
+    "comment": "Share your experience with this product",
+    "rating": "Select your rating"
+  },
+  "validation": {
+    "ratingRequired": "Rating is required",
+    "titleRequired": "Title is required",
+    "commentRequired": "Review comment is required",
+    "titleLength": "Title must be between 3 and 100 characters",
+    "commentLength": "Review must be between 10 and 1000 characters"
+  },
+  "filters": {
+    "all": "All Reviews",
+    "verified": "Verified Purchases",
+    "withPhotos": "With Photos",
+    "sortBy": {
+      "newest": "Newest First",
+      "oldest": "Oldest First",
+      "highestRated": "Highest Rated",
+      "lowestRated": "Lowest Rated"
+    }
+  },
+  "status": {
+    "submitting": "Submitting review...",
+    "updating": "Updating review...",
+    "deleting": "Deleting review..."
+  },
+  "messages": {
+    "submitSuccess": "Review submitted successfully!",
+    "updateSuccess": "Review updated successfully",
+    "deleteSuccess": "Review deleted successfully",
+    "submitError": "Failed to submit review",
+    "updateError": "Failed to update review",
+    "deleteError": "Failed to delete review",
+    "alreadyReviewed": "You have already submitted a review for this product",
+    "purchaseRequired": "You need to purchase this product to review it",
+    "loginRequired": "Please login to submit a review"
+  },
+  "media": {
+    "uploadImage": "Upload Image",
+    "uploadImageDesc": "Click or drag and drop to upload",
+    "imageUploading": "Uploading image...",
+    "imageUploadSuccess": "Image uploaded successfully!",
+    "imageUploadError": "Failed to upload image",
+    "imagePreview": "Review image preview",
+    "reviewImage": "Review image"
+  }
+}

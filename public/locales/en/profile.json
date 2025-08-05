@@ -1,0 +1,52 @@
+{
+  "settings": {
+    "title": "Settings",
+    "personalInfo": "Personal Information",
+    "securitySettings": "Security Settings",
+    "notificationSettings": "Notification Settings",
+    "deleteAccount": "Delete Account",
+    "personalInfoDescription": "Update your basic profile information",
+    "securityDescription": "Manage your account security and password settings",
+    "notificationSettingsDescription": "Control how you receive notifications and updates",
+    "form": {
+      "fullName": "Full Name",
+      "email": "Email",
+      "phone": "Phone Number",
+      "address": "Address",
+      "save": "Save Changes"
+    },
+    "security": {
+      "title": "Security",
+      "changePassword": "Change Password",
+      "currentPassword": "Current Password",
+      "newPassword": "New Password",
+      "confirmPassword": "Confirm New Password",
+      "twoFactor": "Two-Factor Authentication",
+      "enable2FA": "Enable 2FA",
+      "disable2FA": "Disable 2FA"
+    },
+    "notifications": {
+      "title": "Notifications",
+      "emailNotifications": "Email Notifications",
+      "emailNotificationsDescription": "Receive order updates and important information via email",
+      "pushNotifications": "Push Notifications",
+      "pushNotificationsDescription": "Get instant updates about your orders and account activity",
+      "orderUpdates": "Order Updates",
+      "promotions": "Promotions and Deals",
+      "newsletter": "Newsletter",
+      "productUpdates": "Product Updates",
+      "orderUpdatesEnabled": "Order updates notifications enabled",
+      "orderUpdatesDisabled": "Order updates notifications disabled",
+      "promotionsEnabled": "Promotional notifications enabled",
+      "promotionsDisabled": "Promotional notifications disabled"
+    },
+    "deleteAcc": {
+      "title": "Delete Account",
+      "warning": "Warning: This action cannot be undone",
+      "description": "Once you delete your account, all your data will be permanently removed",
+      "confirmDelete": "Delete My Account",
+      "enterPassword": "Enter your password to confirm",
+      "deleteAccountWarning": "Deleting your account will permanently remove all your data, including order history, saved preferences, and personal information. This action cannot be undone."
+    }
+  }
+}

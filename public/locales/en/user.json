@@ -1,0 +1,27 @@
+{
+  "profile": {
+    "personalInfo": "Personal Information",
+    "fullName": "Full Name",
+    "email": "Email",
+    "role": "Role",
+    "phone": "Phone Number"
+  },
+  "password": {
+    "currentPassword": "Current Password",
+    "newPassword": "New Password",
+    "confirmPassword": "Confirm Password",
+    "changePassword": "Change Password",
+    "changingPassword": "Changing Password...",
+    "externalLoginNote": "Note: If you use external login providers, password changes may not apply"
+  },
+  "account": {
+    "saving": "Saving...",
+    "saveChanges": "Save Changes",
+    "deletingAccount": "Deleting Account...",
+    "closeAccount": "Close Account",
+    "deleteConfirm": "Are you sure you want to delete your account? This action cannot be undone."
+  },
+  "errors": {
+    "noPhoneNumber": "No phone number provided"
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "title": "Period Payment Users",
+  "description": "Manage users with period payment subscriptions",
+  "admin": {
+    "title": "Period Payment Users Management"
+  },
+  "table": {
+    "name": "Name",
+    "email": "Email",
+    "status": {
+      "title": "Status",
+      "active": "Active",
+      "inactive": "Inactive",
+      "pending": "Pending",
+      "paid": "Paid",
+      "overdue": "Overdue"
+    },
+    "paymentPeriod": "Payment Period",
+    "currentPeriod": "Current Period",
+    "noPeriod": "No Period",
+    "noRecord": "No Payment Record",
+    "periodEnd": "Period End",
+    "actions": "Actions"
+  },
+  "periodOptions": {
+    "none": "None",
+    "week1": "1 Week",
+    "month1": "1 Month",
+    "selectPeriod": "Select Period"
+  },
+  "actions": {
+    "search": "Search for users...",
+    "filter": "Filter users",
+    "edit": "Edit user",
+    "delete": "Delete user",
+    "create": "Create User",
+    "removeFromPeriod": "Remove from Period",
+    "addToPeriod": "Add to Period"
+  },
+  "messages": {
+    "updateSuccess": "User period payment updated successfully",
+    "updateError": "Failed to update user period payment",
+    "deleteSuccess": "User period payment deleted successfully",
+    "deleteError": "Failed to delete user period payment"
+  }
+}

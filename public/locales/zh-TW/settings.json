@@ -1,0 +1,100 @@
+{
+  "common": {
+    "title": "商店設定",
+    "description": "管理您的商店資訊、聯絡資料、營業時間和政策。"
+  },
+  "tabs": {
+    "general": "一般設定",
+    "newsletter": "電子報管理",
+    "about": "關於頁面",
+    "contact": "聯絡頁面"
+  },
+  "general": {
+    "storeInfo": {
+      "title": "商店資訊",
+      "storeName": "商店名稱",
+      "slogan": "商店標語",
+      "storeLogo": "商店標誌",
+      "changeLogo": "更改標誌",
+      "copyright": "版權"
+    },
+    "contact": {
+      "title": "聯絡資訊",
+      "email": "電子郵件地址",
+      "phone": "電話號碼",
+      "address": "商店地址"
+    },
+    "businessHours": {
+      "title": "營業時間",
+      "weekdays": "平日",
+      "weekends": "週末",
+      "holidays": "假日"
+    },
+    "social": {
+      "title": "社群媒體",
+      "facebook": "Facebook 網址",
+      "twitter": "Twitter 網址",
+      "instagram": "Instagram 網址",
+      "linkedin": "LinkedIn 網址"
+    }
+  },
+  "newsletter": {
+    "settings": {
+      "title": "電子報設定",
+      "frequency": "發送頻率",
+      "template": "電子郵件範本",
+      "subscribers": "訂閱者清單"
+    },
+    "subscribers": {
+      "title": "電子報訂閱者",
+      "export": "匯出清單",
+      "import": "匯入清單",
+      "sendTest": "發送測試郵件"
+    }
+  },
+  "about": {
+    "content": {
+      "title": "關於頁面內容",
+      "mainText": "主要內容",
+      "mission": "使命宣言",
+      "vision": "願景宣言"
+    },
+    "team": {
+      "title": "團隊區塊",
+      "members": "團隊成員",
+      "addMember": "新增成員"
+    }
+  },
+  "contact": {
+    "form": {
+      "title": "聯絡表單設定",
+      "fields": "表單欄位",
+      "recipients": "收件者電子郵件",
+      "autoReply": "自動回覆訊息"
+    },
+    "map": {
+      "title": "地圖設定",
+      "apiKey": "Google Maps API 金鑰",
+      "location": "商店位置"
+    }
+  },
+  "actions": {
+    "save": "儲存設定",
+    "saving": "儲存中...",
+    "cancel": "取消",
+    "reset": "重設為預設值"
+  },
+  "messages": {
+    "success": {
+      "save": "設定儲存成功",
+      "update": "設定更新成功",
+      "delete": "設定刪除成功"
+    },
+    "error": {
+      "save": "儲存設定失敗",
+      "update": "更新設定失敗",
+      "delete": "刪除設定失敗",
+      "load": "載入設定失敗"
+    }
+  }
+}

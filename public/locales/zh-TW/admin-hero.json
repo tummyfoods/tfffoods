@@ -1,0 +1,63 @@
+{
+  "title": "首頁橫幅管理",
+  "description": "管理首頁橫幅區塊，包含內容、媒體和顯示順序",
+  "addNewSection": "新增區塊",
+  "section": {
+    "title": "區塊 {{number}}",
+    "fields": {
+      "title": "標題",
+      "description": "描述",
+      "creditText": "版權文字",
+      "buttons": {
+        "primary": {
+          "text": "主要按鈕文字",
+          "link": "主要按鈕連結"
+        },
+        "secondary": {
+          "text": "次要按鈕文字",
+          "link": "次要按鈕連結"
+        }
+      },
+      "media": {
+        "title": "媒體設定",
+        "displayVideo": "顯示影片",
+        "displayPoster": "顯示圖片",
+        "video": {
+          "title": "上傳影片",
+          "description": "上傳首頁橫幅影片（建議使用 MP4 格式）",
+          "upload": "上傳影片",
+          "change": "更換影片"
+        },
+        "image": {
+          "title": "上傳圖片",
+          "description": "上傳首頁橫幅圖片",
+          "upload": "上傳圖片",
+          "change": "更換圖片"
+        }
+      },
+      "activeStatus": {
+        "title": "啟用狀態",
+        "description": "啟用此區塊以在首頁顯示"
+      }
+    },
+    "actions": {
+      "moveUp": "向上移動",
+      "moveDown": "向下移動",
+      "delete": "刪除區塊",
+      "save": "儲存變更"
+    },
+    "messages": {
+      "videoUploadSuccess": "影片上傳成功",
+      "imageUploadSuccess": "圖片上傳成功",
+      "saveSuccess": "變更儲存成功",
+      "saveFailed": "儲存變更失敗",
+      "deleteSuccess": "區塊刪除成功",
+      "deleteFailed": "刪除區塊失敗"
+    }
+  },
+  "breadcrumb": {
+    "admin": "管理後台",
+    "settings": "設定",
+    "heroSections": "首頁橫幅"
+  }
+}

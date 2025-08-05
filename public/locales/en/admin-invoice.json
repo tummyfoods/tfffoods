@@ -1,0 +1,70 @@
+{
+  "page": {
+    "title": "Invoice Management",
+    "description": "Manage and track all invoices"
+  },
+  "filters": {
+    "type": {
+      "label": "Invoice Type",
+      "all": "All Types",
+      "oneTime": "One-time Invoice",
+      "period": "Period Invoice"
+    },
+    "status": {
+      "label": "Status",
+      "all": "All Status",
+      "pending": "Pending",
+      "paid": "Paid",
+      "overdue": "Overdue"
+    },
+    "search": {
+      "placeholder": "Search by invoice number or customer..."
+    }
+  },
+  "table": {
+    "headers": {
+      "invoiceNumber": "Invoice Number",
+      "customer": "Customer",
+      "type": "Type",
+      "amount": "Amount",
+      "status": "Status",
+      "date": "Date",
+      "actions": "Actions"
+    }
+  },
+  "actions": {
+    "print": "Print Invoice",
+    "download": "Download Invoice",
+    "viewDetails": "View Details",
+    "approve": "Approve Payment",
+    "reject": "Reject Payment",
+    "cleanup": "Clean Up Invalid Invoices"
+  },
+  "details": {
+    "customerInfo": "Customer Information",
+    "customerName": "Name",
+    "phone": "Phone",
+    "address": "Address",
+    "invoiceInfo": "Invoice Information",
+    "status": "Status",
+    "orderNumber": "Order Number",
+    "type": "Type",
+    "periodInvoice": "Period Invoice",
+    "period": "Period",
+    "paymentMethod": "Payment Method"
+  },
+  "messages": {
+    "loading": "Loading invoices...",
+    "noInvoices": "No invoices found",
+    "error": {
+      "fetch": "Failed to fetch invoices",
+      "update": "Failed to update invoice",
+      "print": "Failed to print invoice",
+      "download": "Failed to download invoice"
+    },
+    "success": {
+      "statusUpdate": "Invoice status updated successfully",
+      "cleanup": "Invalid invoices cleaned up successfully"
+    }
+  }
+}

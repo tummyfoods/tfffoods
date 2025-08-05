@@ -1,0 +1,30 @@
+{
+  "title": "Delivery Settings",
+  "description": "Manage delivery options and shipping costs",
+  "deliveryTypes": {
+    "title": "Delivery Types",
+    "method": "Delivery Method {{number}}",
+    "name": "Method Name",
+    "cost": "Cost ($)"
+  },
+  "freeDelivery": {
+    "title": "Free Delivery Threshold",
+    "label": "Minimum Order Amount for Free Delivery ($)"
+  },
+  "bankAccount": {
+    "title": "Bank Account Details",
+    "label": "Bank Account Details for Offline Payments",
+    "placeholder": "Enter bank account details for customers to make offline payments"
+  },
+  "actions": {
+    "save": "Save Settings",
+    "saving": "Saving...",
+    "addMethod": "Add Method",
+    "removeMethod": "Remove"
+  },
+  "messages": {
+    "success": "Settings saved successfully!",
+    "error": "Failed to save settings. Please try again.",
+    "minimumRequired": "At least one delivery method is required."
+  }
+}

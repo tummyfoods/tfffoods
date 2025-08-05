@@ -1,0 +1,125 @@
+{
+  "title": "發票管理",
+  "viewAll": "查看所有發票",
+  "description": "管理所有發票和付款記錄",
+  "subtitle": "管理您的發票",
+  "searchPlaceholder": "搜尋發票號碼...",
+  "list": {
+    "title": "發票列表",
+    "empty": "未找到發票",
+    "search": "搜尋發票",
+    "filter": "篩選發票",
+    "download": "下載發票",
+    "print": "列印發票",
+    "allTypes": "所有類型",
+    "allStatuses": "所有狀態",
+    "loadMore": "載入更多",
+    "noInvoicesDescription": "您目前還沒有任何發票"
+  },
+  "details": {
+    "title": "發票詳細資料",
+    "actions": {
+      "back": "返回發票列表",
+      "print": "列印發票",
+      "download": "下載發票"
+    },
+    "customerInfo": {
+      "title": "客戶資訊",
+      "name": "姓名",
+      "email": "電子郵件"
+    },
+    "invoice": {
+      "title": "發票",
+      "number": "發票號碼",
+      "orderNumber": "訂單編號",
+      "type": {
+        "title": "發票類型",
+        "oneTime": "一次性發票",
+        "period": "定期發票"
+      },
+      "created": "建立日期"
+    },
+    "order": {
+      "title": "訂單摘要",
+      "quantity": "數量",
+      "subtotal": "小計",
+      "delivery": "運費",
+      "total": "總計"
+    },
+    "payment": {
+      "title": "付款資訊",
+      "method": "付款方式",
+      "bank_transfer": "銀行轉帳",
+      "date": "付款日期",
+      "proof": "付款證明",
+      "reference": "付款參考號碼",
+      "upload": "上傳付款證明",
+      "uploadSuccess": "付款證明上傳成功",
+      "uploadError": "付款證明上傳失敗"
+    },
+    "addresses": {
+      "title": "地址",
+      "billing": {
+        "title": "帳單地址"
+      },
+      "shipping": {
+        "title": "送貨地址"
+      }
+    },
+    "status": {
+      "title": "狀態",
+      "paid": "已付款",
+      "unpaid": "未付款",
+      "overdue": "已逾期",
+      "cancelled": "已取消",
+      "pending": "處理中"
+    }
+  },
+  "actions": {
+    "create": "建立發票",
+    "edit": "編輯發票",
+    "delete": "刪除發票",
+    "send": "發送發票",
+    "mark_paid": "標記為已付款",
+    "mark_unpaid": "標記為未付款",
+    "cancel": "取消發票",
+    "view": "查看發票"
+  },
+  "messages": {
+    "create_success": "發票建立成功",
+    "update_success": "發票更新成功",
+    "delete_success": "發票刪除成功",
+    "send_success": "發票發送成功",
+    "error": {
+      "not_found": "找不到發票",
+      "create_failed": "建立發票失敗",
+      "update_failed": "更新發票失敗",
+      "delete_failed": "刪除發票失敗",
+      "send_failed": "發送發票失敗"
+    }
+  },
+  "filters": {
+    "date_range": "日期範圍",
+    "status": "狀態",
+    "amount": "金額",
+    "customer": "客戶",
+    "type": "類型"
+  },
+  "status": {
+    "paid": "已付款",
+    "unpaid": "未付款",
+    "pending": "處理中",
+    "overdue": "已逾期",
+    "cancelled": "已取消"
+  },
+  "type": {
+    "oneTime": "一次性發票",
+    "periodInvoice": "定期發票"
+  },
+  "labels": {
+    "amount": "金額",
+    "type": "類型",
+    "created": "建立時間",
+    "period": "期間"
+  }
+}

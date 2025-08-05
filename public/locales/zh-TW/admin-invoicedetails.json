@@ -1,0 +1,69 @@
+{
+  "page": {
+    "loading": "載入發票中...",
+    "notFound": "找不到發票",
+    "created": "建立於"
+  },
+  "customerInfo": "客戶資訊",
+  "invoiceDetails": "發票詳細資料",
+  "paymentInfo": "付款資訊",
+  "summary": "摘要",
+  "totalOrders": "訂單總數",
+  "total": "總金額",
+  "items": "商品項目",
+  "status": {
+    "label": "狀態",
+    "pending": "待處理",
+    "paid": "已付款",
+    "overdue": "逾期",
+    "processing": "處理中",
+    "delivered": "已送達",
+    "cancelled": "已取消"
+  },
+  "orderNumber": "訂單編號",
+  "type": {
+    "label": "類型",
+    "period": "定期",
+    "oneTime": "一次性"
+  },
+  "periodInvoice": "定期發票",
+  "period": "期間",
+  "paymentMethod": "付款方式",
+  "paymentMethods": {
+    "bank_transfer": "銀行轉帳",
+    "credit_card": "信用卡",
+    "cash": "現金",
+    "offline_payment": "線下支付",
+    "other": "其他"
+  },
+  "paymentReference": "付款參考號",
+  "paymentDate": "付款日期",
+  "paymentProof": "付款證明",
+  "quantity": "數量",
+  "pricePerUnit": "單價",
+  "subtotal": "小計",
+  "total": "總計",
+  "actions": {
+    "print": "列印",
+    "download": "下載",
+    "approve": "核准",
+    "reject": "拒絕",
+    "back": "返回"
+  },
+  "messages": {
+    "statusUpdateSuccess": "發票狀態更新成功",
+    "statusUpdateError": "發票狀態更新失敗"
+  },
+  "notSpecified": "未指定",
+  "orders": {
+    "title": "訂單",
+    "created": "建立時間",
+    "total": "總金額",
+    "totalOrders": "訂單總數",
+    "products": "訂單項目",
+    "productNotFound": "找不到產品",
+    "deliveryCost": "運費",
+    "deliveryMethod": "配送方式",
+    "localDelivery": "本地配送"
+  }
+}

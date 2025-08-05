@@ -1,0 +1,58 @@
+{
+  "common": {
+    "payment": "付款",
+    "paymentMethod": "付款方式",
+    "paymentStatus": "付款狀態",
+    "paymentReference": "付款參考號碼",
+    "paymentProof": "付款證明",
+    "total": "總金額",
+    "subtotal": "小計",
+    "deliveryCost": "運費"
+  },
+  "methods": {
+    "creditCard": "信用卡",
+    "bankTransfer": "銀行轉帳",
+    "cash": "現金",
+    "offlinePayment": "線下付款"
+  },
+  "status": {
+    "pending": "待付款",
+    "processing": "處理中",
+    "completed": "付款完成",
+    "failed": "付款失敗",
+    "cancelled": "已取消",
+    "refunded": "已退款"
+  },
+  "actions": {
+    "pay": "立即付款",
+    "cancel": "取消付款",
+    "retry": "重試付款",
+    "uploadProof": "上傳付款證明"
+  },
+  "upload": {
+    "title": "上傳付款證明",
+    "button": "上傳證明",
+    "uploading": "上傳中...",
+    "instructions": "請上傳您的付款證明（jpg、jpeg、png、webp - 最大 10MB）",
+    "success": "付款證明上傳成功",
+    "error": "上傳付款證明失敗"
+  },
+  "validation": {
+    "required": "請完成付款",
+    "invalidAmount": "無效的付款金額",
+    "invalidMethod": "無效的付款方式",
+    "invalidProof": "無效的付款證明"
+  },
+  "errors": {
+    "failed": "付款失敗",
+    "cancelled": "付款已取消",
+    "timeout": "付款逾時",
+    "invalid": "無效的付款資訊",
+    "insufficientFunds": "餘額不足",
+    "technicalError": "發生技術錯誤"
+  },
+  "success": {
+    "completed": "付款完成",
+    "refunded": "退款完成"
+  }
+}

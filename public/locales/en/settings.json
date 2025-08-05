@@ -1,0 +1,100 @@
+{
+  "common": {
+    "title": "Store Settings",
+    "description": "Manage your store information, contact details, business hours, and policies."
+  },
+  "tabs": {
+    "general": "General Settings",
+    "newsletter": "Newsletter Management",
+    "about": "About Page",
+    "contact": "Contact Page"
+  },
+  "general": {
+    "storeInfo": {
+      "title": "Store Information",
+      "storeName": "Store Name",
+      "slogan": "Store Slogan",
+      "storeLogo": "Store Logo",
+      "changeLogo": "Change Logo",
+      "copyright": "Copyright"
+    },
+    "contact": {
+      "title": "Contact Information",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "address": "Store Address"
+    },
+    "businessHours": {
+      "title": "Business Hours",
+      "weekdays": "Weekdays",
+      "weekends": "Weekends",
+      "holidays": "Holidays"
+    },
+    "social": {
+      "title": "Social Media",
+      "facebook": "Facebook URL",
+      "twitter": "Twitter URL",
+      "instagram": "Instagram URL",
+      "linkedin": "LinkedIn URL"
+    }
+  },
+  "newsletter": {
+    "settings": {
+      "title": "Newsletter Settings",
+      "frequency": "Send Frequency",
+      "template": "Email Template",
+      "subscribers": "Subscriber List"
+    },
+    "subscribers": {
+      "title": "Newsletter Subscribers",
+      "export": "Export List",
+      "import": "Import List",
+      "sendTest": "Send Test Email"
+    }
+  },
+  "about": {
+    "content": {
+      "title": "About Page Content",
+      "mainText": "Main Content",
+      "mission": "Mission Statement",
+      "vision": "Vision Statement"
+    },
+    "team": {
+      "title": "Team Section",
+      "members": "Team Members",
+      "addMember": "Add Member"
+    }
+  },
+  "contact": {
+    "form": {
+      "title": "Contact Form Settings",
+      "fields": "Form Fields",
+      "recipients": "Email Recipients",
+      "autoReply": "Auto-Reply Message"
+    },
+    "map": {
+      "title": "Map Settings",
+      "apiKey": "Google Maps API Key",
+      "location": "Store Location"
+    }
+  },
+  "actions": {
+    "save": "Save Settings",
+    "saving": "Saving...",
+    "cancel": "Cancel",
+    "reset": "Reset to Default"
+  },
+  "messages": {
+    "success": {
+      "save": "Settings saved successfully",
+      "update": "Settings updated successfully",
+      "delete": "Settings deleted successfully"
+    },
+    "error": {
+      "save": "Failed to save settings",
+      "update": "Failed to update settings",
+      "delete": "Failed to delete settings",
+      "load": "Failed to load settings"
+    }
+  }
+}

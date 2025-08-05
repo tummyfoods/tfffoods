@@ -1,0 +1,58 @@
+{
+  "common": {
+    "payment": "Payment",
+    "paymentMethod": "Payment Method",
+    "paymentStatus": "Payment Status",
+    "paymentReference": "Payment Reference",
+    "paymentProof": "Payment Proof",
+    "total": "Total",
+    "subtotal": "Subtotal",
+    "deliveryCost": "Delivery Cost"
+  },
+  "methods": {
+    "creditCard": "Credit Card",
+    "bankTransfer": "Bank Transfer",
+    "cash": "Cash",
+    "offlinePayment": "Offline Payment"
+  },
+  "status": {
+    "pending": "Payment Pending",
+    "processing": "Processing Payment",
+    "completed": "Payment Completed",
+    "failed": "Payment Failed",
+    "cancelled": "Payment Cancelled",
+    "refunded": "Payment Refunded"
+  },
+  "actions": {
+    "pay": "Pay Now",
+    "cancel": "Cancel Payment",
+    "retry": "Retry Payment",
+    "uploadProof": "Upload Payment Proof"
+  },
+  "upload": {
+    "title": "Upload Payment Proof",
+    "button": "Upload Proof",
+    "uploading": "Uploading...",
+    "instructions": "Please upload your payment proof (jpg, jpeg, png, webp - max 10MB)",
+    "success": "Payment proof uploaded successfully",
+    "error": "Failed to upload payment proof"
+  },
+  "validation": {
+    "required": "Payment is required",
+    "invalidAmount": "Invalid payment amount",
+    "invalidMethod": "Invalid payment method",
+    "invalidProof": "Invalid payment proof"
+  },
+  "errors": {
+    "failed": "Payment failed",
+    "cancelled": "Payment was cancelled",
+    "timeout": "Payment timed out",
+    "invalid": "Invalid payment details",
+    "insufficientFunds": "Insufficient funds",
+    "technicalError": "Technical error occurred"
+  },
+  "success": {
+    "completed": "Payment completed successfully",
+    "refunded": "Payment refunded successfully"
+  }
+}
