@@ -1,0 +1,40 @@
+[33ma51c24f[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m fix: prevent cart sync from keeping session alive
+[33m29ab5e5[m fix: clear all session tokens during logout
+[33m8ade006[m fix: use proper Next.js headers API in test route
+[33m652090d[m feat: add session debug endpoint
+[33m9c1511d[m fix: prevent session persistence by tightening auth checks
+[33m906e80a[m fix: implement aggressive session termination for logout
+[33mfea1dbe[m fix: unify logout handlers between mobile and desktop menus
+[33m967ea5d[m fix: simplify auth flow to prevent infinite loops
+[33m7d8cfda[m fix: correct login page session handling to prevent auto-login after logout
+[33m568eed8[m fix: remove client-side document reference from server route
+[33m8032d7a[m fix: simplify logout flow to ensure flag persistence
+[33m34f7719[m fix: prevent infinite logout loop by properly handling session states
+[33m4077d51[m fix: prevent auto re-login by preserving justLoggedOut flag
+[33m23a7d75[m feat: add detailed logging to debug production logout issue
+[33m6ea590c[m fix: add missing signOut import in login page
+[33m87a75ee[m fix: prevent auto re-login after logout by properly handling session state
+[33m73e2959[m fix: reduce session maxAge in production to 8 hours
+[33m15f9dcb[m logoutTest1
+[33m88a0bd7[m delete
+[33m07e398d[m deleteMain
+[33mdb51e5d[m update2
+[33mdc2aa71[m update
+[33mfef69d5[m test4
+[33m441042f[m test3
+[33mdc7a705[m loginTest2
+[33mb693e7d[m loginTest
+[33m8449234[m themebugUpdated
+[33ma7770ae[m themeProviderUpdated
+[33ma589352[m nginxUpdated2
+[33mc86aa06[m nginxUpdated
+[33ma1ac0ac[m colorAdustment
+[33mb029aab[m categoriesPagination
+[33md7c2ea7[m themeAdjustment
+[33m39e9066[m themeSettings1
+[33mb78feb0[m pagination
+[33m508ddf5[m optionPriceConfigured
+[33m52ec540[m logoCorrection
+[33md88f9c8[m correctName
+[33m5ebbd00[m name
+[33m2208f06[m first commit
