@@ -410,47 +410,17 @@ const MobileMenu = ({
                     <button
                       onClick={async () => {
                         try {
-                          // 1. Set logout flag FIRST before any async operations
-                          sessionStorage.setItem("justLoggedOut", "true");
-
-                          // 2. Clear cart as it might depend on the session
+                          // Clear cart first as it's client-side
                           await clearCart();
 
-                          // 3. Clear all client-side storage (except justLoggedOut flag)
-                          const justLoggedOut = sessionStorage.getItem("justLoggedOut");
-                          localStorage.clear();
-                          sessionStorage.clear();
-                          sessionStorage.setItem("justLoggedOut", justLoggedOut || "true");
-
-                          // 4. Call our server logout endpoint to clear cookies
-                          const response = await fetch("/api/auth/logout", {
-                            method: "POST",
-                            credentials: "include",
-                            headers: {
-                              "Cache-Control": "no-cache, no-store, must-revalidate",
-                              Pragma: "no-cache",
-                              Expires: "0"
-                            }
-                          });
-
-                          if (!response.ok) {
-                            throw new Error("Server logout failed");
-                          }
-
-                          // 5. Call NextAuth signOut with immediate redirect
+                          // Let NextAuth handle everything
                           await signOut({
                             callbackUrl: "/login",
                             redirect: true
                           });
-
-                          // 6. Force redirect if signOut's redirect fails
-                          setTimeout(() => {
-                            window.location.replace("/login");
-                          }, 100);
                         } catch (error) {
                           console.error("Logout failed:", error);
-                          // Force a clean redirect to login page
-                          window.location.replace("/login");
+                          window.location.href = "/login";
                         }
                       }}
                       className="text-red-500 hover:text-red-600 font-medium transition-colors"
