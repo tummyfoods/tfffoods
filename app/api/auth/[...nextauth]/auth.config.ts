@@ -162,6 +162,12 @@ export const authOptions: NextAuthOptions = {
     maxAge: process.env.NODE_ENV === "production" ? 8 * 60 * 60 : 30 * 24 * 60 * 60, // 8 hours in prod, 30 days in dev
     updateAge: 60 * 60, // 1 hour
   },
+  events: {
+    signOut: async () => {
+      // Clear any server-side session data here
+      console.log("NextAuth signOut event triggered");
+    },
+  },
   cookies: {
     sessionToken: {
       name: `__Secure-next-auth.session-token`,

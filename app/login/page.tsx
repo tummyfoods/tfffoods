@@ -120,36 +120,8 @@ const Login = () => {
   };
 
   useEffect(() => {
-    // Detailed debug logging
-    console.log("LOGIN PAGE DEBUG ==================");
-    console.log("Current Status:", status);
-    console.log("Session Data:", session);
-    console.log("JustLoggedOut Flag:", sessionStorage.getItem("justLoggedOut"));
-    console.log("Current URL:", window.location.href);
-    console.log("================================");
-
-    const justLoggedOut = sessionStorage.getItem("justLoggedOut");
-
-    // If we just logged out and still have a session, force logout
-    if (justLoggedOut && status === "authenticated") {
-      console.log("LOGIN DEBUG - Detected authenticated session after logout, forcing logout");
-      signOut({ 
-        redirect: true,
-        callbackUrl: "/login"
-      });
-      return;
-    }
-
-    // Clear logout flag only when truly logged out
-    if (status === "unauthenticated") {
-      console.log("LOGIN DEBUG - Session is unauthenticated, clearing logout flag");
-      sessionStorage.removeItem("justLoggedOut");
-      return;
-    }
-
-    // If authenticated without logout flag, go to home
-    if (status === "authenticated" && !justLoggedOut) {
-      console.log("LOGIN DEBUG - Authenticated without logout flag, redirecting to home");
+    // If authenticated, redirect to home
+    if (status === "authenticated" && session?.user) {
       router.push("/");
     }
   }, [status, session, router]);

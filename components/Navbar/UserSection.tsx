@@ -22,57 +22,17 @@ const UserSection = ({ session }: UserSectionProps) => {
 
   const handleSignOut = async () => {
     try {
-      console.log("LOGOUT DEBUG ==================");
-      console.log("Starting logout process");
-
-      // 1. Set logout flag FIRST before any async operations
-      sessionStorage.setItem("justLoggedOut", "true");
-      console.log("Set justLoggedOut flag:", sessionStorage.getItem("justLoggedOut"));
-
-      // 2. Clear cart as it might depend on the session
+      // 1. Clear cart first as it's client-side
       await clearCart();
-      console.log("Cart cleared");
 
-      // 3. Call server logout endpoint to clear cookies
-      console.log("Calling server logout endpoint...");
-      const response = await fetch("/api/auth/logout", {
-        method: "POST",
-        credentials: "include",
-        headers: {
-          "Cache-Control": "no-cache, no-store, must-revalidate",
-          Pragma: "no-cache",
-          Expires: "0"
-        }
-      });
-
-      if (!response.ok) {
-        throw new Error("Server logout failed");
-      }
-      console.log("Server logout successful");
-
-      // 4. Call NextAuth signOut
-      console.log("Calling NextAuth signOut...");
+      // 2. Let NextAuth handle everything - no manual redirects or flags needed
       await signOut({
         callbackUrl: "/login",
         redirect: true
       });
-
-      // 5. If we get here (signOut didn't redirect), force redirect
-      window.location.replace("/login");
-
     } catch (error) {
-      console.error("LOGOUT ERROR ==================");
       console.error("Logout failed:", error);
-      
-      // Even on error, try to sign out and redirect
-      try {
-        await signOut({
-          callbackUrl: "/login",
-          redirect: true
-        });
-      } catch {
-        window.location.replace("/login");
-      }
+      window.location.href = "/login";
     }
   };
 
