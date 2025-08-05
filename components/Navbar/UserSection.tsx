@@ -22,26 +22,50 @@ const UserSection = ({ session }: UserSectionProps) => {
 
   const handleSignOut = async () => {
     try {
-      // First clear the cart and wait for it to complete
+      // First clear the cart
       await clearCart();
 
-      // Call our cleanup route first
-      await fetch("/api/auth/logout", { method: "POST" });
-
-      // Then sign out with specific configuration
+      // First clear the session through NextAuth
       await signOut({
-        callbackUrl: "/login",
-        redirect: true,
+        redirect: false,
       });
 
-      // Force redirect if signOut doesn't do it
-      setTimeout(() => {
-        window.location.href = "/login";
-      }, 500);
+      // Then call our cleanup route to ensure all cookies are cleared
+      const response = await fetch("/api/auth/logout", {
+        method: "POST",
+        credentials: "include",
+        cache: "no-store",
+      });
+
+      if (!response.ok) {
+        throw new Error("Logout API failed");
+      }
+
+      // Clear any remaining auth data from localStorage and sessionStorage
+      const storageKeys = [
+        "next-auth.session-token",
+        "next-auth.callback-url",
+        "next-auth.csrf-token",
+        "__Secure-next-auth.session-token",
+        "__Secure-next-auth.callback-url",
+        "__Host-next-auth.csrf-token",
+      ];
+
+      storageKeys.forEach((key) => {
+        try {
+          localStorage.removeItem(key);
+          sessionStorage.removeItem(key);
+        } catch (e) {
+          console.debug(`Failed to remove ${key}:`, e);
+        }
+      });
+
+      // Finally, redirect to login using replace to prevent back navigation
+      window.location.replace("/login");
     } catch (error) {
       console.error("Logout failed:", error);
-      // If error occurs, force a hard redirect to ensure logout
-      window.location.href = "/login";
+      // Force a clean redirect to login page
+      window.location.replace("/login");
     }
   };
 
