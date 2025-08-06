@@ -1,53 +1,46 @@
-FROM node:18-alpine AS base
-
-# Install dependencies only when needed
-FROM base AS deps
-RUN apk add --no-cache libc6-compat
-WORKDIR /app
-
-# Install dependencies
-COPY package.json package-lock.json* ./
-RUN npm ci
-
-# Rebuild the source code only when needed
+# Add these right after FROM base AS builder
 FROM base AS builder
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
-# Next.js collects completely anonymous telemetry data about general usage.
-# Learn more here: https://nextjs.org/telemetry
-# Uncomment the following line in case you want to disable telemetry during the build.
-ENV NEXT_TELEMETRY_DISABLED 1
+# Add these environment variables for build time
+ARG MONGODB_URI
+ARG MONGO_URI
+ARG NEXTAUTH_SECRET
+ARG JWT_SECRET
+ARG GOOGLE_CLIENT_ID
+ARG GOOGLE_CLIENT_SECRET
+ARG NEXTAUTH_URL
+ARG CLOUDINARY_CLOUD_NAME
+ARG CLOUDINARY_API_KEY
+ARG CLOUDINARY_API_SECRET
+ARG NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
+ARG NEXT_PUBLIC_CLOUDINARY_PRESET_NAME
+ARG NEXT_PUBLIC_CLOUDINARY_API_KEY
+ARG DEFAULT_PROFILE_IMAGE
+ARG NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
+ARG NEXT_PUBLIC_SHOW_BRAND_BETA_ADMIN
+ARG NEXT_PUBLIC_APP_URL
 
+# Set them as environment variables
+ENV MONGODB_URI=$MONGODB_URI
+ENV MONGO_URI=$MONGO_URI
+ENV NEXTAUTH_SECRET=$NEXTAUTH_SECRET
+ENV JWT_SECRET=$JWT_SECRET
+ENV GOOGLE_CLIENT_ID=$GOOGLE_CLIENT_ID
+ENV GOOGLE_CLIENT_SECRET=$GOOGLE_CLIENT_SECRET
+ENV NEXTAUTH_URL=$NEXTAUTH_URL
+ENV CLOUDINARY_CLOUD_NAME=$CLOUDINARY_CLOUD_NAME
+ENV CLOUDINARY_API_KEY=$CLOUDINARY_API_KEY
+ENV CLOUDINARY_API_SECRET=$CLOUDINARY_API_SECRET
+ENV NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=$NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
+ENV NEXT_PUBLIC_CLOUDINARY_PRESET_NAME=$NEXT_PUBLIC_CLOUDINARY_PRESET_NAME
+ENV NEXT_PUBLIC_CLOUDINARY_API_KEY=$NEXT_PUBLIC_CLOUDINARY_API_KEY
+ENV DEFAULT_PROFILE_IMAGE=$DEFAULT_PROFILE_IMAGE
+ENV NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=$NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
+ENV NEXT_PUBLIC_SHOW_BRAND_BETA_ADMIN=$NEXT_PUBLIC_SHOW_BRAND_BETA_ADMIN
+ENV NEXT_PUBLIC_APP_URL=$NEXT_PUBLIC_APP_URL
+
+# Then keep your existing build command
 RUN npm run build
-
-# Production image, copy all the files and run next
-FROM base AS runner
-WORKDIR /app
-
-ENV NODE_ENV production
-ENV NEXT_TELEMETRY_DISABLED 1
-
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
-
-COPY --from=builder /app/public ./public
-
-# Set the correct permission for prerender cache
-RUN mkdir .next
-RUN chown nextjs:nodejs .next
-
-# Automatically leverage output traces to reduce image size
-# https://nextjs.org/docs/advanced-features/output-file-tracing
-COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
-COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
-
-USER nextjs
-
-EXPOSE 3000
-
-ENV PORT 3000
-ENV HOSTNAME "0.0.0.0"
-
-CMD ["node", "server.js"]
