@@ -631,9 +631,9 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({
 
   useEffect(() => {
     // Only fetch settings for public pages or when authenticated
-    const isPublicPage = window.location.pathname === "/" || 
-                        window.location.pathname === "/login" || 
-                        window.location.pathname === "/signup";
+    // Check if the current page is an admin page
+const isAdminPage = window.location.pathname.startsWith('/admin');
+const isPublicPage = !isAdminPage; // All non-admin pages should be considered public
     if (isPublicPage) {
       fetchSettings();
     }

@@ -6,10 +6,11 @@ export async function POST() {
   const domain = isProd ? ".tfffoods.com" : undefined;
 
   // Debug logging
+  const headersList = headers();
   console.log("LOGOUT DEBUG - Environment:", {
     isProd,
     domain,
-    cookies: headers().get("cookie"),
+    cookies: headersList.get("cookie"),
   });
 
   const cookieOptions = {
@@ -54,21 +55,21 @@ export async function POST() {
       ...cookieOptions,
       value: "",
       maxAge: 0,
-      expires: new Date(0)
+      expires: new Date(0),
     });
 
     // Also try without domain for __Host- prefixed cookies
     if (name.startsWith("__Host-")) {
       response.cookies.delete(name, {
         ...cookieOptions,
-        domain: undefined
+        domain: undefined,
       });
       response.cookies.set(name, "", {
         ...cookieOptions,
         domain: undefined,
         value: "",
         maxAge: 0,
-        expires: new Date(0)
+        expires: new Date(0),
       });
     }
   });
