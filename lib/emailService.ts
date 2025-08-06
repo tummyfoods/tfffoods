@@ -1,13 +1,4 @@
-import sgMail from "@sendgrid/mail";
-
-// Make sure API key is set before any email operations
-if (!process.env.SENDGRID_API_KEY) {
-  throw new Error("SENDGRID_API_KEY is not configured");
-}
-
-// Set API key with explicit type casting to string
-sgMail.setApiKey(process.env.SENDGRID_API_KEY as string);
-
+// Dummy email service (no actual email sending)
 export const sendEmail = async ({
   to,
   subject,
@@ -19,48 +10,12 @@ export const sendEmail = async ({
   text: string;
   html: string;
 }) => {
-  try {
-    // Validate sender email
-    if (!process.env.SENDER_EMAIL) {
-      throw new Error("SENDER_EMAIL is not configured");
-    }
+  // Just log the email attempt
+  console.log("Email would have been sent:", {
+    to,
+    subject,
+    timestamp: new Date().toISOString(),
+  });
 
-    // Log attempt without exposing sensitive data
-    console.log(`Attempting to send email to ${to} with subject: ${subject}`);
-    console.log("SendGrid Configuration:", {
-      hasApiKey: !!process.env.SENDGRID_API_KEY,
-      senderEmail: process.env.SENDER_EMAIL,
-      apiKeyPrefix: process.env.SENDGRID_API_KEY?.substring(0, 5),
-    });
-
-    const msg = {
-      to,
-      from: process.env.SENDER_EMAIL,
-      subject,
-      text,
-      html,
-    };
-
-    const result = await sgMail.send(msg);
-    console.log("SendGrid Response:", result[0].statusCode);
-
-    // Log success
-    console.log(`Email sent successfully to ${to}`);
-    return { success: true };
-  } catch (error) {
-    // Enhanced error logging
-    console.error("SendGrid error details:", {
-      error,
-      to,
-      subject,
-      timestamp: new Date().toISOString(),
-    });
-
-    // Return structured error response
-    return {
-      success: false,
-      error: error instanceof Error ? error.message : "Unknown error",
-      timestamp: new Date().toISOString(),
-    };
-  }
+  return { success: true };
 };
