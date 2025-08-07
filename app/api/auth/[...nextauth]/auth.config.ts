@@ -115,7 +115,7 @@ export const authOptions: NextAuthOptions = {
           // Fetch user with all fields
           const userDoc = await User.findOne({
             email: credentials.email,
-          }).lean();
+          });
           console.log("Found user in database:", userDoc);
 
           if (!userDoc) {
@@ -124,7 +124,7 @@ export const authOptions: NextAuthOptions = {
 
           const isCorrectPassword = await bcrypt.compare(
             credentials.password,
-            userDoc.password
+            userDoc.password || ""
           );
 
           if (!isCorrectPassword) {
@@ -132,8 +132,9 @@ export const authOptions: NextAuthOptions = {
           }
 
           // Return full user object
-          return {
+          const user = {
             id: userDoc._id.toString(),
+            _id: userDoc._id.toString(),
             name: userDoc.name,
             email: userDoc.email,
             role: userDoc.role,
@@ -144,7 +145,9 @@ export const authOptions: NextAuthOptions = {
             address: userDoc.address,
             isPeriodPaidUser: userDoc.isPeriodPaidUser,
             paymentPeriod: userDoc.paymentPeriod,
-          };
+          } as any; // Type assertion to avoid NextAuth type conflicts
+
+          return user;
         } catch (error) {
           console.error("Authorization error:", error);
           throw error;
@@ -155,64 +158,11 @@ export const authOptions: NextAuthOptions = {
   pages: {
     signIn: "/login",
     error: "/login",
-    signOut: "/login",
+    signOut: "/",
   },
   session: {
     strategy: "jwt",
-    maxAge: process.env.NODE_ENV === "production" ? 2 * 60 * 60 : 30 * 24 * 60 * 60, // 2 hours in prod, 30 days in dev
-    updateAge: 60 * 60, // 1 hour
-  },
-  events: {
-    signOut: async ({ session, token }) => {
-      try {
-        console.log("NextAuth signOut event triggered", { session, token });
-        
-        // Force expire the token
-        if (token) {
-          token.exp = 0;
-        }
-
-        // Clear any server-side session data
-        if (session) {
-          session.expires = new Date(0).toISOString();
-        }
-      } catch (error) {
-        console.error("Error in signOut event:", error);
-      }
-    },
-  },
-  cookies: {
-    sessionToken: {
-      name: `__Secure-next-auth.session-token`,
-      options: {
-        httpOnly: true,
-        sameSite: "lax",
-        path: "/",
-        secure: true,
-        domain: undefined, // Don't set domain to prevent cookie sharing across subdomains
-      },
-    },
-    callbackUrl: {
-      name: `__Secure-next-auth.callback-url`,
-      options: {
-        httpOnly: true,
-        sameSite: "lax",
-        path: "/",
-        secure: true,
-        domain: undefined, // Don't set domain to prevent cookie sharing across subdomains
-      },
-    },
-    csrfToken: {
-      name: `__Host-next-auth.csrf-token`,
-      options: {
-        httpOnly: true,
-        sameSite: "lax",
-        path: "/",
-        secure: true,
-        // __Host- prefixed cookies MUST NOT have a domain set
-        domain: undefined,
-      },
-    },
+    maxAge: 30 * 24 * 60 * 60, // 30 days
   },
   callbacks: {
     async signIn({ user, account }) {
