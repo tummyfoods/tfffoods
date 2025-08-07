@@ -1,4 +1,4 @@
-// Dummy email service (no actual email sending)
+// Email service without SendGrid dependency
 export const sendEmail = async ({
   to,
   subject,
@@ -10,12 +10,11 @@ export const sendEmail = async ({
   text: string;
   html: string;
 }) => {
-  // Just log the email attempt
-  console.log("Email would have been sent:", {
+  // Just log the email for now
+  console.log('Email would have been sent:', {
     to,
     subject,
-    timestamp: new Date().toISOString(),
+    timestamp: new Date().toISOString()
   });
-
   return { success: true };
 };
