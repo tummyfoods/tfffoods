@@ -3,6 +3,8 @@ export function validateEnv() {
     MONGODB_URI: process.env.MONGODB_URI,
     NEXTAUTH_SECRET: process.env.NEXTAUTH_SECRET,
     NEXTAUTH_URL: process.env.NEXTAUTH_URL,
+    BREVO_API_KEY: process.env.BREVO_API_KEY,
+    BREVO_SENDER_EMAIL: process.env.BREVO_SENDER_EMAIL,
   };
 
   const missingEnvs = Object.entries(requiredEnvs)

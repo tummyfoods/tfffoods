@@ -5,9 +5,9 @@ export async function POST(request: Request) {
   try {
     // Log environment variables (without exposing sensitive data)
     console.log("Environment check:", {
-      hasSendgridKey: !!process.env.SENDGRID_API_KEY,
-      hasSenderEmail: !!process.env.SENDER_EMAIL,
-      senderEmail: process.env.SENDER_EMAIL,
+      hasBrevoKey: !!process.env.BREVO_API_KEY,
+      hasSenderEmail: !!process.env.BREVO_SENDER_EMAIL,
+      senderEmail: process.env.BREVO_SENDER_EMAIL,
     });
 
     const { email = "test@example.com" } = await request.json();
