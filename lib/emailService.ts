@@ -1,4 +1,4 @@
-import Brevo from "@getbrevo/brevo";
+import * as Brevo from "@getbrevo/brevo";
 
 type SendEmailArgs = {
   to: string;
@@ -71,7 +71,9 @@ export const sendEmail = async ({
 
     const response = await client.sendTransacEmail(sendSmtpEmail);
     const messageId =
-      (response as any)?.messageId || (response as any)?.message?.messageId;
+      (response as any)?.messageId ||
+      (response as any)?.message?.messageId ||
+      (response as any)?.messageIds?.[0];
 
     return { success: true, providerMessageId: messageId, timestamp };
   } catch (error) {
