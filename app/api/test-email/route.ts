@@ -1,6 +1,37 @@
 import { NextResponse } from "next/server";
 import { sendEmail } from "@/lib/emailService";
 
+export async function GET(request: Request) {
+  try {
+    const url = new URL(request.url);
+    const email = url.searchParams.get("email") || "test@example.com";
+
+    console.log("Environment check:", {
+      hasBrevoKey: !!process.env.BREVO_API_KEY,
+      hasSenderEmail: !!process.env.BREVO_SENDER_EMAIL,
+      senderEmail: process.env.BREVO_SENDER_EMAIL,
+    });
+
+    const result = await sendEmail({
+      to: email,
+      subject: "Test Email from EcommApp",
+      text: "This is a test email from your ecommerce app",
+      html: "<h1>Test Email</h1><p>This is a test email from your ecommerce app</p>",
+    });
+
+    return NextResponse.json({ ok: true, sent: result.success, result });
+  } catch (error) {
+    console.error("Test email GET error:", error);
+    return NextResponse.json(
+      {
+        error: "Server error",
+        details: error instanceof Error ? error.message : "Unknown error",
+      },
+      { status: 500 }
+    );
+  }
+}
+
 export async function POST(request: Request) {
   try {
     // Log environment variables (without exposing sensitive data)
