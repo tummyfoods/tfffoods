@@ -5,12 +5,14 @@ export async function GET(request: Request) {
   try {
     const url = new URL(request.url);
     const email = url.searchParams.get("email") || "test@example.com";
+    const debug = url.searchParams.get("debug") === "1";
 
-    console.log("Environment check:", {
+    const envInfo = {
       hasBrevoKey: !!process.env.BREVO_API_KEY,
       hasSenderEmail: !!process.env.BREVO_SENDER_EMAIL,
       senderEmail: process.env.BREVO_SENDER_EMAIL,
-    });
+    };
+    console.log("Environment check:", envInfo);
 
     const result = await sendEmail({
       to: email,
@@ -19,7 +21,12 @@ export async function GET(request: Request) {
       html: "<h1>Test Email</h1><p>This is a test email from your ecommerce app</p>",
     });
 
-    return NextResponse.json({ ok: true, sent: result.success, result });
+    return NextResponse.json({
+      ok: true,
+      sent: result.success,
+      result,
+      ...(debug ? { env: envInfo } : {}),
+    });
   } catch (error) {
     console.error("Test email GET error:", error);
     return NextResponse.json(
