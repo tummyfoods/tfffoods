@@ -24,3 +24,10 @@ services:
         NEXT_PUBLIC_SHOW_BRAND_BETA_ADMIN: ${NEXT_PUBLIC_SHOW_BRAND_BETA_ADMIN}
     ports:
       - "3000:3000"
+    environment:
+      # Brevo transactional email
+      BREVO_API_KEY: ${BREVO_API_KEY}
+      BREVO_SENDER_EMAIL: ${BREVO_SENDER_EMAIL}
+      BREVO_SENDER_NAME: ${BREVO_SENDER_NAME}
+      # Public app URL for links in emails (optional but recommended)
+      NEXT_PUBLIC_APP_URL: ${NEXT_PUBLIC_APP_URL}
