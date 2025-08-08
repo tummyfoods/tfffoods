@@ -5,6 +5,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+      ports:
+        - "3000:3000"
       args:
         - MONGODB_URI=${MONGODB_URI}
         - MONGO_URI=${MONGO_URI}
@@ -23,7 +25,7 @@ services:
         - NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=${NEXT_PUBLIC_GOOGLE_MAPS_API_KEY}
         - NEXT_PUBLIC_SHOW_BRAND_BETA_ADMIN=${NEXT_PUBLIC_SHOW_BRAND_BETA_ADMIN}
         - NEXT_PUBLIC_APP_URL=${NEXT_PUBLIC_APP_URL}
-      - SENDGRID_API_KEY=dummy_key_not_used
+        - SENDGRID_API_KEY=dummy_key_not_used
     ports:
       - "3000:3000"
     environment:
