@@ -41,6 +41,15 @@ export async function POST(request: Request) {
 
     // Build line items from products
     const currency = (process.env.STRIPE_CURRENCY || "usd").toLowerCase();
+    const toNumber = (val: unknown): number => {
+      if (typeof val === "number") return val;
+      if (typeof val === "string") {
+        const cleaned = val.replace(/[^0-9.\-]/g, "");
+        const parsed = parseFloat(cleaned);
+        return Number.isFinite(parsed) ? parsed : 0;
+      }
+      return 0;
+    };
 
     const products = await Product.find({
       _id: { $in: order.items.map((i: any) => i.id) },
@@ -50,35 +59,45 @@ export async function POST(request: Request) {
       productIdToProduct[p._id.toString()] = p;
     }
 
-    const line_items: Stripe.Checkout.SessionCreateParams.LineItem[] =
-      order.items.map((item: any) => {
-        const prod = productIdToProduct[item.id.toString()];
-        const unitAmount = Math.round((prod?.price || 0) * 100);
-        return {
-          quantity: item.quantity,
-          price_data: {
-            currency,
-            unit_amount: unitAmount,
-            product_data: {
-              name: prod?.name?.en || prod?.name || "Product",
-            },
+    const line_items: Stripe.Checkout.SessionCreateParams.LineItem[] = [];
+    for (const item of order.items as any[]) {
+      const prod = productIdToProduct[item.id.toString()];
+      const price = toNumber(prod?.price);
+      const unitAmount = Math.round(price * 100);
+      if (!unitAmount || unitAmount < 1) {
+        return NextResponse.json(
+          {
+            error: "InvalidAmount",
+            message: `Product price invalid for ${prod?._id || item.id}`,
           },
-        };
+          { status: 400 }
+        );
+      }
+      line_items.push({
+        quantity: item.quantity,
+        price_data: {
+          currency,
+          unit_amount: unitAmount,
+          product_data: {
+            name: (prod?.displayNames?.en || prod?.name || "Product") as string,
+          },
+        },
       });
+    }
 
     // Add delivery as a separate line item if needed
-    if (order.deliveryCost && order.deliveryCost > 0) {
+    if (toNumber(order.deliveryCost) && toNumber(order.deliveryCost) > 0) {
       line_items.push({
         quantity: 1,
         price_data: {
           currency,
-          unit_amount: Math.round(order.deliveryCost * 100),
+          unit_amount: Math.round(toNumber(order.deliveryCost) * 100),
           product_data: { name: "Delivery" },
         },
       });
     }
 
-    const stripe = new Stripe(secretKey, { apiVersion: "2024-12-18" });
+    const stripe = new Stripe(secretKey);
 
     const appBaseUrl =
       process.env.NEXT_PUBLIC_APP_URL || process.env.NEXTAUTH_URL;
@@ -89,17 +108,33 @@ export async function POST(request: Request) {
       );
     }
 
-    const checkoutSession = await stripe.checkout.sessions.create({
-      mode: "payment",
-      payment_method_types: ["card"],
-      line_items,
-      success_url: `${appBaseUrl}/checkout/success?orderId=${order._id}`,
-      cancel_url: `${appBaseUrl}/checkout?canceled=1&orderId=${order._id}`,
-      metadata: {
-        orderId: order._id.toString(),
-        userEmail: order.email,
-      },
-    });
+    let checkoutSession;
+    try {
+      checkoutSession = await stripe.checkout.sessions.create({
+        mode: "payment",
+        line_items,
+        success_url: `${appBaseUrl}/checkout/success?orderId=${order._id}`,
+        cancel_url: `${appBaseUrl}/checkout?canceled=1&orderId=${order._id}`,
+        metadata: {
+          orderId: order._id.toString(),
+          userEmail: order.email,
+        },
+      });
+    } catch (err: any) {
+      console.error("Stripe create session failed:", {
+        message: err?.message,
+        type: err?.type,
+        code: err?.code,
+        param: err?.param,
+      });
+      return NextResponse.json(
+        {
+          error: "StripeError",
+          message: err?.message || "Create session failed",
+        },
+        { status: 400 }
+      );
+    }
 
     return NextResponse.json({ id: checkoutSession.id });
   } catch (error) {
