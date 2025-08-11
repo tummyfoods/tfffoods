@@ -369,9 +369,7 @@ export default function CheckoutPage() {
 
       // Prefer server-side redirect route for maximum compatibility
       window.location.href = `/api/stripe/checkout-redirect?orderId=${response.data.orderId}`;
-      if (error) {
-        toast.error(error.message || t("checkout.error"));
-      }
+      return;
     } catch (error) {
       console.error("Checkout error:", error);
       toast.error(t("checkout.error"));
