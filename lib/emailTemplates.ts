@@ -238,3 +238,88 @@ ${order.shippingAddress["zh-TW"]}
     html,
   };
 }
+
+export function generatePaymentConfirmedEmail(
+  order: Order,
+  language: string = "en"
+) {
+  const isEnglish = language === "en";
+
+  const subject = isEnglish
+    ? `Payment received for order #${order.orderReference}`
+    : `已收到付款：訂單 #${order.orderReference}`;
+
+  const text = isEnglish
+    ? `
+Hello ${order.name},
+
+We have received your payment for order #${
+        order.orderReference
+      }. Your order is now processing.
+
+Total: $${order.total.toFixed(2)}
+You can track your order in your account: ${
+        process.env.NEXT_PUBLIC_APP_URL
+      }/profile?tab=orders
+
+Thank you for shopping with tfffoods!
+`
+    : `
+您好 ${order.name}，
+
+我們已收到您訂單 #${order.orderReference} 的付款。您的訂單正在處理中。
+
+總金額：$${order.total.toFixed(2)}
+您可在帳戶中追蹤訂單：${process.env.NEXT_PUBLIC_APP_URL}/profile?tab=orders
+
+感謝您在 tfffoods 購物！
+`;
+
+  const html = isEnglish
+    ? `
+<!DOCTYPE html>
+<html>
+<body style="font-family: Arial, sans-serif; color:#333;">
+  <h2 style="margin:0 0 12px;">Payment received</h2>
+  <p>Hello ${order.name},</p>
+  <p>We have received your payment for order <strong>#${
+    order.orderReference
+  }</strong>. Your order is now <strong>processing</strong>.</p>
+  <p><strong>Total:</strong> $${order.total.toFixed(2)}</p>
+  <p><a href="${
+    process.env.NEXT_PUBLIC_APP_URL
+  }/profile?tab=orders">Track your order</a></p>
+  <hr/>
+  <p style="font-size:12px;color:#666;">Sent by tfffoods • ${
+    process.env.NEXT_PUBLIC_APP_URL
+  }</p>
+  <p style="font-size:12px;color:#666;">You received this because you purchased from us.</p>
+  <p style="font-size:12px;color:#666;">© ${new Date().getFullYear()} tfffoods</p>
+  </body>
+</html>
+`
+    : `
+<!DOCTYPE html>
+<html>
+<body style="font-family: Arial, sans-serif; color:#333;">
+  <h2 style="margin:0 0 12px;">已收到付款</h2>
+  <p>您好 ${order.name}，</p>
+  <p>我們已收到您<strong>#${
+    order.orderReference
+  }</strong> 的付款。您的訂單目前狀態為 <strong>處理中</strong>。</p>
+  <p><strong>總金額：</strong> $${order.total.toFixed(2)}</p>
+  <p><a href="${
+    process.env.NEXT_PUBLIC_APP_URL
+  }/profile?tab=orders">前往追蹤訂單</a></p>
+  <hr/>
+  <p style="font-size:12px;color:#666;">tfffoods • ${
+    process.env.NEXT_PUBLIC_APP_URL
+  }</p>
+  <p style="font-size:12px;color:#666;">您會收到此信件是因為您在我們網站上完成購買。</p>
+  <p style="font-size:12px;color:#666;">© ${new Date().getFullYear()} tfffoods</p>
+  </body>
+</html>
+`;
+
+  return { subject, text, html };
+}

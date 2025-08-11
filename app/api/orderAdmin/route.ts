@@ -3,6 +3,7 @@ import { connectToDatabase } from "@/utils/database";
 import { Order } from "@/utils/models/Order";
 import Product from "@/utils/models/Product";
 import { sendEmail } from "@/lib/emailService";
+import { generatePaymentConfirmedEmail } from "@/lib/emailTemplates";
 import Invoice from "@/utils/models/Invoice";
 import { getServerSession } from "next-auth";
 import { authOptions } from "../auth/[...nextauth]/auth.config";
@@ -151,41 +152,16 @@ export async function PUT(req: Request) {
         }
       }
 
-      // Send confirmation email
+      // Send confirmation email using branded template
       try {
-        await sendEmail({
-          to: order.email,
-          subject:
-            order.orderType === "period-order"
-              ? "Period Order Approved - Processing"
-              : "Payment Confirmed - Order Processing",
-          text: `Dear ${order.name},\n\nYour ${
-            order.orderType === "period-order" ? "period order" : "order"
-          } #${order._id} has been ${
-            order.orderType === "period-order" ? "approved" : "confirmed"
-          }. We are now processing your order.\n\nThank you for your purchase!`,
-          html: `
-            <h1>${
-              order.orderType === "period-order"
-                ? "Order Approved"
-                : "Payment Confirmed"
-            }</h1>
-            <p>Dear ${order.name},</p>
-            <p>Your ${
-              order.orderType === "period-order" ? "period order" : "order"
-            } #${order._id} has been ${
-            order.orderType === "period-order" ? "approved" : "confirmed"
-          }.</p>
-            <p>We are now processing your order.</p>
-            <p>Thank you for your purchase!</p>
-            <p><a href="${
-              process.env.NEXT_PUBLIC_APP_URL
-            }/profile?tab=orders">Track Your Order</a></p>
-          `,
-        });
-        console.log("Confirmation email sent successfully");
+        const { subject, text, html } = generatePaymentConfirmedEmail(
+          order,
+          (order as any)?.user?.language || "en"
+        );
+        await sendEmail({ to: order.email, subject, text, html });
+        console.log("Payment confirmed email sent successfully");
       } catch (emailError) {
-        console.error("Error sending confirmation email:", emailError);
+        console.error("Error sending payment confirmed email:", emailError);
       }
     } else if (markAsShipped) {
       // Check if vehicle is assigned before marking as shipped

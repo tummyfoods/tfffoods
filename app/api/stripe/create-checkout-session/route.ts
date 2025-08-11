@@ -78,7 +78,7 @@ export async function POST(request: Request) {
       });
     }
 
-    const stripe = new Stripe(secretKey, { apiVersion: "2024-12-18.acacia" });
+    const stripe = new Stripe(secretKey, { apiVersion: "2024-12-18" });
 
     const appBaseUrl =
       process.env.NEXT_PUBLIC_APP_URL || process.env.NEXTAUTH_URL;

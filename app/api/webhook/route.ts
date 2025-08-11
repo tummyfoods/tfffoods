@@ -16,9 +16,7 @@ export async function POST(req: Request) {
     const stripeSecret = process.env.STRIPE_SECRET_KEY;
     if (sig && webhookSecret && stripeSecret) {
       try {
-        const stripe = new Stripe(stripeSecret, {
-          apiVersion: "2024-12-18.acacia",
-        });
+        const stripe = new Stripe(stripeSecret, { apiVersion: "2024-12-18" });
         event = stripe.webhooks.constructEvent(body, sig, webhookSecret);
       } catch (err) {
         console.error("❌ Stripe webhook signature verification failed:", err);
