@@ -367,21 +367,8 @@ export default function CheckoutPage() {
         return;
       }
 
-      // Create Stripe Checkout Session for the order
-      const sessionRes = await axios.post(
-        "/api/stripe/create-checkout-session",
-        { orderId: response.data.orderId }
-      );
-
-      const stripe = await stripePromise;
-      if (!stripe) {
-        toast.error(t("checkout.stripeInitError"));
-        return;
-      }
-
-      const { error } = await stripe.redirectToCheckout({
-        sessionId: sessionRes.data.id,
-      });
+      // Prefer server-side redirect route for maximum compatibility
+      window.location.href = `/api/stripe/checkout-redirect?orderId=${response.data.orderId}`;
       if (error) {
         toast.error(error.message || t("checkout.error"));
       }

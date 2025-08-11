@@ -136,7 +136,10 @@ export async function POST(request: Request) {
       );
     }
 
-    return NextResponse.json({ id: checkoutSession.id });
+    return NextResponse.json({
+      id: checkoutSession.id,
+      url: (checkoutSession as any).url || null,
+    });
   } catch (error) {
     console.error("Create checkout session error:", error);
     return NextResponse.json(
