@@ -2,20 +2,38 @@ import { NextResponse } from "next/server";
 import { Order } from "@/utils/models/Order";
 import dbConnect from "@/utils/config/dbConnection";
 import Product from "@/utils/models/Product";
+import Stripe from "stripe";
 
 export async function POST(req: Request) {
   try {
     console.log("🎯 Webhook received");
-    const bodyText = await req.text();
-    console.log("📝 Raw webhook body:", bodyText);
+    const body = await req.text();
+    const sig = req.headers.get("stripe-signature");
 
-    // Try to detect Brevo webhook (transactional events)
-    // Brevo typically sends JSON with 'event' field like delivered, opened, bounce, spam
-    let event: any;
-    try {
-      event = JSON.parse(bodyText);
-    } catch {
-      event = null;
+    // If Stripe signature is present, verify and parse Stripe event
+    let event: any = null;
+    const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
+    const stripeSecret = process.env.STRIPE_SECRET_KEY;
+    if (sig && webhookSecret && stripeSecret) {
+      try {
+        const stripe = new Stripe(stripeSecret, {
+          apiVersion: "2024-12-18.acacia",
+        });
+        event = stripe.webhooks.constructEvent(body, sig, webhookSecret);
+      } catch (err) {
+        console.error("❌ Stripe webhook signature verification failed:", err);
+        return NextResponse.json(
+          { error: "Invalid signature" },
+          { status: 400 }
+        );
+      }
+    } else {
+      // Fallback: Try parse JSON for non-Stripe providers (e.g., Brevo)
+      try {
+        event = JSON.parse(body);
+      } catch {
+        event = null;
+      }
     }
 
     // Handle Brevo transactional webhook minimally (no-op storage)
@@ -45,71 +63,56 @@ export async function POST(req: Request) {
       }
     }
 
-    // Fallback: existing Stripe-like webhook payload
-    const eventStripeLike = event;
-    console.log("🔍 Event type:", eventStripeLike?.type);
-
-    // Only handle successful checkouts
-    if (eventStripeLike?.type === "checkout.session.completed") {
-      // Connect to DB only for Stripe-like checkout events
-      await dbConnect();
-      console.log("✅ Processing checkout.session.completed event");
-      const session = eventStripeLike.data.object;
-      const orderId = session.metadata?.orderId;
-      console.log("📦 Order ID from metadata:", orderId);
-
-      if (!orderId) {
-        console.error("❌ No order ID found in session metadata");
-        return NextResponse.json(
-          { error: "No order ID in metadata" },
-          { status: 400 }
-        );
-      }
-
-      // Find the order and get its products
-      const order = await Order.findById(orderId);
-      if (!order) {
-        console.error("❌ Order not found");
-        return NextResponse.json({ error: "Order not found" }, { status: 404 });
-      }
-
-      // Update stock for each product in the order
-      for (const item of order.cartProducts) {
-        const product = await Product.findById(item.product);
-        if (product) {
-          const newStock = Math.max(0, product.stock - item.quantity);
-          await Product.findByIdAndUpdate(item.product, { stock: newStock });
-          console.log(
-            `📦 Updated stock for product ${product.name}: ${product.stock} -> ${newStock}`
+    // Handle Stripe events
+    if (sig && event?.type) {
+      console.log("🔍 Stripe event type:", event.type);
+      if (event.type === "checkout.session.completed") {
+        await dbConnect();
+        const session = event.data.object as {
+          metadata?: Record<string, string>;
+        };
+        const orderId = session.metadata?.orderId;
+        if (!orderId) {
+          return NextResponse.json(
+            { error: "No orderId in metadata" },
+            { status: 400 }
           );
         }
-      }
 
-      // Update the order status
-      const updatedOrder = await Order.findByIdAndUpdate(
-        orderId,
-        {
-          paid: true,
-          status: "processing",
-        },
-        { new: true }
-      );
+        const order = await Order.findById(orderId);
+        if (!order) {
+          return NextResponse.json(
+            { error: "Order not found" },
+            { status: 404 }
+          );
+        }
 
-      console.log("🔄 Updated order:", updatedOrder);
+        for (const item of order.items) {
+          const product = await Product.findById(item.id);
+          if (product) {
+            const newStock = Math.max(
+              0,
+              (product.stock || 0) - (item.quantity || 0)
+            );
+            await Product.findByIdAndUpdate(item.id, { stock: newStock });
+          }
+        }
 
-      if (!updatedOrder) {
-        console.error("❌ Failed to update order");
-        return NextResponse.json(
-          { error: "Failed to update order" },
-          { status: 400 }
+        const updatedOrder = await Order.findByIdAndUpdate(
+          orderId,
+          { paid: true, status: "processing" },
+          { new: true }
         );
+
+        console.log("✨ Order updated (Stripe):", updatedOrder?._id);
+        return NextResponse.json({ received: true });
       }
 
-      console.log("✨ Order successfully updated");
-      return NextResponse.json({ success: true });
+      // Ignore other Stripe event types for now
+      return NextResponse.json({ received: true });
     }
-
-    console.log("➡️ Event type not handled:", event.type);
+    // If not Stripe: treat as Brevo and no-op
+    console.log("➡️ Non-Stripe event received");
     return NextResponse.json({ received: true });
   } catch (error) {
     console.error("❌ Webhook error:", error);

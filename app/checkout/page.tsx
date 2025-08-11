@@ -360,12 +360,30 @@ export default function CheckoutPage() {
         paymentMethod: "online",
       };
 
+      // Create an order in our system first
       const response = await axios.post("/api/checkout", shippingData);
+      if (!response.data?.success || !response.data?.orderId) {
+        toast.error(t("checkout.error"));
+        return;
+      }
 
-      if (response.data.success) {
-        clearCart();
-        setIsSuccess(true);
-        router.push(`/orders/${response.data.orderId}`);
+      // Create Stripe Checkout Session for the order
+      const sessionRes = await axios.post(
+        "/api/stripe/create-checkout-session",
+        { orderId: response.data.orderId }
+      );
+
+      const stripe = await stripePromise;
+      if (!stripe) {
+        toast.error(t("checkout.stripeInitError"));
+        return;
+      }
+
+      const { error } = await stripe.redirectToCheckout({
+        sessionId: sessionRes.data.id,
+      });
+      if (error) {
+        toast.error(error.message || t("checkout.error"));
       }
     } catch (error) {
       console.error("Checkout error:", error);
