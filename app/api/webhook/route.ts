@@ -3,6 +3,9 @@ import { Order } from "@/utils/models/Order";
 import dbConnect from "@/utils/config/dbConnection";
 import Product from "@/utils/models/Product";
 import Stripe from "stripe";
+import { sendEmail } from "@/lib/emailService";
+import { generatePaymentConfirmedEmail } from "@/lib/emailTemplates";
+import Invoice from "@/utils/models/Invoice";
 
 export async function POST(req: Request) {
   try {
@@ -85,6 +88,11 @@ export async function POST(req: Request) {
           );
         }
 
+        // If already processed, exit idempotently
+        if ((order as any).paid === true && order.status === "processing") {
+          return NextResponse.json({ received: true });
+        }
+
         for (const item of order.items) {
           const product = await Product.findById(item.id);
           if (product) {
@@ -103,6 +111,28 @@ export async function POST(req: Request) {
         );
 
         console.log("✨ Order updated (Stripe):", updatedOrder?._id);
+
+        // Mark invoice as paid if exists
+        try {
+          const invoice = await Invoice.findOne({ orders: orderId });
+          if (invoice && invoice.status !== "paid") {
+            invoice.status = "paid";
+            await invoice.save();
+          }
+        } catch (e) {
+          console.warn("Invoice update after Stripe payment failed", e);
+        }
+
+        // Send payment confirmed email
+        try {
+          const { subject, text, html } = generatePaymentConfirmedEmail(
+            updatedOrder as any,
+            (updatedOrder as any)?.user?.language || "en"
+          );
+          await sendEmail({ to: order.email, subject, text, html });
+        } catch (e) {
+          console.error("Failed to send payment confirmed email:", e);
+        }
         return NextResponse.json({ received: true });
       }
 
