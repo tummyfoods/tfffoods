@@ -31,3 +31,7 @@ services:
       BREVO_SENDER_NAME: ${BREVO_SENDER_NAME}
       # Public app URL for links in emails (optional but recommended)
       NEXT_PUBLIC_APP_URL: ${NEXT_PUBLIC_APP_URL}
+      # Stripe
+      STRIPE_WEBHOOK_SECRET: ${STRIPE_WEBHOOK_SECRET}
+      STRIPE_PUBLISHABLE_KEY: ${STRIPE_PUBLISHABLE_KEY}
+      STRIPE_SECRET_KEY: ${STRIPE_SECRET_KEY}
