@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@aws-sdk/client-ses": "^3.859.0",
-    "@getbrevo/brevo": "^2.5.0",
+    "@getbrevo/brevo": "^3.0.1",
     "@googlemaps/react-wrapper": "^1.1.42",
     "@heroicons/react": "^2.2.0",
     "@radix-ui/react-alert-dialog": "^1.1.4",
