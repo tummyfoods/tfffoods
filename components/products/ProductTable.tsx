@@ -4,7 +4,7 @@ import { Product } from "@/types";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import Image from "next/image";
-import { Edit, Star, ShoppingCart } from "lucide-react";
+import { Edit, Star, ShoppingCart, Ban } from "lucide-react";
 import { useTranslation } from "@/providers/language/LanguageContext";
 import { useCart } from "@/providers/cart/CartContext";
 import { useCartUI } from "@/components/ui/CartUIContext";
@@ -68,10 +68,11 @@ const ProductRow = ({ product: initialProduct }: { product: Product }) => {
 
   // Use current data only
   const currentProduct = data.product;
-  const currentStock = currentProduct.stock;
+  const currentStock = Number(currentProduct.stock ?? 0);
+  const isOutOfStock = currentStock <= 0;
 
   const handleAddToCart = () => {
-    if (currentStock === 0) return;
+    if (isOutOfStock) return;
 
     // If product has specifications, show modal
     if (currentProduct.category?.specifications?.length > 0) {
@@ -91,7 +92,7 @@ const ProductRow = ({ product: initialProduct }: { product: Product }) => {
   return (
     <>
       <tr
-        className="border-b border-border hover:bg-accent/5"
+        className="bg-card hover:bg-accent/5 shadow-sm hover:shadow-md rounded-lg overflow-hidden"
         data-product-id={currentProduct._id}
       >
         <td className="p-4">
@@ -145,29 +146,39 @@ const ProductRow = ({ product: initialProduct }: { product: Product }) => {
         <td className="p-4">
           <div className="flex items-center gap-4">
             <Button
-              variant="default"
+              variant={isOutOfStock ? "destructive" : "default"}
               size="sm"
               onClick={handleAddToCart}
-              disabled={currentStock === 0}
-              className="hidden sm:inline-flex"
+              disabled={isOutOfStock}
+              className={`hidden sm:inline-flex ${
+                isOutOfStock ? "cursor-not-allowed" : ""
+              } disabled:opacity-100`}
             >
-              {currentStock === 0
+              {isOutOfStock
                 ? t("product.stock.outOfStock")
                 : t("common.addToCart")}
             </Button>
             <Button
-              variant="default"
+              variant={isOutOfStock ? "destructive" : "default"}
               size="icon"
               onClick={handleAddToCart}
-              disabled={currentStock === 0}
-              className="sm:hidden h-10 w-10 bg-[#535C91] hover:bg-[#424874] text-white"
+              disabled={isOutOfStock}
+              className={`sm:hidden h-10 w-10 disabled:opacity-100 ${
+                isOutOfStock
+                  ? "bg-red-500 text-white cursor-not-allowed"
+                  : "bg-[#535C91] hover:bg-[#424874] text-white"
+              }`}
               title={
-                currentStock === 0
+                isOutOfStock
                   ? t("product.stock.outOfStock")
                   : t("common.addToCart")
               }
             >
-              <ShoppingCart className="h-6 w-6" />
+              {isOutOfStock ? (
+                <Ban className="h-6 w-6" />
+              ) : (
+                <ShoppingCart className="h-6 w-6" />
+              )}
             </Button>
             <WishlistButton productId={currentProduct._id} variant="icon" />
             {session?.user?.admin && (

@@ -164,7 +164,7 @@ export default function AdminOrderDetailsPage({
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900">
+      <div className="min-h-screen flex items-center justify-center app-background">
         <div className="flex items-center gap-2 text-gray-600 dark:text-gray-300">
           <div className="h-4 w-4 animate-spin rounded-full border-b-2 border-[#535C91] dark:border-[#6B74A9]"></div>
           <span className="animate-pulse">{t("common.loading")}</span>
@@ -175,7 +175,7 @@ export default function AdminOrderDetailsPage({
 
   if (!order) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900">
+      <div className="min-h-screen flex items-center justify-center app-background">
         <div className="text-center">
           <p className="text-gray-600 dark:text-gray-300 mb-4">
             {t("admin-orders.errors.notFound")}
@@ -190,7 +190,7 @@ export default function AdminOrderDetailsPage({
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
+    <div className="min-h-screen app-background transition-colors duration-200">
       <div className="app-global-container py-6">
         <div className="flex items-center justify-between mb-6">
           <div className="flex-1">
@@ -290,7 +290,7 @@ export default function AdminOrderDetailsPage({
                 <p className="text-sm text-muted-foreground">
                   {t("admin-orders.details.address.shipping")}
                 </p>
-                <div className="bg-gray-50 dark:bg-gray-900/50 p-4 rounded-lg">
+                <div className="bg-card/50 p-4 rounded-lg">
                   {order?.shippingAddress ? (
                     <MultiLangDisplay
                       value={order.shippingAddress.formattedAddress}
@@ -314,7 +314,7 @@ export default function AdminOrderDetailsPage({
                   <p className="text-sm text-muted-foreground">
                     {t("admin-orders.details.address.billing")}
                   </p>
-                  <div className="bg-gray-50 dark:bg-gray-900/50 p-4 rounded-lg">
+                  <div className="bg-card/50 p-4 rounded-lg">
                     <MultiLangDisplay
                       value={order.billingAddress.formattedAddress}
                       currentLang={language}

@@ -254,7 +254,7 @@ const RolesPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
+    <div className="min-h-screen app-background transition-colors duration-200">
       <div className="app-global-container">
         <Breadcrumb items={breadcrumbItems} />
         <div className="bg-card rounded-lg p-6 shadow-md">
@@ -271,8 +271,8 @@ const RolesPage = () => {
           </p>
         </div>
 
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg ring-1 ring-gray-200 dark:ring-gray-700 mt-6">
-          <div className="bg-gray-50 dark:bg-gray-800/50 p-4 rounded-lg ring-1 ring-gray-200 dark:ring-gray-700 m-4">
+        <div className="bg-card rounded-lg shadow-lg ring-1 ring-gray-200 dark:ring-gray-700 mt-6">
+          <div className="bg-card/50 p-4 rounded-lg ring-1 ring-gray-200 dark:ring-gray-700 m-4">
             <h2 className="text-lg font-medium mb-2 text-gray-800 dark:text-gray-200">
               {t("admin-roles.availableRoles")}
             </h2>
@@ -280,7 +280,7 @@ const RolesPage = () => {
               {Object.entries(ROLES).map(([key, value]) => (
                 <div
                   key={key}
-                  className="flex flex-col space-y-1 bg-white dark:bg-gray-800 p-3 rounded-lg shadow-sm ring-1 ring-gray-200 dark:ring-gray-700"
+                  className="flex flex-col space-y-1 bg-card p-3 rounded-lg shadow-sm ring-1 ring-gray-200 dark:ring-gray-700"
                 >
                   <div className="font-medium text-[#535C91] dark:text-[#6B74A9]">
                     {value}
@@ -337,7 +337,7 @@ const RolesPage = () => {
                         }
                         disabled={user._id === session?.user?._id}
                       >
-                        <SelectTrigger className="bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
+                        <SelectTrigger className="bg-card border-gray-200 dark:border-gray-700">
                           <SelectValue
                             placeholder={t("admin-roles.table.assignNewRole")}
                           />
@@ -457,7 +457,7 @@ const RolesPage = () => {
                           }
                           disabled={user._id === session?.user?._id}
                         >
-                          <SelectTrigger className="w-[180px] bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
+                          <SelectTrigger className="w-[180px] bg-card border-gray-200 dark:border-gray-700">
                             <SelectValue
                               placeholder={t("admin-roles.table.assignNewRole")}
                             />

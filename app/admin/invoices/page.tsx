@@ -103,7 +103,7 @@ const InvoiceListItem = ({
   };
 
   return (
-    <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm mb-4">
+    <div className="bg-card rounded-lg shadow-sm mb-4">
       <div className="p-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-4">
@@ -169,7 +169,7 @@ const InvoiceListItem = ({
         </div>
       </div>
       {isExpanded && (
-        <div className="p-4 bg-gray-50 dark:bg-gray-700">
+        <div className="p-4 bg-card/50">
           <div className="grid grid-cols-2 gap-4">
             <div>
               <div className="font-semibold mb-2">

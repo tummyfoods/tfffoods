@@ -109,14 +109,14 @@ export default function AdminGalleryPage() {
     <div className="container mx-auto px-4 py-8">
       <Breadcrumb items={breadcrumbItems} />
       <div className="mb-8">
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6">
+        <div className="bg-card rounded-lg shadow-sm p-6">
           <h1 className="text-2xl sm:text-3xl font-bold mb-3 bg-gradient-to-r from-[#535C91] to-[#424874] dark:from-[#6B74A9] dark:to-[#535C91] bg-clip-text text-transparent">
             {t("admin.gallery.title")}
           </h1>
         </div>
       </div>
 
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6">
+      <div className="bg-card rounded-lg shadow-sm p-6">
         <div className="space-y-2">
           <label className="text-sm font-medium">
             {language === "en" ? "Gallery Images" : "畫廊圖片"}

@@ -358,7 +358,7 @@ export default function BrandsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
+    <div className="min-h-screen app-background transition-colors duration-200">
       <div className="app-global-container">
         <Breadcrumb items={breadcrumbItems} />
         <div className="bg-card rounded-lg p-6 shadow-md">
@@ -455,11 +455,11 @@ export default function BrandsPage() {
         </div>
 
         {brands.length === 0 ? (
-          <div className="text-center py-10 bg-white dark:bg-gray-800 rounded-lg shadow-lg ring-1 ring-gray-200 dark:ring-gray-700 mt-6">
+          <div className="text-center py-10 bg-card rounded-lg shadow-lg ring-1 ring-gray-200 dark:ring-gray-700 mt-6">
             {t("brands.list.empty")}
           </div>
         ) : (
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg ring-1 ring-gray-200 dark:ring-gray-700 mt-6">
+          <div className="bg-card rounded-lg shadow-lg ring-1 ring-gray-200 dark:ring-gray-700 mt-6">
             {/* Mobile Grid View */}
             <div className="block md:hidden">
               <div className="grid grid-cols-1 gap-4 p-4">

@@ -66,10 +66,11 @@ export default function ProductCard({
 
   // Use current data only
   const currentProduct = data.product;
-  const currentStock = currentProduct.stock;
+  const currentStock = Number(currentProduct.stock ?? 0);
+  const isOutOfStock = currentStock <= 0;
 
   const handleAddToCart = () => {
-    if (currentStock === 0) return;
+    if (isOutOfStock) return;
 
     // If product has specifications, show modal
     if (currentProduct.category?.specifications?.length > 0) {
@@ -191,12 +192,14 @@ export default function ProductCard({
         <div className="flex justify-between items-center pt-4 mt-4 sm:pt-2 ">
           <button
             onClick={handleAddToCart}
-            disabled={currentStock === 0}
-            className={`bg-blue-600 text-white hover:bg-blue-700 px-4 py-2 rounded text-sm sm:text-base right-iconAssignBottom ${
-              currentStock === 0 ? "opacity-50 cursor-not-allowed" : ""
+            disabled={isOutOfStock}
+            className={`px-4 py-2 rounded text-sm sm:text-base right-iconAssignBottom transition-colors disabled:opacity-100 ${
+              isOutOfStock
+                ? "bg-red-500 text-white cursor-not-allowed"
+                : "bg-blue-600 text-white hover:bg-blue-700"
             }`}
           >
-            {currentStock === 0
+            {isOutOfStock
               ? t("product.stock.outOfStock")
               : t("common.addToCart")}
           </button>

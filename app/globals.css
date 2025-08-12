@@ -654,11 +654,12 @@
 .navbar-search {
   @apply items-center flex md:flex justify-between h-8;
   @apply lg:w-60 md:w-40 sm:w-32;
+  @apply bg-background text-foreground placeholder:text-muted-foreground border border-foreground/20 rounded-md px-3 shadow-sm ring-1 ring-foreground/10;
   transition: all 0.3s ease;
 }
 
 .navbar-search-icon {
-  @apply text-xl text-gray-700 dark:text-gray-300;
+  @apply text-xl text-muted-foreground;
   display: none;
   position: absolute;
   top: 50%;
@@ -1051,6 +1052,11 @@
 
   body.dark {
     background-color: #1a1a1a;
+  }
+
+  /* Elements with this class will use the themed background (with opacity) */
+  .app-background {
+    background-color: hsl(var(--background) / var(--background-opacity, 1));
   }
 
   /* Container styles */

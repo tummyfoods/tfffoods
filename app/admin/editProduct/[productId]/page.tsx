@@ -633,7 +633,7 @@ const EditProduct = () => {
       </h1>
       <form
         onSubmit={handleSubmit}
-        className="space-y-6 bg-[#1a1f2c] rounded-lg p-8"
+        className="space-y-6 bg-card rounded-lg p-8 border border-[color:var(--card-border)]"
       >
         <div className="grid grid-cols-1 gap-6">
           <div className="space-y-2">

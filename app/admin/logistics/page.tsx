@@ -56,7 +56,7 @@ export default function AdminLogisticsPage() {
     (status === "authenticated" && !session?.user?.admin)
   ) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
+      <div className="min-h-screen flex items-center justify-center app-background transition-colors duration-200">
         <div className="flex items-center gap-2 text-gray-600 dark:text-gray-300">
           <div className="h-4 w-4 animate-spin rounded-full border-b-2 border-[#535C91] dark:border-[#6B74A9]"></div>
           <span className="animate-pulse">{t("common.loading")}</span>
@@ -71,7 +71,7 @@ export default function AdminLogisticsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
+    <div className="min-h-screen app-background transition-colors duration-200">
       <div className="app-global-container">
         <Breadcrumb items={breadcrumbItems} />
         <div className="bg-card rounded-lg p-6 shadow-md">
@@ -90,7 +90,7 @@ export default function AdminLogisticsPage() {
           </div>
         </div>
 
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg ring-1 ring-gray-200 dark:ring-gray-700 mt-6">
+        <div className="bg-card rounded-lg shadow-lg ring-1 ring-gray-200 dark:ring-gray-700 mt-6">
           <AllLogistics viewMode={viewMode} />
         </div>
       </div>

@@ -332,7 +332,7 @@ export default function SpecificationsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
+    <div className="min-h-screen app-background transition-colors duration-200">
       <div className="app-global-container">
         <Breadcrumb items={breadcrumbItems} />
         <div className="bg-card rounded-lg p-6 shadow-md">
@@ -450,7 +450,7 @@ export default function SpecificationsPage() {
                     {specifications.map((spec, index) => (
                       <div
                         key={index}
-                        className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg bg-white dark:bg-gray-800 shadow-sm"
+                        className="p-4 border border-gray-200 dark:border-gray-700 rounded-lg bg-card shadow-sm"
                       >
                         <div className="flex justify-between items-start">
                           <div className="flex-1 space-y-4">

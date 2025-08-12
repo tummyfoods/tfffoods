@@ -239,7 +239,7 @@ export default function DeliverySettingsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
+    <div className="min-h-screen app-background transition-colors duration-200">
       <div className="app-global-container">
         <Breadcrumb items={breadcrumbItems} />
         <div className="bg-card rounded-lg p-6 shadow-md max-w-2xl mx-auto">

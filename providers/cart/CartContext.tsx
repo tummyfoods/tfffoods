@@ -124,7 +124,11 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
       } catch (error) {
         console.error("Cart sync failed:", error);
         // Only try to recover if still authenticated
-        if (error.response?.status === 409 && status === "authenticated" && userData?.id) {
+        if (
+          error.response?.status === 409 &&
+          status === "authenticated" &&
+          userData?.id
+        ) {
           try {
             await loadStoreServerCart();
           } catch (reloadError) {
@@ -146,21 +150,25 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
   const addItem = (item: AddToCartItem) => {
     console.log("Adding item to cart (provider):", item);
 
+    // Require authentication before adding to cart
+    const isAuthenticated =
+      Boolean(session?.user) &&
+      status === "authenticated" &&
+      !userLoading &&
+      Boolean(userData);
+
+    if (!isAuthenticated) {
+      setPendingItem(item as unknown as Product);
+      setShowAuthDialog(true);
+      toast.error("Please log in to add items to your cart");
+      return;
+    }
+
     // Update store immediately
     addStoreItem(item);
 
     // Show success message
     toast.success("Item added to cart");
-
-    // If user is logged in, sync with server
-    if (
-      session?.user &&
-      status === "authenticated" &&
-      !userLoading &&
-      userData
-    ) {
-      // Sync will happen automatically through the useEffect
-    }
   };
 
   const removeItem = (itemId: string, selectedSpecs?: Record<string, any>) => {

@@ -148,7 +148,7 @@ export default function BlogPostsPage() {
 
   if (status === "loading") {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900">
+      <div className="min-h-screen flex items-center justify-center app-background">
         <div className="flex items-center gap-2 text-gray-600 dark:text-gray-300">
           <div className="h-4 w-4 animate-spin rounded-full border-b-2 border-[#535C91] dark:border-[#6B74A9]"></div>
           <span className="animate-pulse">{t("common.loading")}</span>
@@ -162,7 +162,7 @@ export default function BlogPostsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
+    <div className="min-h-screen app-background transition-colors duration-200">
       <div className="app-global-container">
         <Breadcrumb items={breadcrumbItems} />
         <div className="bg-card rounded-lg p-6 shadow-md">
@@ -196,7 +196,7 @@ export default function BlogPostsPage() {
           </div>
         </div>
 
-        <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg ring-1 ring-gray-200 dark:ring-gray-700 mt-6">
+        <div className="bg-card rounded-lg shadow-lg ring-1 ring-gray-200 dark:ring-gray-700 mt-6">
           {isLoading ? (
             <div className="flex justify-center items-center py-12">
               <div className="flex items-center gap-2 text-gray-600 dark:text-gray-300">
@@ -212,7 +212,7 @@ export default function BlogPostsPage() {
                   {filteredPosts.map((post) => (
                     <div
                       key={post._id}
-                      className="bg-gray-50 dark:bg-gray-900 rounded-lg shadow p-4 flex flex-col gap-2"
+                      className="bg-card/50 rounded-lg shadow p-4 flex flex-col gap-2"
                     >
                       <div className="font-semibold text-lg text-gray-900 dark:text-gray-100 break-all">
                         {post?.title?.[currentLanguage] ||

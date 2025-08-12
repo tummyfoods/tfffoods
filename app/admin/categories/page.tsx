@@ -236,7 +236,7 @@ export default function CategoriesPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
+    <div className="min-h-screen app-background transition-colors duration-200">
       <div className="app-global-container">
         <Breadcrumb items={breadcrumbItems} />
         <div className="bg-card rounded-lg p-6 shadow-md">
@@ -282,7 +282,7 @@ export default function CategoriesPage() {
               {categories.map((category) => (
                 <div
                   key={category._id}
-                  className="bg-gray-50 dark:bg-gray-900 rounded-lg shadow p-4 flex flex-col gap-2"
+                  className="bg-card/50 rounded-lg shadow p-4 flex flex-col gap-2"
                 >
                   <div className="font-semibold text-lg text-gray-900 dark:text-gray-100 break-all">
                     {category.displayNames[language as "en" | "zh-TW"]}
@@ -374,7 +374,7 @@ export default function CategoriesPage() {
 
       {/* Create Category Modal */}
       <Dialog open={showCreateModal} onOpenChange={setShowCreateModal}>
-        <DialogContent className="bg-white dark:bg-gray-800">
+        <DialogContent className="bg-card">
           <DialogHeader>
             <DialogTitle className="text-gray-900 dark:text-gray-100">
               {t("categories.create.title")}
@@ -456,7 +456,7 @@ export default function CategoriesPage() {
 
       {/* Edit Category Modal */}
       <Dialog open={showEditModal} onOpenChange={setShowEditModal}>
-        <DialogContent className="bg-white dark:bg-gray-800">
+        <DialogContent className="bg-card">
           <DialogHeader>
             <DialogTitle className="text-gray-900 dark:text-gray-100">
               {t("categories.edit.title")}

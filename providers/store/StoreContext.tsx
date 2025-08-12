@@ -630,13 +630,8 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({
   };
 
   useEffect(() => {
-    // Only fetch settings for public pages or when authenticated
-    // Check if the current page is an admin page
-const isAdminPage = window.location.pathname.startsWith('/admin');
-const isPublicPage = !isAdminPage; // All non-admin pages should be considered public
-    if (isPublicPage) {
-      fetchSettings();
-    }
+    // Always fetch settings so navbar and other shared UI have data on all routes, including /admin
+    fetchSettings();
   }, []);
 
   // Provide a wrapped version of settings that always ensures logo is valid

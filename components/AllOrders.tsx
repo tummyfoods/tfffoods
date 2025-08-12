@@ -117,10 +117,7 @@ const OrdersSkeleton = () => {
   return (
     <div className="space-y-4 p-4">
       {[...Array(5)].map((_, index) => (
-        <div
-          key={index}
-          className="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-4 sm:p-6"
-        >
+        <div key={index} className="bg-card/50 rounded-lg p-4 sm:p-6">
           <div className="flex items-center justify-between mb-4">
             <LoadingSkeleton height="h-6" width="w-48" />
             <div className="flex items-center gap-4">
@@ -590,7 +587,7 @@ const Orders = ({ filterStatus }: Props) => {
     );
 
     return (
-      <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-6">
+      <div className="bg-card rounded-lg shadow p-6">
         {periodInfo}
         <div className="flex justify-between items-start">
           <div>
@@ -635,7 +632,7 @@ const Orders = ({ filterStatus }: Props) => {
         </div>
 
         {/* Order Items */}
-        <div className="bg-gray-50 dark:bg-gray-700/50 rounded-lg p-4 mb-4">
+        <div className="bg-card/50 rounded-lg p-4 mb-4">
           <h4 className="font-medium text-gray-800 dark:text-gray-200 mb-2">
             {t("admin-orders.details.items.title")}
           </h4>
@@ -680,7 +677,7 @@ const Orders = ({ filterStatus }: Props) => {
 
         {/* Vehicle Assignment Section */}
         {showVehicleAssignment && (
-          <div className="mb-4 bg-gray-50 dark:bg-gray-700/50 rounded-lg p-4">
+          <div className="mb-4 bg-card/50 rounded-lg p-4">
             <h4 className="font-medium text-gray-800 dark:text-gray-200 mb-4">
               {t("admin-orders.delivery.assignVehicle")}
             </h4>
@@ -697,7 +694,7 @@ const Orders = ({ filterStatus }: Props) => {
 
         {/* Payment Proof Section */}
         {paymentProofUrl && (
-          <div className="mb-4 bg-gray-50 dark:bg-gray-700/50 rounded-lg p-4">
+          <div className="mb-4 bg-card/50 rounded-lg p-4">
             <h4 className="font-medium text-gray-800 dark:text-gray-200 mb-2">
               {t("admin-orders.payment.proof")}
             </h4>

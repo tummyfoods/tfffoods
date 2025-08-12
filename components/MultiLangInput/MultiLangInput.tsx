@@ -45,10 +45,10 @@ export function MultiLangInput({
   return (
     <div className="space-y-2">
       {label && (
-        <label className="text-sm font-medium text-gray-300">{label}</label>
+        <label className="text-sm font-medium text-foreground">{label}</label>
       )}
       <div className="space-y-2">
-        <label className="text-sm font-medium text-gray-300">English</label>
+        <label className="text-sm font-medium text-foreground">English</label>
         <InputComponent
           value={safeValue.en}
           onChange={(e) => handleChange("en", e.target.value)}
@@ -61,7 +61,7 @@ export function MultiLangInput({
         />
       </div>
       <div className="space-y-2">
-        <label className="text-sm font-medium text-gray-300">中文</label>
+        <label className="text-sm font-medium text-foreground">中文</label>
         <InputComponent
           value={safeValue["zh-TW"]}
           onChange={(e) => handleChange("zh-TW", e.target.value)}

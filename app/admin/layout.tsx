@@ -155,7 +155,7 @@ export default function AdminLayout({
     <div className="min-h-screen app-background">
       <div className="flex">
         {/* Sidebar */}
-        <aside className="w-64 bg-white dark:bg-gray-800 min-h-screen shadow-md hidden md:block">
+        <aside className="w-64 bg-card min-h-screen shadow-md hidden md:block">
           <nav className="p-4">
             <ul className="space-y-2">
               {adminNavItems.map((item) => (

@@ -181,7 +181,7 @@ export default function EditVehiclePage({ params }: Props) {
     (status === "authenticated" && !session?.user?.admin)
   ) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
+      <div className="min-h-screen flex items-center justify-center app-background transition-colors duration-200">
         <div className="flex items-center gap-2 text-gray-600 dark:text-gray-300">
           <div className="h-4 w-4 animate-spin rounded-full border-b-2 border-[#535C91] dark:border-[#6B74A9]"></div>
           <span className="animate-pulse">{t("admin-logistics.loading")}</span>
@@ -196,11 +196,11 @@ export default function EditVehiclePage({ params }: Props) {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
+    <div className="min-h-screen app-background transition-colors duration-200">
       <div className="container mx-auto px-4 py-8 sm:px-6 lg:px-8">
         <div className="mb-8">
           <Breadcrumb items={breadcrumbItems} />
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6">
+          <div className="bg-card rounded-lg shadow-sm p-6">
             <h1 className="text-2xl sm:text-3xl font-bold mb-3 bg-gradient-to-r from-[#535C91] to-[#424874] dark:from-[#6B74A9] dark:to-[#535C91] bg-clip-text text-transparent">
               {t("admin-logistics.editVehicle")}
             </h1>
@@ -218,7 +218,7 @@ export default function EditVehiclePage({ params }: Props) {
             </div>
           </div>
         ) : (
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg ring-1 ring-gray-200 dark:ring-gray-700">
+          <div className="bg-card rounded-lg shadow-lg ring-1 ring-gray-200 dark:ring-gray-700">
             <form onSubmit={handleSubmit} className="p-6 space-y-6">
               {/* Vehicle Information Section */}
               <div className="space-y-4">

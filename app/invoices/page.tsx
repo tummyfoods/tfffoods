@@ -154,45 +154,49 @@ export default function InvoicesPage() {
       </div>
 
       {/* Filters */}
-      <div className="mb-6 flex flex-col sm:flex-row gap-4">
-        <div className="relative flex-1">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-          <Input
-            placeholder={t("invoice.searchPlaceholder")}
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="pl-10"
-          />
+      <div className="mb-6 bg-card rounded-lg p-4 shadow-sm border border-border">
+        <div className="flex flex-col sm:flex-row gap-4 items-stretch">
+          <div className="relative flex-1">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
+            <Input
+              placeholder={t("invoice.searchPlaceholder")}
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="pl-10 bg-background text-foreground placeholder:text-muted-foreground border"
+            />
+          </div>
+          <Select value={filterType} onValueChange={setFilterType}>
+            <SelectTrigger className="w-full sm:w-48 bg-background text-foreground border">
+              <SelectValue placeholder={t("invoice.filters.type")} />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">{t("invoice.list.allTypes")}</SelectItem>
+              <SelectItem value="one-time">
+                {t("invoice.type.oneTime")}
+              </SelectItem>
+              <SelectItem value="period">
+                {t("invoice.type.periodInvoice")}
+              </SelectItem>
+            </SelectContent>
+          </Select>
+          <Select value={filterStatus} onValueChange={setFilterStatus}>
+            <SelectTrigger className="w-full sm:w-48 bg-background text-foreground border">
+              <SelectValue placeholder={t("invoice.filters.status")} />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">
+                {t("invoice.list.allStatuses")}
+              </SelectItem>
+              <SelectItem value="pending">
+                {t("invoice.status.pending")}
+              </SelectItem>
+              <SelectItem value="paid">{t("invoice.status.paid")}</SelectItem>
+              <SelectItem value="overdue">
+                {t("invoice.status.overdue")}
+              </SelectItem>
+            </SelectContent>
+          </Select>
         </div>
-        <Select value={filterType} onValueChange={setFilterType}>
-          <SelectTrigger className="w-full sm:w-48">
-            <SelectValue placeholder={t("invoice.filters.type")} />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="all">{t("invoice.list.allTypes")}</SelectItem>
-            <SelectItem value="one-time">
-              {t("invoice.type.oneTime")}
-            </SelectItem>
-            <SelectItem value="period">
-              {t("invoice.type.periodInvoice")}
-            </SelectItem>
-          </SelectContent>
-        </Select>
-        <Select value={filterStatus} onValueChange={setFilterStatus}>
-          <SelectTrigger className="w-full sm:w-48">
-            <SelectValue placeholder={t("invoice.filters.status")} />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="all">{t("invoice.list.allStatuses")}</SelectItem>
-            <SelectItem value="pending">
-              {t("invoice.status.pending")}
-            </SelectItem>
-            <SelectItem value="paid">{t("invoice.status.paid")}</SelectItem>
-            <SelectItem value="overdue">
-              {t("invoice.status.overdue")}
-            </SelectItem>
-          </SelectContent>
-        </Select>
       </div>
 
       {/* Invoices List */}

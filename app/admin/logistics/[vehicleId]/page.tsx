@@ -125,7 +125,7 @@ export default function VehicleDetailsPage({ params }: Props) {
     (status === "authenticated" && !session?.user?.admin)
   ) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
+      <div className="min-h-screen flex items-center justify-center app-background transition-colors duration-200">
         <div className="flex items-center gap-2 text-gray-600 dark:text-gray-300">
           <div className="h-4 w-4 animate-spin rounded-full border-b-2 border-[#535C91] dark:border-[#6B74A9]"></div>
           <span className="animate-pulse">
@@ -192,11 +192,11 @@ export default function VehicleDetailsPage({ params }: Props) {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
+    <div className="min-h-screen app-background transition-colors duration-200">
       <div className="container mx-auto px-4 py-8 sm:px-6 lg:px-8">
         <div className="mb-8">
           <Breadcrumb items={breadcrumbItems} />
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm p-6">
+          <div className="bg-card rounded-lg shadow-sm p-6">
             <div className="flex justify-between items-start">
               <div>
                 <h1 className="text-2xl sm:text-3xl font-bold mb-3 bg-gradient-to-r from-[#535C91] to-[#424874] dark:from-[#6B74A9] dark:to-[#535C91] bg-clip-text text-transparent">
@@ -444,7 +444,7 @@ export default function VehicleDetailsPage({ params }: Props) {
                     {vehicle.assignedOrders.map((order) => (
                       <div
                         key={order.orderId.toString()}
-                        className="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-4 space-y-2"
+                        className="bg-card/50 rounded-lg p-4 space-y-2"
                       >
                         <div className="flex items-center justify-between">
                           <div>
@@ -517,7 +517,7 @@ export default function VehicleDetailsPage({ params }: Props) {
             )}
           </div>
         ) : (
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 text-center">
+          <div className="bg-card rounded-lg shadow-lg p-6 text-center">
             <p className="text-gray-600 dark:text-gray-300">
               {t("admin-logistics.vehicleNotFound")}
             </p>

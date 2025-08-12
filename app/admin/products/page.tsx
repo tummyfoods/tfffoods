@@ -154,7 +154,7 @@ export default function AdminProductsPage() {
   // Show loading for initial load or when checking auth
   if (status === "loading" || isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-gray-900">
+      <div className="min-h-screen flex items-center justify-center app-background">
         <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#535C91] dark:border-[#6B74A9]"></div>
       </div>
     );
@@ -350,7 +350,7 @@ export default function AdminProductsPage() {
   );
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-200">
+    <div className="min-h-screen app-background transition-colors duration-200">
       <div className="app-global-container">
         <Breadcrumb items={breadcrumbItems} />
         <div className="bg-card rounded-lg p-6 shadow-md">

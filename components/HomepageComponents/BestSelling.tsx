@@ -53,10 +53,7 @@ const BestSellingProducts: React.FC = () => {
 
   if (isLoading) {
     return (
-      <section
-        className="py-8 md:py-16"
-        style={{ backgroundColor: "hsla(var(--background), 0.5)" }}
-      >
+      <section className="py-8 md:py-16 app-background">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-center gap-4">
             {[...Array(3)].map((_, i) => (
@@ -73,10 +70,7 @@ const BestSellingProducts: React.FC = () => {
 
   if (!isLoading && products.length === 0) {
     return (
-      <section
-        className="py-8 md:py-16"
-        style={{ backgroundColor: "hsla(var(--background), 0.5)" }}
-      >
+      <section className="py-8 md:py-16 app-background">
         <div className="container mx-auto px-4">
           <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-center mb-8 md:mb-12 text-foreground">
             {t("common.bestSellingProducts")}
@@ -90,7 +84,7 @@ const BestSellingProducts: React.FC = () => {
   }
 
   return (
-    <section className="py-8 md:py-16 bg-muted/50">
+    <section className="py-8 md:py-16 app-background">
       <div className="container mx-auto px-4">
         <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-center mb-8 md:mb-12 text-foreground">
           {t("common.bestSellingProducts")}
